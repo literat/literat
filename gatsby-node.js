@@ -4,7 +4,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const createTagPages = (createPage, posts) => {
   const allTagsIndexTemplate = path.resolve("src/templates/allTagsIndex.js")
   const singleTagsIndexTemplate = path.resolve(
-    "src/templates/singleTagsIndex.js"
+    "src/templates/singleTagIndex.js"
   )
 
   const postsByTag = {}
@@ -29,6 +29,19 @@ const createTagPages = (createPage, posts) => {
     context: {
       tags: tags.sort(),
     },
+  })
+
+  tags.forEach(tagName => {
+    const posts = postsByTag[tagName]
+
+    createPage({
+      path: `/tags/${tagName}`,
+      component: singleTagsIndexTemplate,
+      context: {
+        posts,
+        tagName,
+      },
+    })
   })
 }
 
