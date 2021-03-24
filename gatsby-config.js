@@ -6,7 +6,7 @@
 
 module.exports = {
   siteMetadata: {
-    title: "Literat",
+    title: "LITERAT",
     description: "Fullstack Developer & Whitewater Kayaker & Scout",
   },
   plugins: [
@@ -16,6 +16,18 @@ module.exports = {
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Signika\:400`,
+          `Gothic A1\:900`,
+          `Fira Code\:300,400`,
+          `Fira Sans\:300,400`,
+        ],
+        display: "swap",
       },
     },
   ],

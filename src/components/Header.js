@@ -10,10 +10,10 @@ const TitleAndDescription = ({ data }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        fontFamily: "avenir",
+        fontFamily: "Signika",
       }}
     >
-      <h2 style={{ marginBottom: 0 }}>{title}</h2>
+      <h2 style={{ marginBottom: 0, fontFamily: "Gothic A1" }}>{title}</h2>
       <p style={{ marginTop: 0, opacity: 0.5 }}>{description}</p>
     </div>
   )
