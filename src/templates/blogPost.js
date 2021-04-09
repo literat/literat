@@ -9,16 +9,16 @@ const Template = ({ data, pageContext }) => {
 
   return (
     <div>
-      <h1 style={{ fontFamily: "avenir" }}>{title}</h1>
+      <h1 style={{ fontFamily: "Signika" }}>{title}</h1>
       <div
         className="blogpost"
         dangerouslySetInnerHTML={{ __html: html }}
-        style={{ fontFamily: "avenir" }}
+        style={{ fontFamily: "Fira Code" }}
       />
-      <div style={{ marginBottom: "1rem", fontFamily: "avenir" }}>
+      <div style={{ marginBottom: "1rem", fontFamily: "Fira Sans" }}>
         {next && <Link to={next.frontmatter.path}>Next</Link>}
       </div>
-      <div style={{ fontFamily: "avenir" }}>
+      <div style={{ fontFamily: "Fira Sans" }}>
         {previous && <Link to={previous.frontmatter.path}>Previous</Link>}
       </div>
     </div>

@@ -18,11 +18,22 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
     "gatsby": "^2.26.1",
+    "gatsby-image": "^3.2.0",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-image": "^1.2.1",
+    "gatsby-plugin-mdx": "^2.2.0",
+    "gatsby-plugin-sharp": "^3.2.1",
+    "gatsby-remark-copy-linked-files": "^3.2.0",
+    "gatsby-remark-images": "^4.2.0",
     "gatsby-source-filesystem": "^3.1.0-next.1",
     "gatsby-transformer-remark": "^3.1.0-next.1",
+    "gatsby-transformer-sharp": "^3.2.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "prettier": "2.2.1"

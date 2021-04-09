@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ceadb496-c024-48f6-97e6-88a2ecb65874/deploy-status)](https://app.netlify.com/sites/literat/deploys)
+
 # literat dot dev
 
 1. **Start developing.**
