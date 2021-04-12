@@ -2,9 +2,9 @@ const path = require("path")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 const createTagPages = (createPage, posts) => {
-  const allTagsIndexTemplate = path.resolve("src/templates/allTagsIndex.js")
+  const allTagsIndexTemplate = path.resolve("src/templates/allTagsIndex.tsx")
   const singleTagsIndexTemplate = path.resolve(
-    "src/templates/singleTagIndex.js"
+    "src/templates/singleTagIndex.tsx"
   )
 
   const postsByTag = {}
@@ -48,7 +48,7 @@ const createTagPages = (createPage, posts) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve("src/templates/blogPost.js")
+  const blogPostTemplate = path.resolve("src/templates/blogPost.tsx")
 
   const result = await graphql(`
     query {
