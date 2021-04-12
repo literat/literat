@@ -47,12 +47,12 @@ We also need the same features as Dependabot has:
 
 At this point Google comes to help and I started to search for possible solutions. Soon some answers come to light.
 
-| Product | branches | PRs | on-premise | pricing |
-| ------- | -------- | --- | ---------- | ------- |
-| [Dependabot][dependabot] | ✅ | ✅ | 🚫 | free |
-| [GreenKeeper][greenkeeper] | ✅ | ✅ | 🚫 | free |
-| [Snyk][snyk] | ✅ | ✅ | ❓ | 💵 |
-| [Renovate][renovate] | ✅ | ✅ | ✅ | free |
+| Product                    | branches | PRs | on-premise | pricing |
+| -------------------------- | -------- | --- | ---------- | ------- |
+| [Dependabot][dependabot]   | ✅       | ✅  | 🚫         | free    |
+| [GreenKeeper][greenkeeper] | ✅       | ✅  | 🚫         | free    |
+| [Snyk][snyk]               | ✅       | ✅  | ❓         | 💵      |
+| [Renovate][renovate]       | ✅       | ✅  | ✅         | free    |
 
 Note:
 
@@ -121,7 +121,7 @@ We created a Jenkins job with a simple `npm audit` and we are sending the result
 [npm-audit]: https://docs.npmjs.com/cli/v7/commands/npm-audit
 [yarn-audit]: https://classic.yarnpkg.com/en/docs/cli/audit/
 [greenkeeper]: https://greenkeeper.io/
-[Snyk]: https://snyk.io/
+[snyk]: https://snyk.io/
 [renovate]: https://www.whitesourcesoftware.com/free-developer-tools/renovate/
 [renovate-configuration]: https://docs.renovatebot.com/configuration-options/
 [renovate-noise-reduction]: https://docs.renovatebot.com/noise-reduction/

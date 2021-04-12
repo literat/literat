@@ -1,16 +1,13 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Header from "../components/Header"
-import GlobalStyles from "../components/styles/GlobalStyles"
-import Fonts from "../components/Fonts"
+import Layout from "../components/Layout"
 
-const Layout = ({ data }) => {
+const HomePage = ({ data }) => {
   const { edges } = data.allMarkdownRemark
 
   return (
-    <>
-      <GlobalStyles />
-      <Fonts />
+    <Layout>
       <div>
         <Header />
         <div
@@ -35,7 +32,7 @@ const Layout = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 
@@ -55,4 +52,4 @@ export const query = graphql`
   }
 `
 
-export default Layout
+export default HomePage
