@@ -1,27 +1,43 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
 
-const SingleTagsTemplate = ({ data, pageContext }) => {
-  const { posts, tagName } = pageContext
+type Frontmatter = {
+  title: string;
+  path: string;
+};
 
-  console.log(pageContext)
+type Post = {
+  frontmatter: Frontmatter;
+};
+
+type PageContext = {
+  posts: Post[];
+  tagName: string;
+};
+
+interface SingleTagsTemplateProps {
+  pageContext: PageContext;
+}
+
+const SingleTagsTemplate = ({ pageContext }: SingleTagsTemplateProps) => {
+  const { posts, tagName } = pageContext;
+
+  console.log(pageContext);
 
   return (
     <div>
       <div>Posts about {`${tagName}`}</div>
       <div>
         <ul>
-          {posts.map((post, index) => {
-            return (
-              <li key={index}>
-                <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
-              </li>
-            )
-          })}
+          {posts.map((post, index) => (
+            <li key={index}>
+              <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SingleTagsTemplate
+export default SingleTagsTemplate;

@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import font from "../../assets/fonts/Signika/Signika-Regular.ttf"
+import { createGlobalStyle } from 'styled-components';
+import font from '../../assets/fonts/Signika/Signika-Regular.ttf';
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -7,6 +7,6 @@ const GlobalStyles = createGlobalStyle`
     src: url(${font}) format('truetype');
     font-style: normal;
   }
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;

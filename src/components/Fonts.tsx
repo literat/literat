@@ -1,8 +1,8 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
 
-import GothicA1ExtraBold from "../assets/fonts/Gothic/GothicA1-ExtraBold.ttf"
-import FiraSans from "../assets/fonts/Fira/Sans/FiraSans-Regular.ttf"
-import FiraCode from "../assets/fonts/Fira/Code/FiraCode-Regular.ttf"
+import GothicA1ExtraBold from '../assets/fonts/Gothic/GothicA1-ExtraBold.ttf';
+import FiraSans from '../assets/fonts/Fira/Sans/FiraSans-Regular.ttf';
+import FiraCode from '../assets/fonts/Fira/Code/FiraCode-Regular.ttf';
 
 const Fonts = createGlobalStyle`
   @font-face {
@@ -23,6 +23,6 @@ const Fonts = createGlobalStyle`
     font-weight: 300;
     font-style: normal;
   }
-`
+`;
 
-export default Fonts
+export default Fonts;
