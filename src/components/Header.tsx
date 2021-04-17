@@ -1,40 +1,56 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 
-const TitleAndDescription = ({ data }) => {
-  const { title, description } = data.site.siteMetadata
+interface SiteMetadata {
+  title: string;
+  description: string;
+}
+
+interface Site {
+  siteMetadata: SiteMetadata;
+}
+
+interface Data {
+  site: Site;
+}
+interface TitleAndDescriptionProps {
+  data: Data;
+}
+
+const TitleAndDescription = ({
+  data,
+}: TitleAndDescriptionProps): JSX.Element => {
+  const { title, description } = data.site.siteMetadata;
 
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        fontFamily: "Signika",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        fontFamily: 'Signika',
       }}
     >
-      <h2 style={{ marginBottom: 0, fontFamily: "Gothic A1" }}>{title}</h2>
+      <h2 style={{ marginBottom: 0, fontFamily: 'Gothic A1' }}>{title}</h2>
       <p style={{ marginTop: 0, opacity: 0.5 }}>{description}</p>
     </div>
-  )
-}
+  );
+};
 
-const Header = () => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          site {
-            siteMetadata {
-              title
-              description
-            }
+const Header = () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
           }
         }
-      `}
-      render={data => <TitleAndDescription data={data} />}
-    />
-  )
-}
+      }
+    `}
+    render={(data) => <TitleAndDescription data={data} />}
+  />
+);
 
-export default Header
+export default Header;
