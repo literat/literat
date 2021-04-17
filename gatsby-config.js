@@ -6,8 +6,8 @@
 
 module.exports = {
   siteMetadata: {
-    title: "LITERAT",
-    description: "Fullstack Developer & Whitewater Kayaker & Scout",
+    title: 'LITERAT',
+    description: 'Fullstack Developer & Whitewater Kayaker & Scout',
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -19,7 +19,7 @@ module.exports = {
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           {
-            resolve: "gatsby-remark-images",
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1500,
               linkImagesToOriginal: false,
@@ -44,11 +44,20 @@ module.exports = {
         ],
       },
     },
+    // Pages
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages`,
+      },
+    },
+    // Posts
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/posts`,
+        name: 'post',
       },
     },
     {
@@ -60,8 +69,8 @@ module.exports = {
           `Fira Code\:300,400`,
           `Fira Sans\:300,400`,
         ],
-        display: "swap",
+        display: 'swap',
       },
     },
   ],
-}
+};
