@@ -27,7 +27,7 @@ const TitleAndDescription = ({
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'left',
         fontFamily: 'Signika',
       }}
     >

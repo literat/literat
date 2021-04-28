@@ -3,9 +3,33 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const NavStyles = styled.nav`
-  border-bottom: 5px solid black;
+  --rotate: -2deg;
+  --scaleX: 1;
+  --transform: skew(-20deg) rotate(var(--rotate)) scaleX(var(--scaleX));
   display: grid;
   grid-template-columns: 1fr;
+  margin-left: 10px;
+  margin-right: 10px;
+  &:before {
+    height: 8px;
+    content: '';
+    width: 100%;
+    background: black;
+    bottom: -2px;
+    z-index: -1;
+    transition: transform 0.1s;
+    transform: var(--transform);
+  }
+  &:after {
+    height: 8px;
+    content: '';
+    width: 100%;
+    background: black;
+    bottom: -2px;
+    z-index: -1;
+    transition: transform 0.1s;
+    transform: var(--transform);
+  }
 `;
 
 const NavList = styled.ul`
@@ -24,6 +48,13 @@ const NavItem = styled.li`
   align-content: center;
   grid-gap: 2rem;
   margin: 1rem;
+  a {
+    font-family: 'Signika';
+    font-size: 2.8rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 900;
+  }
 `;
 
 const Nav = () => (
