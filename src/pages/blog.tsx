@@ -3,8 +3,11 @@ import { graphql, Link } from 'gatsby';
 
 type Edge = {
   node: {
-    frontmatter: {
+    fields: {
       path: string;
+      slug: string;
+    }
+    frontmatter: {
       title: string;
     };
   };
@@ -32,11 +35,13 @@ const Blog = ({ data }: BlogProps) => {
         }}
       >
         {edges.map((edge: Edge) => {
-          const { frontmatter } = edge.node;
+          const { frontmatter, fields } = edge.node;
+          const { path, slug } = fields;
+          const { title } = frontmatter;
 
           return (
-            <div key={frontmatter.path} style={{ marginBottom: '1rem' }}>
-              <Link to={frontmatter.path}>{frontmatter.title}</Link>
+            <div key={slug} style={{ marginBottom: '1rem' }}>
+              <Link to={path}>{title}</Link>
             </div>
           );
         })}
@@ -53,9 +58,12 @@ export const query = graphql`
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
+          fields {
+            path
+            slug
+          }
           frontmatter {
             title
-            path
             date
           }
         }

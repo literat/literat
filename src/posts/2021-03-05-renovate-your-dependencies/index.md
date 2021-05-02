@@ -1,7 +1,6 @@
 ---
-path: "/renovate-your-dependencies"
-date: "2021-03-05"
 title: "Renovate Your Dependencies"
+date: "2021-03-05"
 tags: ["renovate", "dependencies", "security", "vulnerabilities"]
 excerpt: "Talk about how to stay up to date with your dependencies"
 ---
