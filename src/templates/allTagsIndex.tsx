@@ -11,7 +11,7 @@ const AllTagsTemplate = ({ pageContext }: AllTagsTemplateProps) => {
   const { tags } = pageContext;
 
   return (
-    <div style={{ fontFamily: 'avenir' }}>
+    <div>
       <div>
         <ul>
           {tags.map((tagName: string, index: number) => (

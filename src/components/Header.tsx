@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { Link, StaticQuery, graphql } from 'gatsby';
 
 interface SiteMetadata {
   title: string;
@@ -28,10 +28,19 @@ const TitleAndDescription = ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'left',
-        fontFamily: 'Signika',
+        fontFamily: 'Overpass',
       }}
     >
-      <h2 style={{ marginBottom: 0, fontFamily: 'Gothic A1' }}>{title}</h2>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <h2
+          style={{
+            marginBottom: 0,
+            fontFamily: 'Overpass',
+          }}
+        >
+          {title}
+        </h2>
+      </Link>
       <p style={{ marginTop: 0, opacity: 0.5 }}>{description}</p>
     </div>
   );

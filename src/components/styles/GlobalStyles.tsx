@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: Signika, sans-serif;
+    font-family: Overpass, sans-serif;
     font-weight: normal;
     /* font-style: italic; */
     line-height: 1.5;

@@ -3,11 +3,13 @@ import { Link } from 'gatsby';
 
 type Frontmatter = {
   title: string;
-  path: string;
 };
 
 type Post = {
   frontmatter: Frontmatter;
+  fields: {
+    path: string;
+  };
 };
 
 type PageContext = {
@@ -22,8 +24,6 @@ interface SingleTagsTemplateProps {
 const SingleTagsTemplate = ({ pageContext }: SingleTagsTemplateProps) => {
   const { posts, tagName } = pageContext;
 
-  console.log(pageContext);
-
   return (
     <div>
       <div>Posts about {`${tagName}`}</div>
@@ -31,7 +31,7 @@ const SingleTagsTemplate = ({ pageContext }: SingleTagsTemplateProps) => {
         <ul>
           {posts.map((post, index) => (
             <li key={index}>
-              <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
+              <Link to={post.fields.path}>{post.frontmatter.title}</Link>
             </li>
           ))}
         </ul>

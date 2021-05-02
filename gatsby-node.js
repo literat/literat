@@ -1,6 +1,5 @@
 const path = require('path');
-
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const slugify = require('slugify');
 
 const createTagPages = (createPage, posts) => {
   const allTagsIndexTemplate = path.resolve('src/templates/allTagsIndex.tsx');
@@ -33,19 +32,22 @@ const createTagPages = (createPage, posts) => {
   });
 
   tags.forEach((tagName) => {
-    const posts = postsByTag[tagName];
+    const postsWithTag = postsByTag[tagName];
 
     createPage({
       path: `/tags/${tagName}`,
       component: singleTagsIndexTemplate,
       context: {
-        posts,
+        posts: postsWithTag,
         tagName,
       },
     });
   });
 };
 
+/**
+ * Create blog post pages
+ */
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -56,10 +58,13 @@ exports.createPages = async ({ graphql, actions }) => {
       allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___date] }) {
         edges {
           node {
-            frontmatter {
+            fields {
               path
+            }
+            frontmatter {
               title
               tags
+              date
             }
           }
         }
@@ -75,12 +80,13 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node;
     const next = index === 0 ? null : posts[index - 1].node;
 
-    const { path } = post.node.frontmatter;
+    const { path: postPath } = post.node.fields;
+
     createPage({
-      path,
+      path: postPath,
       component: blogPostTemplate,
       context: {
-        pathSlug: path,
+        pathSlug: postPath,
         previous,
         next,
       },
@@ -88,15 +94,33 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+/**
+ * Create blog post paths
+ */
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
+    // create post path
+    const { title, date } = node.frontmatter;
+    const slug = slugify(title, { lower: true });
+    let postPath = `/${slug}`;
+    if (date != null) {
+      postPath = `/blog/${date}/${slug}`;
+    }
+
+    // create slug
     createNodeField({
-      name: `slug`,
+      name: 'slug',
       node,
-      value,
+      value: slug,
+    });
+
+    // create path
+    createNodeField({
+      name: 'path',
+      node,
+      value: postPath,
     });
   }
 };

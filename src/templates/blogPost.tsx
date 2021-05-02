@@ -1,6 +1,12 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
+interface PageNav {
+  fields: {
+    path: string;
+  };
+}
+
 interface TemplateProps {
   data: {
     markdownRemark: {
@@ -11,16 +17,8 @@ interface TemplateProps {
     };
   };
   pageContext: {
-    next: {
-      frontmatter: {
-        path: string;
-      };
-    };
-    previous: {
-      frontmatter: {
-        path: string;
-      };
-    };
+    next: PageNav;
+    previous: PageNav;
   };
 }
 
@@ -32,17 +30,17 @@ const Template = ({ data, pageContext }: TemplateProps) => {
 
   return (
     <div>
-      <h1 style={{ fontFamily: 'Signika' }}>{title}</h1>
+      <h1>{title}</h1>
       <div
         className="blogpost"
         dangerouslySetInnerHTML={{ __html: html }}
         style={{ fontFamily: 'Fira Code' }}
       />
       <div style={{ marginBottom: '1rem', fontFamily: 'Fira Sans' }}>
-        {next && <Link to={next.frontmatter.path}>Next</Link>}
+        {next && <Link to={next.fields.path}>Next</Link>}
       </div>
       <div style={{ fontFamily: 'Fira Sans' }}>
-        {previous && <Link to={previous.frontmatter.path}>Previous</Link>}
+        {previous && <Link to={previous.fields.path}>Previous</Link>}
       </div>
     </div>
   );
@@ -50,8 +48,11 @@ const Template = ({ data, pageContext }: TemplateProps) => {
 
 export const query = graphql`
   query($pathSlug: String!) {
-    markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
+    markdownRemark(fields: { path: { eq: $pathSlug } }) {
       html
+      fields {
+        path
+      }
       frontmatter {
         title
       }
