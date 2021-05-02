@@ -39,6 +39,7 @@ const NavList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 3rem 2rem 2rem 2rem;
+  transform: skew(-20deg) rotate(-2deg) scaleX(1);
 `;
 
 const NavItem = styled.li`
@@ -48,9 +49,22 @@ const NavItem = styled.li`
   align-content: center;
   grid-gap: 2rem;
   margin: 1rem;
+  transform: skew(20deg) rotate(2deg) scaleX(1);
+
+  &:after {
+    content: '⧹';
+    display: block;
+    color: var(--dark);
+    font-size: 3.8rem;
+    font-family: 'Overpass';
+  }
+  &:last-child:after {
+    display: none;
+  }
+
   a {
-    font-family: 'Signika';
-    font-size: 2.8rem;
+    font-family: 'Overpass';
+    font-size: 3.6rem;
     color: black;
     text-decoration: none;
     font-weight: 900;
@@ -61,10 +75,22 @@ const Nav = () => (
   <NavStyles>
     <NavList>
       <NavItem>
-        <Link to="/">Homepage</Link>
+        <Link to="/codes">Codes</Link>
+      </NavItem>
+      <NavItem>
+        <Link to="/talks">Talks</Link>
+      </NavItem>
+      <NavItem>
+        <Link to="/uses">Uses</Link>
       </NavItem>
       <NavItem>
         <Link to="/blog">Blog</Link>
+      </NavItem>
+      <NavItem>
+        <Link to="/about">About</Link>
+      </NavItem>
+      <NavItem>
+        <Link to="/contact">Contact</Link>
       </NavItem>
     </NavList>
   </NavStyles>
