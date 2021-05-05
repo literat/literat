@@ -104,8 +104,11 @@ exports.onCreateNode = ({ node, actions }) => {
     // create post path
     const { title, date } = node.frontmatter;
     const slug = slugify(title, { lower: true });
+    const dateRegex = /\d{4}-\d{2}-\d{2}/;
     let postPath = `/${slug}`;
-    if (date != null) {
+    // If post directory includes date => blog post
+    // If not => page
+    if (node.fileAbsolutePath.match(dateRegex)) {
       postPath = `/blog/${date}/${slug}`;
     }
 
