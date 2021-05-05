@@ -16,10 +16,12 @@ const GlobalStyles = createGlobalStyle`
   html {
     font-family: 'Fira Code', 'sans-serif';
     font-size: 10px;
+    color: var(--dark);
   }
 
   body {
     font-size: 2rem;
+    margin: 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
