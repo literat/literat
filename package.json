@@ -1,6 +1,6 @@
 {
   "name": "literat-dev-blog",
-  "description": "Literat`s site",
+  "description": "Literat's site",
   "version": "1.0.0",
   "license": "0BSD",
   "homepage": "https://literat.dev",
@@ -12,6 +12,7 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:fix": "yarn format --write",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

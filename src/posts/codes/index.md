@@ -8,27 +8,27 @@ title: "Codes"
 
 TODO: link to stackshare
 
-### Medallions¨
+### Medallions
 
 Medallions
 
-### Company profiles¨
+### Company profiles
 
 Company profiles
 
-### Career pages¨
+### Career pages
 
 Career pages
 
-### Spirit Design system¨
+### Spirit Design system
 
 Spirit Design System
 
-### Code Quality Tools¨
+### Code Quality Tools
 
 Code Quality Tools
 
-### React & NodeJS Technology Owner¨
+### React & NodeJS Technology Owner
 
 React & NodeJS Technology Owner
 
@@ -36,15 +36,15 @@ React & NodeJS Technology Owner
 
 TODO: link to stackshare
 
-### API Gateway¨
+### API Gateway
 
 Api Gateway
 
-### Video Processing Platform¨
+### Video Processing Platform
 
 Video Processing Platform
 
-### Aktualne.cz¨
+### Aktualne.cz
 
 Aktualne.cz
 

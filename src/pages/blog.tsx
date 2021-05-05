@@ -6,7 +6,7 @@ type Edge = {
     fields: {
       path: string;
       slug: string;
-    }
+    };
     frontmatter: {
       title: string;
     };

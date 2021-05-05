@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import ContentStyles from './styles/ContentStyles';
+import ContainerStyles from './styles/ContainerStyles';
 import GlobalStyles from './styles/GlobalStyles';
 import Fonts from './Fonts';
 import Header from './Header';
@@ -14,9 +15,11 @@ const Layout = ({ children }: LayoutProps) => (
   <>
     <GlobalStyles />
     <Fonts />
-    <Header />
-    <Nav />
-    <ContentStyles>{children}</ContentStyles>
+    <ContainerStyles>
+      <Header />
+      <Nav />
+      <ContentStyles>{children}</ContentStyles>
+    </ContainerStyles>
     <Footer />
   </>
 );
