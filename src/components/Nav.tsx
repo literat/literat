@@ -37,8 +37,8 @@ const NavList = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  margin: 0;
-  padding: 3rem 2rem 2rem 2rem;
+  padding: 0;
+  margin: 3rem 2rem 2rem 2rem;
   transform: skew(-20deg) rotate(-2deg) scaleX(1);
 `;
 
