@@ -1,5 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
-const AboutPage = () => <div>About me</div>;
+const AboutPage = () => (
+  <>
+    <Helmet>
+      <title>About Me - Literat</title>
+    </Helmet>
+    <div>About me</div>
+  </>
+);
 
 export default AboutPage;
