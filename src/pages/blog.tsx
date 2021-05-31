@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
 type Edge = {
   node: {
@@ -26,6 +27,9 @@ const Blog = ({ data }: BlogProps) => {
 
   return (
     <div>
+      <Helmet>
+        <title>Blog - Literat</title>
+      </Helmet>
       <div
         style={{
           display: 'flex',

@@ -1,7 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const HomePage = () => (
   <div>
+    <Helmet
+      htmlAttributes={{ lang: 'en' }}
+      title="Literat - Fullstack Developer & Whitewater Kayaker & Scout"
+    />
     <div
       style={{
         display: 'flex',
