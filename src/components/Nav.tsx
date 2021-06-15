@@ -10,6 +10,7 @@ const NavStyles = styled.nav`
   grid-template-columns: 1fr;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 20px;
   &:before {
     height: 8px;
     content: '';
@@ -68,6 +69,12 @@ const NavItem = styled.li`
     color: black;
     text-decoration: none;
     font-weight: 900;
+    transform: none;
+
+    &:before {
+      background: none;
+      transform: none;
+    }
   }
 `;
 

@@ -11,6 +11,10 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --dark: #000000;
     --light: #ffffff;
+    --red: #d20b2c;
+    --blue: #2479d4;
+    --purple: #D439AD;
+    --grey: #888
   }
 
   html {
@@ -31,6 +35,27 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
   }
 
+  h1 {
+    font-family: 'Overpass Italic', sans-serif;
+    font-size: 6rem;
+    font-style: italic;
+
+    &:before {
+      width: 1em;
+      height: 1.5em;
+      margin-top: 5px;
+      margin-left: -10px;
+      content: "";
+      pointer-events: none;
+      background: var(--blue);
+      position: absolute;
+      z-index: -1;
+      --translate: -0.5rem;
+      --rotate: 2deg;
+      transform: translateX(var(--translate)) translateY(var(--translate)) skew(-10deg);
+    }
+  }
+
   a {
     color: var(--dark);
   }
@@ -42,6 +67,31 @@ const GlobalStyles = createGlobalStyle`
 
   ul {
     list-style-type: square;
+  }
+
+  p a, li a {
+    --rotate: -1.1deg;
+    --scaleX: 1.1;
+    position: relative;
+    &:before {
+      height: 3px;
+      position: absolute;
+      background: var(--blue);
+      content: '';
+      width: 100%;
+      bottom: -2px;
+      z-index: -1;
+      transition: transform 0.1s;
+      transform: skew(-40deg) rotate(var(--rotate)) scaleX(var(--scaleX));
+    }
+    &:hover {
+      --scaleX: 1.15;
+    }
+  }
+
+  li a {
+    --scaleX: 1;
+    transform: scaleX(var(--scaleX));
   }
 `;
 

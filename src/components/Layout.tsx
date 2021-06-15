@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
+import 'normalize.css';
 import ContentStyles from './styles/ContentStyles';
 import ContainerStyles from './styles/ContainerStyles';
 import GlobalStyles from './styles/GlobalStyles';
