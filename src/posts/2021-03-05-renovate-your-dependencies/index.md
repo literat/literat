@@ -102,7 +102,7 @@ We created a Jenkins job with a simple `npm audit` and we are sending the result
 ## Resources
 
 - [Noise reduction in Renovate Docs][renovate-noise-reduction]
-- [Vulnerability alerting by Renovate (GitHub only featuer)][renovate-vulnerability-alerts]
+- [Vulnerability alerting by Renovate (GitHub only feature)][renovate-vulnerability-alerts]
 - [Rarouš: Jak jsme dali práci robotům (Czech only)][rarous-prace-robotum]
 - [Local PHP security checker][github-php-security-checker]
 - [Improved Yarn audit][github-improved-yarn-audit]
