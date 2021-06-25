@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
   }
 
-  h1 {
+  h1, h3 {
     font-family: 'Overpass Italic', sans-serif;
     font-size: 6rem;
     font-style: italic;
@@ -54,6 +54,10 @@ const GlobalStyles = createGlobalStyle`
       --rotate: 2deg;
       transform: translateX(var(--translate)) translateY(var(--translate)) skew(-10deg);
     }
+  }
+
+  h3 {
+    font-size: 3rem;
   }
 
   a {
