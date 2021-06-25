@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import Img from '../components/Img';
+import OutLink from '../components/OutLink';
 
 const useOldMe = () => {
   const birth = 583588801000;
@@ -63,37 +64,28 @@ const AboutPage = ({ data }: AboutPageProps) => {
         sections. The best places are in Austria 🇦🇹, south France 🇫🇷 the Italian
         province of Piedmont 🇮🇹. The Czech republic has also its whitewater
         jewels like{' '}
-        <a
-          href="https://www.devilsextremerace.com/"
+        <OutLink
+          link="https://www.devilsextremerace.com/"
           title="Devils Extreme Race"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Devil's streams
-        </a>{' '}
+        </OutLink>{' '}
         and gorges on Elbe or Jizera rivers.
       </p>
       <Img image={data.whitewater} alt="Trnava Xtreme Race" />
       <p>
         <strong>I also love to teach and work with young people.</strong> Since
         2004 I am member of czech scout assosiation,{' '}
-        <a
-          href="https://skaut.cz/"
-          title="Junák - czech scout Homepage"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <OutLink link="https://skaut.cz/" title="Junák - czech scout Homepage">
           Junák - český skaut
-        </a>
+        </OutLink>
         . In my unit{' '}
-        <a
-          href="https://poutnicikolin.cz/"
+        <OutLink
+          link="https://poutnicikolin.cz/"
           title="Poutníci Kolín - sea scouts"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Poutníci Kolín
-        </a>{' '}
+        </OutLink>{' '}
         we teach young people to survive in a wild, to live in harmony with
         nature and to find their own place in today's world. Simply we are
         trying to create a better world.
