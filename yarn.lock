@@ -2520,7 +2520,7 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@lmc-eu/prettier-config@^1.2.1":
+"@lmc-eu/prettier-config@1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@lmc-eu/prettier-config/-/prettier-config-1.2.1.tgz#b9564e9b9851263f0e2f5ef7ba6c26c834c91c68"
   integrity sha512-cqqHB31pHHdkFi1GeGJrQvwp0r3alvqxZvfJmj28gwgc+ZNpqpKIo8B149TIovn6fHL/0WU+0eITmwTyuNGDmA==
