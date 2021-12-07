@@ -47,7 +47,7 @@ const Template = ({ data, pageContext }: TemplateProps) => {
 };
 
 export const query = graphql`
-  query($pathSlug: String!) {
+  query ($pathSlug: String!) {
     markdownRemark(fields: { path: { eq: $pathSlug } }) {
       html
       fields {
