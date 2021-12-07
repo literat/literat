@@ -1,3 +1,5 @@
+const { prettierConfig } = require('./.prettierrc.js');
+
 module.exports = {
   globals: {
     __PATH_PREFIX__: true,
@@ -15,10 +17,13 @@ module.exports = {
   },
 
   rules: {
-    'react/jsx-filename-extension': [
-      'error',
-      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-    ],
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/jsx-props-no-spreading': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        ...prettierConfig,
+      },
+    ],
   },
 };
