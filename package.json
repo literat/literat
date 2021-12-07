@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop",
-    "start": "npm run develop",
+    "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "npm-run-all --serial lint format test:unit",
