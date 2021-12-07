@@ -2,11 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 const LinkedInProfileLink = () => (
-  <a
-    href="https://www.linkedin.com/in/tomaslitera/"
-    target="_blank"
-    rel="noreferrer"
-  >
+  <a href="https://www.linkedin.com/in/tomaslitera/" target="_blank" rel="noreferrer">
     LinkedIn profile
   </a>
 );
@@ -18,31 +14,25 @@ const ContactPage = () => (
     </Helmet>
     <h1>Contact</h1>
     <p>
-      Hello! I get lots of email, so please scan this page before firing one
-      off. Don't be afraid to email me, it just might take a few days (or weeks)
-      for me to get back to you 😃.
+      Hello! I get lots of email, so please scan this page before firing one off. Don't be afraid to email me, it just
+      might take a few days (or weeks) for me to get back to you 😃.
     </p>
     <p>
-      <strong>If you want me to work for you</strong>, I am open to new
-      opportunities and your offer. But, please, check out my{' '}
-      <LinkedInProfileLink /> first. If I am right guy for your job.
+      <strong>If you want me to work for you</strong>, I am open to new opportunities and your offer. But, please, check
+      out my <LinkedInProfileLink /> first. If I am right guy for your job.
     </p>
     <p>
-      <strong>
-        If you want to know what font, theme, computer or toilet paper I use
-      </strong>
-      , all that info is available on my <a href="/uses">/uses</a> page.
+      <strong>If you want to know what font, theme, computer or toilet paper I use</strong>, all that info is available
+      on my <a href="/uses">/uses</a> page.
     </p>
     <p>
-      <strong>If you are a recruiter</strong>, I love you, but please don’t call
-      me 🙂. Rather check out my <LinkedInProfileLink /> first and then email me
-      particular offer. I'm also not able to help you find someone for your
-      position.
+      <strong>If you are a recruiter</strong>, I love you, but please don’t call me 🙂. Rather check out my{' '}
+      <LinkedInProfileLink /> first and then email me particular offer. I'm also not able to help you find someone for
+      your position.
     </p>
     <p>
-      <strong>Yeah, you did it!</strong> For everything else including{' '}
-      <strong>course suggestions</strong>, <strong>conference invites</strong>,{' '}
-      <strong>private training</strong> and <strong>whitewater tips</strong>,
+      <strong>Yeah, you did it!</strong> For everything else including <strong>course suggestions</strong>,{' '}
+      <strong>conference invites</strong>, <strong>private training</strong> and <strong>whitewater tips</strong>,
       please email <a href="mailto:hello@literat.dev">hello@literat.dev</a>
     </p>
 

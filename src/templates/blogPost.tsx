@@ -31,17 +31,11 @@ const Template = ({ data, pageContext }: TemplateProps) => {
   return (
     <div>
       <h1>{title}</h1>
-      <div
-        className="blogpost"
-        dangerouslySetInnerHTML={{ __html: html }}
-        style={{ fontFamily: 'Fira Code' }}
-      />
+      <div className="blogpost" dangerouslySetInnerHTML={{ __html: html }} style={{ fontFamily: 'Fira Code' }} />
       <div style={{ marginBottom: '1rem', fontFamily: 'Fira Sans' }}>
         {next && <Link to={next.fields.path}>Next</Link>}
       </div>
-      <div style={{ fontFamily: 'Fira Sans' }}>
-        {previous && <Link to={previous.fields.path}>Previous</Link>}
-      </div>
+      <div style={{ fontFamily: 'Fira Sans' }}>{previous && <Link to={previous.fields.path}>Previous</Link>}</div>
     </div>
   );
 };

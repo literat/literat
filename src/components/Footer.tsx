@@ -40,12 +40,7 @@ const Footer = (): JSX.Element => (
     <div>
       <div className="bottom">
         I code on{' '}
-        <a
-          href="https://github.com/literat"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="socialLink"
-        >
+        <a href="https://github.com/literat" target="_blank" rel="noreferrer noopener" className="socialLink">
           <IoLogoGithub /> GitHub
         </a>
         <p>Literat &copy; 2008 — {new Date().getFullYear()}</p>

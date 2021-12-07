@@ -10,8 +10,7 @@ const NotFoundPage = () => (
     <h1>Damn, eh!</h1>
     <p>404.</p>
     <p>
-      This page doesn't exist. If you think this is an error{' '}
-      <Link to="/contact">contact me</Link>.
+      This page doesn't exist. If you think this is an error <Link to="/contact">contact me</Link>.
     </p>
   </>
 );

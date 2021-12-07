@@ -3,9 +3,7 @@ const slugify = require('slugify');
 
 const createTagPages = (createPage, posts) => {
   const allTagsIndexTemplate = path.resolve('src/templates/allTagsIndex.tsx');
-  const singleTagsIndexTemplate = path.resolve(
-    'src/templates/singleTagIndex.tsx'
-  );
+  const singleTagsIndexTemplate = path.resolve('src/templates/singleTagIndex.tsx');
 
   const postsByTag = {};
 

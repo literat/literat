@@ -1,8 +1,8 @@
 ---
-title: "GatsbyJS - How to include date in blog post url"
-date: "2021-05-02"
-tags: ["gatsby", "gatsbyjs", "slug", "url", "blog", "post", "javascript"]
-excerpt: "How to setup Gatsby to use post date in post url"
+title: 'GatsbyJS - How to include date in blog post url'
+date: '2021-05-02'
+tags: ['gatsby', 'gatsbyjs', 'slug', 'url', 'blog', 'post', 'javascript']
+excerpt: 'How to setup Gatsby to use post date in post url'
 ---
 
 When I was developing my new website using [Gatsby JS][gatsby] I wanted to customize the blog post URL based on folder structure and folder names. And of course based on other fields in my markdown files. In my case I wanted all blog posts URLs in the following format `/blog/yyyy-mm-dd/blog-post-title`. There are few ways to do this:
