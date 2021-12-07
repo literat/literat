@@ -29,5 +29,8 @@ jobs:
       - name: Lint
         run: yarn lint
 
+      - name: Check Code-Style Format
+        run: yarn format
+
       - name: Test build
         run: yarn build
