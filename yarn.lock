@@ -2520,7 +2520,7 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@lmc-eu/prettier-config@^1.2.1":
+"@lmc-eu/prettier-config@1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@lmc-eu/prettier-config/-/prettier-config-1.2.1.tgz#b9564e9b9851263f0e2f5ef7ba6c26c834c91c68"
   integrity sha512-cqqHB31pHHdkFi1GeGJrQvwp0r3alvqxZvfJmj28gwgc+ZNpqpKIo8B149TIovn6fHL/0WU+0eITmwTyuNGDmA==
@@ -11166,7 +11166,7 @@ normalize.css@8.0.1:
   resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
   integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
-npm-run-all@^4.1.5:
+npm-run-all@4.1.5:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.1.5.tgz#04476202a15ee0e2e214080861bff12a51d98fba"
   integrity sha512-Oo82gJDAVcaMdi3nuoKFavkIHBRVqQ1qvMb+9LHk/cF4P6B2m8aP04hGf7oL6wZ9BuGwX1onlLhpuoofSyoQDQ==
