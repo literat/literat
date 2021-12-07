@@ -1,8 +1,8 @@
 ---
-title: "Renovate Your Dependencies"
-date: "2021-03-05"
-tags: ["renovate", "dependencies", "security", "vulnerabilities"]
-excerpt: "Talk about how to stay up to date with your dependencies"
+title: 'Renovate Your Dependencies'
+date: '2021-03-05'
+tags: ['renovate', 'dependencies', 'security', 'vulnerabilities']
+excerpt: 'Talk about how to stay up to date with your dependencies'
 ---
 
 I have been talking about dependencies for [Frontendisti.cz][frontendisti] and here is what it was about.
@@ -11,11 +11,11 @@ One day I notice in my Inbox a commit and pull-request from one of my GitHub rep
 It was something new because it was from a machine known as [Dependabot][dependabot] and the entire issue was about updating
 known security vulnerability. "Hey, that's so cool! I want this on any of my active projects!"
 
-![security alert](./github-dependabot.png "Securit alert from dependabot")
+![security alert](./github-dependabot.png 'Securit alert from dependabot')
 
 By that time we had [security checks](https://github.com/FriendsOfPHP/security-advisories) in [LMC][lmc] for [Symfony framework][symfony]. But they only reported into the Slack channel
- when some new vulnerability appears. The next step had to be taken by a human. You know, creating of issue, new branch
- fix the vulnerability, create pull-request, wait for code review a then merge it and release. So much of repetitive work.
+when some new vulnerability appears. The next step had to be taken by a human. You know, creating of issue, new branch
+fix the vulnerability, create pull-request, wait for code review a then merge it and release. So much of repetitive work.
 
 ## Finding vulnerabilities
 
@@ -27,11 +27,11 @@ which are old (have a new version of them) and can be updated.
 
 The first run on our project was a catastrophe.
 
-![yarn audit](./audit.gif "Running audit on our project")
+![yarn audit](./audit.gif 'Running audit on our project')
 
 Both commands found too many vulnerabilities and updates to be done by a human being.
 
-![yarn audit result](./audit-result.png "Result of audit on our project")
+![yarn audit result](./audit-result.png 'Result of audit on our project')
 
 ## The Great Research
 
@@ -73,7 +73,7 @@ In the [configuration file][renovate-configuration] you can then configure every
 
 With Renovate bot up and running started a real mess that we do not expect. As we have every hiccup of our repository in bitbucket tied up to our Slack and mail our channels have begun to fill with spam. Every newly created pull request and commit appeared in our mail and Slack. And also did not mention automated tests started and notifications from them.
 
-![Noise in Slack](slack-noise-3.png "Noise in Slack")
+![Noise in Slack](slack-noise-3.png 'Noise in Slack')
 
 We started to work on this issue and [reduce this type of noise][renovate-noise-reduction].
 
