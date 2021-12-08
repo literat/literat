@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base", "group:allNonMajor"],
+  "extends": ["config:base", "group:allNonMajor", "schedule:weekly"],
   "ignorePresets": [":prHourlyLimit2"],
   "enabledManagers": ["npm"],
   "branchPrefix": "dependencies/",
