@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import Img from '../components/Img';
 import OutLink from '../components/OutLink';
+import H from '../components/mdx/Headings';
 
 const useOldMe = () => {
   const birth = 583588801000;
@@ -30,9 +31,9 @@ const AboutPage = ({ data }: AboutPageProps) => {
       <Helmet>
         <title>About Me - Literat</title>
       </Helmet>
-      <h1>About me</h1>
+      <H>About me</H>
       <p>Hello, I'm Tomas Litera, shortly Literat.</p>
-      <h3>In a nutshell...</h3>
+      <H as="h3">In a nutshell...</H>
       <p>
         I am a web developer, whitewater kayaker and scout from Kolin in the Czech republic 🇨🇿. I am {ageAsYears} years
         old and I have been making websites from primary school.
@@ -41,7 +42,7 @@ const AboutPage = ({ data }: AboutPageProps) => {
         I use HTML, CSS and JavaScript. Though constantly changing, my focus right now is React.js, Node, Express,
         Serverless, Gatsby and Next.js. And not a long time ago it was PHP and Laravel.
       </p>
-      <h3>A few more things...</h3>
+      <H as="h3">A few more things...</H>
       <p>
         <strong>I've been in love with web development</strong> for over half my life. Seems weird, right? It's a space
         of constant improvement and new & exciting technology. I consider myself a hacker in that I'm always using

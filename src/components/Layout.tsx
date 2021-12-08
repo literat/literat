@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
+import { MDXProvider } from '@mdx-js/react';
 import { Helmet } from 'react-helmet';
 import 'normalize.css';
+import mdxComponents from './mdx';
 import ContentStyles from './styles/ContentStyles';
 import ContainerStyles from './styles/ContainerStyles';
 import GlobalStyles from './styles/GlobalStyles';
@@ -27,7 +29,9 @@ const Layout = ({ title, children }: LayoutProps) => (
     <ContainerStyles>
       <Header />
       <Nav />
-      <ContentStyles>{children}</ContentStyles>
+      <MDXProvider components={mdxComponents}>
+        <ContentStyles>{children}</ContentStyles>
+      </MDXProvider>
     </ContainerStyles>
     <Footer />
   </>

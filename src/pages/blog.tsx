@@ -16,14 +16,14 @@ type Edge = {
 
 interface BlogProps {
   data: {
-    allMarkdownRemark: {
+    allMdx: {
       edges: Edge[];
     };
   };
 }
 
 const Blog = ({ data }: BlogProps) => {
-  const { edges } = data.allMarkdownRemark;
+  const { edges } = data.allMdx;
 
   return (
     <div>
@@ -59,7 +59,7 @@ const Blog = ({ data }: BlogProps) => {
 
 export const query = graphql`
   query BLOG_POSTS {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
           fields {
