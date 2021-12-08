@@ -1,5 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import H from '../components/mdx/Headings';
 
 interface PageNav {
   fields: {
@@ -9,8 +11,8 @@ interface PageNav {
 
 interface TemplateProps {
   data: {
-    markdownRemark: {
-      html: string;
+    mdx: {
+      body: string;
       frontmatter: {
         title: string;
       };
@@ -23,15 +25,15 @@ interface TemplateProps {
 }
 
 const Template = ({ data, pageContext }: TemplateProps) => {
-  const { markdownRemark } = data;
-  const { html } = markdownRemark;
-  const { title } = markdownRemark.frontmatter;
+  const { mdx } = data;
+  const { body } = mdx;
+  const { title } = mdx.frontmatter;
   const { next, previous } = pageContext;
 
   return (
     <div>
-      <h1>{title}</h1>
-      <div className="blogpost" dangerouslySetInnerHTML={{ __html: html }} style={{ fontFamily: 'Fira Code' }} />
+      <H>{title}</H>
+      <MDXRenderer>{body}</MDXRenderer>
       <div style={{ marginBottom: '1rem', fontFamily: 'Fira Sans' }}>
         {next && <Link to={next.fields.path}>Next</Link>}
       </div>
@@ -42,8 +44,8 @@ const Template = ({ data, pageContext }: TemplateProps) => {
 
 export const query = graphql`
   query ($pathSlug: String!) {
-    markdownRemark(fields: { path: { eq: $pathSlug } }) {
-      html
+    mdx(fields: { path: { eq: $pathSlug } }) {
+      body
       fields {
         path
       }
