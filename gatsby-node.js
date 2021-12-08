@@ -53,7 +53,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query {
-      allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___date] }) {
+      allMdx(sort: { order: ASC, fields: [frontmatter___date] }) {
         edges {
           node {
             fields {
@@ -70,7 +70,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMdx.edges;
 
   createTagPages(createPage, posts);
 
@@ -98,7 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     // create post path
     const { title, date } = node.frontmatter;
     const slug = slugify(title, { lower: true });

@@ -16,6 +16,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        extensions: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           {
@@ -24,21 +25,6 @@ module.exports = {
               maxWidth: 1500,
               linkImagesToOriginal: false,
               withWebp: true,
-            },
-          },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-remark-copy-linked-files`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1200,
-              linkImagesToOriginal: false,
             },
           },
         ],
