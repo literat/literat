@@ -29,35 +29,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: Overpass, sans-serif;
+    font-family: Overpass Italic, sans-serif;
     font-weight: normal;
     /* font-style: italic; */
     line-height: 1.5;
-  }
-
-  h1, h3 {
-    font-family: 'Overpass Italic', sans-serif;
-    font-size: 6rem;
-    font-style: italic;
-
-    &:before {
-      width: 1em;
-      height: 1.5em;
-      margin-top: 5px;
-      margin-left: -10px;
-      content: "";
-      pointer-events: none;
-      background: var(--blue);
-      position: absolute;
-      z-index: -1;
-      --translate: -0.5rem;
-      --rotate: 2deg;
-      transform: translateX(var(--translate)) translateY(var(--translate)) skew(-10deg);
-    }
-  }
-
-  h3 {
-    font-size: 3rem;
   }
 
   a {

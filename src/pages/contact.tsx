@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import H from '../components/mdx/Headings';
 
 const LinkedInProfileLink = () => (
   <a href="https://www.linkedin.com/in/tomaslitera/" target="_blank" rel="noreferrer">
@@ -12,7 +13,7 @@ const ContactPage = () => (
     <Helmet>
       <title>Contact Me - Literat</title>
     </Helmet>
-    <h1>Contact</h1>
+    <H>Contact</H>
     <p>
       Hello! I get lots of email, so please scan this page before firing one off. Don't be afraid to email me, it just
       might take a few days (or weeks) for me to get back to you 😃.

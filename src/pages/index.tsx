@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import H from '../components/mdx/Headings';
 
 const HomePage = () => (
   <div>
@@ -12,7 +13,7 @@ const HomePage = () => (
         fontFamily: 'Signika',
       }}
     >
-      <h2>Hi, I am Literat.</h2>
+      <H as="h2">Hi, I am Literat.</H>
       <p>The Fullstack Developer from Czech republic 🇨🇿</p>
     </div>
   </div>
