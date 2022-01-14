@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TagContainer = styled.div`
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   padding-left: 0.5rem;
 `;
 
