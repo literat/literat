@@ -14,7 +14,8 @@ const GlobalStyles = createGlobalStyle`
     --red: #d20b2c;
     --blue: #2479d4;
     --purple: #D439AD;
-    --grey: #888
+    --grey: #888;
+    --imGoingToFaint: #fafafa;
   }
 
   html {
