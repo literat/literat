@@ -5,3 +5,6 @@ package.json
 package-lock.json
 public
 node_modules
+
+# Generated using `yarn dlx pinyarn`
+.pinyarn.js
