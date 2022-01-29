@@ -45,7 +45,9 @@ const Blog = ({ data }: BlogProps) => {
 
           return (
             <div key={slug} style={{ marginBottom: '1rem' }}>
-              <Link to={path}>{title}</Link>
+              <Link data-testid={`${slug}-link`} to={path}>
+                {title}
+              </Link>
             </div>
           );
         })}
