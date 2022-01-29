@@ -15,3 +15,6 @@ public
 
 # Some tools use this pattern for their configuration files. Lint them!
 !*.config.js
+
+# Generated using `yarn dlx pinyarn`
+.pinyarn.js
