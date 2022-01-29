@@ -1,4 +1,4 @@
-name: Test
+name: Code Quality Checks
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 
 jobs:
   test:
-    name: Linting and Tests
     runs-on: ubuntu-20.04
     timeout-minutes: 5
 
@@ -31,6 +30,9 @@ jobs:
 
       - name: Check Code-Style Format
         run: yarn format
+
+      - name: Unit Tests
+        run: yarn test:unit:ci
 
       - name: Test build
         run: yarn build
