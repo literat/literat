@@ -1,6 +1,7 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ceadb496-c024-48f6-97e6-88a2ecb65874/deploy-status)](https://app.netlify.com/sites/literat/deploys)
-
 # literat dot dev
+
+[![Coverage Status](https://coveralls.io/repos/github/literat/literat/badge.svg)](https://coveralls.io/github/literat/literat)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ceadb496-c024-48f6-97e6-88a2ecb65874/deploy-status)](https://app.netlify.com/sites/literat/deploys)
 
 1. **Start developing.**
 
