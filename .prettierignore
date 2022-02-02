@@ -1,6 +1,7 @@
 .cache
 .vscode
 .coverage
+.yarn
 package.json
 package-lock.json
 public
