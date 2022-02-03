@@ -16,6 +16,10 @@ const GlobalStyles = createGlobalStyle`
     --purple: #D439AD;
     --grey: #888;
     --imGoingToFaint: #fafafa;
+
+    --grvsc-border-radius: 0;
+    --grvsc-padding-top: calc(1 * (1.68 * (45px + 0.2vw) + 0.2vw));
+    --grvsc-padding-bottom:calc(1 * (1.68 * (45px + 0.2vw) + 0.2vw));
   }
 
   html {
@@ -72,6 +76,10 @@ const GlobalStyles = createGlobalStyle`
   li a {
     --scaleX: 1;
     transform: scaleX(var(--scaleX));
+  }
+
+  .grvsc-container {
+    line-height: 1.5;
   }
 `;
 

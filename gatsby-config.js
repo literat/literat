@@ -1,3 +1,5 @@
+const gatsbyRemarkVSCode = require('gatsby-remark-vscode');
+
 /**
  * Configure your Gatsby site with this file.
  *
@@ -16,7 +18,17 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        root: __dirname,
         extensions: [`.md`, `.mdx`],
+        remarkPlugins: [
+          [
+            gatsbyRemarkVSCode.remarkPlugin,
+            {
+              theme: `Community-Material-Theme-Default-High-Contrast`,
+              extensions: ['vsc-community-material-theme'],
+            },
+          ],
+        ],
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           {

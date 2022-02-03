@@ -1,12 +1,12 @@
 import React from 'react';
 import H from './Headings';
 import T from './Tags';
-// import Heading from "../heading";
+import InlineCode from './InlineCode';
+import Code from './Code';
+import Pre from './Pre';
 // import Text from './text';
-// import Code from './code';
 // import Blockquote from './blockquote';
 // import Table from './table';
-// import Pre from './pre';
 
 /* eslint-disable */
 export default {
@@ -18,8 +18,9 @@ export default {
   h6: (props) => <H as="h6" {...props} />,
   t: (props) => <T {...props} />,
   // p: props => <Text {...props} />,
-  // pre: Pre,
-  // inlineCode: props => <Code {...props} />,
+  pre: Pre,
+  code: (props) => <Code {...props} />,
+  inlineCode: (props) => <InlineCode {...props} />,
   // table: Table,
   // blockquote: Blockquote,
   // TODO add `a`
