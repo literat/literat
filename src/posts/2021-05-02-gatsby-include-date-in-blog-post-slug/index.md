@@ -17,9 +17,9 @@ I tried both ways and finally I ended with the second option which gave me more 
 This function is called whenever a node is created or updated which makes it the most ideal place to add the functionality we want to perform. It is in the `gatsby-node.js` file.
 
 What we want to do here is to retrieve `title` and `date` fields from frontmatter nodes. `title` is then slugified.
-After that we want to check if the node is really the blog post (because I use blog template also for few pages) and the path should begin with `/blog`. Finally by using the condition we concatenate our path and create node fields using `createNodeField()`.
+After that we want to check if the node is really the blog post (because I use blog template also for a few pages) and the path should begin with `/blog`. Finally by using the condition we concatenate our path and create node fields using `createNodeField()`.
 
-```javascript
+```js
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
