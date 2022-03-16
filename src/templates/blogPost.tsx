@@ -1,6 +1,7 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import ContentNav from '../components/ContentNav';
 import H from '../components/mdx/Headings';
 
 interface PageNav {
@@ -34,10 +35,7 @@ const Template = ({ data, pageContext }: TemplateProps) => {
     <div>
       <H>{title}</H>
       <MDXRenderer>{body}</MDXRenderer>
-      <div style={{ marginBottom: '1rem', fontFamily: 'Fira Sans' }}>
-        {next && <Link to={next.fields.path}>Next</Link>}
-      </div>
-      <div style={{ fontFamily: 'Fira Sans' }}>{previous && <Link to={previous.fields.path}>Previous</Link>}</div>
+      <ContentNav previous={previous} next={next} />
     </div>
   );
 };

@@ -1,6 +1,32 @@
 const path = require('path');
 const slugify = require('slugify');
 
+// We don't want to pass the entire blog post because this can be really big.
+// So this passes only the data required in ContentNav.js
+const getContentNavFromNode = (node) => {
+  // possible there is no next/prev
+  if (!node) {
+    return;
+  }
+
+  // possible we have the title we need
+  if (node.frontmatter.title) {
+    return {
+      node: {
+        fields: {
+          path: node.fields.path,
+        },
+        frontmatter: {
+          title: node.frontmatter.title,
+        },
+      },
+    };
+  }
+
+  // otherwise we have nothing
+  return null;
+};
+
 const createTagPages = (createPage, posts) => {
   const allTagsIndexTemplate = path.resolve('src/templates/allTagsIndex.tsx');
   const singleTagsIndexTemplate = path.resolve('src/templates/singleTagIndex.tsx');
@@ -85,8 +111,8 @@ exports.createPages = async ({ graphql, actions }) => {
       component: blogPostTemplate,
       context: {
         pathSlug: postPath,
-        previous,
-        next,
+        previous: getContentNavFromNode(previous),
+        next: getContentNavFromNode(next),
       },
     });
   });
