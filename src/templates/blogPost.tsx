@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import ContentNav from '../components/ContentNav';
+import { Nav as ContentNav } from '../components/Content/Nav';
 import H from '../components/mdx/Headings';
 import { EditDialog } from '../components/Content/EditDialog';
 
