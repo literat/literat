@@ -42,6 +42,8 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: var(--dark);
+    text-decoration: none;
+    outline: none;
   }
 
   p, ul, ol {
