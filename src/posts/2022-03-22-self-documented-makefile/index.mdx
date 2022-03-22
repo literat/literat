@@ -1,0 +1,289 @@
+---
+title: 'The self-documented Makefile for project orchestration'
+date: '2022-03-22'
+tags: ['makefile', 'self-documenting', 'documentation', 'single source of truth', 'project', 'orchestration']
+excerpt: 'Manage your project from one place and one place only'
+---
+
+I was always struggling with how to orchestrate projects which consist of multiple technologies in one stack. For example,
+if you have a web application that is written in PHP using Symfony or Laravel framework for the backend and React for
+the frontend. Also, have a database and cache and all of that is running in docker.
+
+There are plenty of tasks you must do to have your project up and running:
+
+- bring the docker image up
+- exec composer install in the running container
+- exec npm install in the running container
+- build frontend
+- migrate database
+- and so on...
+
+For all these tasks you are using different commands and different task runners.
+
+There is a `composer` for PHP, `npm/yarn/pnpm` for frontend, `docker-compose` for containers, `bin/console` for Symfony or
+`artisan` for Laravel and, maybe some other shell/bash scripts you need to run. Different runners, different APIs. How is
+even able to remember all those commands and scripts?
+
+And here comes Makefile handy.
+
+## Single source of project scripts
+
+`make` is one of the oldest CLI task launchers, has plenty of documentation, is extremely powerful, and is installed
+everywhere. So, it can even replace language-specific task launchers (like npm or php bin/console) that
+provide inline help, but that requires installation.
+
+At [LMC][lmc] we are using Makefiles and `make` to orchestrate our Symfony and Node projects.
+
+They usually look like this:
+
+```makefile
+host_type := $(shell uname -s)
+architecture := $(shell uname -m)
+
+build_base := docker-compose --env-file ./local_hosts.env -f docker-compose.yml
+
+# architecture stuff
+# ...
+
+build:
+  $(build_string) exec php sh -c " \
+  npm ci \
+  && (cd app/Resources/assets/ui/docs && npm ci) \
+  && composer install \
+  && composer install --working-dir=selenium-tests \
+  && npm run build \
+  && bin/multidomain-console utility:cache:warmup \
+  && chown -R www-data var \
+  && ./doctrine-clear-cache.sh"
+
+sync-start:
+ifeq (Darwin, $(host_type))
+  docker volume create --name=app-sync \
+  && docker volume create --name=src-sync \
+  && docker-sync start -c $(sync_config)
+endif
+
+# sync stuff
+# ...
+
+dev-start:
+  make local-hosts-set \
+  && make sync-start \
+  && $(build_string) up -d $(force_recreate_param)
+
+dev-stop:
+  $(build_string) stop \
+  && make sync-stop
+
+# local dev stuff
+# ...
+
+npm-dev:
+  $(build_string) exec php sh -c "npm run build:dev"
+
+npm-dev-admin:
+  $(build_string) exec php sh -c "npm run build:dev:admin"
+
+npm-build:
+  $(build_string) exec php sh -c "npm run build"
+
+# npm stuff
+# ...
+
+# cleaning stuff
+# ...
+
+database-drop:
+  $(build_string) rm -s -f dbseduo dbmongo
+database-fixture:
+  $(build_string) exec php sh -c " \
+  bin/console doctrine:fixtures:load --append \
+  && ./doctrine-clear-cache.sh"
+
+migrations-migrate:
+  docker-compose -f ./migrations/docker-compose.yml up
+
+# database migration stuff
+# ...
+
+run:
+  $(build_string) exec php sh -c "bin/console $(filter-out $@,$(MAKECMDGOALS))"
+
+composer-validate:
+  $(build_string) exec php sh -c "composer validate --no-check-all --strict"
+composer-lock:
+  $(build_string) exec php sh -c "composer update --lock"
+composer:
+  $(build_string) exec php sh -c "php -d memory_limit=-1 \
+                  /usr/local/bin/composer $(filter-out $@,$(MAKECMDGOALS))"
+
+# selenium tests
+# ...
+
+diff-analyzer:
+  $(build_string) exec php sh -c "composer diff-analyzer"
+
+rector-process:
+  $(build_string) exec php sh -c "composer rector-process"
+rector-dry:
+  $(build_string) exec php sh -c "composer rector-dry"
+
+test:
+  $(build_string) exec php sh -c "composer test"
+
+# code linting stuff
+# ...
+
+translation-upload:
+  $(build_string) exec php sh -c "composer translation:upload"
+
+# translations stuff
+# ...
+
+# js-expose
+# ...
+
+dbg-console:
+  $(build_string) exec php sh -c "bash"
+dbg-apache-console:
+  $(build_string) exec apache sh -c "bash"
+
+gql-generate:
+  $(build_string) exec php sh -c "composer graphql"
+
+ifeq (Darwin, $(host_type))
+certificates-import:
+  ./docker/nginx-proxy/certs/conf/import_into_mac.sh
+endif
+certificates-renew:
+  ./docker/nginx-proxy/certs/conf/renew_certificates.sh -y
+
+# catch all target (%) which does nothing to silently ignore the other goals.
+%:
+  @true
+```
+
+That is a hell of the commands, isn't that? How do you learn them all? How do you expose them without opening `Makefile`?
+
+Maybe write them into a `README.md`? So with every new command, you must also update `README.md`, right?
+
+Ours `README.md` was looking like this:
+
+![readme](./readme.png 'README.md with listed commands')
+
+What about documenting those commands using comments and exposing them?
+
+## Self-documenting
+
+Adding comments to the `Makefile` commands helps a lot to document them.
+
+```makefile
+## --- 🚀 Release management ----------------------------------------------------
+
+.PHONY: release
+release: ## create a new release
+  @bin/make/release.sh
+```
+
+See? Much better, though.
+
+But we can also use them and show them to the user in CLI. The way is simple. Just parse the `Makefile` using
+regular expressions voodoo and add new `help` command with the script.
+
+```makefile
+## --- 💻 Makefile ----------------------------------------------------------
+
+.PHONY: help
+help: ## print this help message
+  @grep -E '(^[a-zA-Z0-9_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) \
+  | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' \
+  | sed -e 's/\[32m##/[33m/'
+```
+
+Using `grep`, `awk` and `sed` you can achieve outstanding experience in your CLI.
+
+**Tip**
+
+- If you copy this code snippet to a makefile, make sure your text editor converts indentation to tabs and not spaces.
+
+**Tip**
+
+- Adjust the width of the first column by changing the 30 value in the `printf` pattern to something larger or smaller.
+
+**Tip**
+
+- Add the `| sort` to have targets ordered alphabetically instead of the way they appear in `Makefile`.
+
+**Tip**
+
+- Use [`.PHONY`][phony-target] target to avoid conflicts with other targets or files. This will help you to run the recipe regardless
+  of whether there is a file of the same name.
+
+**Tip**
+
+- You can use positional arguments `make run foo bar baz`
+
+```makefile
+# If the first argument is "run"...
+ifeq (run,$(firstword $(MAKECMDGOALS)))
+  # use the rest as arguments for "run"
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  # ...and turn them into do-nothing targets
+  $(eval $(RUN_ARGS):;@:)
+endif
+
+prog: # ...
+    # ...
+
+.PHONY: run
+run : prog
+    @echo prog $(RUN_ARGS)
+```
+
+**Tip**
+
+- You can use keyword arguments `make release version=0.1.2`
+
+```makefile
+.PHONY: release
+release:
+    @poetry run duty release version=$(version)
+```
+
+The final touch is to make this `help` target to be a default command:
+
+```makefile
+.DEFAULT_GOAL := help
+```
+
+And voila! Run `make` in your console and you will be amazed!
+
+![Make in console](./make-console.png 'Output of default make command')
+
+And in `README.md`?
+
+```markdown
+## How to run this project
+
+Run `make` in your console for more detail.
+```
+
+## Conclusion
+
+Using self-documented Makefile is a great answer to project management and stack orchestration. It will help you a lot
+with running and maintaining your project from one place. And it will also help more to your teammates and junior or
+incoming developers in your team to understand and start your project and sooner deliver some business value to it.
+So take your time and prepare something like `make start` for them!
+
+## References
+
+- [Self-Documented Makefile][self-documented-makefile] - A simple approach to create a self-documenting Makefile
+- [Perfect Makefile for Symfony][perfect-makefile-symfony] - Extended management of Symfony project using Makefile
+- [`.PHONY` target][phony-target] - How to avoid conflicts with other targets or files
+- [Jiří Florián][jiri-florian] - Colleague of mine who comes first with the idea of writing self-documented Makefiles in [LMC][lmc]
+
+[self-documented-makefile]: https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+[perfect-makefile-symfony]: https://www.strangebuzz.com/en/snippets/the-perfect-makefile-for-symfony
+[lmc]: https://lmc.eu
+[phony-target]: https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
+[jiri-florian]: https://www.linkedin.com/in/ji%C5%99%C3%AD-flori%C3%A1n-901823218/
