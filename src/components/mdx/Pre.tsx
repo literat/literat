@@ -10,7 +10,7 @@ const Pre = styled.pre`
   font-family: 'Fira Code', Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 
   @media only screen and (min-width: 600px) {
-    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0% 100%);
+    clip-path: polygon(0 calc(0% + 15px), 100% 0, 100% calc(100% - 15px), 0% 100%);
   }
 
   :after {
