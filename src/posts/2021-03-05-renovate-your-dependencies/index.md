@@ -1,6 +1,8 @@
 ---
 title: 'Renovate Your Dependencies'
 date: '2021-03-05'
+category:
+  - Development
 tags: ['renovate', 'dependencies', 'security', 'vulnerabilities']
 excerpt: 'Talk about how to stay up to date with your dependencies'
 ---

@@ -1,6 +1,8 @@
 ---
 title: 'GatsbyJS - How to include date in blog post url'
 date: '2021-05-02'
+category:
+  - Development
 tags: ['gatsby', 'gatsbyjs', 'slug', 'url', 'blog', 'post', 'javascript']
 excerpt: 'How to setup Gatsby to use post date in post url'
 ---
