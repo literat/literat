@@ -1,7 +1,6 @@
 import React from 'react';
-import { IoLogoGithub } from 'react-icons/io';
 import EditDialogStyles from './EditDialogStyles';
-import OutLink from '../../OutLink';
+import EditOnGitHub from '../../EditOnGitHub';
 
 interface EditDialogProps {
   editUrl: string;
@@ -12,9 +11,7 @@ const EditDialog = ({ editUrl }: EditDialogProps): JSX.Element => (
     <p>Find an issue with this post? Think you could clarify, update or add something?</p>
     <p>All my posts are available to edit on Github. Any fix, little or small, is appreciated!</p>
     <p>
-      <OutLink link={editUrl} title="Edit on Github">
-        <IoLogoGithub /> Edit on Github
-      </OutLink>
+      <EditOnGitHub editUrl={editUrl} />
     </p>
   </EditDialogStyles>
 );

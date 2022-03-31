@@ -1,9 +1,21 @@
-import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Nav as ContentNav } from '../components/Content/Nav';
-import H from '../components/mdx/Headings';
+import React from 'react';
+import styled from 'styled-components';
 import { EditDialog } from '../components/Content/EditDialog';
+import { Nav as ContentNav } from '../components/Content/Nav';
+import PostMeta from '../components/Content/PostMeta';
+import H from '../components/mdx/Headings';
+
+const ContentHeaderStyles = styled.header`
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  div {
+    margin-bottom: 3rem;
+  }
+`;
 
 interface PageNav {
   fields: {
@@ -37,10 +49,15 @@ const Template = ({ data, pageContext }: TemplateProps) => {
 
   return (
     <div>
-      <H>{title}</H>
+      <ContentHeaderStyles>
+        <H>{title}</H>
+        <PostMeta post={post} editUrl={editUrl} />
+      </ContentHeaderStyles>
       <MDXRenderer>{body}</MDXRenderer>
-      <EditDialog editUrl={editUrl} />
-      <ContentNav previous={previous} next={next} />
+      <footer>
+        <EditDialog editUrl={editUrl} />
+        <ContentNav previous={previous} next={next} />
+      </footer>
     </div>
   );
 };
@@ -51,10 +68,15 @@ export const query = graphql`
       body
       fields {
         path
+        readingTime {
+          text
+        }
       }
       fileAbsolutePath
       frontmatter {
         title
+        date(formatString: "DD. MM. YYYY")
+        category
       }
     }
   }
