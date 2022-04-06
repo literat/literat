@@ -35,7 +35,7 @@ const Blog = ({ data }: BlogProps) => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          fontFamily: 'Signika',
+          fontFamily: 'Overpass',
         }}
       >
         {edges.map((edge: Edge) => {
