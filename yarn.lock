@@ -9891,13 +9891,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-google-fonts@npm:1.0.1":
-  version: 1.0.1
-  resolution: "gatsby-plugin-google-fonts@npm:1.0.1"
-  checksum: 775aee252ee1bf7d77ae6ffd8cd44e14ee3badfab4f46c3ed2a438527894cbffe9383464073e33ae5b2442d70b2434df1358749f5c2e575538143508ff68a1b5
-  languageName: node
-  linkType: hard
-
 "gatsby-plugin-image@npm:2.11.1":
   version: 2.11.1
   resolution: "gatsby-plugin-image@npm:2.11.1"
@@ -13269,7 +13262,6 @@ __metadata:
     eslint-plugin-react-hooks: 4.4.0
     gatsby: 4.11.1
     gatsby-image: 3.11.0
-    gatsby-plugin-google-fonts: 1.0.1
     gatsby-plugin-image: 2.11.1
     gatsby-plugin-mdx: 3.11.1
     gatsby-plugin-sharp: 4.11.1
