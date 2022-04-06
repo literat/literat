@@ -74,12 +74,5 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`Signika:400`, `Fira Code:300,400`, `Fira Sans:300,400`],
-        display: 'swap',
-      },
-    },
   ],
 };
