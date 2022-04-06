@@ -13,6 +13,7 @@ const Fonts = createGlobalStyle`
     src: url(${FiraSans}) format('truetype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -20,6 +21,7 @@ const Fonts = createGlobalStyle`
     src: url(${FiraCode}) format('truetype');
     font-weight: 300;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -27,6 +29,7 @@ const Fonts = createGlobalStyle`
     src: url(${FiraCodeSemiBold}) format('truetype');
     font-weight: 700;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -34,6 +37,7 @@ const Fonts = createGlobalStyle`
     src: url(${Overpass}) format('woff');
     font-weight: 300;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -41,6 +45,7 @@ const Fonts = createGlobalStyle`
     src: url(${OverpassItalic}) format('truetype');
     font-weight: 900;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -48,6 +53,7 @@ const Fonts = createGlobalStyle`
     src: url(${OverpassMono}) format('truetype');
     font-weight: 300;
     font-style: normal;
+    font-display: optional;
   }
 `;
 
