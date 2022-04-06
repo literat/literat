@@ -10,7 +10,7 @@ const HomePage = () => (
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        fontFamily: 'Signika',
+        fontFamily: 'Fira Code',
       }}
     >
       <H as="h2">Hi, I am Literat.</H>
