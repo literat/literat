@@ -1,0 +1,118 @@
+---
+title: 'Typescript: When not to use enums'
+excerpt: 'When to declare enum and when not and why const enums are not so good'
+date: '2022-04-11'
+category:
+  - development
+tags: ['typescript', 'const', 'enum', 'library', 'modules']
+---
+
+I wrote this post as a reminder to myself that [using const enums in a library is a really bad idea][enum-problem-in-library].
+
+So in short. If you are writing a library and you export a `const enum` then some developers will not
+be able to compile their applications if they import your library. Especially when using Babel.
+Here we look at why.
+
+## Enums: handle with care
+
+When you declare an `enum`, Typescript will generate some code for it. This is fine if you are writing
+an application code and you do not care what is generated. But when you are writing a library you sometimes
+do not need the features provided by this style of declarations - you just want to use enums instead of constants.
+
+This has a solution - you can use `const enum` instead of an `enum`. Typescript does not generate code for `const enum`
+declaration. This is great - it is just like using constant - but there is a problem.
+
+### Isolated modules
+
+When you are writing a library you do not have control over your code and how is used or compiled. Nor what compiler
+is used and how. Especially Babel and other transpilers operate over one file at a time. That means that the type information
+are stripped and a code transformation that depends on understanding the full type system cannot be applied. Simply `const enum`
+imported to another file is gone.
+
+To prevent this error in libraries you should use `--isolatedModules` option in your `tsconfig.json` file.
+
+**Further reading**
+
+- You can read a more detailed explanation in [typescript documentation][tsconfig-isolated-modules] or in the article
+  [Typescript: Don't export const enums][dont-export-const-enums].
+
+## Prefer union types over enums
+
+`enum` and `const enum` are features from "the old days" of the Typescript where the Javascript landscape was a lot different.
+In addition, enums generate a lot of code you probably do not want. And also numeric enums are not type-safe. And instead
+of key-value-based enums you can use an object which will serve the same.
+
+```typescript
+const Direction = {
+  Up: 0,
+  Down: 1,
+  Left: 2,
+  Right: 3,
+} as const;
+
+// Get to the const values of any object
+type Values<T> = T[keyof T];
+
+// Values<typeof Direction> yields 0 | 1 | 2 | 3
+declare function move(direction: Values<typeof Direction>): void;
+
+move(30);
+//   ^ 💥 This breaks!
+
+move(0);
+//   ^ 👍 This works!
+
+move(Direction.Left);
+//   ^ 👍 This also works!
+
+// And now for the Status enum
+
+const Status = {
+  Admin: 'Admin',
+  User: 'User',
+  Moderator: 'Moderator',
+} as const;
+
+// Values<typeof Status> yields "Admin" | "User" | "Moderator"
+declare function closeThread(threadId: number, status: Values<typeof Status>): void;
+
+closeThread(10, 'Admin'); // All good!
+closeThread(10, Status.User); // enum style
+```
+
+A better approach is to use union types. A simple union type gives you something that works similary and is much more aligned
+with Typescript.
+
+```typescript
+type Status = 'Admin' | 'User' | 'Moderator';
+
+declare function closeThread(threadId: number, status: Status): void;
+
+closeThread(10, 'Admin');
+// All good :-)
+```
+
+**Further reading**
+
+- Detailed coverage of this topic is in the acticle [Tidy Typescript: Avoid Enum][tidy-typescript-avoid-enums].
+
+## Conclusion
+
+- use `enum` or `const enum` in application code
+- set `--isolatedModules` in `tsconfig.json` to `true` in libraries
+- prefer value object if you want a key-value based enum
+- prefer union types generally over enums
+
+## References
+
+- [Ambient const enums are not allowed when the '--isolatedModules' flag is provided][const-enums-not-allowed] - Why enums are not allowed with --isolatedModules
+- [Tidy Typescript: Avoid Enums][tidy-typescript-avoid-enums] - More about how to use union types instead of enums
+- [Don't export const enums][dont-export-const-enums] - More about why `const enum` does not work in libraries
+- [tsconfig reference: isolated modules][tsconfig-isolated-modules]
+- [Solved problem with enums in LMC's library][enum-problem-in-library] - How we solve the problem with enum in our library
+
+[tidy-typescript-avoid-enums]: https://fettblog.eu/tidy-typescript-avoid-enums/
+[dont-export-const-enums]: https://ncjamieson.com/dont-export-const-enums/
+[tsconfig-isolated-modules]: https://www.typescriptlang.org/tsconfig#isolatedModules
+[const-enums-not-allowed]: https://github.com/microsoft/fluentui/issues/7110
+[enum-problem-in-library]: https://github.com/lmc-eu/cookie-consent-manager/pull/228
