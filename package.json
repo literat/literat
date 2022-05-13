@@ -13,6 +13,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "netlify": "netlify dev",
     "test": "npm-run-all --serial lint format test:unit lint:commit",
     "test:unit": "yarn test:unit:local",
     "test:unit:jest": "jest --config config/jest/config.js",
@@ -33,6 +34,8 @@
   "dependencies": {
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
+    "@netlify/functions": "^1.0.0",
+    "chrome-aws-lambda": "^10.1.0",
     "gatsby": "4.14.1",
     "gatsby-plugin-image": "2.14.1",
     "gatsby-plugin-mdx": "3.14.0",
@@ -46,6 +49,7 @@
     "gatsby-transformer-remark": "5.14.0",
     "gatsby-transformer-sharp": "4.14.0",
     "normalize.css": "8.0.1",
+    "puppeteer-core": "^13.7.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-helmet": "6.1.0",
@@ -55,7 +59,8 @@
     "styled-components": "5.3.5",
     "typescript": "4.6.4",
     "vsc-community-material-theme": "git+https://github.com/material-theme/vsc-community-material-theme.git",
-    "vscode-styled-components": "git+https://github.com/styled-components/vscode-styled-components.git"
+    "vscode-styled-components": "git+https://github.com/styled-components/vscode-styled-components.git",
+    "waait": "^1.0.5"
   },
   "devDependencies": {
     "@babel/core": "7.18.0",
@@ -97,6 +102,7 @@
     "identity-obj-proxy": "3.0.0",
     "inquirer": "8.2.4",
     "jest": "27.5.1",
+    "netlify-cli": "^10.1.0",
     "npm-run-all": "4.1.5",
     "prettier": "2.6.2"
   },
