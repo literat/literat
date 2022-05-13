@@ -6,6 +6,7 @@ import { EditDialog } from '../components/Content/EditDialog';
 import { Nav as ContentNav } from '../components/Content/Nav';
 import PostMeta from '../components/Content/PostMeta';
 import H from '../components/mdx/Headings';
+import MetaTags from '../components/MetaTags';
 
 const ContentHeaderStyles = styled.header`
   h1 {
@@ -50,6 +51,7 @@ const Template = ({ data, pageContext }: TemplateProps) => {
   return (
     <div>
       <ContentHeaderStyles>
+        <MetaTags post={post} />
         <H>{title}</H>
         <PostMeta post={post} editUrl={editUrl} />
       </ContentHeaderStyles>
@@ -75,7 +77,7 @@ export const query = graphql`
       fileAbsolutePath
       frontmatter {
         title
-        date(formatString: "DD. MM. YYYY")
+        date
         category
       }
     }

@@ -16,25 +16,28 @@ interface LayoutProps {
   children: ReactNode | string;
 }
 
-const Layout = ({ title, children }: LayoutProps) => (
-  <>
-    <GlobalStyles />
-    <Fonts />
-    <Helmet>
-      <title>{title}</title>
-      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-      <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
-      <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-    </Helmet>
-    <ContainerStyles>
-      <Header />
-      <Nav />
-      <MDXProvider components={mdxComponents}>
-        <ContentStyles>{children}</ContentStyles>
-      </MDXProvider>
-    </ContainerStyles>
-    <Footer />
-  </>
-);
+const Layout = ({ title, pageContext, children }: LayoutProps) =>
+  pageContext.layout === 'thumbnail' ? (
+    children
+  ) : (
+    <>
+      <GlobalStyles />
+      <Fonts />
+      <Helmet>
+        <title>{title}</title>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+      </Helmet>
+      <ContainerStyles>
+        <Header />
+        <Nav />
+        <MDXProvider components={mdxComponents}>
+          <ContentStyles className={pageContext.layoutClasses}>{children}</ContentStyles>
+        </MDXProvider>
+      </ContainerStyles>
+      <Footer />
+    </>
+  );
 
 export default Layout;
