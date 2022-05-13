@@ -19,11 +19,20 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Fira Code', 'sans-serif';
     font-size: 10px;
     color: var(--dark);
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
   }
 
   body {
     font-size: 2rem;
     margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
   }
 
   h1, h2, h3, h4, h5, h6 {
