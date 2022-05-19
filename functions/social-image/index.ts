@@ -7,15 +7,12 @@ const cached = new Map();
 const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 async function getOptions(isDev) {
-  if (isDev) {
-    return {
-      product: 'chrome',
-      args: [],
-      executablePath: exePath,
-      headless: true,
-    };
-  }
-  return {
+  return isDev ? {
+    product: 'chrome',
+    args: [],
+    executablePath: exePath,
+    headless: true,
+  } : {
     product: 'chrome',
     args: chrome.args,
     executablePath: await chrome.executablePath,
@@ -50,7 +47,7 @@ exports.handler = async (event, context) => {
   console.log(`${process.env.URL || `http://localhost:8888`}/thumbnail?${qs.toString()}`);
   const photoBuffer = await getScreenshot(
     `${process.env.URL || `http://localhost:8888`}/thumbnail?${qs.toString()}`,
-    // Here we need to pass a boolean to say if we are on the server. Netlify has a bug where process.env.NETLIFY is undefiend in functions so I'm using one of the only vars I can find
+    // Here we need to pass a boolean to say if we are on the server. Netlify has a bug where process.env.NETLIFY is undefined in functions so I'm using one of the only vars I can find
     // !process.env.NETLIFY
     process.env.URL.includes('http://localhost'),
   );

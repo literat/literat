@@ -8,12 +8,15 @@
     "gatsby",
     "literat"
   ],
+  "workspaces": [
+    "functions/social-image"
+  ],
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "netlify": "netlify dev",
+    "netlify": "netlify",
     "test": "npm-run-all --serial lint format test:unit lint:commit",
     "test:unit": "yarn test:unit:local",
     "test:unit:jest": "jest --config config/jest/config.js",
@@ -49,7 +52,6 @@
     "gatsby-transformer-remark": "5.14.0",
     "gatsby-transformer-sharp": "4.14.0",
     "normalize.css": "8.0.1",
-    "puppeteer-core": "^13.7.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-helmet": "6.1.0",
