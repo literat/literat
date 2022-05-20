@@ -11,7 +11,7 @@
   publish = "public/"
 
   # Default build command.
-  command = "yarn build"
+  command = "yarn build && rm -rf .cache/functions"
 
   environment = { NETLIFY_SKIP_GATSBY_FUNCTIONS = "true" }
 
@@ -24,4 +24,9 @@
   directory = "functions/"
 
   node_bundler = "esbuild"
+
+[functions.social-image]
+  external_node_modules = ["chrome-aws-lambda"]
+
+[functions.take-screenshot]
   external_node_modules = ["chrome-aws-lambda"]

@@ -6,6 +6,7 @@ const cached = new Map();
 const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 async function getOptions(isDev) {
+  console.log('exe:', await chrome.executablePath);
   return isDev ? {
     product: 'chrome',
     args: [],
@@ -13,7 +14,15 @@ async function getOptions(isDev) {
     headless: true,
   } : {
     product: 'chrome',
-    args: chrome.args,
+    args: [
+      ...chrome.args,
+      '--disable-features=AudioServiceOutOfProcess',
+      '--disable-gpu',
+      '--disable-software-rasterize',
+      '--disable-extensions',
+      '--no-sandbox',
+      '--disabled-setupid-sandbox',
+    ],
     executablePath: await chrome.executablePath,
     headless: chrome.headless,
   };
