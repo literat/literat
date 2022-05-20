@@ -1,5 +1,4 @@
 const chrome = require('chrome-aws-lambda');
-const puppeteer = require('puppeteer-core');
 const wait = require('waait');
 
 const cached = new Map();
@@ -29,7 +28,7 @@ async function getScreenshot(url, isDev) {
   } */
 
   const options = await getOptions(isDev);
-  const browser = await puppeteer.launch(options);
+  const browser = await chrome.puppeteer.launch(options);
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1.5 });
   await page.goto(url);
