@@ -88,16 +88,12 @@ export const query = graphql`
   query {
     whitewater: file(relativePath: { eq: "whitewater.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 900) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 900)
       }
     }
     family: file(relativePath: { eq: "family.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 1200)
       }
     }
   }
