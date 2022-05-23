@@ -2,7 +2,7 @@
 /* eslint jsx-a11y/alt-text: 0 */
 
 import React from 'react';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 interface ImgProps {
   image: {
@@ -23,7 +23,7 @@ const Img = ({ image, ...rest }: ImgProps) => {
   return image.extension === 'gif' ? (
     <img src={image.publicURL} {...rest} />
   ) : (
-    <Image fluid={image.childImageSharp.fluid} {...rest} />
+    <GatsbyImage fluid={image.childImageSharp.gatsbyImageData} {...rest} />
   );
 };
 
