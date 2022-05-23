@@ -54,8 +54,8 @@
     "slugify": "1.6.5",
     "styled-components": "5.3.5",
     "typescript": "4.6.4",
-    "vsc-community-material-theme": "https://github.com/material-theme/vsc-community-material-theme",
-    "vscode-styled-components": "https://github.com/styled-components/vscode-styled-components"
+    "vsc-community-material-theme": "git+https://github.com/material-theme/vsc-community-material-theme.git",
+    "vscode-styled-components": "git+https://github.com/styled-components/vscode-styled-components.git"
   },
   "devDependencies": {
     "@babel/core": "7.18.0",
