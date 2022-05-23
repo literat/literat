@@ -12,3 +12,9 @@
 
   # Default build command.
   command = "yarn build"
+
+  environment = { NETLIFY_SKIP_GATSBY_FUNCTIONS = "true" }
+
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
+  pinned_version = "1.0.3"
