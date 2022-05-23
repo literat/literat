@@ -89,6 +89,9 @@ exports.createPages = async ({ graphql, actions }) => {
               title
               tags
               date
+              image {
+                publicURL
+              }
             }
           }
         }
