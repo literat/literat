@@ -14424,8 +14424,8 @@ __metadata:
     slugify: 1.6.5
     styled-components: 5.3.5
     typescript: 4.6.4
-    vsc-community-material-theme: "https://github.com/material-theme/vsc-community-material-theme"
-    vscode-styled-components: "https://github.com/styled-components/vscode-styled-components"
+    vsc-community-material-theme: "git+https://github.com/material-theme/vsc-community-material-theme.git"
+    vscode-styled-components: "git+https://github.com/styled-components/vscode-styled-components.git"
   languageName: unknown
   linkType: soft
 
@@ -21597,7 +21597,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vsc-community-material-theme@https://github.com/material-theme/vsc-community-material-theme":
+"vsc-community-material-theme@git+https://github.com/material-theme/vsc-community-material-theme.git":
   version: 1.4.4
   resolution: "vsc-community-material-theme@https://github.com/material-theme/vsc-community-material-theme.git#commit=953f7539c00f7b9a5f53e8e0620bc6392b038683"
   checksum: 36df299ffca32178d035ea9ac1889ad14c85b720fc51ff14b0635902b2d4bd6f32e0293fd85397b66a06d2bbb25afb8b6f95ee5e75ee6b4787a98ce9409ff2bd
@@ -21658,14 +21658,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vscode-styled-components@https://github.com/styled-components/vscode-styled-components":
-  version: 1.7.3
-  resolution: "vscode-styled-components@https://github.com/styled-components/vscode-styled-components.git#commit=1fbdab2677d755eb5c571b810d896b33f53d210a"
+"vscode-styled-components@git+https://github.com/styled-components/vscode-styled-components.git":
+  version: 1.7.4
+  resolution: "vscode-styled-components@https://github.com/styled-components/vscode-styled-components.git#commit=cfc992d93b16ddd0bc77b47c469d94e5892b2656"
   dependencies:
     d3-color: ^3.0.1
     typescript-styled-plugin: ^0.18.2
     vscode-css-languageservice: ^5.1.13
-  checksum: 5d994464e39b849efefae2aae416e175ffd4f23ddc938d03f589beb505e016720938bb0e8ebbf4df587ebeb4644270416f8cb68264f8a757e3aba2899698432b
+  checksum: 3714d829ad0c0c514658f4b612ec4d3ae6b4a80d92c1271a72ee18c6f73e958586f46df85a5f2fe5bee7ae60aa08ff2b24e8904b36cdca88d694d3ad30bc1854
   languageName: node
   linkType: hard
 
