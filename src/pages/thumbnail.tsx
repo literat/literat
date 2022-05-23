@@ -59,7 +59,7 @@ export default function Thumbnail({ location }) {
     .main {
       position: relative;
       display: grid;
-      grid-template-columns: 2fr auto;
+      grid-template-columns: 2fr ${thumbnail ? '1fr' : 'auto'};
       padding: 10rem;
     }
 
