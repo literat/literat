@@ -7,6 +7,7 @@ import { Nav as ContentNav } from '../components/Content/Nav';
 import PostMeta from '../components/Content/PostMeta';
 import H from '../components/mdx/Headings';
 import MetaTags from '../components/MetaTags';
+import HeroImage from '../components/Content/HeroImage';
 
 const ContentHeaderStyles = styled.header`
   h1 {
@@ -43,9 +44,8 @@ interface TemplateProps {
 const Template = ({ data, pageContext }: TemplateProps) => {
   const { mdx: post } = data;
   const { body } = post;
-  const { title } = post.frontmatter;
+  const { title, image, excerpt } = post.frontmatter;
   const { next, previous } = pageContext;
-
   const editUrl = `https://github.com/literat/literat/tree/master/src/${post.fileAbsolutePath.split('/src/')[1]}`;
 
   return (
@@ -53,6 +53,8 @@ const Template = ({ data, pageContext }: TemplateProps) => {
       <ContentHeaderStyles>
         <MetaTags post={post} />
         <H>{title}</H>
+        {excerpt && <p>{excerpt}</p>}
+        {image?.publicURL && <HeroImage url={image?.publicURL} />}
         <PostMeta post={post} editUrl={editUrl} />
       </ContentHeaderStyles>
       <MDXRenderer>{body}</MDXRenderer>
@@ -79,6 +81,10 @@ export const query = graphql`
         title
         date
         category
+        image {
+          publicURL
+        }
+        excerpt
       }
     }
   }
