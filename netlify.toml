@@ -17,6 +17,13 @@
   GATSBY_URL = "https://www.literat.dev"
   NETLIFY_SKIP_GATSBY_FUNCTIONS = "true"
 
+[[build.plugins]]
+  package = "netlify-plugin-inline-functions-env"
+
+  [build.plugins.inputs]
+    buildEvent = "onBuild"
+    verbose = "true"
+
 [[plugins]]
   package = "@netlify/plugin-gatsby"
   pinned_version = "1.0.3"
