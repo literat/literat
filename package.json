@@ -8,9 +8,6 @@
     "gatsby",
     "literat"
   ],
-  "workspaces": [
-    "functions/social-image"
-  ],
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
