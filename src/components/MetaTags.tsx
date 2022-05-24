@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { pathJoin } from '../utils/pathJoin';
 
 function getBaseURL() {
-  const url = process.env.URL;
+  const url = process.env.URL || process.env.DEPLOY_PRIME_URL || process.env.DEPLOY_URL;
   if (!url || url === 'undefined') {
     return `http://localhost:8000`;
   }
