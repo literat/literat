@@ -15,17 +15,12 @@
 
   environment = { NETLIFY_SKIP_GATSBY_FUNCTIONS = "true" }
 
+[build.environment]
+  GATSBY_URL = "https://www.literat.dev"
+
 [[plugins]]
   package = "@netlify/plugin-gatsby"
   pinned_version = "1.0.3"
-
-# Production context: all deploys from the Production branch
-# set in your site’s Branches settings in the UI will inherit
-# these settings. You can define environment variables
-# here but we recommend using the Netlify UI for sensitive
-# values to keep them out of your source repository.
-[context.production]
-  environment = { GATSBY_URL = "https://www.literat.dev" }
 
 [functions]
   # Sets a custom directory for Netlify Functions
