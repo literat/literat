@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { pathJoin } from '../utils/pathJoin';
 
 function getBaseURL() {
-  const url = process.env.GATSBY_URL;
+  const url = process.env.URL;
   if (!url || url === 'undefined') {
     return `http://localhost:8000`;
   }
@@ -25,7 +25,7 @@ function MetaTags({ post }) {
     Object.fromEntries(Object.entries(thumbnailData).filter(([key, val]) => val !== undefined)),
   ).toString();
 
-  const ogImage = `/.netlify/functions/social-image?${thumbnailQuery}`;
+  const ogImage = `${baseURL}/.netlify/functions/social-image?${thumbnailQuery}`;
 
   return (
     <Helmet>
