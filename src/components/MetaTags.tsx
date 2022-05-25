@@ -25,7 +25,7 @@ function MetaTags({ post }) {
     Object.fromEntries(Object.entries(thumbnailData).filter(([key, val]) => val !== undefined)),
   ).toString();
 
-  const ogImage = `${baseURL}/.netlify/functions/ogimage?${thumbnailQuery}`;
+  const ogImage = `${baseURL}/.netlify/functions/social-image?${thumbnailQuery}`;
 
   return (
     <Helmet>
