@@ -18,3 +18,12 @@
 [[plugins]]
   package = "@netlify/plugin-gatsby"
   pinned_version = "1.0.3"
+
+[functions]
+  # Sets a custom directory for Netlify Functions
+  directory = "functions/"
+
+  node_bundler = "esbuild"
+
+[functions.social-image]
+  external_node_modules = ["chrome-aws-lambda"]
