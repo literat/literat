@@ -7,14 +7,14 @@ import Img from '../components/Img';
 
 function getFontSize(length) {
   if (length > 55) {
-    return `5rem`;
+    return `2rem`;
   }
 
   if (length > 32) {
-    return `7rem`;
+    return `3rem`;
   }
 
-  return `10rem`;
+  return `6rem`;
 }
 
 export default function Thumbnail({ location }) {
@@ -60,7 +60,7 @@ export default function Thumbnail({ location }) {
       position: relative;
       display: grid;
       grid-template-columns: 2fr ${thumbnail ? '1fr' : 'auto'};
-      padding: 10rem;
+      padding: 7rem;
     }
 
     .title {
@@ -69,7 +69,7 @@ export default function Thumbnail({ location }) {
       grid-auto-rows: 0fr 1fr 0fr;
 
       .checkItOut {
-        font-size: 3rem;
+        font-size: 2.5rem;
         padding-left: 3rem;
         padding-bottom: 3rem;
       }
@@ -101,17 +101,17 @@ export default function Thumbnail({ location }) {
         margin: 0;
         padding: 0;
         line-height: 1;
-        font-size: 3rem;
+        font-size: 2rem;
       }
 
       .authorName {
         font-family: 'Overpass', 'sans-serif';
-        font-size: 4rem;
+        font-size: 3rem;
         align-self: end;
       }
 
       .link {
-        font-size: 3rem;
+        font-size: 1rem;
         align-self: start;
       }
     }
