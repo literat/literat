@@ -1,17 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { pathJoin } from '../utils/pathJoin';
+import { getBaseUrl } from '../utils/getBaseUrl';
 
-function getBaseURL() {
-  const url = process.env.GATSBY_URL;
-  if (!url || url === 'undefined') {
-    return `http://localhost:8000`;
-  }
-
-  return url;
-}
-
-const baseURL = getBaseURL();
+const baseURL = getBaseUrl();
 
 function MetaTags({ post }) {
   const canonical = pathJoin('https://literat.dev', post.fields.path);

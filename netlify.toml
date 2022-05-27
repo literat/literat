@@ -13,7 +13,9 @@
   # Default build command.
   command = "yarn build"
 
-  environment = { NETLIFY_SKIP_GATSBY_FUNCTIONS = "true" }
+[build.environment]
+  NETLIFY_SKIP_GATSBY_FUNCTIONS = "true"
+  GATSBY_URL = "https://www.literat.dev"
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
