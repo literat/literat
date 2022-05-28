@@ -23,7 +23,7 @@ const Img = ({ image, ...rest }: ImgProps) => {
   return image.extension === 'gif' ? (
     <img src={image.publicURL} {...rest} />
   ) : (
-    <GatsbyImage fluid={image.childImageSharp.gatsbyImageData} {...rest} />
+    <GatsbyImage image={image.childImageSharp.gatsbyImageData} {...rest} />
   );
 };
 

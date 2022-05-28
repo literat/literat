@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroImage should render 1`] = `
+<img
+  alt="test title"
+  data-gatsby-image-ssr=""
+  data-main-image=""
+  data-src="https://via.placeholder.com/900x600"
+  decoding="async"
+  loading="lazy"
+  style="height: 100%; left: 0px; position: absolute; top: 0px; transform: translateZ(0); transition: opacity 250ms linear; width: 100%; will-change: opacity; opacity: 0;"
+/>
+`;
