@@ -6,7 +6,7 @@ import { getBaseUrl } from '../utils/getBaseUrl';
 const baseURL = getBaseUrl();
 
 function MetaTags({ post }) {
-  const { title, description, image, excerpt, date } = post.frontmatter;
+  const { title, description, image, excerpt, date, tags } = post.frontmatter;
   const url = pathJoin(baseURL, post.fields.path);
   const thumbnailData = {
     title,
@@ -23,6 +23,10 @@ function MetaTags({ post }) {
     <Helmet>
       <link rel="canonical" href={url} />
       <meta name="generator" content="Literat on Gatsby!" />
+      <meta name="author" content="Literat" />
+      <meta name="image" content={ogImage} />
+      <meta name="description" content={excerpt} />
+      <meta name="keywords" content={tags} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@tomaslitera" />
       <meta name="twitter:creator" content="@tomaslitera" />
@@ -34,8 +38,8 @@ function MetaTags({ post }) {
       <meta property="og:title" content={title} />
       <meta property="og:url" content={url} />
       <meta property="og:description" content={excerpt} />
-      {date ? <meta property="og:article:published_time" content={new Date(date.toString()).toISOString()} /> : null}
-      <meta property="og:article:author" content="Literat" />
+      {date ? <meta property="article:published_time" content={new Date(date.toString()).toISOString()} /> : null}
+      <meta property="article:author" content="Literat" />
       <meta property="og:site_name" content="Literat" />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
