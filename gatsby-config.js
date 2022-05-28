@@ -12,6 +12,7 @@ module.exports = {
     title: 'LITERAT',
     description: 'Fullstack Developer & Whitewater Kayaker & Scout',
   },
+  trailingSlash: 'always',
   plugins: [
     `gatsby-plugin-netlify`,
     `gatsby-plugin-image`,
