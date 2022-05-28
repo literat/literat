@@ -6,12 +6,12 @@ import { getBaseUrl } from '../utils/getBaseUrl';
 const baseURL = getBaseUrl();
 
 function MetaTags({ post }) {
-  const canonical = pathJoin('https://literat.dev', post.fields.path);
+  const { title, description, image, excerpt, date } = post.frontmatter;
   const url = pathJoin(baseURL, post.fields.path);
   const thumbnailData = {
-    title: post.frontmatter.title,
+    title,
     url,
-    thumbnail: post.frontmatter.image?.publicURL,
+    thumbnail: image?.publicURL,
   };
   const thumbnailQuery = new URLSearchParams(
     Object.fromEntries(Object.entries(thumbnailData).filter(([key, val]) => val !== undefined)),
@@ -21,29 +21,27 @@ function MetaTags({ post }) {
 
   return (
     <Helmet>
-      <link rel="canonical" href={canonical} />
+      <link rel="canonical" href={url} />
       <meta name="generator" content="Literat on Gatsby!" />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@tomaslitera" />
       <meta name="twitter:creator" content="@tomaslitera" />
       <meta name="twitter:url" content={url} />
-      <meta name="twitter:title" content={post.frontmatter.title} />
-      <meta name="twitter:description" content={post.excerpt} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={excerpt} />
       <meta name="twitter:image" content={ogImage} />
       <meta property="og:type" content="article" />
-      <meta property="og:title" content={post.frontmatter.title} />
+      <meta property="og:title" content={title} />
       <meta property="og:url" content={url} />
-      <meta property="og:description" content={post.excerpt} />
-      {post.frontmatter.date ? (
-        <meta property="article:published_time" content={new Date(post.frontmatter.date.toString()).toISOString()} />
-      ) : null}
-
+      <meta property="og:description" content={excerpt} />
+      {date ? <meta property="og:article:published_time" content={new Date(date.toString()).toISOString()} /> : null}
+      <meta property="og:article:author" content="Literat" />
       <meta property="og:site_name" content="Literat" />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:locale" content="en_US" />
-      <title>{post.frontmatter.title} - Literat</title>
+      <title>{title} - Literat</title>
     </Helmet>
   );
 }
