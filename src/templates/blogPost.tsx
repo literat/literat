@@ -54,7 +54,7 @@ const Template = ({ data, pageContext }: TemplateProps) => {
         <MetaTags post={post} />
         <H>{title}</H>
         {excerpt && <p>{excerpt}</p>}
-        {image?.publicURL && <HeroImage url={image?.publicURL} />}
+        {image?.publicURL && <HeroImage image={image} title={title} />}
         <PostMeta post={post} editUrl={editUrl} />
       </ContentHeaderStyles>
       <MDXRenderer>{body}</MDXRenderer>
@@ -83,6 +83,9 @@ export const query = graphql`
         category
         image {
           publicURL
+          childImageSharp {
+            gatsbyImageData(width: 900)
+          }
         }
         excerpt
         tags

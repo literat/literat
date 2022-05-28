@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import Img from '../Img';
 
 const HeroImageStyles = styled.div`
-  img {
+  * {
     width: 140%;
     margin-inline: -20%;
   }
 `;
-
-function HeroImage({ url }) {
+function HeroImage({ image, title }) {
+  console.log(image);
   return (
     <HeroImageStyles>
-      <img src={url} />
+      <Img image={image} alt={title} />
     </HeroImageStyles>
   );
 }
