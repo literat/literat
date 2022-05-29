@@ -6,6 +6,7 @@ const HeroImageStyles = styled.div`
   * {
     width: 140%;
     margin-inline: -20%;
+    max-height: 630px;
   }
 `;
 function HeroImage({ image, title }) {
