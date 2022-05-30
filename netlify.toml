@@ -13,6 +13,9 @@
   # Default build command.
   command = "yarn build"
 
+  # Ignore builds on Netlify
+  ignore = "node scripts/ignoreNetlifyBuilds.js"
+
 [build.environment]
   NETLIFY_SKIP_GATSBY_FUNCTIONS = "true"
   GATSBY_URL = "https://www.literat.dev"
