@@ -20,6 +20,10 @@
   NETLIFY_SKIP_GATSBY_FUNCTIONS = "true"
   GATSBY_URL = "https://www.literat.dev"
 
+[context.deploy-preview]
+  # Deploy preview only if there are changes in some directories
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ./src/ ./functions/"
+
 [[plugins]]
   package = "@netlify/plugin-gatsby"
   pinned_version = "1.0.3"
