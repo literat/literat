@@ -3,5 +3,12 @@
   "ignorePresets": [":prHourlyLimit2"],
   "enabledManagers": ["npm"],
   "branchPrefix": "dependencies/",
-  "commitMessagePrefix": "chore(deps): "
+  "commitMessagePrefix": "chore(deps): ",
+  "packageRules": [
+    {
+      "groupName": "netlify functions dependencies",
+      "matchPackagePatterns": ["^puppeteer", "chrome-aws-lambda"],
+      "enabled": false
+    }
+  ]
 }
