@@ -10,7 +10,6 @@ const HeroImageStyles = styled.div`
   }
 `;
 function HeroImage({ image, title }) {
-  console.log(image);
   return (
     <HeroImageStyles>
       <Img image={image} alt={title} />
