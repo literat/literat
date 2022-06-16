@@ -3,6 +3,7 @@
 import fs from 'fs-extra';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
+import slugify from 'slugify';
 
 const init = () => {
   console.log(chalk.green('Create new post:'));
@@ -44,6 +45,8 @@ const getCurrentDate = () => {
 
 const normalizeTags = (tags) => tags.split(/[\s,]+/);
 
+const slugifyTitle = (title) => slugify(title, { lower: true, strict: true });
+
 const createContent = ({ title, excerpt, date, category, tags }) => `---
 title: ${title}
 excerpt: '${excerpt}'
@@ -58,7 +61,7 @@ tags: [${normalizeTags(tags)
 const createPost = async (options) => {
   const { date, title } = options;
   const postDirectory = 'src/posts';
-  const postFile = `${postDirectory}/${date}-${title.replace(/\s/g, '-')}/index.mdx`;
+  const postFile = `${postDirectory}/${date}-${slugifyTitle(title)}/index.mdx`;
   const content = createContent(options);
 
   await fs.outputFileSync(postFile, content);
