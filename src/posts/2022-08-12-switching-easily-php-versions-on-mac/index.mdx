@@ -1,0 +1,82 @@
+---
+title: Switching easily PHP versions on Mac
+excerpt: 'How to easily switch PHP versions on MacOS with a oneliner'
+date: '2022-08-12'
+category:
+  - development
+tags: ['php', 'switch', 'switcher', 'versions', 'mac', 'macos', 'cli']
+image: ben-griffiths-elephant-unsplash.jpg
+---
+
+From time to time I need to switch the PHP version in the console on my Mac. I do not use PHP CLI very often, especially
+when there is a Docker and Dockerfile present in a project and the exact version is set there.
+
+But Docker support is not present everywhere and for quick and simple debugging is sometimes better to run
+composer scripts from the command line.
+
+My main runtime is NodeJS right now so I am used to it. I like the `nvm` version switcher which I use very often.
+So for PHP I was looking for a similar tool.
+
+## Brew PHP Switcher
+
+Brew PHP switcher is a simple script to switch your Apache and CLI configs quickly between major versions of PHP.
+
+**Installation:**
+
+`brew install brew-php-switcher`
+
+**Usage:**
+
+I am using CLI only, so I want to skip Apache
+
+```sh
+# skip apache only
+brew-php-switcher 7.4 -s
+```
+
+You can find more information on [Brew PHP Switcher GitHub](brew-php-switcher)
+
+## SPHP
+
+[Andy Miller aka **rhukster**](https://github.com/rhukster) wrote a handy little [PHP switcher script](https://gist.github.com/rhukster/f4c04f1bf59e0b74e335ee5d186a98e2) `sphp`.
+
+**Installation:**
+
+```sh
+curl -L https://gist.githubusercontent.com/rhukster/f4c04f1bf59e0b74e335ee5d186a98e2/raw/adc8c149876bff14a33e3ac351588fdbe8172c07/sphp.sh > /usr/local/bin/sphp
+chmod +x /usr/local/bin/sphp
+```
+
+**Usage:**
+
+`sphp 8.0`
+
+You can read some [additional information on entire PHP stack setup](sphp) on his blog.
+
+## Brew Link & Unlink
+
+As a last resort you can also use `brew` to link and unlink PHP versions.
+
+```sh
+brew unlink php@7.4
+brew link php@7.3
+```
+
+Some additional [ideas on how to switch PHP versions on Mac](stackoverflow-php-switch) are on StackOverflow. You can pick your favourite :-)
+
+## Conclusion
+
+- currently using `brew-php-switcher` as it is the easiest to use
+- `sphp` is my second bet
+- missing some config file like `.nvmrc` for defining PHP version for a project or the tools should read it from `composer.json`
+
+## References
+
+- [StackOverflow and how to switch PHP version on Mac][stackoverflow-php-switch]
+- [Brew PHP Switcher][brew-php-switcher]
+- [macOS 12.0 Monterey Apache Setup: Multiple PHP Versions][sphp]
+- 📷 [Ben Griffiths](https://unsplash.com/@ben_griffiths) - [Elephant](https://unsplash.com/photos/4wxWBy8Jo1I)
+
+[stackoverflow-php-switch]: https://stackoverflow.com/questions/34909101/how-can-i-easily-switch-between-php-versions-on-mac-osx
+[brew-php-switcher]: https://github.com/philcook/brew-php-switcher
+[sphp]: https://getgrav.org/blog/macos-monterey-apache-multiple-php-versions
