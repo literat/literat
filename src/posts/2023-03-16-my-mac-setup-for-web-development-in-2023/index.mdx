@@ -1,0 +1,617 @@
+---
+title: My Mac setup for web development in 2023
+excerpt: "I have my MacBook Pro since 2020.
+After having used the MacBook Pro 2015 for a couple of years.
+The last months have been super productive and exiciting and I am up running working efficiently my personal and  projects as fullstack engineer.
+Here I want to share with you my Mac setup for web development and I will try to update ii all the time."
+date: '2023-03-16'
+category:
+  - development
+tags: ['mac', 'web', 'development', 'setup', '2023']
+---
+
+## MacBook Pro Specification
+
+- 13-inch
+- 2 GHz Quad-Core Intel Core i5
+- 32 GB RAM
+- 512 GB SSD
+- QWERTZ = Czech
+- macOS Ventura (formerly Monterey)
+
+## System Preferences
+
+- **Dock**
+  - Remove most applications from Dock
+  - Automatic Hide
+  - Smaller Dock
+  - "Show recent applications in Dock" off
+  - "Show indicators for open applications" on
+- **Control Center**
+  - Battery -> "Show Percentage"
+  - Show in Menu Bar
+    - WIFI
+    - Bluetooth
+    - Focus
+    - Screen Mirorring
+    - Display
+    - Sound
+- **Display**
+  - Nightshift
+  - Setup Wallpapers
+- **Security**
+  - Touch ID
+- **Notifications**
+  - Off, except for Calendar
+- **Siri**
+  - Disable
+- **Trackpad**
+  - Tap to Click
+  - Point & Click -> Look up & data detectors off
+- **Keyboard**
+  - Text
+    - disable "Capitalise word automatically"
+    - disable "Add full stop with double-space"
+    - disable "Use smart quotes and dashes"
+    - use " for double quotes
+    - use ' for single quotes
+- **Spotlight**
+  - Disable Spotlight except for Applications and System Preferences
+- **Mission Control**
+  - Hot Corners: disable all
+- **Finder**
+  - Sidebar:
+    - activate all Favorites
+    - move Library to Favorites
+  - Hide all Tags
+  - Show all Filename Extensions
+  - Remove Items from Bin after 30 Days
+  - View -> Show Preview (e.g. image files)
+- **Sharing**
+  - "Change computer name"
+  - Also terminal:
+    - `sudo scutil --set ComputerName "newname"`
+    - `sudo scutil --set LocalHostName "newname"`
+    - `sudo scutil --set HostName "newname"`
+  - "Make sure all file sharing is disabled"
+- **Security and Privacy**
+  - Turn on FileVault
+  - Add Browser to "Screen Recording"
+- **Storage**
+  - Remove Garage Band & Sound Library
+  - Remove iMovie
+- **Trackpad**
+  - Speed: 7/10
+- **Accessibility**
+  - Scroll Speed: 6/8
+- **Screenshots**
+  - change save location
+    - Command + Shift + 5 -> Options -> Other location: Pictures/screenshots
+
+## System Preferences (Terminal)
+
+Override more system preferences from the terminal ...
+
+```
+# take screenshots as jpg (usually smaller size) and not png
+defaults write com.apple.screencapture type jpg
+
+# do not open previous previewed files (e.g. PDFs) when opening a new one
+defaults write com.apple.Preview ApplePersistenceIgnoreState YES
+
+# show Library folder
+chflags nohidden ~/Library
+
+# show hidden files
+defaults write com.apple.finder AppleShowAllFiles YES
+
+# show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+killall Finder;
+```
+
+## Files
+
+If files from previous machine are needed, transfer via external drive instead of cloud
+
+## Homebrew
+
+Install [Homebrew](https://brew.sh/) as package manager for macOS:
+
+```
+# paste in terminal and follow the instructions
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Update everything in Homebrew to recent version:
+
+```
+brew update
+```
+
+Install GUI applications (read more about these in GUI Applications):
+
+```
+brew install --cask \
+  lastpass \
+  google-chrome  \
+  firefox \
+  brave-browser \
+  iterm2 \
+  visual-studio-code \
+  sublime-text \
+  docker \
+  slack \
+  vlc \
+  figma \
+  maccy \
+  gpgtools \
+  raycast \
+  karabiner-elements \
+  meld \
+  spotify \
+  postman \
+  numi \
+  dbgate
+```
+
+Install terminal applications (read more about these in Terminal Applications):
+
+```
+brew install \
+  wget \
+  git \
+  node \
+  nvm \
+  yarn \
+  pnpm \
+  mc \
+  tig \
+  gnupg \
+  thefuck \
+  htop
+```
+
+## GUI Applications
+
+- [Google Chrome](https://www.google.com/chrome/) (web development, web browsing)
+
+  - Preferences
+
+    - set default browser
+    - enable dark mode
+    - never save passwords
+    - always show bookmarks
+    - import bookmarks from previous machin
+
+      e
+
+    - Chrome Developer Tools
+    - enable dark mode
+    - Network -> only "Fetch/XHR"
+
+  - Chrome Extensions
+    - [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en)
+    - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+    - [Pocket](https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj?hl=en)
+
+- [Firefox](https://www.google.com/chrome/) (web development)
+- [Brave](https://brave.com/) (web browsing, wallet)
+- [iterm2](https://iterm2.com/) (terminal)
+- [Visual Studio Code](https://code.visualstudio.com/) (web development IDE)
+- [Sublime Text](https://www.sublimetext.com/) (editor)
+- [Docker](https://www.docker.com/products/docker-desktop) (Docker, see [setup](https://www.robinwieruch.de/docker-macos/))
+  - used for running databases (e.g. PostgreSQL, MongoDB) in container without cluttering the Mac
+  - Preferences
+    - enable "Use Docker Compose"
+- [Slack](https://slack.com/) (team messenger)
+- [VLC](https://www.videolan.org/vlc/) (video player)
+  - use as default for video files
+- [Figma](https://www.figma.com/) (design)
+- [Maccy](https://maccy.app/) (clipboard manager)
+  - enable "Launch at Login"
+- [Raycast](https://www.raycast.com/)
+  - [Replace Spotlight hotkey](https://manual.raycast.com/hotkey)
+  - Keyboard -> Shortcuts -> Spotlight
+  - compact
+  - switch window hotkey
+- [Krabiner elements](https://karabiner-elements.pqrs.org/)
+- [Better Touch Tool](https://folivora.ai/)
+
+Add [Space to Dock](https://gist.github.com/literat/e1f5d640a5068d3e4e6df53434a03e8a)
+
+The look and feel we want to achieve from our Dock:
+
+![Dock Look](./dock.png 'Dock Look')
+
+```
+# https://www.facebook.com/SUPERKODERS/posts/pfbid031VxSTroikATWz4yKTC2tZ3ggDQj8XpTiLxCL3cmXqMKTc6Cw2PGv7bsUggML23cml
+
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'; killall Dock
+```
+
+## Office Applications
+
+Using instead of build-in applications.
+
+- Microsoft Outlook
+- Microsoft To Do
+- Microsoft Teams
+- Notion
+- OneDrive
+- Commander One
+- Spotify
+- Signal
+- Magnet
+- Rambox
+  - Slack
+  - WhatsApp
+  - Messenger
+  - Pocket
+
+## Terminal Applications
+
+- [git](https://git-scm.com/) (version control)
+- [nvm](https://github.com/nvm-sh/nvm) (node version manager)
+- [yarn](https://yarnpkg.com/) (node package manager)
+
+## Dot Files
+
+https://github.com/literat/dotfiles
+
+## iTerm2
+
+The look and feel we want to achieve from our terminal:
+
+![iTerm 2 Look](./iterm.png 'iTerm 2 Look')
+
+- Make iterm2 Default Term
+- Preferences ->
+  - General -> Window
+    - unselect "Native full screen windows"
+    - select "close windows when closing an app"
+  - Appearance ->
+    - Windows
+      - select "Hide scrollbars"
+    - Tabs
+      - unselect "Show tab bar in fullscreen"
+    - Dimming
+      - Unselect all dimming
+  - Profiles -> Window
+    - Transparency: 7
+    - Style: Full Screen
+    - Screen: Main Screen
+  - Profiles -> Advanced
+    - Semantic History -> Open with editor ... -> VS Code
+  - [Open new split pane with current directory](https://apple.stackexchange.com/a/337386)
+  - [Natural Text Editing](https://apple.stackexchange.com/a/293988)
+- Bring it to fullscreen Command + Enters
+
+## Oh My ZSH
+
+When you open iTerm2, you see that MacOS already comes with zsh as default shell.
+Install [Oh My Zsh](https://ohmyz.sh/) for an improved (plugins, themes, ...) terminal (here: iTerm2) experience:
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+Update everything (e.g. plugins) in Oh My Zsh to recent version:
+
+```
+omz update
+```
+
+Important: If you change something in your Zsh configuration (.zshrc), force a reload:
+
+```
+source ~/.zshrc
+```
+
+**Oh My Zsh Theme + Fonts:**
+
+Install [Agnoster](https://github.com/agnoster/agnoster-zsh-theme) as your new terminal theme.
+We will use Homebrew, but you can use an alternative from the website too:
+
+```
+brew install agnoster
+```
+
+Make it the default theme for Oh My ZSH from the terminal:
+
+```
+echo 'eval "$(agnoster init zsh)"' >> ~/.zshrc
+```
+
+Install [powerline fonts](https://gist.github.com/shaykalyan/cd276a7d812dd393caf1).
+As font we will be using Hack Nerd Font in iTerm2, VS Code, and Sublime Text. Install it via:
+
+```
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+```
+
+Use the new font in iTerm2: Preferences -> Profile -> Text -> Font: font-hack-nerd-font.
+
+If the theme and font changes do not apply, reload your zsh configuration (.zshrc) or close/open iTerm2.
+
+Install and configure [powerleven10k](https://github.com/romkatv/powerlevel10k)
+
+```
+p10k configure
+```
+
+Install and configure [Znap](https://github.com/marlonrichert/zsh-snap)
+
+Oh My Zsh Plugins
+
+- brew
+- cloudapp
+- dirnav
+- dotenv
+- extract
+- git
+- osx
+- zsh-autosuggestions
+- brew
+- composer
+- docker
+- gitfast
+- git-extras
+- git-flow
+- jira
+- node
+- npm
+- sublime
+- symfony2
+- tig
+- yarn
+- z
+- zsh-syntax-highlighting
+- zsh-autosuggestions
+- ssh-agent
+
+[ZSH Configuration File (.zshrc)](https://github.com/literat/dotfiles/blob/master/.zshrc)
+
+## VS Code
+
+The look and feel we want to achieve from our IDE:
+
+![VS Code Look](./vscode.png 'VS Code Look')
+
+Activate [settings sync](https://code.visualstudio.com/docs/editor/settings-sync#:~:text=You%20can%20turn%20on%20Settings,and%20UI%20State%20are%20supported.)
+with [VSCode Setting Gist](https://gist.github.com/literat/afcb5950f82a6ac8e3fc8199f6db504a)
+
+[Extensions](https://github.com/literat/dotfiles/blob/master/vs-code-extensions-i-use.md)
+
+## Git
+
+From terminal, set global name and email:
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "you@your-domain.com"
+```
+
+Improved git log:
+
+```
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
+
+Now use:
+
+```
+git lg
+```
+
+Set the default branch to main instead of master:
+
+```
+git config --global init.defaultBranch main
+```
+
+Print global git configuration:
+
+```
+git config --list
+# or alias
+# gitconfig
+```
+
+Setup GPG commit verification
+
+```
+# https://gist.github.com/oseme-techguy/bae2e309c084d93b75a9b25f49718f85
+# To fix the " gpg: WARNING: unsafe permissions on homedir '/home/path/to/user/.gnupg' " error
+# Make sure that the .gnupg directory and its contents is accessibile by your user.
+chown -R $(whoami) ~/.gnupg/
+
+# Also correct the permissions and access rights on the directory
+chmod 600 ~/.gnupg/*
+chmod 700 ~/.gnupg
+
+# Originaly: https://stackoverflow.com/questions/39494631/gpg-failed-to-sign-the-data-fatal-failed-to-write-commit-object-git-2-10-0
+
+brew upgrade gnupg  # This has a make step which takes a while
+brew link --overwrite gnupg
+brew install pinentry-mac
+echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+killall gpg-agent
+
+echo "test" | gpg --clearsign  # on linux it's gpg2 but brew stays as gpg
+
+git config --global gpg.program gpg  # perhaps you had this already? On linux maybe gpg2
+git config --global commit.gpgsign true  # if you want to sign every commit
+
+git commit -S -m ""
+
+git log --show-signature -1
+```
+
+## SSH
+
+There are two common strategies for SSH keys: one SSH key to rule them all or one SSH key per service.
+I use the latter one and will here run yout through it by [connecting to GitHub via SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+
+First, create a new SSH key in the ~/.ssh folder:
+
+### in case the folder is not there yet
+
+```
+mkdir ~/.ssh
+
+cd ~/.ssh
+# or alias
+# sshhome
+
+ssh-keygen -t ed25519 -C "github"
+# follow instructions
+# use file name: github
+# use passphrase and store it somewhere secure
+```
+
+Confirm whether passphrase was used properly by accessing private key:
+
+```
+ssh-keygen -y -f gitHub
+# confirm with passphrase
+```
+
+Create the SSH configuration file if it doesn't exist yet:
+
+```
+# in case the file is not there yet
+touch ~/.ssh/config
+```
+
+In your _~/.ssh/config_ file, add the new SSH key, so that it can get picked up for every terminal session automatically:
+
+```
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/github
+```
+
+Add SSH key to MacOS' keychain:
+
+```
+ssh-add --apple-use-keychain ~/.ssh/github
+```
+
+Add the public key to your GitHub settings via the website or via the GitHub CLI (via brew install gh):
+
+```
+# copy public key and add it to https://github.com/
+cat ~/.ssh/id_rsa.pub | pbcopy
+
+# or use GitHub's CLI
+gh auth login
+# for the first login I think the SSH key gets added
+```
+
+### without the next command, but if not:
+
+```
+gh ssh-key add ~/.ssh/id_rsa.pub -t github
+```
+
+That's it.
+You have created an SSH key locally for one specific service, secured it via a passphrase,
+made it automatically available for every terminal session, and applied it to GitHub.
+In the case of GitHub, you are now able to interact with GitHub via SSH.
+
+## NVM FOR NODE/NPM
+
+The [node version manager (NVM)](https://github.com/nvm-sh/nvm) is used to install and manage multiple Node versions.
+After you have installed it via Homebrew in a previous step, type the following commands to complete the installation:
+
+```
+echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.zshrc
+
+source ~/.zshrc
+# or alias
+# zshsource
+```
+
+Now install the latest LTS version on the command line:
+
+```
+nvm install <latest LTS version from https://nodejs.org/en/>
+```
+
+Afterward, check whether the installation was successful and whether the [node package manager (npm)](https://www.npmjs.com/) got installed along the way:
+
+```
+node -v && npm -v
+```
+
+Update npm to its latest version:
+
+```
+npm install -g npm@latest
+```
+
+And set defaults for npm:
+
+```
+npm set init.author.name "your name"
+npm set init.author.email "you@example.com"
+npm set init.author.url "example.com"
+```
+
+If you are a library author, log in to npm too:
+
+```
+npm adduser
+```
+
+That's it. If you want to list all your Node.js installation, type the following:
+
+```
+nvm list
+```
+
+If you want to install a newer Node.js version, then type:
+
+```
+nvm install <version> --reinstall-packages-from=$(nvm current)
+nvm use <version>
+nvm alias default <version>
+```
+
+Optionally install [yarn](https://yarnpkg.com/) if you use it as alternative to npm:
+
+```
+npm install -g yarn
+yarn -v
+```
+
+If you want to list all globally installed packages, run this command:
+
+```
+npm list -g --depth=0
+```
+
+That's it. You have a running version of Node.js and its package manager.
+
+I hope my setup helps other developers to get their Mac up and running.
+If you have any additional ideas or want to share your setup, let me know!
+
+## References
+
+- [Robin Wieruch: Mac Setup for Web Development [2023]](https://www.robinwieruch.de/mac-setup-web-development/)
+- [Swyx: My 2021 New Mac Setup](https://www.swyx.io/new-mac-setup-2021)
+- [Tania Rascia: macOS Monterey: Setting up a Mac for Development](https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/?ck_subscriber_id=591519942)
+- [Nick Nisi’s dotfiles](https://github.com/nicknisi/dotfiles)
+- [Mathias Bynens macos defaults](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
+- [Jamon’s MacOS maintenance tips](https://twitter.com/jamonholmgren/status/1175077165848653824)
+- [James Martinez](https://twitter.com/jamescmartinez/status/1528506724835008514?s=21&t=fLywP84bqTwwVbJG8Lr-BA)
+- [Vendasta](https://github.com/vendasta/setup-new-computer-script)
+- [Sheldon Hull: Installing Brew packages](https://www.sheldonhull.com/docs/shell/#installing-brew-packages)
+- [Physical equipment setups from prominent people](https://setups.co/)
