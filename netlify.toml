@@ -19,6 +19,7 @@
 [build.environment]
   NETLIFY_SKIP_GATSBY_FUNCTIONS = "true"
   GATSBY_URL = "https://www.literat.dev"
+  YARN_FLAGS = "--ignore-scripts"
 
 [context.deploy-preview]
   # Deploy preview only if there are changes in some directories
