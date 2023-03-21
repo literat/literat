@@ -137,7 +137,7 @@ Install GUI applications (read more about these in GUI Applications):
 
 ```
 brew install --cask \
-  lastpass \
+  1password \
   google-chrome  \
   firefox \
   brave-browser \
@@ -156,7 +156,8 @@ brew install --cask \
   spotify \
   postman \
   numi \
-  dbgate
+  dbgate \
+  f.lux
 ```
 
 Install terminal applications (read more about these in Terminal Applications):
@@ -173,7 +174,9 @@ brew install \
   tig \
   gnupg \
   thefuck \
-  htop
+  htop \
+  coreutils \
+  jq
 ```
 
 ## GUI Applications
@@ -451,6 +454,12 @@ git config --global commit.gpgsign true  # if you want to sign every commit
 git commit -S -m ""
 
 git log --show-signature -1
+```
+
+Export public GPG key
+
+```
+gpg --output public.pgp --armor --export username@email
 ```
 
 ## SSH
