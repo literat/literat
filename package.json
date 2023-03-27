@@ -74,7 +74,7 @@
     "@commitlint/config-conventional": "17.2.0",
     "@lmc-eu/prettier-config": "1.2.3",
     "@testing-library/jest-dom": "5.16.5",
-    "@testing-library/react": "13.4.0",
+    "@testing-library/react": "14.0.0",
     "@types/inquirer": "9.0.3",
     "@types/jest": "29.2.3",
     "@types/node": "16.18.3",
