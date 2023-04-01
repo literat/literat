@@ -22,7 +22,7 @@
 
 [context.deploy-preview]
   # Deploy preview only if there are changes in some directories
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ./src/ ./functions/"
+  # ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ./src/ ./functions/"
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
