@@ -10778,9 +10778,9 @@ __metadata:
   linkType: hard
 
 "d3-color@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "d3-color@npm:3.0.1"
-  checksum: 5096af3bd342d0cfad4719c1860915d0a2fd2f9078b1f0d960ab16e541eb71886d8f3b5e3df0e298d5c139aff43516295543304c65acf8cb4850e71c93f4df0c
+  version: 3.1.0
+  resolution: "d3-color@npm:3.1.0"
+  checksum: 4931fbfda5d7c4b5cfa283a13c91a954f86e3b69d75ce588d06cde6c3628cebfc3af2069ccf225e982e8987c612aa7948b3932163ce15eb3c11cd7c003f3ee3b
   languageName: node
   linkType: hard
 
@@ -18416,7 +18416,7 @@ __metadata:
     styled-components: 5.3.6
     typescript: 4.9.3
     vsc-community-material-theme: "git+https://github.com/material-theme/vsc-community-material-theme.git"
-    vscode-styled-components: "git+https://github.com/styled-components/vscode-styled-components.git"
+    vscode-styled-components: "git+https://github.com/styled-components/vscode-styled-components#v1.7.5"
     waait: ^1.0.5
   languageName: unknown
   linkType: soft
@@ -26782,22 +26782,22 @@ __metadata:
   linkType: hard
 
 "typescript-styled-plugin@npm:^0.18.2":
-  version: 0.18.2
-  resolution: "typescript-styled-plugin@npm:0.18.2"
+  version: 0.18.3
+  resolution: "typescript-styled-plugin@npm:0.18.3"
   dependencies:
-    typescript-template-language-service-decorator: ^2.2.0
+    typescript-template-language-service-decorator: ^2.3.2
     vscode-css-languageservice: ^5.1.4
     vscode-emmet-helper: ^2.6.4
     vscode-languageserver-textdocument: ^1.0.1
     vscode-languageserver-types: ^3.16.0
-  checksum: a410974ba8c604ae1826962b602f9ed0e7e2f134227e7418a9495c798886859664ed20cd1774978ab017645936d896143091a30980c7b09f06650ca97b344ffe
+  checksum: 0a0c3bada23f523fe8cf6c06f8b698582a0a3a8f686a10e3b946640fbba34e921585d4963e4c9a42a077ec77ea3ad60d8675a5f2ebc3f3f4e6ae29338f438615
   languageName: node
   linkType: hard
 
-"typescript-template-language-service-decorator@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "typescript-template-language-service-decorator@npm:2.2.0"
-  checksum: a9781d893b3123050fd3c1efe24ffc5b62c298f07e4b9c17884ebf33cb3f4821f3e12d9f17fe382fc31ccd6599255b1ea36ae602d2b519550241f221a37815d4
+"typescript-template-language-service-decorator@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "typescript-template-language-service-decorator@npm:2.3.2"
+  checksum: 55bf21e7bdca8f284c988753a51a5bd23890c0cdf9a9577c87dd17412c2589593f34eb7270cbb230a5b9160c53a5c34f4a91a542b079ca882290bb27ac9c701a
   languageName: node
   linkType: hard
 
@@ -27669,14 +27669,14 @@ __metadata:
   linkType: hard
 
 "vscode-css-languageservice@npm:^5.1.13, vscode-css-languageservice@npm:^5.1.4":
-  version: 5.1.13
-  resolution: "vscode-css-languageservice@npm:5.1.13"
+  version: 5.4.2
+  resolution: "vscode-css-languageservice@npm:5.4.2"
   dependencies:
-    vscode-languageserver-textdocument: ^1.0.1
+    vscode-languageserver-textdocument: ^1.0.4
     vscode-languageserver-types: ^3.16.0
     vscode-nls: ^5.0.0
-    vscode-uri: ^3.0.2
-  checksum: a75aecd04023e16480d26fb83f5af73d9c9982ddd759b228720bc9507e81cee2273f09a2d0b19dfc058bd4874f4137bde2736eea4ae7e4cc92ce6518d6bf487f
+    vscode-uri: ^3.0.3
+  checksum: faa35690c1f06a469ef335eba85158df453c54e2cacd37788c5e1f29458183753b95b564952acecb3fab31fee3d061a8e70234f2dc49e82244cdc519280fcc1b
   languageName: node
   linkType: hard
 
@@ -27701,17 +27701,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vscode-languageserver-types@npm:^3.15.1, vscode-languageserver-types@npm:^3.16.0":
+"vscode-languageserver-textdocument@npm:^1.0.4":
+  version: 1.0.9
+  resolution: "vscode-languageserver-textdocument@npm:1.0.9"
+  checksum: 36b76f725098d3e0d97885c05c51fca47388d9b62e936f6c8824c44a4fac7a96e1406538538a0f46ef1fdb9f1053ddc1cacb5e7b168cecb36d3c018942ec6f52
+  languageName: node
+  linkType: hard
+
+"vscode-languageserver-types@npm:^3.15.1":
   version: 3.16.0
   resolution: "vscode-languageserver-types@npm:3.16.0"
   checksum: 7a44fb10b9fbeb9529f832337b7f0430fc6275d62945b86851d425a950e22da3917ef5f6c552688191769dd1eae047c6ee9ec3d9f2280498353007c2dfe0725c
   languageName: node
   linkType: hard
 
+"vscode-languageserver-types@npm:^3.16.0":
+  version: 3.17.3
+  resolution: "vscode-languageserver-types@npm:3.17.3"
+  checksum: fbc8221297261f659a6482875ff2a419dc9d55965dc53745797da569ff9f819cd832e6f2699017baadd946548bbfe212e3f6971f3d960f12dc0ee9c629dacc07
+  languageName: node
+  linkType: hard
+
 "vscode-nls@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "vscode-nls@npm:5.0.0"
-  checksum: 8b12d1a3b0f783b91a98747fce76d2c26299db0c288089703bc3de53cc503f3ededa9833c21c3cb3b4857bd1c4e5d93663da38d4ddbf7b970dc63b6892d4639a
+  version: 5.2.0
+  resolution: "vscode-nls@npm:5.2.0"
+  checksum: c9f43c0f85000b3008fc4a3a8fc122e580f4f0402a77186c6c0f3219ca8ac258f4893c7a563d66f097a6da09951d7f5a7e6295d3e21dcbaec707937c9089b5a8
   languageName: node
   linkType: hard
 
@@ -27722,14 +27736,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vscode-styled-components@git+https://github.com/styled-components/vscode-styled-components.git":
-  version: 1.7.4
-  resolution: "vscode-styled-components@https://github.com/styled-components/vscode-styled-components.git#commit=cfc992d93b16ddd0bc77b47c469d94e5892b2656"
+"vscode-styled-components@git+https://github.com/styled-components/vscode-styled-components#v1.7.5":
+  version: 1.7.5
+  resolution: "vscode-styled-components@https://github.com/styled-components/vscode-styled-components.git#commit=181e8cc0252124cb3176193af6c354b6a99f7f7b"
   dependencies:
     d3-color: ^3.0.1
     typescript-styled-plugin: ^0.18.2
     vscode-css-languageservice: ^5.1.13
-  checksum: 3714d829ad0c0c514658f4b612ec4d3ae6b4a80d92c1271a72ee18c6f73e958586f46df85a5f2fe5bee7ae60aa08ff2b24e8904b36cdca88d694d3ad30bc1854
+  checksum: e5714173b9b773e0e2d00fbcde2287ae6b1daacfc3de953659511b0e43481fbc36ca6922dd5486950d823ce7f81ec6c52db8c6c747a89bba5afa7219da7c020b
   languageName: node
   linkType: hard
 
@@ -27747,10 +27761,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vscode-uri@npm:^3.0.2":
-  version: 3.0.3
-  resolution: "vscode-uri@npm:3.0.3"
-  checksum: 683bf9de835c3cef0b51c104a4949bf746148ded7c2287ebafcc506d20aa0e90b99385a972dba8132903420dba67fc33a5e146e30212c4a6b3ca5d74d1f95702
+"vscode-uri@npm:^3.0.3":
+  version: 3.0.7
+  resolution: "vscode-uri@npm:3.0.7"
+  checksum: c899a0334f9f6ba53021328e083f6307978c09b94407d7e5fe86fcd8fcb8f1da0cb344123a335e55769055007a46d51aff83f9ee1dfc0296ee54b78f34ef0e4f
   languageName: node
   linkType: hard
 
