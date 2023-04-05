@@ -1,0 +1,13 @@
+{
+  "name": "vscode-styled-components",
+  "displayName": "vscode-styled-components",
+  "description": "Syntax highlighting for styled-components",
+  "version": "1.7.7",
+  "publisher": "styled-components",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/styled-components/vscode-styled-components.git"
+  },
+  "main": "dist/extension.js"
+}
