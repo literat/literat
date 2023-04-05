@@ -111,5 +111,10 @@
     "prettier": "2.7.1",
     "puppeteer": "^10.1.0"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.3.0",
+  "dependenciesMeta": {
+    "vscode-styled-components": {
+      "build": false
+    }
+  }
 }
