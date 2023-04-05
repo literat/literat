@@ -44,6 +44,7 @@ specifiers:
   gatsby-plugin-image: 2.24.0
   gatsby-plugin-mdx: 3.20.0
   gatsby-plugin-netlify: 5.0.1
+  gatsby-plugin-pnpm: ^1.2.10
   gatsby-plugin-react-helmet: ^5.15.0
   gatsby-plugin-sharp: 4.24.0
   gatsby-remark-copy-linked-files: 5.24.0
@@ -86,6 +87,7 @@ dependencies:
   gatsby-plugin-image: 2.24.0_dr2qvzxa5rapzkhjab3xh4qsxy
   gatsby-plugin-mdx: 3.20.0_6mroplsem4sjoavnvll55jmkt4
   gatsby-plugin-netlify: 5.0.1_gatsby@4.24.8
+  gatsby-plugin-pnpm: 1.2.10_gatsby@4.24.8
   gatsby-plugin-react-helmet: 5.25.0_q77azxndogvj44oyn7au6xu7my
   gatsby-plugin-sharp: 4.24.0_gatsby@4.24.8
   gatsby-remark-copy-linked-files: 5.24.0_gatsby@4.24.8
@@ -106,7 +108,7 @@ dependencies:
   styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
   typescript: 4.9.3
   vsc-community-material-theme: github.com/material-theme/vsc-community-material-theme/72b152c09576b2d44796a3eec3fefa392e60c078
-  vscode-styled-components: github.com/styled-components/vscode-styled-components/e5b357a137e896097b361e8ae22758281497e9cd
+  vscode-styled-components: github.com/styled-components/vscode-styled-components/3b23bba7eefa94c00fab89a26e51fc5201857483
   waait: 1.0.5
 
 devDependencies:
@@ -4038,11 +4040,11 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
-  /@styled/typescript-styled-plugin/0.20.0:
-    resolution: {integrity: sha512-qUqFB5VFIDX9FipzrGGgQuCKU6jftCxEhMXtBUsxM+M8a6OKWAIZnhEvQn+IaUjFrSGumIoR4b+5zlHUjHrMTA==}
+  /@styled/typescript-styled-plugin/1.0.0:
+    resolution: {integrity: sha512-TGAZrTPPglyzdO6mWyC1QWNN3G2zZHy2/YrPGE2aie06p1MgtyEWc3GXUa5Xkb/pH7ftinX63mbQTipzVjrTRw==}
     dependencies:
       '@vscode/emmet-helper': 2.8.6
-      typescript-template-language-service-decorator: 2.3.1
+      typescript-template-language-service-decorator: 2.3.2
       vscode-css-languageservice: 6.2.4
       vscode-languageserver-textdocument: 1.0.8
       vscode-languageserver-types: 3.17.3
@@ -10364,6 +10366,16 @@ packages:
       - encoding
       - graphql
       - supports-color
+    dev: false
+
+  /gatsby-plugin-pnpm/1.2.10_gatsby@4.24.8:
+    resolution: {integrity: sha512-29xjIakNEUY42OBb3wI9Thmawr5EcUUOB3dB8nE51yr/TfKQFCREk+HAOATQHTNedG3VZhgU4wVjl2V3wgOXJA==}
+    peerDependencies:
+      gatsby: ~2.x.x || ~3.x.x || ~4.x.x
+    dependencies:
+      gatsby: 4.24.8_hekjeuodktkzleyup2jxhfrkwe
+      lodash.get: 4.4.2
+      lodash.uniq: 4.5.0
     dev: false
 
   /gatsby-plugin-react-helmet/5.25.0_q77azxndogvj44oyn7au6xu7my:
@@ -19307,8 +19319,8 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: false
 
-  /typescript-template-language-service-decorator/2.3.1:
-    resolution: {integrity: sha512-+Q5+cvBtPO4VKNyyI6O+XnIne+/hq/WfNhBaF4hJP8nB8TbikTg+2h9uBMsqduwX1+kVfwG9SBSwMTtvi2Ep7w==}
+  /typescript-template-language-service-decorator/2.3.2:
+    resolution: {integrity: sha512-hN0zNkr5luPCeXTlXKxsfBPlkAzx86ZRM1vPdL7DbEqqWoeXSxplACy98NpKpLmXsdq7iePUzAXloCAoPKBV6A==}
     dev: false
 
   /typescript/4.9.3:
@@ -20477,15 +20489,15 @@ packages:
     engines: {node: <=10, vscode: ^1.41.0}
     dev: false
 
-  github.com/styled-components/vscode-styled-components/e5b357a137e896097b361e8ae22758281497e9cd:
-    resolution: {tarball: https://codeload.github.com/styled-components/vscode-styled-components/tar.gz/e5b357a137e896097b361e8ae22758281497e9cd}
+  github.com/styled-components/vscode-styled-components/3b23bba7eefa94c00fab89a26e51fc5201857483:
+    resolution: {tarball: https://codeload.github.com/styled-components/vscode-styled-components/tar.gz/3b23bba7eefa94c00fab89a26e51fc5201857483}
     name: vscode-styled-components
-    version: 1.7.6
-    engines: {vscode: ^1.70.0}
+    version: 1.7.7
+    engines: {vscode: ^1.73.0}
     prepare: true
     requiresBuild: true
     dependencies:
-      '@styled/typescript-styled-plugin': 0.20.0
+      '@styled/typescript-styled-plugin': 1.0.0
       d3-color: 3.1.0
       vscode-css-languageservice: 6.2.4
     dev: false

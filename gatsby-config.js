@@ -14,6 +14,7 @@ module.exports = {
   },
   trailingSlash: 'always',
   plugins: [
+    `gatsby-plugin-pnpm`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
