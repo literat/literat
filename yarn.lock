@@ -18418,6 +18418,9 @@ __metadata:
     vsc-community-material-theme: "git+https://github.com/material-theme/vsc-community-material-theme.git"
     vscode-styled-components: "git+https://github.com/styled-components/vscode-styled-components.git"
     waait: ^1.0.5
+  dependenciesMeta:
+    vscode-styled-components:
+      optional: true
   languageName: unknown
   linkType: soft
 
