@@ -5,6 +5,9 @@
   "license": "0BSD",
   "homepage": "https://literat.dev",
   "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [
     "gatsby",
     "literat"
