@@ -10,8 +10,9 @@
     "literat"
   ],
   "scripts": {
-    "build": "gatsby build",
-    "start": "gatsby develop",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "netlify": "netlify",
@@ -50,6 +51,7 @@
     "gatsby-source-filesystem": "4.25.0",
     "gatsby-transformer-remark": "5.25.1",
     "gatsby-transformer-sharp": "4.25.0",
+    "next": "^14.1.0",
     "normalize.css": "8.0.1",
     "puppeteer-core": "^10.1.0",
     "react": "18.2.0",
@@ -60,7 +62,6 @@
     "slugify": "1.6.6",
     "styled-components": "5.3.9",
     "typescript": "5.0.3",
-    "vsc-community-material-theme": "git+https://github.com/material-theme/vsc-community-material-theme.git",
     "vscode-styled-components": "./vendor_modules/vscode-styled-components",
     "waait": "^1.0.5"
   },
