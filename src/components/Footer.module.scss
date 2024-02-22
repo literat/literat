@@ -1,0 +1,37 @@
+.footer {
+  background-color: var(--dark);
+  padding-top: 180px;
+  padding-bottom: 80px;
+  clip-path: polygon(0 0, 100% 50px, 100% 100%, 0% 100%);
+
+  & > div {
+    display: grid;
+
+    .bottom {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: none;
+      color: var(--light);
+    }
+  }
+
+  a.socialLink {
+    background: var(--dark);
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--light);
+    display: inline-flex;
+    align-items: center;
+    margin: 2px;
+
+    &[href*='github.com'] {
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    svg {
+      margin-right: 3px;
+    }
+  }
+}

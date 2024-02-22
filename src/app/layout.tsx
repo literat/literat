@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import { fira } from '@/ui/fonts';
 import '@/ui/global.css';
 import ContentLayout from '@/ui/layouts/ContentLayout';
@@ -26,6 +27,7 @@ export default function RootLayout({
             {children}
           </ContentLayout>
         </MainLayout>
+        <Footer />
         </body>
     </html>
   )
