@@ -1,41 +1,24 @@
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql } from 'gatsby';
-import Img from '../components/Img';
-import OutLink from '../components/OutLink';
-import H from '../components/mdx/Headings';
+import AgeInYears from '@/components/AgeInYears';
+import OutLink from '@/components/OutLink';
+import H from '@/components/mdx/Headings';
+import { Metadata } from 'next';
+import Image from 'next/image';
+import { Suspense } from 'react';
+import family from '../../../public/assets/images/family.jpg';
+import whitewater from '../../../public/assets/images/whitewater.jpg';
 
-const useOldMe = () => {
-  const birth = 583588801000;
-  const [age, setAge] = useState(Date.now() - birth);
-
-  return {
-    age,
-    // this doesn't account for leap years and will be wrong in about 1400 years
-    ageAsYears: Math.floor(age / 1000 / 60 / 60 / 24 / 365),
-  };
+export const metadata: Metadata = {
+  title: 'About Me',
 };
 
-interface AboutPageProps {
-  data: {
-    family: string;
-    whitewater: string;
-  };
-}
-
-const AboutPage = ({ data }: AboutPageProps) => {
-  const { ageAsYears } = useOldMe();
-
+export default function AboutPage() {
   return (
     <>
-      <Helmet>
-        <title>About Me - Literat</title>
-      </Helmet>
       <H>About me</H>
       <p>Hello, I'm Tomas Litera, shortly Literat.</p>
       <H as="h3">In a nutshell...</H>
       <p>
-        I am a web developer, whitewater kayaker and scout from Kolin in the Czech republic 🇨🇿. I am {ageAsYears} years
+        I am a web developer, whitewater kayaker and scout from Kolin in the Czech republic 🇨🇿. I am <Suspense fallback={<>{35}</>}><AgeInYears /></Suspense> years
         old and I have been making websites from primary school.
       </p>
       <p>
@@ -53,7 +36,17 @@ const AboutPage = ({ data }: AboutPageProps) => {
         republic house with my wife Dita, one boy, two girls and a dog named Charlie. We spend our summers mainly
         traveling with our van or with canoes on different rivers.
       </p>
-      <Img image={data.family} alt="My Family" />
+      <Image
+        src={family}
+        alt="My family"
+        loading='lazy'
+        sizes='(min-width: 1200px) 1200px, 100vw'
+        placeholder='blur'
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+      />
       <p>
         <strong>I have a few hobbies.</strong> Most of my free time I spend on a river in my kayak. I really love
         whitewater kayaking. Every year I am going to a different country in a search of new rivers and whitewater
@@ -64,7 +57,17 @@ const AboutPage = ({ data }: AboutPageProps) => {
         </OutLink>{' '}
         and gorges on Elbe or Jizera rivers.
       </p>
-      <Img image={data.whitewater} alt="Trnava Xtreme Race" />
+      <Image
+        src={whitewater}
+        alt="Trnava Xtreme Race"
+        loading='lazy'
+        sizes='(min-width: 900px) 900px, 100vw'
+        placeholder='blur'
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+      />
       <p>
         <strong>I also love to teach and work with young people.</strong> Since 2004 I am member of czech scout
         assosiation,{' '}
@@ -81,20 +84,3 @@ const AboutPage = ({ data }: AboutPageProps) => {
     </>
   );
 };
-
-export default AboutPage;
-
-export const query = graphql`
-  query {
-    whitewater: file(relativePath: { eq: "whitewater.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(width: 900)
-      }
-    }
-    family: file(relativePath: { eq: "family.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(width: 1200)
-      }
-    }
-  }
-`;

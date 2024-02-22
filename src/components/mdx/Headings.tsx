@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import { overpassItalic } from '@/ui/fonts';
+import clsx from 'clsx';
+import styles from './Headings.module.scss';
 
 const headingSizes = {
   h1: 6,
@@ -11,55 +12,19 @@ const headingSizes = {
   span: 3.2,
 };
 
-const HStyles = styled.h1`
-  /* Default h1 */
-  font-size: ${headingSizes.h1}rem;
-  /* Default allow to change */
-  font-size: ${({ as }) => as && `${headingSizes[as]}rem`};
-  /* Visually override if need different font size vs the semantic element */
-  font-size: ${({ looksLike }) => looksLike && `${headingSizes[looksLike]}rem`};
-  @media (max-width: 450px) {
-    font-size: 3rem;
-  }
-
-  &:before {
-    /* Blue square is using ems so it scales up/down with the font size */
-    width: 1em;
-    height: 1.5em;
-    margin-top: 5px;
-    margin-left: -10px;
-    content: '';
-    pointer-events: none;
-    background: var(--blue);
-    position: absolute;
-    z-index: -1;
-    --translate: -0.5rem;
-    --rotate: 2deg;
-    transform: translateX(var(--translate)) translateY(var(--translate)) skew(-10deg);
-    ${({ as }) => as === 'span' && `visibility: hidden;`};
-  }
-  &:hover:before {
-    visibility: visible;
-  }
-  a {
-    color: inherit;
-    text-decoration-color: var(--blue);
-  }
-  .hash-anchor {
-    position: absolute;
-    transform: translateX(-120%);
-    text-decoration: none;
-    opacity: 0;
-  }
-  &:hover .hash-anchor {
-    opacity: 1;
-  }
-`;
-
 export default function H(props) {
+  const { as: Component = 'h1', looksLike, children, ...rest} = props;
+
+  const fontSize = looksLike ? headingSizes[looksLike] : props.as ? headingSizes[props.as] : headingSizes.h1;
+  const before = {
+    '&::before': {
+      visibility: props.as === 'span' ? 'hidden' : undefined,
+    }
+  };
+
   return (
-    <HStyles {...props}>
-      <span>{props.children}</span>
-    </HStyles>
+    <Component {...rest} className={clsx(styles.headings, overpassItalic.className, before)} style={{ fontSize: `${fontSize}rem` }} >
+      <span>{children}</span>
+    </Component>
   );
 }

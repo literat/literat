@@ -1,0 +1,37 @@
+.headings {
+  @media (max-width: 450px) {
+    font-size: 3rem;
+  }
+
+  &:before {
+    /* Blue square is using ems so it scales up/down with the font size */
+    width: 1em;
+    height: 1.5em;
+    margin-top: 5px;
+    margin-left: -10px;
+    content: '';
+    pointer-events: none;
+    background: var(--blue);
+    position: absolute;
+    z-index: -1;
+    --translate: -0.5rem;
+    --rotate: 2deg;
+    transform: translateX(var(--translate)) translateY(var(--translate)) skew(-10deg);
+  }
+  &:hover:before {
+    visibility: visible;
+  }
+  a {
+    color: inherit;
+    text-decoration-color: var(--blue);
+  }
+  .hash-anchor {
+    position: absolute;
+    transform: translateX(-120%);
+    text-decoration: none;
+    opacity: 0;
+  }
+  &:hover .hash-anchor {
+    opacity: 1;
+  }
+}
