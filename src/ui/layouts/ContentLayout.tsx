@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import styles from './contentLayout.module.scss'
+import styles from './ContentLayout.module.scss'
 
 export default function ContentLayout({ children }: { children: ReactNode }) {
   return (
