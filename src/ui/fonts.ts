@@ -8,7 +8,7 @@ export const fira = Fira_Code({
   variable: '--font-fira-code',
 });
 
-// export const overpass = Overpass({ subsets: ['latin'], weight: ['300'], display: 'swap' });
+export const overpass = Overpass({ subsets: ['latin'], weight: ['700'], display: 'swap' });
 export const overpassItalic = Overpass({
   subsets: ['latin'],
   weight: ['900'],
