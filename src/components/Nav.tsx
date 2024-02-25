@@ -1,106 +1,54 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
+'use client';
 
-const NavStyles = styled.nav`
-  --rotate: -2deg;
-  --scaleX: 1;
-  --transform: skew(-20deg) rotate(var(--rotate)) scaleX(var(--scaleX));
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 20px;
-  &:before {
-    height: 8px;
-    content: '';
-    width: 100%;
-    background: black;
-    bottom: -2px;
-    z-index: -1;
-    transition: transform 0.1s;
-    transform: var(--transform);
-  }
-  &:after {
-    height: 8px;
-    content: '';
-    width: 100%;
-    background: black;
-    bottom: -2px;
-    z-index: -1;
-    transition: transform 0.1s;
-    transform: var(--transform);
-  }
-`;
+import { overpass } from '@/ui/fonts';
+import useRowFinder from '@/utils/useRowFinder';
+import clsx from 'clsx';
+import Link from 'next/link';
+import styles from './Nav.module.scss';
+import H from './mdx/Headings';
 
-const NavList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 3rem 2rem 2rem 2rem;
-  transform: skew(-20deg) rotate(-2deg) scaleX(1);
-`;
+const NavItem = ({ children, row }) => {
+  return <li className={clsx(styles.navItem, overpass.className, row >= 2 && styles.NavItemScaleDown)}>{children}</li>;
+};
 
-const NavItem = styled.li`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-  align-content: center;
-  grid-gap: 2rem;
-  margin: 1rem;
-  transform: skew(20deg) rotate(2deg) scaleX(1);
+const Nav = () => {
+  const { ref, getRow } = useRowFinder();
 
-  &:after {
-    content: '⧹';
-    display: block;
-    color: var(--dark);
-    font-size: 3.8rem;
-    font-family: 'Overpass';
-  }
-  &:last-child:after {
-    display: none;
-  }
-
-  a {
-    font-family: 'Overpass';
-    font-size: 3.6rem;
-    color: black;
-    text-decoration: none;
-    font-weight: 900;
-    transform: none;
-
-    &:before {
-      background: none;
-      transform: none;
-    }
-  }
-`;
-
-const Nav = () => (
-  <NavStyles>
-    <NavList>
-      <NavItem>
-        <Link to="/codes">Codes</Link>
+  return (
+  <nav className={styles.nav}>
+    <ul className={styles.navList} ref={ref}>
+      <NavItem row={getRow(0)}>
+        <Link href="/codes">
+          <H as="span">Codes</H>
+        </Link>
       </NavItem>
-      <NavItem>
-        <Link to="/talks">Talks</Link>
+      <NavItem row={getRow(1)}>
+        <Link href="/talks">
+          <H as="span">Talks</H>
+        </Link>
       </NavItem>
-      <NavItem>
-        <Link to="/uses">Uses</Link>
+      <NavItem row={getRow(2)}>
+        <Link href="/uses">
+          <H as="span">Uses</H>
+        </Link>
       </NavItem>
-      <NavItem>
-        <Link to="/blog">Blog</Link>
+      <NavItem row={getRow(3)}>
+        <Link href="/blog">
+          <H as="span">Blog</H>
+        </Link>
       </NavItem>
-      <NavItem>
-        <Link to="/about">About</Link>
+      <NavItem row={getRow(4)}>
+        <Link href="/about">
+          <H as="span">About</H>
+        </Link>
       </NavItem>
-      <NavItem>
-        <Link to="/contact">Contact</Link>
+      <NavItem row={getRow(5)}>
+        <Link href="/contact">
+          <H as="span">Contact</H>
+        </Link>
       </NavItem>
-    </NavList>
-  </NavStyles>
-);
+    </ul>
+  </nav>
+);}
 
 export default Nav;

@@ -35,3 +35,9 @@
     opacity: 1;
   }
 }
+
+.HeadingsHidden {
+  &:before {
+    visibility: hidden;
+  }
+}

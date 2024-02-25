@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import Nav from '@/components/Nav';
 import { fira } from '@/ui/fonts';
 import '@/ui/global.css';
 import ContentLayout from '@/ui/layouts/ContentLayout';
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={fira.className}>
         <MainLayout>
           <Header description={metadata.description} />
+          <Nav />
           <ContentLayout>
             {children}
           </ContentLayout>
