@@ -60,7 +60,6 @@
     "slugify": "1.6.6",
     "styled-components": "5.3.11",
     "typescript": "5.3.3",
-    "vsc-community-material-theme": "git+https://github.com/material-theme/vsc-community-material-theme.git",
     "vscode-styled-components": "./vendor_modules/vscode-styled-components",
     "waait": "^1.0.5"
   },

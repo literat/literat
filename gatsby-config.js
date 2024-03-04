@@ -30,10 +30,9 @@ module.exports = {
             // @see: /src/posts/2022-03-02-gatsby-post-code-formatting
             gatsbyRemarkVSCode.remarkPlugin,
             {
-              theme: `Community-Material-Theme-Default-High-Contrast`,
-              // @see: https://github.com/material-theme/vsc-community-material-theme
+              theme: `Solarized Dark`,
               // @see: https://github.com/styled-components/vscode-styled-components
-              extensions: ['vsc-community-material-theme', 'vscode-styled-components'],
+              extensions: ['vscode-styled-components'],
               inlineCode: {
                 marker: '»',
               },
