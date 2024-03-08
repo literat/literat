@@ -1,5 +1,6 @@
 const path = require('path');
 const slugify = require('slugify');
+const { createFilePath } = require('gatsby-source-filesystem');
 
 // We don't want to pass the entire blog post because this can be really big.
 // So this passes only the data required in ContentNav.js
@@ -75,11 +76,11 @@ const createTagPages = (createPage, posts) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const blogPostTemplate = path.resolve('src/templates/blogPost.tsx');
+  const blogPostTemplate = path.resolve('./src/templates/blogPost.tsx');
 
   const result = await graphql(`
     query {
-      allMdx(sort: { order: ASC, fields: [frontmatter___date] }) {
+      allMdx(sort: { frontmatter: { date: ASC } }) {
         edges {
           node {
             fields {
@@ -91,6 +92,11 @@ exports.createPages = async ({ graphql, actions }) => {
               date
               image {
                 publicURL
+              }
+            }
+            parent {
+              ... on File {
+                absolutePath
               }
             }
           }
@@ -111,7 +117,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: postPath,
-      component: blogPostTemplate,
+      // component: blogPostTemplate,
+      component: `${blogPostTemplate}?__contentFilePath=${post.node.parent.absolutePath}`,
       context: {
         pathSlug: postPath,
         previous: getContentNavFromNode(previous),
@@ -135,7 +142,7 @@ exports.onCreateNode = ({ node, actions }) => {
     let postPath = `/${slug}`;
     // If post directory includes date => blog post
     // If not => page
-    if (node.fileAbsolutePath.match(dateRegex)) {
+    if (node.internal.contentFilePath.match(dateRegex)) {
       postPath = `/blog/${date}/${slug}`;
     }
 
@@ -162,4 +169,33 @@ exports.onCreatePage = async ({ page, actions, loadNodeContent, ...rest }) => {
     page.context.layout = 'thumbnail';
     createPage(page);
   }
+};
+
+/**
+ * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ */
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  // Explicitly define the siteMetadata {} object
+  // This way those will always be defined even if removed from gatsby-config.js
+
+  // Also explicitly define the Markdown frontmatter
+  // This way the "MarkdownRemark" queries will return `null` even when no
+  // blog posts are stored inside "content/blog" instead of returning an error
+  createTypes(`
+    type Mdx implements Node {
+      fields: Fields
+    }
+
+    type Fields {
+      slug: String
+      path: String
+      readingTime: ReadingTime
+    }
+
+    type ReadingTime {
+      text: String
+    }
+  `);
 };

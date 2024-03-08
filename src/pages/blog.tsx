@@ -1,5 +1,5 @@
-import React from 'react';
 import { graphql, Link } from 'gatsby';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 
 type Edge = {
@@ -61,7 +61,7 @@ const Blog = ({ data }: BlogProps) => {
 
 export const query = graphql`
   query BLOG_POSTS {
-    allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMdx(sort: {frontmatter: {date: DESC}}) {
       edges {
         node {
           fields {
