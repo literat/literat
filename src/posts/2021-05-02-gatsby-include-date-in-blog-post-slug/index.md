@@ -33,7 +33,7 @@ exports.onCreateNode = ({ node, actions }) => {
     let postPath = `/${slug}`;
     // If post directory includes date => blog post
     // If not => page
-    if (node.fileAbsolutePath.match(dateRegex)) {
+    if (node.parent.absolutePath.match(dateRegex)) {
       postPath = `/blog/${date}/${slug}`;
     }
 
