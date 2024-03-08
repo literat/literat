@@ -112,5 +112,5 @@
     "prettier": "2.8.8",
     "puppeteer": "^10.1.0"
   },
-  "packageManager": "yarn@3.8.1"
+  "packageManager": "yarn@4.1.1"
 }
