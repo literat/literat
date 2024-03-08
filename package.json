@@ -74,7 +74,7 @@
     "@babel/preset-typescript": "7.23.3",
     "@commitlint/cli": "17.8.1",
     "@commitlint/config-conventional": "17.8.1",
-    "@lmc-eu/prettier-config": "1.2.4",
+    "@lmc-eu/prettier-config": "2.0.0",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.1",
     "@types/inquirer": "9.0.7",

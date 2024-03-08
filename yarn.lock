@@ -4916,10 +4916,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lmc-eu/prettier-config@npm:1.2.4":
-  version: 1.2.4
-  resolution: "@lmc-eu/prettier-config@npm:1.2.4"
-  checksum: 10/2b4fd8e46558b63b11ac360a4aaaa98f8f23992044f2b4e1144ec4a6685ce9594caf5f5332d14a44858d161e7786f79f2dac77dea0bc4c77928a8ec22a4db505
+"@lmc-eu/prettier-config@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@lmc-eu/prettier-config@npm:2.0.0"
+  checksum: 10/84a88795cfdd096f75321d8e50b47fddc4691f62e4342f5ef0c17683f12f16ac24172006081e3e254dc40808b96e51dd38b4e08d52515dd3b67f30ffa2417392
   languageName: node
   linkType: hard
 
@@ -20355,7 +20355,7 @@ __metadata:
     "@babel/preset-typescript": "npm:7.23.3"
     "@commitlint/cli": "npm:17.8.1"
     "@commitlint/config-conventional": "npm:17.8.1"
-    "@lmc-eu/prettier-config": "npm:1.2.4"
+    "@lmc-eu/prettier-config": "npm:2.0.0"
     "@mdx-js/mdx": "npm:1.6.22"
     "@mdx-js/react": "npm:1.6.22"
     "@netlify/functions": "npm:^1.0.0"
