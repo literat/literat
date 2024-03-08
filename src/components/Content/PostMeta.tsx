@@ -39,14 +39,14 @@ interface PostMetaProps {
 
 function PostMeta({ post, editUrl }: PostMetaProps) {
   const { date, category } = post.frontmatter;
-  const { readingTime } = post.fields;
+  // const { readingTime } = post.fields;
   const formattedDate = new Date(date).toLocaleDateString('cs-CZ');
 
   return (
     <PostMetaStyles>
       <time dateTime={formattedDate}>{formattedDate}</time>
       {category && <span>{category.join(', ')}</span>}
-      <span>{readingTime.text}</span>
+      {/* <span>{readingTime.text}</span> */}
       <EditOnGitHub editUrl={editUrl} />
     </PostMetaStyles>
   );
