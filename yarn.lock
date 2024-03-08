@@ -4533,18 +4533,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/environment@npm:^29.3.1":
-  version: 29.3.1
-  resolution: "@jest/environment@npm:29.3.1"
-  dependencies:
-    "@jest/fake-timers": ^29.3.1
-    "@jest/types": ^29.3.1
-    "@types/node": "*"
-    jest-mock: ^29.3.1
-  checksum: 974102aba7cc80508f787bb5504dcc96e5392e0a7776a63dffbf54ddc2c77d52ef4a3c08ed2eedec91965befff873f70cd7c9ed56f62bb132dcdb821730e6076
-  languageName: node
-  linkType: hard
-
 "@jest/environment@npm:^29.7.0":
   version: 29.7.0
   resolution: "@jest/environment@npm:29.7.0"
@@ -4582,20 +4570,6 @@ __metadata:
     expect: ^29.7.0
     jest-snapshot: ^29.7.0
   checksum: a01cb85fd9401bab3370618f4b9013b90c93536562222d920e702a0b575d239d74cecfe98010aaec7ad464f67cf534a353d92d181646a4b792acaa7e912ae55e
-  languageName: node
-  linkType: hard
-
-"@jest/fake-timers@npm:^29.3.1":
-  version: 29.3.1
-  resolution: "@jest/fake-timers@npm:29.3.1"
-  dependencies:
-    "@jest/types": ^29.3.1
-    "@sinonjs/fake-timers": ^9.1.2
-    "@types/node": "*"
-    jest-message-util: ^29.3.1
-    jest-mock: ^29.3.1
-    jest-util: ^29.3.1
-  checksum: b1dafa8cdc439ef428cd772c775f0b22703677f52615513eda11a104bbfc352d7ec69b1225db95d4ef2e1b4ef0f23e1a7d96de5313aeb0950f672e6548ae069d
   languageName: node
   linkType: hard
 
@@ -5515,11 +5489,11 @@ __metadata:
   linkType: hard
 
 "@netlify/functions@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@netlify/functions@npm:1.0.0"
+  version: 1.6.0
+  resolution: "@netlify/functions@npm:1.6.0"
   dependencies:
     is-promise: ^4.0.0
-  checksum: 1e3c234f14fd2fe8f46cae9336679054bf067b60217ee1c424adec1b1d1e4208eeaacb3401c48b625fe057df56f5dc553b961d4758f53bb0eae6f5b78d6385ad
+  checksum: ecff9a1161b2df94d139431e7a2b42d9790cf4ec250ad3aec57935cc1b1e78beccfe855c6e5522311baefce84b91ed690904aedf02b2511eaaafdc8f6daab75e
   languageName: node
   linkType: hard
 
@@ -6510,15 +6484,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sinonjs/commons@npm:^1.7.0":
-  version: 1.8.3
-  resolution: "@sinonjs/commons@npm:1.8.3"
-  dependencies:
-    type-detect: 4.0.8
-  checksum: 6159726db5ce6bf9f2297f8427f7ca5b3dff45b31e5cee23496f1fa6ef0bb4eab878b23fb2c5e6446381f6a66aba4968ef2fc255c1180d753d4b8c271636a2e5
-  languageName: node
-  linkType: hard
-
 "@sinonjs/commons@npm:^2.0.0":
   version: 2.0.0
   resolution: "@sinonjs/commons@npm:2.0.0"
@@ -6534,15 +6499,6 @@ __metadata:
   dependencies:
     "@sinonjs/commons": ^2.0.0
   checksum: c62aa98e7cefda8dedc101ce227abc888dc46b8ff9706c5f0a8dfd9c3ada97d0a5611384738d9ba0b26b59f99c2ba24efece8e779bb08329e9e87358fa309824
-  languageName: node
-  linkType: hard
-
-"@sinonjs/fake-timers@npm:^9.1.2":
-  version: 9.1.2
-  resolution: "@sinonjs/fake-timers@npm:9.1.2"
-  dependencies:
-    "@sinonjs/commons": ^1.7.0
-  checksum: 7d3aef54e17c1073101cb64d953157c19d62a40e261a30923fa1ee337b049c5f29cc47b1f0c477880f42b5659848ba9ab897607ac8ea4acd5c30ddcfac57fca6
   languageName: node
   linkType: hard
 
@@ -7128,12 +7084,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.19.21":
-  version: 18.19.21
-  resolution: "@types/node@npm:18.19.21"
+"@types/node@npm:18.19.22":
+  version: 18.19.22
+  resolution: "@types/node@npm:18.19.22"
   dependencies:
     undici-types: ~5.26.4
-  checksum: a8c66d97426e8bbe341a6bdf42af9659ff5ad500c790b9046c981e234db42a1354a6ae86d5d1b75c86dfa018c742fb65c400a0e31d8f9f7505d4cfe5bd11ba72
+  checksum: 89ba0923b4bfe961135d98cac3c1a726f5b61f23e90c8dcea4c44bde566a0ed3fb192198e0f1a700f4a1175027b63eb62a894992fb29b97a4af88b8dbbdc2fa6
   languageName: node
   linkType: hard
 
@@ -7188,12 +7144,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:18.2.19":
-  version: 18.2.19
-  resolution: "@types/react-dom@npm:18.2.19"
+"@types/react-dom@npm:18.2.21":
+  version: 18.2.21
+  resolution: "@types/react-dom@npm:18.2.21"
   dependencies:
     "@types/react": "*"
-  checksum: 087a19d8e4c1c0900ec4ac5ddb749a811a38274b25683d233c11755d2895cc6e475e8bf9bea3dee36519769298e078d4c2feab9ab4bd13b26bc2a6170716437e
+  checksum: 0ff00aedf5ffad90ed226c0ab0acdca609804c81af5dbde0d13a4ae53dac6bd92f85f1adc032c42966ec2e9417d13d18a41767434afa4d8c1979cad57348191b
   languageName: node
   linkType: hard
 
@@ -7217,14 +7173,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.2.62":
-  version: 18.2.62
-  resolution: "@types/react@npm:18.2.62"
+"@types/react@npm:18.2.64":
+  version: 18.2.64
+  resolution: "@types/react@npm:18.2.64"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: f3979e8d6eadbd27fdbbe10aeaefc164b5a8a1af1df1a099cf8a950b4ea0a6cb6a7b36ff26fccecafcbb9086a908806f4f3b3c826909d97de31fc6bf572feaf1
+  checksum: 1fd28dc5e5d191619e0b001485f428a070bad11f55683a212d3bd937bdc979335913f90f4ca4f0510871e5f35d8f46b169a23276fb048d06584623d3652cc0f3
   languageName: node
   linkType: hard
 
@@ -10339,14 +10295,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^5.0.0, chalk@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "chalk@npm:5.0.1"
-  checksum: 7b45300372b908f0471fbf7389ce2f5de8d85bb949026fd51a1b95b10d0ed32c7ed5aab36dd5e9d2bf3191867909b4404cef75c5f4d2d1daeeacd301dd280b76
-  languageName: node
-  linkType: hard
-
-"chalk@npm:^5.3.0":
+"chalk@npm:^5.0.0, chalk@npm:^5.0.1, chalk@npm:^5.3.0":
   version: 5.3.0
   resolution: "chalk@npm:5.3.0"
   checksum: 623922e077b7d1e9dedaea6f8b9e9352921f8ae3afe739132e0e00c275971bdd331268183b2628cf4ab1727c45ea1f28d7e24ac23ce1db1eb653c414ca8a5a80
@@ -15814,14 +15763,14 @@ __metadata:
   linkType: hard
 
 "gatsby-plugin-react-helmet@npm:^5.15.0":
-  version: 5.15.0
-  resolution: "gatsby-plugin-react-helmet@npm:5.15.0"
+  version: 5.25.0
+  resolution: "gatsby-plugin-react-helmet@npm:5.25.0"
   dependencies:
     "@babel/runtime": ^7.15.4
   peerDependencies:
     gatsby: ^4.0.0-next
     react-helmet: ^5.1.3 || ^6.0.0
-  checksum: 77b76a40cde394050eeea4384d84c198854378cbb81b41eed12b260e4d4058a9a049b6785331bcfe8322db8638b6f9311a9d3f1f154b595fe9100a9a52416162
+  checksum: 4373a35a9a254278dc4c1f1516d8550944135cc6ad2c3684b95caee0fd91a55379986e6552ac5f042a582ed43d126d7a4c767b02ad214e83d54194bebbb81c05
   languageName: node
   linkType: hard
 
@@ -16085,9 +16034,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:4.25.7":
-  version: 4.25.7
-  resolution: "gatsby@npm:4.25.7"
+"gatsby@npm:4.25.8":
+  version: 4.25.8
+  resolution: "gatsby@npm:4.25.8"
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.15.5
@@ -16263,7 +16212,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: e435ba3cc31395e7b7433d783698dd712d26ef1f66038865d8e69580c3ac4d580d76df474cea09a1044552a8b78332dae0f146a16f43acdf804d629e90018f24
+  checksum: 7e33ab770ba9d1951f0554add82403dbffff6ca91b460adefd9333f5a7bf4d38b13ef5b53ef0535669967890f0bc659ad2df6984d5716c579c454f6dedc929cd
   languageName: node
   linkType: hard
 
@@ -19325,23 +19274,23 @@ __metadata:
   linkType: hard
 
 "jest-environment-jsdom@npm:^29.0.0":
-  version: 29.3.1
-  resolution: "jest-environment-jsdom@npm:29.3.1"
+  version: 29.7.0
+  resolution: "jest-environment-jsdom@npm:29.7.0"
   dependencies:
-    "@jest/environment": ^29.3.1
-    "@jest/fake-timers": ^29.3.1
-    "@jest/types": ^29.3.1
+    "@jest/environment": ^29.7.0
+    "@jest/fake-timers": ^29.7.0
+    "@jest/types": ^29.6.3
     "@types/jsdom": ^20.0.0
     "@types/node": "*"
-    jest-mock: ^29.3.1
-    jest-util: ^29.3.1
+    jest-mock: ^29.7.0
+    jest-util: ^29.7.0
     jsdom: ^20.0.0
   peerDependencies:
     canvas: ^2.5.0
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 91b04ed02b2275c3a47740e20c2691f67c4295e17174c8ccd3a71fe77707239e487506bd157279b4257ce1be0a8c2be377817ee85689966a9e604bb6ef1199f0
+  checksum: 559aac134c196fccc1dfc794d8fc87377e9f78e894bb13012b0831d88dec0abd7ece99abec69da564b8073803be4f04a9eb4f4d1bb80e29eec0cb252c254deb8
   languageName: node
   linkType: hard
 
@@ -19468,17 +19417,6 @@ __metadata:
     slash: ^3.0.0
     stack-utils: ^2.0.3
   checksum: a9d025b1c6726a2ff17d54cc694de088b0489456c69106be6b615db7a51b7beb66788bea7a59991a019d924fbf20f67d085a445aedb9a4d6760363f4d7d09930
-  languageName: node
-  linkType: hard
-
-"jest-mock@npm:^29.3.1":
-  version: 29.3.1
-  resolution: "jest-mock@npm:29.3.1"
-  dependencies:
-    "@jest/types": ^29.3.1
-    "@types/node": "*"
-    jest-util: ^29.3.1
-  checksum: 9098852cb2866db4a1a59f9f7581741dfc572f648e9e574a1b187fd69f5f2f6190ad387ede21e139a8b80a6a1343ecc3d6751cd2ae1ae11d7ea9fa1950390fb2
   languageName: node
   linkType: hard
 
@@ -20411,9 +20349,9 @@ __metadata:
     "@testing-library/react": 14.2.1
     "@types/inquirer": 9.0.7
     "@types/jest": 29.5.12
-    "@types/node": 18.19.21
-    "@types/react": 18.2.62
-    "@types/react-dom": 18.2.19
+    "@types/node": 18.19.22
+    "@types/react": 18.2.64
+    "@types/react-dom": 18.2.21
     "@types/styled-components": 5.1.34
     "@typescript-eslint/eslint-plugin": 7.1.1
     "@typescript-eslint/parser": 7.1.1
@@ -20434,7 +20372,7 @@ __metadata:
     eslint-plugin-react: 7.34.0
     eslint-plugin-react-hooks: 4.6.0
     fs-extra: 11.2.0
-    gatsby: 4.25.7
+    gatsby: 4.25.8
     gatsby-plugin-image: 2.25.0
     gatsby-plugin-mdx: 3.20.0
     gatsby-plugin-netlify: 5.1.1
@@ -20466,7 +20404,7 @@ __metadata:
     react-is: 18.2.0
     slugify: 1.6.6
     styled-components: 6.1.8
-    typescript: 5.3.3
+    typescript: 5.4.2
     vscode-styled-components: ./vendor_modules/vscode-styled-components
     waait: ^1.0.5
   languageName: unknown
@@ -29474,13 +29412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.3.3, typescript@npm:^4.6.4 || ^5.2.2":
-  version: 5.3.3
-  resolution: "typescript@npm:5.3.3"
+"typescript@npm:5.4.2":
+  version: 5.4.2
+  resolution: "typescript@npm:5.4.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 2007ccb6e51bbbf6fde0a78099efe04dc1c3dfbdff04ca3b6a8bc717991862b39fd6126c0c3ebf2d2d98ac5e960bcaa873826bb2bb241f14277034148f41f6a2
+  checksum: 96d80fde25a09bcb04d399082fb27a808a9e17c2111e43849d2aafbd642d835e4f4ef0de09b0ba795ec2a700be6c4c2c3f62bf4660c05404c948727b5bbfb32a
   languageName: node
   linkType: hard
 
@@ -29494,6 +29432,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^4.6.4 || ^5.2.2":
+  version: 5.3.3
+  resolution: "typescript@npm:5.3.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 2007ccb6e51bbbf6fde0a78099efe04dc1c3dfbdff04ca3b6a8bc717991862b39fd6126c0c3ebf2d2d98ac5e960bcaa873826bb2bb241f14277034148f41f6a2
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^4.8.4":
   version: 4.9.3
   resolution: "typescript@npm:4.9.3"
@@ -29504,13 +29452,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@5.3.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.4 || ^5.2.2#~builtin<compat/typescript>":
-  version: 5.3.3
-  resolution: "typescript@patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=493e53"
+"typescript@patch:typescript@5.4.2#~builtin<compat/typescript>":
+  version: 5.4.2
+  resolution: "typescript@patch:typescript@npm%3A5.4.2#~builtin<compat/typescript>::version=5.4.2&hash=493e53"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: f61375590b3162599f0f0d5b8737877ac0a7bc52761dbb585d67e7b8753a3a4c42d9a554c4cc929f591ffcf3a2b0602f65ae3ce74714fd5652623a816862b610
+  checksum: c1b669146bca5529873aae60870e243fa8140c85f57ca32c42f898f586d73ce4a6b4f6bb02ae312729e214d7f5859a0c70da3e527a116fdf5ad00c9fc733ecc6
   languageName: node
   linkType: hard
 
@@ -29521,6 +29469,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 09d93fc0983d38eadd9b0427f790b49b4437f45002a87d447be3fbe53120880e87a91dd03e1d900498f99205d6e0b7c9784fe41fca11d56f4bbce371f74bb160
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.6.4 || ^5.2.2#~builtin<compat/typescript>":
+  version: 5.3.3
+  resolution: "typescript@patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=493e53"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: f61375590b3162599f0f0d5b8737877ac0a7bc52761dbb585d67e7b8753a3a4c42d9a554c4cc929f591ffcf3a2b0602f65ae3ce74714fd5652623a816862b610
   languageName: node
   linkType: hard
 
