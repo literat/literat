@@ -13,9 +13,9 @@
     "literat"
   ],
   "scripts": {
+    "dev": "gatsby develop",
+    "start": "gatsby serve",
     "build": "gatsby build",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
     "clean": "gatsby clean",
     "netlify": "netlify",
     "test": "npm-run-all --serial lint format test:unit lint:commit",
