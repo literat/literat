@@ -9,22 +9,11 @@ const { PassThrough } = require('stream');
 const config = {
   "ghTokens": [
     [
-      "ghp_H",
-      "bcraD8d0OUWoxJdIlgNLNXpyhzS7n1HutiA"
-    ],
-    [
-      "ghp_9",
-      "HV9r3y93wz0unBeT1SyeILnFZxUzz3dBdrA"
-    ],
-    [
-      "ghp_r",
-      "7dvv4UhJhdhbXSKkcGnjCNtUBFznY1vDhx4"
+      "github_pat_",
+      "11AAJTTFQ0vEHyBwJYH4FN_ZVQl22LGtIADbp7Apid2V1REUi1VcynxncPbacHHbGqLHUCI4HXSuwIOlSl"
     ]
   ],
-  "yarnUrl": "https://raw.githubusercontent.com/yarnpkg/berry/%40yarnpkg/cli/3.1.1/packages/yarnpkg-cli/bin/yarn.js",
-  "pluginUrls": {
-    "interactive-tools": "https://raw.githubusercontent.com/yarnpkg/berry/8a82356/packages/plugin-interactive-tools/bin/%40yarnpkg/plugin-interactive-tools.js"
-  }
+  "yarnUrl": "https://raw.githubusercontent.com/yarnpkg/berry/%40yarnpkg/cli/4.1.1/packages/yarnpkg-cli/bin/yarn.js"
 };
 
 const getUrlHash = url => crypto.createHash('sha256').update(url).digest('hex').substring(0, 8);
