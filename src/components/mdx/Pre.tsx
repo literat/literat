@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const Pre = styled.pre`
   margin-top: calc(2 * (1.68 * (10px + 0.2vw) + 0.2vw));
   margin-bottom: calc(2 * (1.68 * (10px + 0.2vw) + 0.2vw));
-  margin-right: calc(-1 * ((100vw - 100%) / 2));
-  margin-left: calc(-1 * ((100vw - 100%) / 2));
+  margin-right: calc(-1 * ((80vw - 100%) / 2));
+  margin-left: calc(-1 * ((80vw - 100%) / 2));
   padding: calc(1 * (1.68 * (18px + 0.2vw) + 0.2vw)) 0;
   font-size: 0.85em;
   font-family: 'Fira Code', Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -19,9 +19,6 @@ const Pre = styled.pre`
     display: inline-block;
     transform: translate(-16px, 24px);
     text-align: right;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
     font-size: 1.5rem;
   }
 `;
