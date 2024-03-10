@@ -1,6 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family: 'Fira Code Fallback';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Arial');
+    ascent-override: 75.29%;
+    descent-override: 24.49%;
+    line-gap-override: 0.00%;
+    size-adjust: 131.49%;
+  }
+
   :root {
     --dark: #000000;
     --light: #ffffff;
@@ -16,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    font-family: 'Fira Code', 'sans-serif';
+    font-family: 'Fira Code', 'Fira Code Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 10px;
     color: var(--dark);
     box-sizing: border-box;
