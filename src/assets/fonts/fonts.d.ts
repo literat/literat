@@ -1,7 +1,3 @@
-declare module '*.ttf' {
-  /* empty */
-}
-
-declare module '*.woff' {
+declare module '*.woff2' {
   /* empty */
 }
