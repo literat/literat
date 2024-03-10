@@ -1,4 +1,3 @@
-
 import React from 'react';
 import FiraCode from '../assets/fonts/Fira/Code/Fira-Code-Regular.woff2';
 import FiraCodeSemiBold from '../assets/fonts/Fira/Code/Fira-Code-SemiBold.woff2';
@@ -15,14 +14,6 @@ const fontCSS = `
   }
 
   @font-face {
-    font-family: 'Fira Code';
-    src: url(${FiraCodeSemiBold}) format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
     font-family: 'Fira Code Fallback';
     font-style: normal;
     font-weight: 400;
@@ -33,6 +24,13 @@ const fontCSS = `
     size-adjust: 131.49%;
   }
 
+  @font-face {
+    font-family: 'Fira Code';
+    src: url(${FiraCodeSemiBold}) format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
 
   @font-face {
     font-family: 'Overpass';
