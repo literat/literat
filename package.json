@@ -33,7 +33,8 @@
     "format:check": "prettier --check ./",
     "format:fix": "prettier --write ./",
     "types": "tsc -p ./tsconfig.json",
-    "post": "node ./scripts/createPost.mjs"
+    "post": "node ./scripts/createPost.mjs",
+    "postinstall": "husky"
   },
   "dependencies": {
     "@mdx-js/mdx": "1.6.22",
