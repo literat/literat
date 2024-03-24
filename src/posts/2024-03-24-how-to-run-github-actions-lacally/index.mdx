@@ -1,0 +1,68 @@
+---
+title: How to run GitHub Actions locally?
+excerpt: "GitHub Actions is another CI pipeline that has the same problem as others.
+It is hard to develop and test them locally before running them on a server.
+Here is a solution to how to do that."
+date: '2024-03-24'
+category:
+  - development
+tags: ['bits', 'til', 'github actions', 'local', 'ci', 'pipeline', 'continuous improvements', 'continuous development']
+---
+
+Every developer is used to test his/her code before deploying it to production.
+But when comes it to testing the CI pipelines there is every time the problem of how to test it before deploying to the CI server.
+Will my pipeline work? What does this command and how does it affect the others?
+Most of the time developers just commit the modification of the pipeline, push it and watch to the server how does it works or when it fails.
+
+For the GitHub Actions, there is a way how to do this.
+
+## Use Act
+
+To solve this issue you can use [`act`][act] CLI tool to test and develop GitHub Actions locally.
+It is based on Docker. You can install it in various ways on different platforms.
+
+Just install it and run `act`. The output will look like this:
+
+```bash
+$ test-github-actions git:(main) ✗ act
+? Please choose the default image you want to use with act:
+  - Large size image: ca. 17GB download + 53.1GB storage, you will need 75GB of free disk space, snapshots of GitHub Hosted Runners without snap and pulled docker images
+  - Medium size image: ~500MB, includes only necessary tools to bootstrap actions and aims to be compatible with most actions
+  - Micro size image: <200MB, contains only NodeJS required to bootstrap actions, doesn't work with all actions
+
+Default image and other options can be changed manually in ~/.actrc (please refer to https://github.com/nektos/act#configuration for additional information about file structure) Micro
+[Build Ghost and test theme/install] 🚀  Start image=node:16-buster-slim
+INFO[0023] Parallel tasks (0) below minimum, setting to 1
+[Build Ghost and test theme/install]   🐳  docker pull image=node:16-buster-slim platform= username= forcePull=true
+INFO[0031] Parallel tasks (0) below minimum, setting to 1
+[Build Ghost and test theme/install]   🐳  docker create image=node:16-buster-slim platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Build Ghost and test theme/install]   🐳  docker run image=node:16-buster-slim platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Build Ghost and test theme/install]   ☁  git clone 'https://github.com/vimtor/action-zip' # ref=v1.2
+[Build Ghost and test theme/install]   ☁  git clone 'https://github.com/softprops/action-gh-release' # ref=v0.1.15
+[Build Ghost and test theme/install] ⭐ Run Main actions/checkout@v4
+[Build Ghost and test theme/install]   🐳  docker cp src=/home/officialrajdeepsingh/medium/test-github-actions/. dst=/home/officialrajdeepsingh/medium/test-github-actions
+[Build Ghost and test theme/install]   ✅  Success - Main actions/checkout@v4
+[Build Ghost and test theme/install] ⭐ Run Main Easy Zip Files
+[Build Ghost and test theme/install]   🐳  docker cp src=/home/officialrajdeepsingh/.cache/act/vimtor-action-zip@v1.2/ dst=/var/run/act/actions/vimtor-action-zip@v1.2/
+[Build Ghost and test theme/install]   🐳  docker exec cmd=[node /var/run/act/actions/vimtor-action-zip@v1.2/dist/index.js] user= workdir=
+| Ready to zip "build/ home.txt" into example.zip
+|   - build/
+|   - home.txt
+|
+| Zipped file example.zip successfully
+[Build Ghost and test theme/install]   ✅  Success - Main Easy Zip Files
+[Build Ghost and test theme/install] Cleaning up container for job install
+[Build Ghost and test theme/install] 🏁  Job succeeded
+```
+
+For more information about how you can use it, configure it or what other functionality it can provide,
+read the [article about how to run GitHub Actions locally using the act CLI tool][github-action-locally].
+Or just look at the [`act` repository][act].
+
+## References
+
+- [How to Run GitHub Actions Locally Using the act CLI Tool][github-action-locally]
+- [nektos/act repository][act]
+
+[act]: https://github.com/nektos/act
+[github-action-locally]: https://www.freecodecamp.org/news/how-to-run-github-actions-locally/
