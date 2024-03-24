@@ -1,0 +1,38 @@
+---
+title: How to transform keys in the object and other useful code collections
+excerpt: 'Do not reinvent the wheel when solving a transformation of the keys in the  JavaScript object. Just use  battle-tested code snippets that will help you quickly overcome this problem'
+date: '2024-03-24'
+category:
+  - development
+tags: ['bits', 'javascript', 'code', 'collections', 'snippets', '30secondsofcode', 'til']
+---
+
+Once upon a time, I was solving the problem of how to transform keys in a JavaScript object to the new names.
+I thought that there must be some kind of map or one from the trinity of `filter`, `map` and `reduce` must be used.
+
+But every time I am solving this kind of problem I am asking the question if I am not reinventing the wheel.
+This must be a common problem and there must be anyone before me who solved this problem.
+
+And Yes, it was solved before me.
+
+```js
+const mapKeys = (obj, fn) =>
+  Object.keys(obj).reduce((acc, k) => {
+    acc[fn(obj[k], k, obj)] = obj[k];
+    return acc;
+  }, {});
+
+mapKeys({ a: 1, b: 2 }, (val, key) => key + val); // { a1: 1, b2: 2 }
+```
+
+The solution came from the post [Transform the keys of a JavaScript object][transform-object-keys] on the [30 seconds of code][30secondsofcode] site.
+
+It is a great site. There can be found code snippets not only for Javascript but for CSS, React promiseHooks, Git and Node.js as well.
+
+## References
+
+- [Transform the keys of a JavaScript object][transform-object-keys]
+- [30 seconds of code][30secondsofcode]
+
+[transform-object-keys]: https://www.30secondsofcode.org/js/s/transform-object-keys/
+[30secondsofcode]: https://www.30secondsofcode.org/
