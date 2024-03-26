@@ -6,7 +6,7 @@ module.exports = {
     JSX: true,
   },
 
-  extends: ['wesbos'],
+  extends: ['wesbos', 'plugin:mdx/recommended'],
 
   settings: {
     'import/resolver': {
@@ -14,12 +14,13 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
+    'mdx/code-blocks': true,
   },
 
   rules: {
     'react/jsx-uses-react': 0,
     'react/react-in-jsx-scope': 0,
-    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'] }],
     'react/jsx-props-no-spreading': 'off',
     'prettier/prettier': [
       'error',
