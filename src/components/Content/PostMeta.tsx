@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import EditOnGitHub from '../EditOnGitHub';
 
 const PostMetaStyles = styled.div`
-  font-family: Fira Code, monospace;
+  font-family:
+    Fira Code,
+    monospace;
   font-size: 1.6rem;
   font-style: italic;
   display: grid;
