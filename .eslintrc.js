@@ -6,7 +6,7 @@ module.exports = {
     JSX: true,
   },
 
-  extends: ['wesbos'],
+  extends: ['wesbos', 'plugin:mdx/recommended'],
 
   settings: {
     'import/resolver': {
@@ -14,6 +14,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
+    'mdx/code-blocks': true,
   },
 
   rules: {
