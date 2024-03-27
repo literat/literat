@@ -1,6 +1,5 @@
 const path = require('path');
 const slugify = require('slugify');
-const { createFilePath } = require('gatsby-source-filesystem');
 
 // We don't want to pass the entire blog post because this can be really big.
 // So this passes only the data required in ContentNav.js
