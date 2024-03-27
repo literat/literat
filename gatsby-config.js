@@ -1,5 +1,6 @@
 // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/
 const gatsbyRemarkVSCode = require('gatsby-remark-vscode');
+const { remarkPlugin } = gatsbyRemarkVSCode;
 
 /**
  * Configure your Gatsby site with this file.
@@ -18,27 +19,29 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-remark-reading-time`,
+    // `gatsby-remark-reading-time`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         root: __dirname,
         extensions: [`.md`, `.mdx`],
-        remarkPlugins: [
-          [
-            // @see: /src/posts/2022-03-02-gatsby-post-code-formatting
-            gatsbyRemarkVSCode.remarkPlugin,
-            {
-              theme: `Solarized Dark`,
-              // @see: https://github.com/styled-components/vscode-styled-components
-              extensions: ['vscode-styled-components'],
-              inlineCode: {
-                marker: '»',
+        mdxOptions: {
+          remarkPlugins: [
+            [
+              // @see: /src/posts/2022-03-02-gatsby-post-code-formatting
+              remarkPlugin,
+              {
+                theme: `Solarized Dark`,
+                // @see: https://github.com/styled-components/vscode-styled-components
+                extensions: ['vscode-styled-components'],
+                inlineCode: {
+                  marker: '»',
+                },
               },
-            },
+            ],
           ],
-        ],
+        },
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           {

@@ -1,13 +1,12 @@
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
 import { EditDialog } from '../components/Content/EditDialog';
+import HeroImage from '../components/Content/HeroImage';
 import { Nav as ContentNav } from '../components/Content/Nav';
 import PostMeta from '../components/Content/PostMeta';
-import H from '../components/mdx/Headings';
 import MetaTags from '../components/MetaTags';
-import HeroImage from '../components/Content/HeroImage';
+import H from '../components/mdx/Headings';
 
 const ContentHeaderStyles = styled.header`
   h1 {
@@ -29,7 +28,9 @@ interface TemplateProps {
   data: {
     mdx: {
       body: string;
-      fileAbsolutePath: string;
+      parent: {
+        absolutePath: string;
+      }
       frontmatter: {
         title: string;
       };
@@ -41,12 +42,11 @@ interface TemplateProps {
   };
 }
 
-const Template = ({ data, pageContext }: TemplateProps) => {
+function PostTemplate({ data, scope, pageContext, children }: TemplateProps) {
   const { mdx: post } = data;
-  const { body } = post;
   const { title, image, excerpt } = post.frontmatter;
   const { next, previous } = pageContext;
-  const editUrl = `https://github.com/literat/literat/tree/master/src/${post.fileAbsolutePath.split('/src/')[1]}`;
+  const editUrl = `https://github.com/literat/literat/tree/master/src/${post.parent.absolutePath.split('/src/')[1]}`;
 
   return (
     <div>
@@ -57,7 +57,7 @@ const Template = ({ data, pageContext }: TemplateProps) => {
         {image?.publicURL && <HeroImage image={image} title={title} />}
         <PostMeta post={post} editUrl={editUrl} />
       </ContentHeaderStyles>
-      <MDXRenderer>{body}</MDXRenderer>
+      {children}
       <footer>
         <EditDialog editUrl={editUrl} />
         <ContentNav previous={previous} next={next} />
@@ -69,14 +69,17 @@ const Template = ({ data, pageContext }: TemplateProps) => {
 export const query = graphql`
   query ($pathSlug: String!) {
     mdx(fields: { path: { eq: $pathSlug } }) {
-      body
       fields {
         path
         readingTime {
           text
         }
       }
-      fileAbsolutePath
+      parent {
+        ... on File {
+          absolutePath
+        }
+      }
       frontmatter {
         title
         date
@@ -94,4 +97,4 @@ export const query = graphql`
   }
 `;
 
-export default Template;
+export default PostTemplate;
