@@ -1,5 +1,4 @@
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
 import { EditDialog } from '../components/Content/EditDialog';
@@ -43,9 +42,8 @@ interface TemplateProps {
   };
 }
 
-function PostTemplate({ data, pageContext, children }: TemplateProps) {
+function PostTemplate({ data, scope, pageContext, children }: TemplateProps) {
   const { mdx: post } = data;
-  const { body } = post;
   const { title, image, excerpt } = post.frontmatter;
   const { next, previous } = pageContext;
   const editUrl = `https://github.com/literat/literat/tree/master/src/${post.parent.absolutePath.split('/src/')[1]}`;
@@ -60,7 +58,6 @@ function PostTemplate({ data, pageContext, children }: TemplateProps) {
         <PostMeta post={post} editUrl={editUrl} />
       </ContentHeaderStyles>
       {children}
-      <MDXRenderer>{body}</MDXRenderer>
       <footer>
         <EditDialog editUrl={editUrl} />
         <ContentNav previous={previous} next={next} />
@@ -72,7 +69,6 @@ function PostTemplate({ data, pageContext, children }: TemplateProps) {
 export const query = graphql`
   query ($pathSlug: String!) {
     mdx(fields: { path: { eq: $pathSlug } }) {
-      body
       fields {
         path
         readingTime {
