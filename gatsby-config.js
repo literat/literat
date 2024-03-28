@@ -24,7 +24,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        root: __dirname,
         extensions: [`.md`, `.mdx`],
         mdxOptions: {
           remarkPlugins: [
