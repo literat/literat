@@ -28233,14 +28233,14 @@ __metadata:
   linkType: hard
 
 "tough-cookie@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "tough-cookie@npm:4.1.2"
+  version: 4.1.3
+  resolution: "tough-cookie@npm:4.1.3"
   dependencies:
     psl: "npm:^1.1.33"
     punycode: "npm:^2.1.1"
     universalify: "npm:^0.2.0"
     url-parse: "npm:^1.5.3"
-  checksum: 10/7c42b332ad1e89ed97e6c725618140eade6b104a006857b1605daed18f47bef2b0e9b5684025d1a50b879de5af3ed84eb602a571d308cec7c9514956cab93a77
+  checksum: 10/cf148c359b638a7069fc3ba9a5257bdc9616a6948a98736b92c3570b3f8401cf9237a42bf716878b656f372a1fb65b74dd13a46ccff8eceba14ffd053d33f72a
   languageName: node
   linkType: hard
 
