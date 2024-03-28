@@ -1,9 +1,8 @@
 import React from 'react';
-import H from './Headings';
-import T from './Tags';
-import InlineCode from './InlineCode';
 import Code from './Code';
+import H from './Headings';
 import Pre from './Pre';
+import T from './Tags';
 // import Text from './text';
 // import Blockquote from './blockquote';
 // import Table from './table';
@@ -18,9 +17,8 @@ export default {
   h6: (props) => <H as="h6" {...props} />,
   t: (props) => <T {...props} />,
   // p: props => <Text {...props} />,
-  pre: Pre,
   code: (props) => <Code {...props} />,
-  inlineCode: (props) => <InlineCode {...props} />,
+  pre: (props) => <Pre {...props} />,
   // table: Table,
   // blockquote: Blockquote,
   // TODO add `a`
