@@ -5195,7 +5195,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/mdx@npm:2.3.0, @mdx-js/mdx@npm:^2.3.0":
+"@mdx-js/mdx@npm:^2.3.0":
   version: 2.3.0
   resolution: "@mdx-js/mdx@npm:2.3.0"
   dependencies:
@@ -20311,7 +20311,6 @@ __metadata:
     "@commitlint/cli": "npm:19.3.0"
     "@commitlint/config-conventional": "npm:19.2.2"
     "@lmc-eu/prettier-config": "npm:2.0.0"
-    "@mdx-js/mdx": "npm:2.3.0"
     "@mdx-js/react": "npm:2.3.0"
     "@netlify/functions": "npm:^2.0.0"
     "@sparticuz/chromium": "npm:^123.0.1"
