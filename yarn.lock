@@ -4409,10 +4409,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@inquirer/figures@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@inquirer/figures@npm:1.0.0"
-  checksum: 10/585de80ff27afa0811b3f74e5d84ac30c06fcb21a6bdfd7ca8a86c47bea60dcff002f5fd6acfe9a41be9a59cf9a4fd51423781d84a87abe909898a0927d6a490
+"@inquirer/figures@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@inquirer/figures@npm:1.0.1"
+  checksum: 10/ed9f23ce881e7fe7042f5f1a630d7d0febe7cce0eadc6e2eeb10238d80c4a19d03c344e980cb2e199081823fbaad42b3e1fab46ef77d3ac68e0575fc7037067a
   languageName: node
   linkType: hard
 
@@ -11293,10 +11293,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.36.1":
-  version: 3.36.1
-  resolution: "core-js@npm:3.36.1"
-  checksum: 10/ce1e1bfc1034b6f2ff7c91077319e8abdd650ee606ffe6e80073e64ab9d8aad2d6a6d953461b01f331a6f796ad2fd766a3386b88aa371b45d44fa7c0b9913ce6
+"core-js@npm:3.37.0":
+  version: 3.37.0
+  resolution: "core-js@npm:3.37.0"
+  checksum: 10/97feac0b54b95d928bda6a6e611cf34963a265a5fe8ab46ed35bbc9d32a14221bf6bede5d6cd4b0c0f30e8440cf1eff0c4f0c242d719c561e5dd73d3b005d63c
   languageName: node
   linkType: hard
 
@@ -17789,11 +17789,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inquirer@npm:9.2.18":
-  version: 9.2.18
-  resolution: "inquirer@npm:9.2.18"
+"inquirer@npm:9.2.19":
+  version: 9.2.19
+  resolution: "inquirer@npm:9.2.19"
   dependencies:
-    "@inquirer/figures": "npm:^1.0.0"
+    "@inquirer/figures": "npm:^1.0.1"
     "@ljharb/through": "npm:^2.3.13"
     ansi-escapes: "npm:^4.3.2"
     chalk: "npm:^5.3.0"
@@ -17808,7 +17808,7 @@ __metadata:
     string-width: "npm:^4.2.3"
     strip-ansi: "npm:^6.0.1"
     wrap-ansi: "npm:^6.2.0"
-  checksum: 10/219ec5f860f0d70a0efe45f504821c7c789fc32fa53b9596027e11111b97f3ff6db49c876255f1a9f9d472176bc8145680b64e66beaa902ca69401e89a480035
+  checksum: 10/034fc65c583d61579cb8b86630a53a6a812279daf3cd004d090caf8583f5909e5ce192d230a24d0c4bff7c02adf3d1a4c5c36bf6fa16b117b0e6dca6d47a0972
   languageName: node
   linkType: hard
 
@@ -20064,7 +20064,7 @@ __metadata:
     babel-preset-gatsby: "npm:2.25.0"
     chalk: "npm:^5.0.1"
     chrome-aws-lambda: "npm:^10.1.0"
-    core-js: "npm:3.36.1"
+    core-js: "npm:3.37.0"
     eslint: "npm:8.57.0"
     eslint-config-airbnb: "npm:19.0.4"
     eslint-config-airbnb-typescript: "npm:18.0.0"
@@ -20092,7 +20092,7 @@ __metadata:
     gatsby-transformer-sharp: "npm:4.25.0"
     husky: "npm:9.0.11"
     identity-obj-proxy: "npm:3.0.0"
-    inquirer: "npm:9.2.18"
+    inquirer: "npm:9.2.19"
     is-ci: "npm:^3.0.1"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:^29.0.0"
