@@ -5431,12 +5431,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@netlify/functions@npm:^1.0.0":
-  version: 1.6.0
-  resolution: "@netlify/functions@npm:1.6.0"
+"@netlify/functions@npm:^2.0.0":
+  version: 2.6.0
+  resolution: "@netlify/functions@npm:2.6.0"
   dependencies:
-    is-promise: "npm:^4.0.0"
-  checksum: 10/ecff9a1161b2df94d139431e7a2b42d9790cf4ec250ad3aec57935cc1b1e78beccfe855c6e5522311baefce84b91ed690904aedf02b2511eaaafdc8f6daab75e
+    "@netlify/serverless-functions-api": "npm:1.14.0"
+  checksum: 10/77afb7ffb20ed4f7b732a82a4c32e59f447119d5557ce157566e4a9e8f8f5ca34666e68daf6e0d1cfbee7170756e6acaa6dad3fdb03e8165ed77c2a367271105
   languageName: node
   linkType: hard
 
@@ -5642,6 +5642,16 @@ __metadata:
   dependencies:
     execa: "npm:^6.0.0"
   checksum: 10/e94d6c04102b510c5d7cc24cb877927e7e19cce26a175802a60d1b3d90f0940c4d122e1d98c7786490e96e27e3513dedc37594a0518a71af148d27eaaa6f5e05
+  languageName: node
+  linkType: hard
+
+"@netlify/serverless-functions-api@npm:1.14.0":
+  version: 1.14.0
+  resolution: "@netlify/serverless-functions-api@npm:1.14.0"
+  dependencies:
+    "@netlify/node-cookies": "npm:^0.1.0"
+    urlpattern-polyfill: "npm:8.0.2"
+  checksum: 10/c25cc7e47d7797be441dd8274341bef1e703ca511d678938ee8daf92f1d5f71b9136bee1922804a14e0934ae219d8b475c06d1bea5202db8233001e0a7e1064e
   languageName: node
   linkType: hard
 
@@ -18801,13 +18811,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-promise@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "is-promise@npm:4.0.0"
-  checksum: 10/0b46517ad47b00b6358fd6553c83ec1f6ba9acd7ffb3d30a0bf519c5c69e7147c132430452351b8a9fc198f8dd6c4f76f8e6f5a7f100f8c77d57d9e0f4261a8a
-  languageName: node
-  linkType: hard
-
 "is-regex@npm:^1.1.4":
   version: 1.1.4
   resolution: "is-regex@npm:1.1.4"
@@ -20332,7 +20335,7 @@ __metadata:
     "@lmc-eu/prettier-config": "npm:2.0.0"
     "@mdx-js/mdx": "npm:1.6.22"
     "@mdx-js/react": "npm:1.6.22"
-    "@netlify/functions": "npm:^1.0.0"
+    "@netlify/functions": "npm:^2.0.0"
     "@sparticuz/chromium": "npm:^123.0.1"
     "@testing-library/jest-dom": "npm:6.4.2"
     "@testing-library/react": "npm:15.0.5"
