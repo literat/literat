@@ -37,4 +37,4 @@
   node_bundler = "esbuild"
 
 [functions.social-image]
-  external_node_modules = ["chrome-aws-lambda"]
+  external_node_modules = ["@sparticuz/chromium"]
