@@ -1,4 +1,6 @@
-const chrome = require('chrome-aws-lambda');
+// Switch to this, re: https://answers.netlify.com/t/netlify-function-with-puppeteer-breaks-if-i-make-any-changes/76924/8
+const chrome = require('@sparticuz/chromium');
+const puppeteer = require('puppeteer-core');
 const wait = require('waait');
 
 const cached = new Map();
@@ -6,27 +8,20 @@ const cached = new Map();
 const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 async function getOptions(isDev) {
-  return isDev
-    ? {
-        product: 'chrome',
-        args: [],
-        executablePath: exePath,
-        headless: true,
-      }
-    : {
-        product: 'chrome',
-        args: [
-          ...chrome.args,
-          '--disable-features=AudioServiceOutOfProcess',
-          '--disable-gpu',
-          '--disable-software-rasterize',
-          '--disable-extensions',
-          '--no-sandbox',
-          '--disabled-setupid-sandbox',
-        ],
-        executablePath: await chrome.executablePath,
-        headless: chrome.headless,
-      };
+  if (isDev) {
+    return {
+      product: 'chrome',
+      args: [],
+      executablePath: exePath,
+      headless: true,
+    };
+  }
+  return {
+    product: 'chrome',
+    args: chrome.args,
+    executablePath: await chrome.executablePath(),
+    headless: chrome.headless,
+  };
 }
 
 async function getScreenshot(url, isDev) {
@@ -37,7 +32,7 @@ async function getScreenshot(url, isDev) {
   }
 
   const options = await getOptions(isDev);
-  const browser = await chrome.puppeteer.launch(options);
+  const browser = await puppeteer.launch(options);
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1.5 });
   await page.goto(url);
