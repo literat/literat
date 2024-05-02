@@ -61,7 +61,7 @@ const Blog = ({ data }: BlogProps) => {
 
 export const query = graphql`
   query BLOG_POSTS {
-    allMdx(sort: {frontmatter: {date: DESC}}) {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
       edges {
         node {
           fields {

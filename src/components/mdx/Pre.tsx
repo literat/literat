@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 const Pre = styled.pre`
   margin-top: calc(2 * (1.68 * (10px + 0.2vw) + 0.2vw));

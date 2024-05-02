@@ -28,5 +28,11 @@ module.exports = {
         ...prettierConfig,
       },
     ],
+    'no-unused-vars': [
+      'error',
+      {
+        varsIgnorePattern: 'React',
+      },
+    ],
   },
 };

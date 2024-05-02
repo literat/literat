@@ -30,7 +30,7 @@ interface TemplateProps {
       body: string;
       parent: {
         absolutePath: string;
-      }
+      };
       frontmatter: {
         title: string;
       };
@@ -64,7 +64,7 @@ function PostTemplate({ data, scope, pageContext, children }: TemplateProps) {
       </footer>
     </div>
   );
-};
+}
 
 export const query = graphql`
   query ($pathSlug: String!) {
