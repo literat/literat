@@ -161,7 +161,7 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
-exports.onCreatePage = async ({ page, actions, loadNodeContent, ...rest }) => {
+exports.onCreatePage = async ({ page, actions /* loadNodeContent */ /* , ...rest */ }) => {
   const { createPage } = actions;
 
   if (page.path.match(/thumbnail/)) {

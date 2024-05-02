@@ -1,5 +1,6 @@
 // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/
 const gatsbyRemarkVSCode = require('gatsby-remark-vscode');
+
 const { remarkPlugin } = gatsbyRemarkVSCode;
 
 /**
