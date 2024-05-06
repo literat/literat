@@ -3788,10 +3788,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/unitless@npm:0.8.0":
-  version: 0.8.0
-  resolution: "@emotion/unitless@npm:0.8.0"
-  checksum: 10/176141117ed23c0eb6e53a054a69c63e17ae532ec4210907a20b2208f91771821835f1c63dd2ec63e30e22fcc984026d7f933773ee6526dd038e0850919fae7a
+"@emotion/unitless@npm:0.8.1":
+  version: 0.8.1
+  resolution: "@emotion/unitless@npm:0.8.1"
+  checksum: 10/918f73c46ac0b7161e3c341cc07d651ce87e31ab1695e74b12adb7da6bb98dfbff8c69cf68a4e40d9eb3d820ca055dc1267aeb3007927ce88f98b885bf729b63
   languageName: node
   linkType: hard
 
@@ -5524,11 +5524,11 @@ __metadata:
   linkType: hard
 
 "@netlify/functions@npm:^2.0.0":
-  version: 2.6.0
-  resolution: "@netlify/functions@npm:2.6.0"
+  version: 2.6.3
+  resolution: "@netlify/functions@npm:2.6.3"
   dependencies:
-    "@netlify/serverless-functions-api": "npm:1.14.0"
-  checksum: 10/77afb7ffb20ed4f7b732a82a4c32e59f447119d5557ce157566e4a9e8f8f5ca34666e68daf6e0d1cfbee7170756e6acaa6dad3fdb03e8165ed77c2a367271105
+    "@netlify/serverless-functions-api": "npm:1.18.0"
+  checksum: 10/6bb0387de85027beda6232232f6d152cd7b40e94eb7ca968d109520fcfbe9dc39e3eb3c18d29874b5ede7cb840e57f29e70966e8f2170d7286487b35c0721c34
   languageName: node
   linkType: hard
 
@@ -5737,17 +5737,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@netlify/serverless-functions-api@npm:1.14.0":
-  version: 1.14.0
-  resolution: "@netlify/serverless-functions-api@npm:1.14.0"
-  dependencies:
-    "@netlify/node-cookies": "npm:^0.1.0"
-    urlpattern-polyfill: "npm:8.0.2"
-  checksum: 10/c25cc7e47d7797be441dd8274341bef1e703ca511d678938ee8daf92f1d5f71b9136bee1922804a14e0934ae219d8b475c06d1bea5202db8233001e0a7e1064e
-  languageName: node
-  linkType: hard
-
-"@netlify/serverless-functions-api@npm:^1.18.0":
+"@netlify/serverless-functions-api@npm:1.18.0, @netlify/serverless-functions-api@npm:^1.18.0":
   version: 1.18.0
   resolution: "@netlify/serverless-functions-api@npm:1.18.0"
   dependencies:
@@ -6999,9 +6989,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:6.4.2":
-  version: 6.4.2
-  resolution: "@testing-library/jest-dom@npm:6.4.2"
+"@testing-library/jest-dom@npm:6.4.5":
+  version: 6.4.5
+  resolution: "@testing-library/jest-dom@npm:6.4.5"
   dependencies:
     "@adobe/css-tools": "npm:^4.3.2"
     "@babel/runtime": "npm:^7.9.2"
@@ -7009,7 +6999,7 @@ __metadata:
     chalk: "npm:^3.0.0"
     css.escape: "npm:^1.5.1"
     dom-accessibility-api: "npm:^0.6.3"
-    lodash: "npm:^4.17.15"
+    lodash: "npm:^4.17.21"
     redent: "npm:^3.0.0"
   peerDependencies:
     "@jest/globals": ">= 28"
@@ -7028,21 +7018,25 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: 10/7ee1e51caffad032734a4a43a00bf72d49080cf1bbf53021b443e91c7fa3762a66f55ce68f1c6643590fe66fbc4df92142659b8cf17c92166a3fb22691987e0d
+  checksum: 10/6d9e6cc01ec9111ea631657d93596fa9505d294fdfc4172fbd750b8df6268f02d55900626423b195dac5b067a302557453894a5814bdf4e770dee37cdb1c0f2d
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:15.0.5":
-  version: 15.0.5
-  resolution: "@testing-library/react@npm:15.0.5"
+"@testing-library/react@npm:15.0.6":
+  version: 15.0.6
+  resolution: "@testing-library/react@npm:15.0.6"
   dependencies:
     "@babel/runtime": "npm:^7.12.5"
     "@testing-library/dom": "npm:^10.0.0"
     "@types/react-dom": "npm:^18.0.0"
   peerDependencies:
+    "@types/react": ^18.0.0
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10/27b938ddcdd6b4a98d4564460899f36ae3f69ad749e25389424c1c1d0adf40adeb1387dd29303c0f83b33e2f7ce7133253e0491c4b22af8cb340f631901dbe62
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10/04f63fc8e1d32ca9ce387df87abbdbe1d1e8bd7343d305a3d4662e60133453a4a39f5b0e1653efbfe9516750ca559c27a9ace4740f4c3e24a49270acaf93084d
   languageName: node
   linkType: hard
 
@@ -7574,12 +7568,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.12.7":
-  version: 20.12.7
-  resolution: "@types/node@npm:20.12.7"
+"@types/node@npm:20.12.8":
+  version: 20.12.8
+  resolution: "@types/node@npm:20.12.8"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/b4a28a3b593a9bdca5650880b6a9acef46911d58cf7cfa57268f048e9a7157a7c3196421b96cea576850ddb732e3b54bc982c8eb5e1e5ef0635d4424c2fce801
+  checksum: 10/1feab4c8cb08588eea10811ed4d02485a5cde47fdf92e7b3193fc9f8ee39ea556f6e3124dc6d5378354466ed5f7e5fbe5e20f625908de40ea37560368a50f72c
   languageName: node
   linkType: hard
 
@@ -9779,9 +9773,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-gatsby@npm:3.13.1, babel-preset-gatsby@npm:^3.13.1":
-  version: 3.13.1
-  resolution: "babel-preset-gatsby@npm:3.13.1"
+"babel-preset-gatsby@npm:3.13.2, babel-preset-gatsby@npm:^3.13.2":
+  version: 3.13.2
+  resolution: "babel-preset-gatsby@npm:3.13.2"
   dependencies:
     "@babel/plugin-proposal-class-properties": "npm:^7.18.6"
     "@babel/plugin-proposal-nullish-coalescing-operator": "npm:^7.18.6"
@@ -9797,11 +9791,11 @@ __metadata:
     babel-plugin-macros: "npm:^3.1.0"
     babel-plugin-transform-react-remove-prop-types: "npm:^0.4.24"
     gatsby-core-utils: "npm:^4.13.1"
-    gatsby-legacy-polyfills: "npm:^3.13.0"
+    gatsby-legacy-polyfills: "npm:^3.13.1"
   peerDependencies:
     "@babel/core": ^7.11.6
     core-js: ^3.0.0
-  checksum: 10/051e9b2eb25cdc64ffaa2d750633e296cf36e858ca08b350d45d61b8b07cfcbd9b4d12bf418ed251857b7b737b6fd9c4ae56af11030808f8aa9ddedd371be120
+  checksum: 10/6bae256a8deddbd3dda464d9f947a0f6a2365f3f10c8b270333ba12f3ed31ad76f086c5ed104d5e502c24af258d62fa5f69f12344de62602effed4ae9dae3048
   languageName: node
   linkType: hard
 
@@ -15730,9 +15724,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-cli@npm:^5.13.2":
-  version: 5.13.2
-  resolution: "gatsby-cli@npm:5.13.2"
+"gatsby-cli@npm:^5.13.3":
+  version: 5.13.3
+  resolution: "gatsby-cli@npm:5.13.3"
   dependencies:
     "@babel/code-frame": "npm:^7.18.6"
     "@babel/core": "npm:^7.20.12"
@@ -15777,7 +15771,7 @@ __metadata:
     yurnalist: "npm:^2.1.0"
   bin:
     gatsby: cli.js
-  checksum: 10/9ee5244acb9df9c76b3199e4afb9bfd6519e0eca69296aad7de3e39ed8e08ddc6384121e520c1fa323dd3ebfb70e1ce8586fd43fc6995eaa8722705ca00572bd
+  checksum: 10/e9a79ab661e006d8683f2943de21d6f6a36333e22844c87e24a809e91fd2d0f7dedcb813bd27f45222467c0266922ef9ad43e2599a3654170b32a52aee6a3d33
   languageName: node
   linkType: hard
 
@@ -15836,13 +15830,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-legacy-polyfills@npm:^3.13.0":
-  version: 3.13.0
-  resolution: "gatsby-legacy-polyfills@npm:3.13.0"
+"gatsby-legacy-polyfills@npm:^3.13.1":
+  version: 3.13.1
+  resolution: "gatsby-legacy-polyfills@npm:3.13.1"
   dependencies:
     "@babel/runtime": "npm:^7.20.13"
     core-js-compat: "npm:3.31.0"
-  checksum: 10/ea82fee10cffb90765b43f86231dbf7c697b266058837f543fa543c61c96cf26b24c89393063cd47f18e2e4507d03271e56e8c2b680faea5ac88dac4ee1c9990
+  checksum: 10/54c62dbb3c732b54627da1c4a08d93c8f9158c95baf53b6e9cd343ad886e3af33c787bf47901f168d40f1ede83dbffd19ebf04efbcf3274f9bb339773eb2e643
   languageName: node
   linkType: hard
 
@@ -16276,9 +16270,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:5.13.3":
-  version: 5.13.3
-  resolution: "gatsby@npm:5.13.3"
+"gatsby@npm:5.13.4":
+  version: 5.13.4
+  resolution: "gatsby@npm:5.13.4"
   dependencies:
     "@babel/code-frame": "npm:^7.18.6"
     "@babel/core": "npm:^7.20.12"
@@ -16319,7 +16313,7 @@ __metadata:
     babel-plugin-add-module-exports: "npm:^1.0.4"
     babel-plugin-dynamic-import-node: "npm:^2.3.3"
     babel-plugin-remove-graphql-queries: "npm:^5.13.1"
-    babel-preset-gatsby: "npm:^3.13.1"
+    babel-preset-gatsby: "npm:^3.13.2"
     better-opn: "npm:^2.1.1"
     bluebird: "npm:^3.7.2"
     body-parser: "npm:1.20.1"
@@ -16361,10 +16355,10 @@ __metadata:
     find-cache-dir: "npm:^3.3.2"
     fs-exists-cached: "npm:1.0.0"
     fs-extra: "npm:^11.1.1"
-    gatsby-cli: "npm:^5.13.2"
+    gatsby-cli: "npm:^5.13.3"
     gatsby-core-utils: "npm:^4.13.1"
     gatsby-graphiql-explorer: "npm:^3.13.1"
-    gatsby-legacy-polyfills: "npm:^3.13.0"
+    gatsby-legacy-polyfills: "npm:^3.13.1"
     gatsby-link: "npm:^5.13.1"
     gatsby-page-utils: "npm:^3.13.1"
     gatsby-parcel-config: "npm:1.13.1"
@@ -16456,7 +16450,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: 10/8858fa79a80a32ac15b12e2a5a123be5154b030450d090538dfe6ccb3f55cfad7f1da97a6c3cb81449e4def63f9a3773431847f19bd648e85d542e01a308abe5
+  checksum: 10/8e12addb95b091a1de77a2a95155db49c4bce4294b55cc7988b36e0587eec3457de2e7d05593a13ec41aa447a41cd8b1f89e2a1d6654940955eceedc4970544e
   languageName: node
   linkType: hard
 
@@ -20314,18 +20308,18 @@ __metadata:
     "@mdx-js/react": "npm:2.3.0"
     "@netlify/functions": "npm:^2.0.0"
     "@sparticuz/chromium": "npm:^123.0.1"
-    "@testing-library/jest-dom": "npm:6.4.2"
-    "@testing-library/react": "npm:15.0.5"
+    "@testing-library/jest-dom": "npm:6.4.5"
+    "@testing-library/react": "npm:15.0.6"
     "@types/inquirer": "npm:9.0.7"
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.12.7"
+    "@types/node": "npm:20.12.8"
     "@types/react": "npm:18.3.1"
     "@types/react-dom": "npm:18.3.0"
     "@types/styled-components": "npm:5.1.34"
     "@typescript-eslint/eslint-plugin": "npm:7.8.0"
     "@typescript-eslint/parser": "npm:7.8.0"
     babel-jest: "npm:29.7.0"
-    babel-preset-gatsby: "npm:3.13.1"
+    babel-preset-gatsby: "npm:3.13.2"
     chalk: "npm:^5.0.1"
     core-js: "npm:3.37.0"
     eslint: "npm:8.57.0"
@@ -20341,7 +20335,7 @@ __metadata:
     eslint-plugin-react: "npm:7.34.1"
     eslint-plugin-react-hooks: "npm:4.6.2"
     fs-extra: "npm:11.2.0"
-    gatsby: "npm:5.13.3"
+    gatsby: "npm:5.13.4"
     gatsby-plugin-image: "npm:3.13.1"
     gatsby-plugin-mdx: "npm:5.13.1"
     gatsby-plugin-netlify: "npm:5.1.1"
@@ -20369,10 +20363,10 @@ __metadata:
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     react-helmet: "npm:6.1.0"
-    react-icons: "npm:5.1.0"
+    react-icons: "npm:5.2.0"
     react-is: "npm:18.3.1"
     slugify: "npm:1.6.6"
-    styled-components: "npm:6.1.8"
+    styled-components: "npm:6.1.9"
     typescript: "npm:5.4.5"
     vscode-styled-components: ./vendor_modules/vscode-styled-components
     waait: "npm:^1.0.5"
@@ -25984,12 +25978,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:5.1.0":
-  version: 5.1.0
-  resolution: "react-icons@npm:5.1.0"
+"react-icons@npm:5.2.0":
+  version: 5.2.0
+  resolution: "react-icons@npm:5.2.0"
   peerDependencies:
     react: "*"
-  checksum: 10/00f75809b1846a6cfb48e3d64ddc5e931a1fa74aa429cd594dc4a70223a5702deff62638b02c727c0aeb83120a8875d8034b380601c61a4d803a9227387bac22
+  checksum: 10/708c827dba6b10a27340792b4a1b51a6c9cd2aca2cf201207922fd64182bc93ccbf4cfebeb1e5e490da27a1d365772dcc4d51b1beab53db5a5385ce5ed1a278f
   languageName: node
   linkType: hard
 
@@ -28327,12 +28321,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:6.1.8":
-  version: 6.1.8
-  resolution: "styled-components@npm:6.1.8"
+"styled-components@npm:6.1.9":
+  version: 6.1.9
+  resolution: "styled-components@npm:6.1.9"
   dependencies:
     "@emotion/is-prop-valid": "npm:1.2.1"
-    "@emotion/unitless": "npm:0.8.0"
+    "@emotion/unitless": "npm:0.8.1"
     "@types/stylis": "npm:4.2.0"
     css-to-react-native: "npm:3.2.0"
     csstype: "npm:3.1.2"
@@ -28343,7 +28337,7 @@ __metadata:
   peerDependencies:
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-  checksum: 10/f8fd00556d15940c8276bf05f618fc28a593a2244bf97a2ceb7797325eac78cb8c00ec780811d8d1024edb011a21e9575796b6d7e638cd91c062ddd8d0c4f8a8
+  checksum: 10/e9da0c226753008856f4c533a84471361747c8a13377f05893850651ad5a2c626135d36cf0fa41b23d20f0f288d0de651d7d533829bce353fdd2c9b263748ef6
   languageName: node
   linkType: hard
 
