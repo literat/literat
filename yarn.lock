@@ -636,7 +636,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.0.0, @babel/helper-module-imports@npm:^7.24.1, @babel/helper-module-imports@npm:^7.24.3":
+"@babel/helper-module-imports@npm:^7.0.0, @babel/helper-module-imports@npm:^7.22.5, @babel/helper-module-imports@npm:^7.24.1, @babel/helper-module-imports@npm:^7.24.3":
   version: 7.24.3
   resolution: "@babel/helper-module-imports@npm:7.24.3"
   dependencies:
@@ -1449,7 +1449,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-jsx@npm:^7.24.1":
+"@babel/plugin-syntax-jsx@npm:^7.22.5, @babel/plugin-syntax-jsx@npm:^7.24.1":
   version: 7.24.1
   resolution: "@babel/plugin-syntax-jsx@npm:7.24.1"
   dependencies:
@@ -9700,6 +9700,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-styled-components@npm:^2.1.4":
+  version: 2.1.4
+  resolution: "babel-plugin-styled-components@npm:2.1.4"
+  dependencies:
+    "@babel/helper-annotate-as-pure": "npm:^7.22.5"
+    "@babel/helper-module-imports": "npm:^7.22.5"
+    "@babel/plugin-syntax-jsx": "npm:^7.22.5"
+    lodash: "npm:^4.17.21"
+    picomatch: "npm:^2.3.1"
+  peerDependencies:
+    styled-components: ">= 2"
+  checksum: 10/34f10dd4d44cf1c8605097dd4796e2d1443266ebc686f10a9f56b5d1492b5c3de9c13d7e30b075756610adf592ed807cc8145189d00b4454f6af9879a19a5e0b
+  languageName: node
+  linkType: hard
+
 "babel-plugin-syntax-trailing-function-commas@npm:^7.0.0-beta.0":
   version: 7.0.0-beta.0
   resolution: "babel-plugin-syntax-trailing-function-commas@npm:7.0.0-beta.0"
@@ -16032,6 +16047,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-styled-components@npm:^6.13.1":
+  version: 6.13.1
+  resolution: "gatsby-plugin-styled-components@npm:6.13.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.20.13"
+  peerDependencies:
+    babel-plugin-styled-components: ">1.5.0"
+    gatsby: ^5.0.0-next
+    react: ^18.0.0 || ^0.0.0
+    react-dom: ^18.0.0 || ^0.0.0
+    styled-components: ">=2.0.0"
+  checksum: 10/ba3ca472b99050da1e28267142bc73063a43f9caf034de0136133639cd39a0bf935b2dbf6f83f53fe4dc8f5761be61c50e0b2ee2a0ba3c6292af2f1af3204410
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-typescript@npm:^5.13.1":
   version: 5.13.1
   resolution: "gatsby-plugin-typescript@npm:5.13.1"
@@ -20319,6 +20349,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:7.8.0"
     "@typescript-eslint/parser": "npm:7.8.0"
     babel-jest: "npm:29.7.0"
+    babel-plugin-styled-components: "npm:^2.1.4"
     babel-preset-gatsby: "npm:3.13.2"
     chalk: "npm:^5.0.1"
     core-js: "npm:3.37.0"
@@ -20341,6 +20372,7 @@ __metadata:
     gatsby-plugin-netlify: "npm:5.1.1"
     gatsby-plugin-react-helmet: "npm:^6.0.0"
     gatsby-plugin-sharp: "npm:5.13.1"
+    gatsby-plugin-styled-components: "npm:^6.13.1"
     gatsby-remark-copy-linked-files: "npm:6.13.1"
     gatsby-remark-images: "npm:7.13.1"
     gatsby-remark-reading-time: "npm:1.1.0"
