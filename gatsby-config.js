@@ -16,8 +16,9 @@ module.exports = {
   },
   trailingSlash: 'always',
   plugins: [
-    `gatsby-plugin-netlify`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-netlify`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     // `gatsby-remark-reading-time`,
