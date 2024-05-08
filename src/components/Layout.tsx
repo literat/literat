@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import Fonts from './Fonts';
 import Footer from './Footer';
 import Header from './Header';
-import Nav from './Navigation/Nav';
+import Menu from './Menu';
 import mdxComponents from './mdx';
 import ContainerStyles from './styles/ContainerStyles';
 import ContentStyles from './styles/ContentStyles';
@@ -31,7 +31,7 @@ const Layout = ({ title, pageContext, children }: LayoutProps) =>
       </Helmet>
       <ContainerStyles>
         <Header />
-        <Nav />
+        <Menu />
         <MDXProvider components={mdxComponents}>
           <ContentStyles className={pageContext.layoutClasses}>{children}</ContentStyles>
         </MDXProvider>

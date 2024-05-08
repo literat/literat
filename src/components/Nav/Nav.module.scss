@@ -1,0 +1,149 @@
+.Nav {
+  --rotate: -2deg;
+  --scaleX: 1;
+  --transform: skew(-20deg) rotate(var(--rotate)) scaleX(var(--scaleX));
+
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+
+  &:before {
+    height: 8px;
+    content: '';
+    width: 100%;
+    background: var(--dark);
+    bottom: -2px;
+    z-index: -1;
+    transition: transform 0.1s;
+    transform: var(--transform);
+  }
+
+  &:after {
+    height: 8px;
+    content: '';
+    width: 100%;
+    background: var(--dark);
+    bottom: -2px;
+    z-index: -1;
+    transition: transform 0.1s;
+    transform: var(--transform);
+  }
+}
+
+.NavList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 3rem 2rem 2rem 2rem;
+  transform: skew(-20deg) rotate(-2deg) scaleX(1);
+
+  @media (max-width: 550px) {
+    transform: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+.NavItem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  align-content: center;
+  grid-gap: 2rem;
+  margin: 1rem;
+  transform: skew(20deg) rotate(2deg) scaleX(1);
+
+  &:after {
+    content: '⧹';
+    display: block;
+    color: var(--dark);
+    font-size: 3.8rem;
+    font-family: var(--font-overpass);
+  }
+  &:last-child:after {
+    display: none;
+  }
+
+  a {
+    font-family: var(--font-overpass);
+    font-size: 3.6rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 900;
+    transform: none;
+
+    &:before {
+      background: none;
+      transform: none;
+    }
+  }
+
+  span {
+    &:before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 550px) {
+    transform: none;
+    grid-template-columns: 1fr;
+    margin: 0;
+    text-align: center;
+
+    /* This gets rid of the backslash */
+    &:after {
+      display: none;
+    }
+    a {
+      &:before {
+        display: none;
+      }
+    }
+
+    & > a,
+    span {
+      transform: scale(1);
+      font-size: 2.2rem;
+    }
+
+    small.top,
+    small.bottom {
+      display: none;
+    }
+
+    span.grit {
+      padding: 0;
+    }
+  }
+}
+
+.NavItemScaleDown {
+  margin: 0;
+
+  & > a,
+  span {
+    transform: scale(0.65);
+  }
+
+  small.top,
+  small.bottom {
+    display: none;
+  }
+
+  @media (max-width: 550px) {
+    & > a,
+    span {
+      transform: scale(1);
+      font-size: 2.2rem;
+    }
+
+    small.top,
+    small.bottom {
+      display: none;
+    }
+  }
+}
