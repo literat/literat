@@ -42,6 +42,7 @@
     "@sparticuz/chromium": "^123.0.1",
     "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "5.13.4",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "3.13.1",
     "gatsby-plugin-mdx": "5.13.1",
     "gatsby-plugin-netlify": "5.1.1",

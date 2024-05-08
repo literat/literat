@@ -3188,6 +3188,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.2.0":
+  version: 7.24.5
+  resolution: "@babel/runtime@npm:7.24.5"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10/e0f4f4d4503f7338749d1dd92361ad132d683bde64e6b61d6c855e100dcd01592295fcfdcc960c946b85ef7908dc2f501080da58447c05812cf3cd80c599bb62
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.20.13":
   version: 7.21.0
   resolution: "@babel/runtime@npm:7.21.0"
@@ -15908,6 +15917,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-alias-imports@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "gatsby-plugin-alias-imports@npm:1.0.5"
+  dependencies:
+    "@babel/runtime": "npm:^7.2.0"
+  peerDependencies:
+    gatsby: ">2.0.0"
+  checksum: 10/acf5c1b3fb9502d8f931fceb5502827480ede2a04b97950282b9c4eea1c3a0e72e251fb38a39ed92a7ea7f3e8ac9043e51bad2a9c5508d202cb66ceb1975eb42
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-image@npm:3.13.1":
   version: 3.13.1
   resolution: "gatsby-plugin-image@npm:3.13.1"
@@ -20367,6 +20387,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:4.6.2"
     fs-extra: "npm:11.2.0"
     gatsby: "npm:5.13.4"
+    gatsby-plugin-alias-imports: "npm:^1.0.5"
     gatsby-plugin-image: "npm:3.13.1"
     gatsby-plugin-mdx: "npm:5.13.1"
     gatsby-plugin-netlify: "npm:5.1.1"

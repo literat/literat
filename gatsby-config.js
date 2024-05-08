@@ -80,5 +80,14 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          '@': 'src',
+        },
+        extensions: ['ts', 'tsx'],
+      },
+    },
   ],
 };
