@@ -1,15 +1,15 @@
-import React, { ReactNode } from 'react';
 import { MDXProvider } from '@mdx-js/react';
-import { Helmet } from 'react-helmet';
 import 'normalize.css';
-import mdxComponents from './mdx';
-import ContentStyles from './styles/ContentStyles';
-import ContainerStyles from './styles/ContainerStyles';
-import GlobalStyles from './styles/GlobalStyles';
+import React, { ReactNode } from 'react';
+import { Helmet } from 'react-helmet';
 import Fonts from './Fonts';
-import Header from './Header';
-import Nav from './Nav';
 import Footer from './Footer';
+import Header from './Header';
+import Nav from './Navigation/Nav';
+import mdxComponents from './mdx';
+import ContainerStyles from './styles/ContainerStyles';
+import ContentStyles from './styles/ContentStyles';
+import GlobalStyles from './styles/GlobalStyles';
 
 interface LayoutProps {
   title: string;
