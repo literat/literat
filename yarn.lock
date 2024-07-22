@@ -6944,13 +6944,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sparticuz/chromium@npm:^123.0.1":
-  version: 123.0.1
-  resolution: "@sparticuz/chromium@npm:123.0.1"
+"@sparticuz/chromium@npm:^126.0.0":
+  version: 126.0.0
+  resolution: "@sparticuz/chromium@npm:126.0.0"
   dependencies:
     follow-redirects: "npm:^1.15.6"
-    tar-fs: "npm:^3.0.5"
-  checksum: 10/5991aee6d954dcfdc68245d1aa80e5ebb48106bdda73edeafc0f36ea689d163c59cc3d7d637813bd3726db9214b9b5532ee61ffa308201a935d2ea9ede0d02ce
+    tar-fs: "npm:^3.0.6"
+  checksum: 10/99fdb1480af62ff3617dc868f9d3c93474a41621b06efcf25650d039c79fabb1097dacc3266f77e76984518b28296999bd33e551737b5a980b01de998d27df5e
   languageName: node
   linkType: hard
 
@@ -20423,7 +20423,7 @@ __metadata:
     "@lmc-eu/prettier-config": "npm:2.0.0"
     "@mdx-js/react": "npm:2.3.0"
     "@netlify/functions": "npm:^2.0.0"
-    "@sparticuz/chromium": "npm:^123.0.1"
+    "@sparticuz/chromium": "npm:^126.0.0"
     "@testing-library/jest-dom": "npm:6.4.5"
     "@testing-library/react": "npm:15.0.7"
     "@types/inquirer": "npm:9.0.7"
@@ -28807,7 +28807,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar-fs@npm:^3.0.5":
+"tar-fs@npm:^3.0.6":
   version: 3.0.6
   resolution: "tar-fs@npm:3.0.6"
   dependencies:
