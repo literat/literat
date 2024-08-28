@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/literat/literat/badge.svg)](https://coveralls.io/github/literat/literat)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ceadb496-c024-48f6-97e6-88a2ecb65874/deploy-status)](https://app.netlify.com/sites/literat/deploys)
 
-1. **Start developing.**
+1. Start developing.
 
    Navigate into your new site’s directory and start it up.
 
@@ -12,7 +12,7 @@
    gatsby develop
    ```
 
-1. **Open the source code and start editing!**
+2. Open the source code and start editing!
 
    Your site is now running at `http://localhost:8000`!
 
@@ -24,6 +24,7 @@
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
+```bash
     .
     ├── node_modules
     ├── src
@@ -37,6 +38,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     ├── package-lock.json
     ├── package.json
     └── README.md
+```
 
 1. **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
 

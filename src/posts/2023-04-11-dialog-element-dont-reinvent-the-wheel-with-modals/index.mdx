@@ -255,7 +255,7 @@ Or you can break down the entire implementation into hooks and the Dialog compon
 
 ## What to take away from this
 
-**Advantages:**
+### Advantages
 
 - Minimal JavaScript is needed.
 - Accessibility is almost solved [except for a few problems with autofocus](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html).
@@ -263,13 +263,13 @@ Or you can break down the entire implementation into hooks and the Dialog compon
 - The form attribute `method="dialog"` exposes form values and buttons when used in a dialog.
 - Pressing the `Escape` key automatically closes the dialog.
 
-**Disadvantages:**
+### Disadvantages
 
 - More advanced functionality requires more JavaScript, but not that much more ;-)
 - Clicking on the backdrop does not close the dialog automatically, so a little bit of JavaScript is needed.
 - Some minor accessibility issues, see [autofocus](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html).
 
-**Accessibility**
+### Accessibility
 
 As shown in the following table, the dialog element can already be used in the vast majority of browsers, and work is underway on [solutions to some of the remaining issues](https://github.com/whatwg/html/commit/a9f103c9f7bd09ef712990194638c75db1f50e3c).
 
