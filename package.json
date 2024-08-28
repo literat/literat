@@ -25,10 +25,12 @@
     "test:unit:local": "yarn test:unit:coverage --maxWorkers=3",
     "test:unit:watch": "yarn test:unit:jest --watch",
     "test:unit:coverage": "yarn test:unit:jest --coverage",
-    "lint": "eslint ./",
-    "lint:fix": "yarn lint --fix",
+    "lint": "npm-run-all --serial lint:scripts lint:markdown",
+    "lint:scripts": "eslint ./",
+    "lint:scripts:fix": "yarn lint:scripts --fix",
     "lint:commit": "yarn commitlint --from $(git describe --always --first-parent) --verbose",
     "lint:commit:last": "yarn commitlint --from HEAD~1 --to HEAD --verbose",
+    "lint:markdown": "remark ./ --quiet",
     "format": "yarn format:check",
     "format:check": "prettier --check ./",
     "format:fix": "prettier --write ./",
@@ -74,6 +76,7 @@
     "waait": "^1.0.5"
   },
   "devDependencies": {
+    "@almacareer/remark-config": "^0.1.0",
     "@babel/core": "7.24.5",
     "@babel/eslint-parser": "7.24.5",
     "@babel/preset-env": "7.24.5",
@@ -118,7 +121,9 @@
     "netlify-cli": "17.23.2",
     "npm-run-all2": "6.1.2",
     "prettier": "3.2.5",
-    "puppeteer": "^10.1.0"
+    "puppeteer": "^10.1.0",
+    "remark-cli": "^12.0.1",
+    "remark-frontmatter": "^5.0.0"
   },
   "packageManager": "yarn@4.2.2"
 }
