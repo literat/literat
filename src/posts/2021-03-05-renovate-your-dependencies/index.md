@@ -13,7 +13,7 @@ One day I notice in my Inbox a commit and pull-request from one of my GitHub rep
 It was something new because it was from a machine known as [Dependabot][dependabot] and the entire issue was about updating
 known security vulnerability. "Hey, that's so cool! I want this on any of my active projects!"
 
-![security alert](./github-dependabot.png 'Securit alert from dependabot')
+![security alert](./github-dependabot.png 'Security alert from dependabot')
 
 By that time we had [security checks](https://github.com/FriendsOfPHP/security-advisories) in [LMC][lmc] for [Symfony framework][symfony]. But they only reported into the Slack channel
 when some new vulnerability appears. The next step had to be taken by a human. You know, creating of issue, new branch
