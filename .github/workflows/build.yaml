@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+  schedule:
+    - cron: '0 9 * * *' # every day at 9:00
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    env:
+      HUSKY: 0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-install
+
+      - name: Build
+        run: yarn build
