@@ -151,44 +151,50 @@ Install GUI applications (read more about these in GUI Applications):
 ```bash
 brew install --cask \
   1password \
+  1password-cli \
+  dbgate \
+  docker \
+  figma \
+  font-hack-nerd-font \
+  iterm2 \
+  karabiner-elements \
+  maccy \
+  meld \
+  numi \
+  orbstack \
+  postman \
+  raycast \
+  spotify \
+  visual-studio-code \
+  warp \
+
+  @TODO: not handled by brewfile
   google-chrome  \
   firefox \
   brave-browser \
-  iterm2 \
-  visual-studio-code \
-  docker \
-  orbstack \
   slack \
   vlc \
-  figma \
-  maccy \
-  raycast \
-  karabiner-elements \
-  meld \
-  spotify \
-  postman \
-  numi \
-  dbgate \
   f.lux
 ```
 
 Install terminal applications (read more about these in Terminal Applications):
 
+@TODO: also handled by the brewfile
 ```bash
 brew install \
-  wget \
+  coreutils \
   git \
+  gnupg \
+  htop \
+  jq \
+  mc \
   node \
   nvm \
-  yarn \
   pnpm \
-  mc \
-  tig \
-  gnupg \
   thefuck \
-  htop \
-  coreutils \
-  jq
+  tig \
+  wget \
+  yarn \
 ```
 
 Setup Midnight Commander Solarized Appearance
@@ -357,6 +363,7 @@ source ~/.zshrc
 Install [powerline fonts](https://gist.github.com/shaykalyan/cd276a7d812dd393caf1).
 As font we will be using Hack Nerd Font in iTerm2, VS Code, and Sublime Text. Install it via:
 
+@TODO: installed by brewfile
 ```bash
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
