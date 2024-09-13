@@ -16,21 +16,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: Set up Node
-        uses: actions/setup-node@v2
-        with:
-          node-version-file: '.nvmrc'
-
-      - name: Fetch Git history
-        run: git fetch --no-tags --depth=50 origin main
-
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-        with:
-          install-command: yarn --immutable
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-install
 
       - name: Lint
         run: yarn lint
