@@ -105,7 +105,7 @@ image: jonathan-kemper-mac-unsplash.jpg
 
 Override more system preferences from the terminal ...
 
-```
+```bash
 # take screenshots as jpg (usually smaller size) and not png
 defaults write com.apple.screencapture type jpg
 
@@ -135,20 +135,20 @@ If files from previous machine are needed, transfer via external drive instead o
 
 Install [Homebrew](https://brew.sh/) as package manager for macOS:
 
-```
+```bash
 # paste in terminal and follow the instructions
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 Update everything in Homebrew to recent version:
 
-```
+```bash
 brew update
 ```
 
 Install GUI applications (read more about these in GUI Applications):
 
-```
+```bash
 brew install --cask \
   1password \
   google-chrome  \
@@ -174,7 +174,7 @@ brew install --cask \
 
 Install terminal applications (read more about these in Terminal Applications):
 
-```
+```bash
 brew install \
   wget \
   git \
@@ -272,7 +272,7 @@ The look and feel we want to achieve from our Dock:
 
 ![Dock Look](./dock.png 'Dock Look')
 
-```
+```bash
 # https://www.facebook.com/SUPERKODERS/posts/pfbid031VxSTroikATWz4yKTC2tZ3ggDQj8XpTiLxCL3cmXqMKTc6Cw2PGv7bsUggML23cml
 
 defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'; killall Dock
@@ -336,19 +336,19 @@ The look and feel we want to achieve from our terminal:
 When you open iTerm2, you see that MacOS already comes with zsh as default shell.
 Install [Oh My Zsh](https://ohmyz.sh/) for an improved (plugins, themes, ...) terminal (here: iTerm2) experience:
 
-```
+```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 Update everything (e.g. plugins) in Oh My Zsh to recent version:
 
-```
+```bash
 omz update
 ```
 
 Important: If you change something in your Zsh configuration (.zshrc), force a reload:
 
-```
+```bash
 source ~/.zshrc
 ```
 
@@ -357,7 +357,7 @@ source ~/.zshrc
 Install [powerline fonts](https://gist.github.com/shaykalyan/cd276a7d812dd393caf1).
 As font we will be using Hack Nerd Font in iTerm2, VS Code, and Sublime Text. Install it via:
 
-```
+```bash
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 ```
@@ -368,7 +368,7 @@ If the theme and font changes do not apply, reload your zsh configuration (.zshr
 
 Install and configure [powerleven10k](https://github.com/romkatv/powerlevel10k)
 
-```
+```bash
 p10k configure
 ```
 
@@ -414,32 +414,32 @@ with [VSCode Setting Gist](https://gist.github.com/literat/afcb5950f82a6ac8e3fc8
 
 From terminal, set global name and email:
 
-```
+```bash
 git config --global user.name "Your Name"
 git config --global user.email "you@your-domain.com"
 ```
 
 Improved git log:
 
-```
+```bash
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
 
 Now use:
 
-```
+```bash
 git lg
 ```
 
 Set the default branch to main instead of master:
 
-```
+```bash
 git config --global init.defaultBranch main
 ```
 
 Print global git configuration:
 
-```
+```bash
 git config --list
 # or alias
 # gitconfig
@@ -468,7 +468,7 @@ In the case of GitHub, you are now able to interact with GitHub via SSH.
 The [node version manager (NVM)](https://github.com/nvm-sh/nvm) is used to install and manage multiple Node versions.
 After you have installed it via Homebrew in a previous step, type the following commands to complete the installation:
 
-```
+```bash
 echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.zshrc
 
 source ~/.zshrc
@@ -478,25 +478,25 @@ source ~/.zshrc
 
 Now install the latest LTS version on the command line:
 
-```
+```bash
 nvm install <latest LTS version from https://nodejs.org/en/>
 ```
 
 Afterward, check whether the installation was successful and whether the [node package manager (npm)](https://www.npmjs.com/) got installed along the way:
 
-```
+```bash
 node -v && npm -v
 ```
 
 Update npm to its latest version:
 
-```
+```bash
 npm install -g npm@latest
 ```
 
 And set defaults for npm:
 
-```
+```bash
 npm set init-author-name "your name"
 npm set init-author-email "you@example.com"
 npm set init-author-url "example.com"
@@ -504,19 +504,19 @@ npm set init-author-url "example.com"
 
 If you are a library author, log in to npm too:
 
-```
+```bash
 npm adduser
 ```
 
 That's it. If you want to list all your Node.js installation, type the following:
 
-```
+```bash
 nvm list
 ```
 
 If you want to install a newer Node.js version, then type:
 
-```
+```bash
 nvm install <version> --reinstall-packages-from=$(nvm current)
 nvm use <version>
 nvm alias default <version>
@@ -524,14 +524,14 @@ nvm alias default <version>
 
 Optionally install [yarn](https://yarnpkg.com/) if you use it as alternative to npm:
 
-```
+```bash
 npm install -g yarn
 yarn -v
 ```
 
 If you want to list all globally installed packages, run this command:
 
-```
+```bash
 npm list -g --depth=0
 ```
 
@@ -542,7 +542,7 @@ If you have any additional ideas or want to share your setup, let me know!
 
 ## References
 
-- [Robin Wieruch: Mac Setup for Web Development [2023]](https://www.robinwieruch.de/mac-setup-web-development/)
+- [Robin Wieruch: Mac Setup for Web Development 2023](https://www.robinwieruch.de/mac-setup-web-development/)
 - [Swyx: My 2021 New Mac Setup](https://www.swyx.io/new-mac-setup-2021)
 - [Tania Rascia: macOS Monterey: Setting up a Mac for Development](https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/?ck_subscriber_id=591519942)
 - [Nick Nisi’s dotfiles](https://github.com/nicknisi/dotfiles)
