@@ -16,13 +16,13 @@
 
    Your site is now running at `http://localhost:8000`!
 
-   _Note: You'll also see a second link:_`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+   _Note: You’ll also see a second link:_`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
 
    Open the `my-hello-world-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
-## 🧐 What's inside?
+## 🧐 What’s inside?
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+A quick look at the top-level files and directories you’ll see in a Gatsby project.
 
 ```bash
     .
@@ -42,7 +42,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 1. **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
 
-2. **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+2. **`/src`**: This directory will contain all of the code related to what you will see on the frontend of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
 3. **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
 

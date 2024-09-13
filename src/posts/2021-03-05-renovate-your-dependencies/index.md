@@ -11,20 +11,20 @@ I have been talking about dependencies for [Frontendisti.cz][frontendisti] and h
 
 One day I notice in my Inbox a commit and pull-request from one of my GitHub repo.
 It was something new because it was from a machine known as [Dependabot][dependabot] and the entire issue was about updating
-known security vulnerability. "Hey, that's so cool! I want this on any of my active projects!"
+known security vulnerability. "Hey, that’s so cool! I want this on any of my active projects!"
 
 ![security alert](./github-dependabot.png 'Security alert from dependabot')
 
 By that time we had [security checks](https://github.com/FriendsOfPHP/security-advisories) in [LMC][lmc] for [Symfony framework][symfony]. But they only reported into the Slack channel
 when some new vulnerability appears. The next step had to be taken by a human. You know, creating of issue, new branch
-fix the vulnerability, create pull-request, wait for code review a then merge it and release. So much of repetitive work.
+fix the vulnerability, create pull-request, wait for code review a then merge it and release. It involves a lot of repetitive work.
 
 ## Finding vulnerabilities
 
-I want to have something similar what does [Dependabot][dependabot] in [LMC][lmc]. So I tried to solve this kind of problem.
+I want to have something similar what does [Dependabot][dependabot] in [LMC][lmc]. Consequently, I tried to solve this kind of problem.
 
-First of all we started using `npm audit` and `npm outdated`. Do you know them? [NPM][npm-audit] or [Yarn][yarn-audit] can audit your dependencies
-for you and print a very very very long report if found something. On the other hand `outdated` command can found dependencies
+First of all we started using `npm audit` and `npm outdated`. Do you know them? [Npm][npm-audit] or [Yarn][yarn-audit] can audit your dependencies
+for you and print a very long report if found something. On the other hand `outdated` command can found dependencies
 which are old (have a new version of them) and can be updated.
 
 The first run on our project was a catastrophe.
@@ -37,7 +37,7 @@ Both commands found too many vulnerabilities and updates to be done by a human b
 
 ## The Great Research
 
-At LMC we have a private cloud for our products. So every piece of a project we are running ourselves.
+At LMC we have a private cloud for our products, meaning every piece of a project we are running ourselves.
 We use very few third-party services for sustainability and security reasons. So the solution for
 dependencies vulnerabilities must also on-premise.
 
@@ -65,7 +65,7 @@ Note:
 
 ## Renovate Your Dependencies
 
-[Renovate][renovate] is CLI tool written in Javascript and there is also npm package and docker image provided.
+[Renovate][renovate] is command line tool written in JavaScript and there is also npm package and docker image provided.
 It is best suited for our needs. Configuration is simple and straightforward. And after the first run it
 prepare onboarding pull-request to a provided repository with the needed configuration file for a project.
 
@@ -81,7 +81,7 @@ We started to work on this issue and [reduce this type of noise][renovate-noise-
 
 The first step was to use package grouping. For example we took `eslint-*` packages and created `eslint` group. Renovate then updated all packages within this pattern in one pull request. That helped a lot with noise reduction but increase the difficulty of finding a corrupted package if something in this pull request breaks our builds.
 
-The second step to reduce noise was working with time. We planned in time when this hell should begin. So we picked one day in a week when renovate can emit updates and rest of the days we are living in peace. We set this to Monday so we have an entire week to deal with updates.
+The second step to reduce noise was working with time. We planned in time when this hell should begin. We picked one day in a week when renovate can emit updates and rest of the days we are living in peace. We set this to Monday so we have an entire week to deal with updates.
 
 Another step to reduce all the mess was to use automerging. Definitely the best feature. But use it with caution. This feature requires a very well setup up CI pipeline. Because you do not want to break your application with some bad package update. For now we are automerging only patch and minor changes in packages. And of course our CI pipeline test every build.
 
@@ -89,7 +89,7 @@ After a while this renovation stabilized. Of course we set also a limit for 10 c
 
 ## Resume
 
-So what we gained?
+What have we gained?
 
 - we have an on-premise solution for updating packages
 - we have a fully automated solution for package updates
@@ -110,7 +110,7 @@ We created a Jenkins job with a simple `npm audit` and we are sending the result
 - [Improved Yarn audit][github-improved-yarn-audit]
 - [Yarn audit fix workaround][dev-yarn-audit-fix]
 - [Yarn audit html report][github-yarn-audit-html]
-- [IBM's audit ci][ibm-audit-ci]
+- [IBM’s audit ci][ibm-audit-ci]
 - [Renovate: On Premise][renovate-on-premises]
 - [Renovate on GitHub][github-renovate]
 - [Renovate Your Dependencies slides][frontendisti-slides]
