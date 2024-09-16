@@ -1,15 +1,17 @@
 // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/
-const gatsbyRemarkVSCode = require('gatsby-remark-vscode');
+import gatsbyRemarkVSCode from 'gatsby-remark-vscode';
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const { remarkPlugin } = gatsbyRemarkVSCode;
-
+const __dirname = dirname(fileURLToPath(import.meta.url))
 /**
  * Configure your Gatsby site with this file.
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
-module.exports = {
+export default {
   siteMetadata: {
     title: 'LITERAT',
     description: 'Fullstack Developer & Whitewater Kayaker & Scout',

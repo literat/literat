@@ -1,5 +1,5 @@
-const path = require('path');
-const slugify = require('slugify');
+import path from 'path';
+import slugify from 'slugify';
 
 // We don't want to pass the entire blog post because this can be really big.
 // So this passes only the data required in ContentNav.js
@@ -72,7 +72,7 @@ const createTagPages = (createPage, posts) => {
 /**
  * Create blog post pages
  */
-exports.createPages = async ({ graphql, actions }) => {
+export const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const blogPostTemplate = path.resolve('./src/templates/blogPost.tsx');
@@ -130,7 +130,7 @@ exports.createPages = async ({ graphql, actions }) => {
 /**
  * Create blog post paths
  */
-exports.onCreateNode = ({ node, actions }) => {
+export const onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `Mdx`) {
@@ -161,7 +161,7 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
-exports.onCreatePage = async ({ page, actions /* loadNodeContent */ /* , ...rest */ }) => {
+export const onCreatePage = async ({ page, actions /* loadNodeContent */ /* , ...rest */ }) => {
   const { createPage } = actions;
 
   if (page.path.match(/thumbnail/)) {
@@ -173,7 +173,7 @@ exports.onCreatePage = async ({ page, actions /* loadNodeContent */ /* , ...rest
 /**
  * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
  */
-exports.createSchemaCustomization = ({ actions }) => {
+export const createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   // Explicitly define the siteMetadata {} object
