@@ -1,22 +1,24 @@
 // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/
+import type { GatsbyConfig } from 'gatsby';
 import gatsbyRemarkVSCode from 'gatsby-remark-vscode';
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 
 const { remarkPlugin } = gatsbyRemarkVSCode;
-const __dirname = dirname(fileURLToPath(import.meta.url))
 /**
  * Configure your Gatsby site with this file.
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
-export default {
+const config: GatsbyConfig = {
   siteMetadata: {
     title: 'LITERAT',
     description: 'Fullstack Developer & Whitewater Kayaker & Scout',
   },
   trailingSlash: 'always',
+  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
+  // If you use VSCode you can also use the GraphQL plugin
+  // Learn more at: https://gatsby.dev/graphql-typegen
+  graphqlTypegen: false,
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
@@ -64,24 +66,27 @@ export default {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/src/pages`,
+        path: `./src/pages/`,
       },
+      __key: 'pages',
     },
     // Posts
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/posts`,
+        path: `./src/posts/`,
         name: 'post',
       },
+      __key: 'posts',
     },
     // Images
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        path: `./src/assets/images/`,
       },
+      __key: 'images',
     },
     {
       resolve: `gatsby-plugin-alias-imports`,
@@ -94,3 +99,5 @@ export default {
     },
   ],
 };
+
+export default config;
