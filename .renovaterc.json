@@ -1,7 +1,7 @@
 {
   "extends": ["config:base", "group:allNonMajor", "schedule:weekly"],
   "ignorePresets": [":prHourlyLimit2"],
-  "enabledManagers": ["npm"],
+  "enabledManagers": ["npm", "github-actions", "nvm"],
   "branchPrefix": "dependencies/",
   "commitMessagePrefix": "chore(deps): ",
   "packageRules": [
