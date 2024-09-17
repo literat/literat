@@ -1,4 +1,4 @@
-name: Build
+name: 🔍 Build Checks
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    name: 📦 Build App
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     env:

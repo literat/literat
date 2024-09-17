@@ -1,9 +1,10 @@
-name: Post Review
+name: 📄 Post Reviews
 
 on:
   push:
 jobs:
   markdown-lint:
+    name: 📝 Markdown Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -20,6 +21,7 @@ jobs:
         run: yarn lint:markdown
 
   text-lint:
+    name: ✍️ Text Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
