@@ -5047,13 +5047,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sparticuz/chromium@npm:^123.0.1":
-  version: 123.0.1
-  resolution: "@sparticuz/chromium@npm:123.0.1"
+"@sparticuz/chromium@npm:^127.0.0":
+  version: 127.0.0
+  resolution: "@sparticuz/chromium@npm:127.0.0"
   dependencies:
     follow-redirects: "npm:^1.15.6"
-    tar-fs: "npm:^3.0.5"
-  checksum: 10/5991aee6d954dcfdc68245d1aa80e5ebb48106bdda73edeafc0f36ea689d163c59cc3d7d637813bd3726db9214b9b5532ee61ffa308201a935d2ea9ede0d02ce
+    tar-fs: "npm:^3.0.6"
+  checksum: 10/ca90392a045d0c1289a882fca021191f89024ffd89ec69bff5f1e392e9bf92cbb1fb26b01abc30896928cdbe6bbb05b48033904e0c6218fc8e08218337512732
   languageName: node
   linkType: hard
 
@@ -18082,7 +18082,7 @@ __metadata:
     "@lmc-eu/textlint-rule-preset-lmc": "npm:^2.0.1"
     "@mdx-js/react": "npm:3.0.1"
     "@netlify/functions": "npm:^2.0.0"
-    "@sparticuz/chromium": "npm:^123.0.1"
+    "@sparticuz/chromium": "npm:^127.0.0"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:6.5.0"
     "@testing-library/react": "npm:16.0.1"
@@ -27296,7 +27296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar-fs@npm:^3.0.4, tar-fs@npm:^3.0.5":
+"tar-fs@npm:^3.0.4, tar-fs@npm:^3.0.6":
   version: 3.0.6
   resolution: "tar-fs@npm:3.0.6"
   dependencies:
