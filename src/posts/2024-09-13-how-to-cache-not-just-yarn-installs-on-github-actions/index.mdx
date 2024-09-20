@@ -3,15 +3,18 @@ title: How to Cache Not Just Yarn Installs on GitHub Actions
 excerpt: "Discover how to optimize dependency installation on GitHub Actions for modern package managers like Yarn.
 Learn about custom caching actions and the latest features of actions/setup-node to speed up your CI/CD pipeline significantly."
 date: '2024-09-13'
+last_modified_at: '2024-09-20'
 category:
   - development
 tags: ['bits', 'yarn', 'npm', 'pnpm', 'package', 'manager', 'performance', 'cache']
 image: richy-great-github-unsplash.jpg
 ---
 
-Since migrating a few of my projects to [Yarn Modern][yarn], I have been struggling with speeding up the dependency installation process on [GitHub Actions][github-actions].
+Since migrating a few of my projects to [Yarn Modern][yarn],
+I have been struggling with speeding up the dependency installation process on [GitHub Actions][github-actions].
 
-From the beginning, I have been using the great [`bahmutov/npm-install`][npm-install] action that handles the caching of `node_modules` for Yarn v1.22.22 very well.
+From the beginning, I have been using the great [`bahmutov/npm-install`][npm-install] action
+that handles the caching of `node_modules` for Yarn v1.22.22 very well.
 
 With the configuration looking like this...
 
@@ -55,7 +58,8 @@ This is a good and usable solution if you want to take care of the caching yours
 ### Setup Node with Cache
 
 I am also using the [`actions/setup-node`][setup-node] for configuring the Node.js environment for me.
-And in one of their [most recent release][setup-node-with-cache] I discovered that they have added a new feature for caching the `node_modules` directory.
+And in one of their [most recent release][setup-node-with-cache]
+I discovered that they have added a new feature for [caching the package manager's cache][setup-node-caching-deps].
 
 > Caching dependencies
 >
@@ -71,6 +75,7 @@ And in one of their [most recent release][setup-node-with-cache] I discovered th
   with:
     node-version-file: '.nvmrc' # Use node version file
     cache: 'yarn' # 'npm' or 'yarn'
+    cache-dependency-path: yarn.lock # path to a dependency file
 
 - name: Install dependencies
   run: yarn --immutable --inline-builds
@@ -78,19 +83,39 @@ And in one of their [most recent release][setup-node-with-cache] I discovered th
 
 Since using this configuration, I have been able to **speed up** my dependency installation process on GitHub Actions **twice**.
 
+But this approach caches only the package managers global cache like `~/.npm` or `~/.yarn/cache`.
+Additionally using [`actions/cache`][caching-dependencies] another layer of the caching can be added.
+So state of the `node_modules` can be cached and restored to speed up the pipeline even more.
+
+```yaml
+- name: Restore cached node_modules
+  uses: actions/cache@v4
+  with:
+    path: '**/node_modules'
+    key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+    restore-keys: |
+      ${{ runner.os }}-yarn-
+```
+
+This approach leads to another few spared seconds in your pipelines.
+
 ## References
 
 - [Setup Node with cache][setup-node-with-cache]
 - [NPM install cache miss][npm-install-cache-miss]
 - [Discord's custom cache action][discord-properly-cache-yarn]
 - [Effectively restoring Yarn cache][setup-node-restore-cache]
+- [Caching dependencies with actions/cache][caching-dependencies]
+- [Caching dependencies with actions/setup-node][setup-node-caching-deps]
 - 📷 [Richy Great](https://unsplash.com/@richygreat) - [GitHub Screen](https://unsplash.com/photos/white-and-silver-electronic-device-MAYEkmn7G6E)
 
+[caching-dependencies]: https://github.com/actions/cache/blob/main/caching-strategies.md
 [discord-properly-cache-yarn]: https://github.com/discordjs/discord.js/commit/c0e3629f64042c7363f9dae6830bc2f6a7e5c7d4
 [github-actions]: https://github.com/features/actions
 [npm-install]: https://github.com/bahmutov/npm-install
 [npm-install-cache-miss]: https://github.com/bahmutov/npm-install/issues/28
 [setup-node]: https://github.com/actions/setup-node
+[setup-node-caching-deps]: https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-dependencies
 [setup-node-restore-cache]: https://github.com/actions/setup-node/issues/834
 [setup-node-with-cache]: https://github.com/actions/setup-node/releases/tag/v2.2.0
 [yarn]: https://yarnpkg.com/
