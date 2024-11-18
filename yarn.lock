@@ -5066,13 +5066,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sparticuz/chromium@npm:^127.0.0":
-  version: 127.0.0
-  resolution: "@sparticuz/chromium@npm:127.0.0"
+"@sparticuz/chromium@npm:^131.0.0":
+  version: 131.0.0
+  resolution: "@sparticuz/chromium@npm:131.0.0"
   dependencies:
-    follow-redirects: "npm:^1.15.6"
+    follow-redirects: "npm:^1.15.9"
     tar-fs: "npm:^3.0.6"
-  checksum: 10/ca90392a045d0c1289a882fca021191f89024ffd89ec69bff5f1e392e9bf92cbb1fb26b01abc30896928cdbe6bbb05b48033904e0c6218fc8e08218337512732
+  checksum: 10/9424e71ff27e6d1bfacbea3ed17cb2a5b5677ede25fcb7a97b33a4eb8326871ec1da940356ea00eee484454efd4184c23b59a7dc511086b0bb6a9fe8b0014aee
   languageName: node
   linkType: hard
 
@@ -13516,7 +13516,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.6":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.9":
   version: 1.15.9
   resolution: "follow-redirects@npm:1.15.9"
   peerDependenciesMeta:
@@ -18189,7 +18189,7 @@ __metadata:
     "@lmc-eu/textlint-rule-preset-lmc": "npm:^2.0.1"
     "@mdx-js/react": "npm:3.0.1"
     "@netlify/functions": "npm:^2.0.0"
-    "@sparticuz/chromium": "npm:^127.0.0"
+    "@sparticuz/chromium": "npm:^131.0.0"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:6.5.0"
     "@testing-library/react": "npm:16.0.1"
