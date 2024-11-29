@@ -13,6 +13,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: 'LITERAT',
     description: 'Fullstack Developer & Whitewater Kayaker & Scout',
+    siteUrl: `https://literat.dev`,
   },
   trailingSlash: 'always',
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -94,6 +95,60 @@ const config: GatsbyConfig = {
           '@': 'src',
         },
         extensions: ['ts', 'tsx'],
+      },
+    },
+    // RSS Feed
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map((edge) => {
+                const path = ['codes', 'uses'].includes(edge.node.fields.slug)
+                  ? '/'
+                  : `/blog/${edge.node.frontmatter.date}/`;
+
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.frontmatter.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: `${site.siteMetadata.siteUrl}${path}${edge.node.fields.slug}`,
+                  guid: `${site.siteMetadata.siteUrl}${path}${edge.node.fields.slug}`,
+                });
+              });
+            },
+            query: `
+              {
+                allMdx(sort: { frontmatter: { date: ASC } }) {
+                  edges {
+                    node {
+                      fields {
+                        path
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        tags
+                        date
+                        excerpt
+                        image {
+                          publicURL
+                        }
+                      }
+                      parent {
+                        ... on File {
+                          absolutePath
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Literat.dev RSS Feed',
+          },
+        ],
       },
     },
   ],
