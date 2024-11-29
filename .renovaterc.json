@@ -7,24 +7,33 @@
   "packageRules": [
     {
       "groupName": "netlify functions dependencies",
+      "groupSlug": "netlify-functions-deps",
       "matchPackagePatterns": ["^puppeteer", "chrome-aws-lambda"],
       "enabled": false
     },
     {
-      "groupName": "gatsby monorepos",
-      "matchPackagePatterns": ["^gatsby"]
+      "groupName": "gatsby monorepo non-major",
+      "groupSlug": "gatsby-monorepo-minor-patch",
+      "matchPackagePatterns": ["^gatsby"],
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
-      "groupName": "eslint plugins and configs",
-      "matchPackagePatterns": ["^eslint"]
+      "groupName": "eslint plugins and configs non-major",
+      "groupSlug": "eslint-plugins-configs-minor-patch",
+      "matchPackagePatterns": ["^eslint"],
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
-      "groupName": "babel monorepo",
-      "matchPackagePatterns": ["^@babel"]
+      "groupName": "babel monorepo non-major",
+      "groupSlug": "babel-monorepo-minor-patch",
+      "matchPackagePatterns": ["^@babel"],
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
       "groupName": "types",
-      "matchPackagePatterns": ["^types"]
+      "groupSlug": "types-minor-patch",
+      "matchPackagePatterns": ["^types"],
+      "matchUpdateTypes": ["minor", "patch"]
     }
   ]
 }
