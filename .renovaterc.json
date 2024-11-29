@@ -4,6 +4,7 @@
   "enabledManagers": ["npm", "github-actions", "nvm"],
   "branchPrefix": "dependencies/",
   "commitMessagePrefix": "chore(deps): ",
+  "rangeStrategy": "pin",
   "packageRules": [
     {
       "groupName": "netlify functions dependencies",
