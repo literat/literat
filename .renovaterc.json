@@ -9,6 +9,22 @@
       "groupName": "netlify functions dependencies",
       "matchPackagePatterns": ["^puppeteer", "chrome-aws-lambda"],
       "enabled": false
+    },
+    {
+      "groupName": "gatsby monorepos",
+      "matchPackagePatterns": ["^gatsby"]
+    },
+    {
+      "groupName": "eslint plugins and configs",
+      "matchPackagePatterns": ["^eslint"]
+    },
+    {
+      "groupName": "babel monorepo",
+      "matchPackagePatterns": ["^@babel"]
+    },
+    {
+      "groupName": "types",
+      "matchPackagePatterns": ["^types"]
     }
   ]
 }
