@@ -19414,8 +19414,8 @@ __metadata:
     react-helmet: "npm:6.1.0"
     react-icons: "npm:5.3.0"
     react-is: "npm:18.3.1"
-    remark-cli: "npm:^12.0.1"
-    remark-frontmatter: "npm:^5.0.0"
+    remark-cli: "npm:12.0.1"
+    remark-frontmatter: "npm:5.0.0"
     resize-observer-polyfill: "npm:^1.5.1"
     sass: "npm:^1.81.0"
     slugify: "npm:1.6.6"
@@ -25560,7 +25560,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-cli@npm:^12.0.1":
+"remark-cli@npm:12.0.1":
   version: 12.0.1
   resolution: "remark-cli@npm:12.0.1"
   dependencies:
@@ -25584,17 +25584,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-frontmatter@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "remark-frontmatter@npm:3.0.0"
-  dependencies:
-    mdast-util-frontmatter: "npm:^0.2.0"
-    micromark-extension-frontmatter: "npm:^0.2.0"
-  checksum: 10/33bbcf36a51ee4c3813106b933766e0dc4b2b50f8eb4da3a4c577ea0278335589b36b182fb2722c9857d0ea9932ac75368a5dff70c8cf2b74f4747c244068976
-  languageName: node
-  linkType: hard
-
-"remark-frontmatter@npm:^5.0.0":
+"remark-frontmatter@npm:5.0.0":
   version: 5.0.0
   resolution: "remark-frontmatter@npm:5.0.0"
   dependencies:
@@ -25603,6 +25593,16 @@ __metadata:
     micromark-extension-frontmatter: "npm:^2.0.0"
     unified: "npm:^11.0.0"
   checksum: 10/5d859f336e9cd6f6ed02139a76781b35a8cabbbb240d30dd8048e1c74d7b8e8335b98f27290c9787baab3bc5eb935347a046fa85ad307cf0f7ea6c1ecfde8dc4
+  languageName: node
+  linkType: hard
+
+"remark-frontmatter@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "remark-frontmatter@npm:3.0.0"
+  dependencies:
+    mdast-util-frontmatter: "npm:^0.2.0"
+    micromark-extension-frontmatter: "npm:^0.2.0"
+  checksum: 10/33bbcf36a51ee4c3813106b933766e0dc4b2b50f8eb4da3a4c577ea0278335589b36b182fb2722c9857d0ea9932ac75368a5dff70c8cf2b74f4747c244068976
   languageName: node
   linkType: hard
 
