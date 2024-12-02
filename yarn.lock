@@ -12,7 +12,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@almacareer/remark-config@npm:^0.1.0":
+"@almacareer/remark-config@npm:0.1.0":
   version: 0.1.0
   resolution: "@almacareer/remark-config@npm:0.1.0"
   dependencies:
@@ -4524,7 +4524,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lmc-eu/textlint-rule-preset-lmc@npm:^2.0.1":
+"@lmc-eu/textlint-rule-preset-lmc@npm:2.0.1":
   version: 2.0.1
   resolution: "@lmc-eu/textlint-rule-preset-lmc@npm:2.0.1"
   dependencies:
@@ -4973,7 +4973,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@netlify/functions@npm:^2.8.1":
+"@netlify/functions@npm:2.8.2":
   version: 2.8.2
   resolution: "@netlify/functions@npm:2.8.2"
   dependencies:
@@ -6246,7 +6246,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sparticuz/chromium@npm:^131.0.0":
+"@sparticuz/chromium@npm:131.0.0":
   version: 131.0.0
   resolution: "@sparticuz/chromium@npm:131.0.0"
   dependencies:
@@ -6284,7 +6284,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^10.4.0":
+"@testing-library/dom@npm:10.4.0":
   version: 10.4.0
   resolution: "@testing-library/dom@npm:10.4.0"
   dependencies:
@@ -9132,7 +9132,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-styled-components@npm:^2.1.4":
+"babel-plugin-styled-components@npm:2.1.4":
   version: 2.1.4
   resolution: "babel-plugin-styled-components@npm:2.1.4"
   dependencies:
@@ -10394,7 +10394,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^2.1.1":
+"clsx@npm:2.1.1":
   version: 2.1.1
   resolution: "clsx@npm:2.1.1"
   checksum: 10/cdfb57fa6c7649bbff98d9028c2f0de2f91c86f551179541cf784b1cfdc1562dcb951955f46d54d930a3879931a980e32a46b598acaea274728dbe068deca919
@@ -13330,7 +13330,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-mdx@npm:^3.1.5":
+"eslint-plugin-mdx@npm:3.1.5":
   version: 3.1.5
   resolution: "eslint-plugin-mdx@npm:3.1.5"
   dependencies:
@@ -15175,7 +15175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-alias-imports@npm:^1.0.5":
+"gatsby-plugin-alias-imports@npm:1.0.5":
   version: 1.0.5
   resolution: "gatsby-plugin-alias-imports@npm:1.0.5"
   dependencies:
@@ -15186,7 +15186,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-feed@npm:^5.14.0":
+"gatsby-plugin-feed@npm:5.14.0":
   version: 5.14.0
   resolution: "gatsby-plugin-feed@npm:5.14.0"
   dependencies:
@@ -15308,7 +15308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-react-helmet@npm:^6.14.0":
+"gatsby-plugin-react-helmet@npm:6.14.0":
   version: 6.14.0
   resolution: "gatsby-plugin-react-helmet@npm:6.14.0"
   dependencies:
@@ -15320,7 +15320,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sass@npm:^6.14.0":
+"gatsby-plugin-sass@npm:6.14.0":
   version: 6.14.0
   resolution: "gatsby-plugin-sass@npm:6.14.0"
   dependencies:
@@ -15356,7 +15356,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-styled-components@npm:^6.14.0":
+"gatsby-plugin-styled-components@npm:6.14.0":
   version: 6.14.0
   resolution: "gatsby-plugin-styled-components@npm:6.14.0"
   dependencies:
@@ -17484,6 +17484,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-ci@npm:3.0.1":
+  version: 3.0.1
+  resolution: "is-ci@npm:3.0.1"
+  dependencies:
+    ci-info: "npm:^3.2.0"
+  bin:
+    is-ci: bin.js
+  checksum: 10/192c66dc7826d58f803ecae624860dccf1899fc1f3ac5505284c0a5cf5f889046ffeb958fa651e5725d5705c5bcb14f055b79150ea5fcad7456a9569de60260e
+  languageName: node
+  linkType: hard
+
 "is-ci@npm:^2.0.0":
   version: 2.0.0
   resolution: "is-ci@npm:2.0.0"
@@ -17492,17 +17503,6 @@ __metadata:
   bin:
     is-ci: bin.js
   checksum: 10/77b869057510f3efa439bbb36e9be429d53b3f51abd4776eeea79ab3b221337fe1753d1e50058a9e2c650d38246108beffb15ccfd443929d77748d8c0cc90144
-  languageName: node
-  linkType: hard
-
-"is-ci@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "is-ci@npm:3.0.1"
-  dependencies:
-    ci-info: "npm:^3.2.0"
-  bin:
-    is-ci: bin.js
-  checksum: 10/192c66dc7826d58f803ecae624860dccf1899fc1f3ac5505284c0a5cf5f889046ffeb958fa651e5725d5705c5bcb14f055b79150ea5fcad7456a9569de60260e
   languageName: node
   linkType: hard
 
@@ -18411,7 +18411,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-environment-jsdom@npm:^29.0.0":
+"jest-environment-jsdom@npm:29.7.0":
   version: 29.7.0
   resolution: "jest-environment-jsdom@npm:29.7.0"
   dependencies:
@@ -19337,7 +19337,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "literat-dev-blog@workspace:."
   dependencies:
-    "@almacareer/remark-config": "npm:^0.1.0"
+    "@almacareer/remark-config": "npm:0.1.0"
     "@babel/core": "npm:7.26.0"
     "@babel/eslint-parser": "npm:7.25.9"
     "@babel/preset-env": "npm:7.26.0"
@@ -19346,11 +19346,11 @@ __metadata:
     "@commitlint/cli": "npm:19.6.0"
     "@commitlint/config-conventional": "npm:19.6.0"
     "@lmc-eu/prettier-config": "npm:2.0.1"
-    "@lmc-eu/textlint-rule-preset-lmc": "npm:^2.0.1"
+    "@lmc-eu/textlint-rule-preset-lmc": "npm:2.0.1"
     "@mdx-js/react": "npm:3.1.0"
-    "@netlify/functions": "npm:^2.8.1"
-    "@sparticuz/chromium": "npm:^131.0.0"
-    "@testing-library/dom": "npm:^10.4.0"
+    "@netlify/functions": "npm:2.8.2"
+    "@sparticuz/chromium": "npm:131.0.0"
+    "@testing-library/dom": "npm:10.4.0"
     "@testing-library/jest-dom": "npm:6.6.3"
     "@testing-library/react": "npm:16.0.1"
     "@types/inquirer": "npm:9.0.7"
@@ -19362,10 +19362,10 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:8.16.0"
     "@typescript-eslint/parser": "npm:8.16.0"
     babel-jest: "npm:29.7.0"
-    babel-plugin-styled-components: "npm:^2.1.4"
+    babel-plugin-styled-components: "npm:2.1.4"
     babel-preset-gatsby: "npm:3.14.0"
-    chalk: "npm:^5.0.1"
-    clsx: "npm:^2.1.1"
+    chalk: "npm:5.3.0"
+    clsx: "npm:2.1.1"
     core-js: "npm:3.39.0"
     eslint: "npm:8.57.1"
     eslint-config-airbnb: "npm:19.0.4"
@@ -19375,21 +19375,21 @@ __metadata:
     eslint-plugin-html: "npm:8.1.1"
     eslint-plugin-import: "npm:2.30.0"
     eslint-plugin-jsx-a11y: "npm:6.10.0"
-    eslint-plugin-mdx: "npm:^3.1.5"
+    eslint-plugin-mdx: "npm:3.1.5"
     eslint-plugin-prettier: "npm:5.2.1"
     eslint-plugin-react: "npm:7.36.1"
     eslint-plugin-react-hooks: "npm:5.0.0"
     fs-extra: "npm:11.2.0"
     gatsby: "npm:5.14.0"
-    gatsby-plugin-alias-imports: "npm:^1.0.5"
-    gatsby-plugin-feed: "npm:^5.14.0"
+    gatsby-plugin-alias-imports: "npm:1.0.5"
+    gatsby-plugin-feed: "npm:5.14.0"
     gatsby-plugin-image: "npm:3.14.0"
     gatsby-plugin-mdx: "npm:5.14.0"
     gatsby-plugin-netlify: "npm:5.1.1"
-    gatsby-plugin-react-helmet: "npm:^6.14.0"
-    gatsby-plugin-sass: "npm:^6.14.0"
+    gatsby-plugin-react-helmet: "npm:6.14.0"
+    gatsby-plugin-sass: "npm:6.14.0"
     gatsby-plugin-sharp: "npm:5.14.0"
-    gatsby-plugin-styled-components: "npm:^6.14.0"
+    gatsby-plugin-styled-components: "npm:6.14.0"
     gatsby-remark-copy-linked-files: "npm:6.14.0"
     gatsby-remark-images: "npm:7.14.0"
     gatsby-remark-reading-time: "npm:1.1.0"
@@ -19400,9 +19400,9 @@ __metadata:
     husky: "npm:9.1.7"
     identity-obj-proxy: "npm:3.0.0"
     inquirer: "npm:12.1.0"
-    is-ci: "npm:^3.0.1"
+    is-ci: "npm:3.0.1"
     jest: "npm:29.7.0"
-    jest-environment-jsdom: "npm:^29.0.0"
+    jest-environment-jsdom: "npm:29.7.0"
     netlify-cli: "npm:17.37.2"
     normalize.css: "npm:8.0.1"
     npm-run-all2: "npm:7.0.1"
@@ -19416,14 +19416,14 @@ __metadata:
     react-is: "npm:18.3.1"
     remark-cli: "npm:12.0.1"
     remark-frontmatter: "npm:5.0.0"
-    resize-observer-polyfill: "npm:^1.5.1"
-    sass: "npm:^1.81.0"
+    resize-observer-polyfill: "npm:1.5.1"
+    sass: "npm:1.81.0"
     slugify: "npm:1.6.6"
     styled-components: "npm:6.1.13"
-    textlint: "npm:^14.2.0"
+    textlint: "npm:14.2.0"
     typescript: "npm:5.7.2"
     vscode-styled-components: ./vendor_modules/vscode-styled-components
-    waait: "npm:^1.0.5"
+    waait: "npm:1.0.5"
   languageName: unknown
   linkType: soft
 
@@ -26590,7 +26590,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resize-observer-polyfill@npm:^1.5.1":
+"resize-observer-polyfill@npm:1.5.1":
   version: 1.5.1
   resolution: "resize-observer-polyfill@npm:1.5.1"
   checksum: 10/e10ee50cd6cf558001de5c6fb03fee15debd011c2f694564b71f81742eef03fb30d6c2596d1d5bf946d9991cb692fcef529b7bd2e4057041377ecc9636c753ce
@@ -27020,7 +27020,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.81.0":
+"sass@npm:1.81.0":
   version: 1.81.0
   resolution: "sass@npm:1.81.0"
   dependencies:
@@ -28807,6 +28807,42 @@ __metadata:
   languageName: node
   linkType: hard
 
+"textlint@npm:14.2.0":
+  version: 14.2.0
+  resolution: "textlint@npm:14.2.0"
+  dependencies:
+    "@textlint/ast-node-types": "npm:^14.2.0"
+    "@textlint/ast-traverse": "npm:^14.2.0"
+    "@textlint/config-loader": "npm:^14.2.0"
+    "@textlint/feature-flag": "npm:^14.2.0"
+    "@textlint/fixer-formatter": "npm:^14.2.0"
+    "@textlint/kernel": "npm:^14.2.0"
+    "@textlint/linter-formatter": "npm:^14.2.0"
+    "@textlint/module-interop": "npm:^14.2.0"
+    "@textlint/textlint-plugin-markdown": "npm:^14.2.0"
+    "@textlint/textlint-plugin-text": "npm:^14.2.0"
+    "@textlint/types": "npm:^14.2.0"
+    "@textlint/utils": "npm:^14.2.0"
+    debug: "npm:^4.3.4"
+    file-entry-cache: "npm:^5.0.1"
+    get-stdin: "npm:^5.0.1"
+    glob: "npm:^10.4.5"
+    md5: "npm:^2.3.0"
+    mkdirp: "npm:^0.5.6"
+    optionator: "npm:^0.9.3"
+    path-to-glob-pattern: "npm:^2.0.1"
+    rc-config-loader: "npm:^4.1.3"
+    read-pkg: "npm:^1.1.0"
+    read-pkg-up: "npm:^3.0.0"
+    structured-source: "npm:^4.0.0"
+    try-resolve: "npm:^1.0.1"
+    unique-concat: "npm:^0.2.2"
+  bin:
+    textlint: bin/textlint.js
+  checksum: 10/053db1314d57e919968dbb141b8f958ea87777117df0bef70ff1627040b706bd775cad340f6300d4700680ea3e926846f35bec1c6438eb6df0b62e81f0bf6d33
+  languageName: node
+  linkType: hard
+
 "textlint@npm:^12.2.2":
   version: 12.6.1
   resolution: "textlint@npm:12.6.1"
@@ -28843,42 +28879,6 @@ __metadata:
     textlint: bin/textlint.js
     textlint-esm: bin/textlint-esm.js
   checksum: 10/c2a417d77639f635c0f5901da8190860fada384fad3345fc9bc92faebc2993c9576aa55b27ea736862bfec764464bcacc8f821517d1c13f7c7c13691d62d0d7c
-  languageName: node
-  linkType: hard
-
-"textlint@npm:^14.2.0":
-  version: 14.2.0
-  resolution: "textlint@npm:14.2.0"
-  dependencies:
-    "@textlint/ast-node-types": "npm:^14.2.0"
-    "@textlint/ast-traverse": "npm:^14.2.0"
-    "@textlint/config-loader": "npm:^14.2.0"
-    "@textlint/feature-flag": "npm:^14.2.0"
-    "@textlint/fixer-formatter": "npm:^14.2.0"
-    "@textlint/kernel": "npm:^14.2.0"
-    "@textlint/linter-formatter": "npm:^14.2.0"
-    "@textlint/module-interop": "npm:^14.2.0"
-    "@textlint/textlint-plugin-markdown": "npm:^14.2.0"
-    "@textlint/textlint-plugin-text": "npm:^14.2.0"
-    "@textlint/types": "npm:^14.2.0"
-    "@textlint/utils": "npm:^14.2.0"
-    debug: "npm:^4.3.4"
-    file-entry-cache: "npm:^5.0.1"
-    get-stdin: "npm:^5.0.1"
-    glob: "npm:^10.4.5"
-    md5: "npm:^2.3.0"
-    mkdirp: "npm:^0.5.6"
-    optionator: "npm:^0.9.3"
-    path-to-glob-pattern: "npm:^2.0.1"
-    rc-config-loader: "npm:^4.1.3"
-    read-pkg: "npm:^1.1.0"
-    read-pkg-up: "npm:^3.0.0"
-    structured-source: "npm:^4.0.0"
-    try-resolve: "npm:^1.0.1"
-    unique-concat: "npm:^0.2.2"
-  bin:
-    textlint: bin/textlint.js
-  checksum: 10/053db1314d57e919968dbb141b8f958ea87777117df0bef70ff1627040b706bd775cad340f6300d4700680ea3e926846f35bec1c6438eb6df0b62e81f0bf6d33
   languageName: node
   linkType: hard
 
@@ -30639,7 +30639,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"waait@npm:^1.0.5":
+"waait@npm:1.0.5":
   version: 1.0.5
   resolution: "waait@npm:1.0.5"
   checksum: 10/fd12c556c2295a2f7f1810f214148a2301f11127b8f7e27d97b5e4ea13db7487ead49b57be4170db99acac17c1da6401a1537502a9a37b063fe8e512c5b9d337
