@@ -33,16 +33,16 @@ As a person used to the Linux environment, I would expect some sort of help form
 for npm scripts as well. Simply using `npm/pnpm/yarn -h` will only output
 the help itself, and no longer information about the available scripts.
 
-![npm help output](./npm-help-output.png)
+![npm help output](./npm-help-output.png 'npm help')
 
-![npm all commands list](./npm-all-commands.png)
+![npm all commands list](./npm-all-commands.png 'All available npm commands')
 
 Fortunately, the developers of package managers have thought about this a bit,
 so I can list the available npm scripts with `npm/yarn/pnpm run`. But also with
 the full content of the script. I don't usually want to look at the scripts
 themselves, a dev: run local development comment would be more useful.
 
-![npm available scripts](./npm-available-scripts.jpg)
+![npm available scripts](./npm-available-scripts.jpg 'Available npm scripts')
 
 I wish I had a way to describe the scripts better…
 I once wrote [an article on how to use Makefile comments to create self-documenting help][makefile-project-orchestration]
@@ -84,7 +84,7 @@ thus generating `package.json` for a new project, the only existing script is `t
 And that was it. Even according to [documentation][npm-test],
 this is supposed to be the script that tests the whole package.
 
-![npm init with npm test script as default](./npm-init.png)
+![npm init with npm test script as default](./npm-init.png 'Output of `npm init` with only available script called `test`')
 
 > From my experience, the `npm test` (or `yarn test`) is what everyone expects to be present
 > in every (or almost every) package. As a developer, I switch from one package
