@@ -1,4 +1,8 @@
-const { prettierConfig } = require('./.prettierrc.js');
+let prettierConfig;
+
+(async () => {
+	prettierConfig = (await import('./.prettierrc.mjs')).prettierConfig;
+})();
 
 module.exports = {
   globals: {
