@@ -117,7 +117,8 @@ killall Finder;
 
 ## Files
 
-If files from previous machine are needed, transfer via external drive instead of cloud
+If files from previous machine are needed, transfer via external drive instead
+of cloud
 
 ## Homebrew
 
@@ -182,7 +183,8 @@ brew install \
 
 ## GUI Applications
 
-- [Google Chrome](https://www.google.com/chrome/) (web development, web browsing)
+- [Google Chrome](https://www.google.com/chrome/) (web development, web
+  browsing)
 
   - Preferences
 
@@ -205,8 +207,10 @@ brew install \
 - [iterm2](https://iterm2.com/) (terminal)
 - [Visual Studio Code](https://code.visualstudio.com/) (web development IDE)
 - [Sublime Text](https://www.sublimetext.com/) (editor)
-- [Docker](https://www.docker.com/products/docker-desktop) (Docker, see [setup](https://www.robinwieruch.de/docker-macos/))
-  - used for running databases (e.g. PostgreSQL, MongoDB) in container without cluttering the Mac
+- [Docker](https://www.docker.com/products/docker-desktop) (Docker, see
+  [setup](https://www.robinwieruch.de/docker-macos/))
+  - used for running databases (e.g. PostgreSQL, MongoDB) in container without
+    cluttering the Mac
   - Preferences
     - enable "Use Docker Compose"
 - [Slack](https://slack.com/) (team messenger)
@@ -223,7 +227,8 @@ brew install \
 - [Krabiner elements](https://karabiner-elements.pqrs.org/)
 - [Better Touch Tool](https://folivora.ai/)
 
-Add [Space to Dock](https://gist.github.com/literat/e1f5d640a5068d3e4e6df53434a03e8a)
+Add
+[Space to Dock](https://gist.github.com/literat/e1f5d640a5068d3e4e6df53434a03e8a)
 
 The look and feel we want to achieve from our Dock:
 
@@ -294,8 +299,9 @@ The look and feel we want to achieve from our terminal:
 
 ## Oh My ZSH
 
-When you open iTerm2, you see that MacOS already comes with zsh as default shell.
-Install [Oh My Zsh](https://ohmyz.sh/) for an improved (plugins, themes, ...) terminal (here: iTerm2) experience:
+When you open iTerm2, you see that MacOS already comes with zsh as default
+shell. Install [Oh My Zsh](https://ohmyz.sh/) for an improved (plugins, themes,
+...) terminal (here: iTerm2) experience:
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -307,7 +313,8 @@ Update everything (e.g. plugins) in Oh My Zsh to recent version:
 omz update
 ```
 
-Important: If you change something in your Zsh configuration (.zshrc), force a reload:
+Important: If you change something in your Zsh configuration (.zshrc), force a
+reload:
 
 ```sh
 source ~/.zshrc
@@ -315,8 +322,9 @@ source ~/.zshrc
 
 ### Oh My Zsh Theme + Fonts
 
-Install [Agnoster](https://github.com/agnoster/agnoster-zsh-theme) as your new terminal theme.
-We will use Homebrew, but you can use an alternative from the website too:
+Install [Agnoster](https://github.com/agnoster/agnoster-zsh-theme) as your new
+terminal theme. We will use Homebrew, but you can use an alternative from the
+website too:
 
 ```sh
 brew install agnoster
@@ -328,17 +336,21 @@ Make it the default theme for Oh My ZSH from the terminal:
 echo 'eval "$(agnoster init zsh)"' >> ~/.zshrc
 ```
 
-Install [powerline fonts](https://gist.github.com/shaykalyan/cd276a7d812dd393caf1).
-As font we will be using Hack Nerd Font in iTerm2, VS Code, and Sublime Text. Install it via:
+Install
+[powerline fonts](https://gist.github.com/shaykalyan/cd276a7d812dd393caf1). As
+font we will be using Hack Nerd Font in iTerm2, VS Code, and Sublime Text.
+Install it via:
 
 ```sh
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 ```
 
-Use the new font in iTerm2: Preferences -> Profile -> Text -> Font: font-hack-nerd-font.
+Use the new font in iTerm2: Preferences -> Profile -> Text -> Font:
+font-hack-nerd-font.
 
-If the theme and font changes do not apply, reload your zsh configuration (.zshrc) or close/open iTerm2.
+If the theme and font changes do not apply, reload your zsh configuration
+(.zshrc) or close/open iTerm2.
 
 Install and configure [powerleven10k](https://github.com/romkatv/powerlevel10k)
 
@@ -384,8 +396,10 @@ The look and feel we want to achieve from our IDE:
 
 ![VS Code Look](./vscode.png 'VS Code Look')
 
-Activate [settings sync](https://code.visualstudio.com/docs/editor/settings-sync#:~:text=You%20can%20turn%20on%20Settings,and%20UI%20State%20are%20supported.)
-with [VSCode Setting Gist](https://gist.github.com/literat/afcb5950f82a6ac8e3fc8199f6db504a)
+Activate
+[settings sync](https://code.visualstudio.com/docs/editor/settings-sync#:~:text=You%20can%20turn%20on%20Settings,and%20UI%20State%20are%20supported.)
+with
+[VSCode Setting Gist](https://gist.github.com/literat/afcb5950f82a6ac8e3fc8199f6db504a)
 
 [Extensions](https://github.com/literat/dotfiles/blob/master/vs-code-extensions-i-use.md)
 
@@ -462,8 +476,10 @@ gpg --output public.pgp --armor --export username@email
 
 ## SSH
 
-There are two common strategies for SSH keys: one SSH key to rule them all or one SSH key per service.
-I use the latter one and will here run yout through it by [connecting to GitHub via SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+There are two common strategies for SSH keys: one SSH key to rule them all or
+one SSH key per service. I use the latter one and will here run yout through it
+by
+[connecting to GitHub via SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 
 First, create a new SSH key in the ~/.ssh folder:
 
@@ -496,7 +512,8 @@ Create the SSH configuration file if it doesn't exist yet:
 touch ~/.ssh/config
 ```
 
-In your _~/.ssh/config_ file, add the new SSH key, so that it can get picked up for every terminal session automatically:
+In your _~/.ssh/config_ file, add the new SSH key, so that it can get picked up
+for every terminal session automatically:
 
 ```sh
 Host *
@@ -511,7 +528,8 @@ Add SSH key to MacOS' keychain:
 ssh-add --apple-use-keychain ~/.ssh/github
 ```
 
-Add the public key to your GitHub settings via the website or via the GitHub CLI (via brew install gh):
+Add the public key to your GitHub settings via the website or via the GitHub CLI
+(via brew install gh):
 
 ```sh
 # copy public key and add it to https://github.com/
@@ -528,15 +546,17 @@ gh auth login
 gh ssh-key add ~/.ssh/id_rsa.pub -t github
 ```
 
-That's it.
-You have created an SSH key locally for one specific service, secured it via a passphrase,
-made it automatically available for every terminal session, and applied it to GitHub.
-In the case of GitHub, you are now able to interact with GitHub via SSH.
+That's it. You have created an SSH key locally for one specific service, secured
+it via a passphrase, made it automatically available for every terminal session,
+and applied it to GitHub. In the case of GitHub, you are now able to interact
+with GitHub via SSH.
 
 ## NVM FOR NODE/NPM
 
-The [node version manager (NVM)](https://github.com/nvm-sh/nvm) is used to install and manage multiple Node versions.
-After you have installed it via Homebrew in a previous step, type the following commands to complete the installation:
+The [node version manager (NVM)](https://github.com/nvm-sh/nvm) is used to
+install and manage multiple Node versions. After you have installed it via
+Homebrew in a previous step, type the following commands to complete the
+installation:
 
 ```sh
 echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.zshrc
@@ -552,7 +572,9 @@ Now install the latest LTS version on the command line:
 nvm install <latest LTS version from https://nodejs.org/en/>
 ```
 
-Afterward, check whether the installation was successful and whether the [node package manager (npm)](https://www.npmjs.com/) got installed along the way:
+Afterward, check whether the installation was successful and whether the
+[node package manager (npm)](https://www.npmjs.com/) got installed along the
+way:
 
 ```sh
 node -v && npm -v
@@ -578,7 +600,8 @@ If you are a library author, log in to npm too:
 npm adduser
 ```
 
-That's it. If you want to list all your Node.js installation, type the following:
+That's it. If you want to list all your Node.js installation, type the
+following:
 
 ```sh
 nvm list
@@ -592,7 +615,8 @@ nvm use <version>
 nvm alias default <version>
 ```
 
-Optionally install [yarn](https://yarnpkg.com/) if you use it as alternative to npm:
+Optionally install [yarn](https://yarnpkg.com/) if you use it as alternative to
+npm:
 
 ```sh
 npm install -g yarn
@@ -607,8 +631,8 @@ npm list -g --depth=0
 
 That's it. You have a running version of Node.js and its package manager.
 
-I hope my setup helps other developers to get their Mac up and running.
-If you have any additional ideas or want to share your setup, let me know!
+I hope my setup helps other developers to get their Mac up and running. If you
+have any additional ideas or want to share your setup, let me know!
 
 ## References
 
@@ -622,4 +646,5 @@ If you have any additional ideas or want to share your setup, let me know!
 - [Vendasta](https://github.com/vendasta/setup-new-computer-script)
 - [Sheldon Hull: Installing Brew packages](https://www.sheldonhull.com/docs/shell/#installing-brew-packages)
 - [Physical equipment setups from prominent people](https://setups.co/)
-- 📷 [Ash Edmonds](https://unsplash.com/@badashproducts) - [Macbook](https://unsplash.com/photos/Koxa-GX_5zs)
+- 📷 [Ash Edmonds](https://unsplash.com/@badashproducts) -
+  [Macbook](https://unsplash.com/photos/Koxa-GX_5zs)

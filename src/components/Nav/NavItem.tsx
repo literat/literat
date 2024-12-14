@@ -8,5 +8,9 @@ interface NavItemProps {
 }
 
 export function NavItem({ children, row }: NavItemProps) {
-  return <li className={clsx(styles.NavItem, row >= 2 && styles.NavItemScaleDown)}>{children}</li>;
+  return (
+    <li className={clsx(styles.NavItem, row >= 2 && styles.NavItemScaleDown)}>
+      {children}
+    </li>
+  );
 }
