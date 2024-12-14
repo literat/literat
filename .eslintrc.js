@@ -1,5 +1,3 @@
-const { prettierConfig } = require('./.prettierrc.js');
-
 module.exports = {
   globals: {
     __PATH_PREFIX__: true,
@@ -24,8 +22,15 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'prettier/prettier': [
       'error',
+      // @todo: Load this from the prettier config
       {
-        ...prettierConfig,
+        singleQuote: true,
+        bracketSpacing: true,
+        printWidth: 80,
+        semi: true,
+        trailingComma: 'all',
+        proseWrap: 'always',
+        plugins: ['prettier-plugin-toml'],
       },
     ],
     'no-unused-vars': [
