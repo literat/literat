@@ -14,6 +14,8 @@ describe('Home Page', () => {
   });
 
   it('should render description', () => {
-    expect(screen.getByText(/Fullstack/)).toHaveTextContent('The Fullstack Developer from Czech republic 🇨🇿');
+    expect(screen.getByText(/Fullstack/)).toHaveTextContent(
+      'The Fullstack Developer from Czech republic 🇨🇿',
+    );
   });
 });

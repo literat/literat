@@ -27,7 +27,10 @@ export default function useRowFinder() {
     const rowData = {};
 
     items.forEach((item, i) => {
-      if (!item.previousElementSibling || item.offsetLeft < item.previousElementSibling.offsetLeft) {
+      if (
+        !item.previousElementSibling ||
+        item.offsetLeft < item.previousElementSibling.offsetLeft
+      ) {
         row += 1;
       }
       rowData[i] = row;

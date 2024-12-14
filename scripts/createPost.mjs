@@ -69,7 +69,8 @@ const createPost = async (options) => {
   return postFile;
 };
 
-const success = (file) => console.log(chalk.white.bgGreen.bold(`Done! File created at ${file}`));
+const success = (file) =>
+  console.log(chalk.white.bgGreen.bold(`Done! File created at ${file}`));
 
 const run = async () => {
   // show script introduction

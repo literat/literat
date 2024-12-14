@@ -24,7 +24,13 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all test paths before executing the test
   // https://jestjs.io/docs/configuration#testpathignorepatterns-arraystring
-  testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/public', '__fixtures__', '__mocks__'],
+  testPathIgnorePatterns: [
+    'node_modules',
+    '\\.cache',
+    '<rootDir>.*/public',
+    '__fixtures__',
+    '__mocks__',
+  ],
 
   // A set of global variables that need to be available in all test environments.
   // https://jestjs.io/docs/configuration#globals-object

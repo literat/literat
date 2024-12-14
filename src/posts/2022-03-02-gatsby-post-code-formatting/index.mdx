@@ -3,19 +3,23 @@ title: 'GatsbyJS - How to setup syntax highligting your in posts'
 date: '2022-03-02'
 category:
   - Development
-tags: ['gatsby', 'gatsbyjs', 'syntax', 'highlight', 'prismjs', 'post', 'javascript']
-excerpt: 'How to setup Gatsby to highlight syntax of code examples in your posts'
+tags:
+  ['gatsby', 'gatsbyjs', 'syntax', 'highlight', 'prismjs', 'post', 'javascript']
+excerpt:
+  'How to setup Gatsby to highlight syntax of code examples in your posts'
 ---
 
-Running a developer's blog means that you want to also show a lot of code examples in your posts. And you also want the code
-to be read as easily as is in your code editor. That means using some kind of syntax highlighting.
+Running a developer's blog means that you want to also show a lot of code
+examples in your posts. And you also want the code to be read as easily as is in
+your code editor. That means using some kind of syntax highlighting.
 
-If you are a user of VSCode like me, you probably want to highlight your code the same way as is in your editor. It can be done in
-a very easy way.
+If you are a user of VSCode like me, you probably want to highlight your code
+the same way as is in your editor. It can be done in a very easy way.
 
 ## Find and install the right theme
 
-Just find your favorite VSCode theme on GitHub and check if there are predefined themes in JSON like in
+Just find your favorite VSCode theme on GitHub and check if there are predefined
+themes in JSON like in
 [vsc-community-material-theme](https://github.com/material-theme/vsc-community-material-theme/tree/develop/themes).
 If so, just install it to your project.
 
@@ -44,15 +48,17 @@ Then your `package.json` should look like this:
 
 In the next step you must configure your Gatsby site to use this theme. But how?
 
-Since [Visual Studio Code][vscode] is built with web technology and has incredible syntax highlighting capabilities,
-[Andrew Branch][branch-blog]
-decided to make the syntax highlighting of VSCode available for gatsby sites with his library
-[gatsby-remark-vscode][gatsby-remark-vscode].
+Since [Visual Studio Code][vscode] is built with web technology and has
+incredible syntax highlighting capabilities, [Andrew Branch][branch-blog]
+decided to make the syntax highlighting of VSCode available for gatsby sites
+with his library [gatsby-remark-vscode][gatsby-remark-vscode].
 
-This allows you to use VSCode extensions like syntax highlighting themes or language definitions and get the same syntax
-highlighting in your Gatsby site that you would otherwise have in your editor.
+This allows you to use VSCode extensions like syntax highlighting themes or
+language definitions and get the same syntax highlighting in your Gatsby site
+that you would otherwise have in your editor.
 
-That is what I am currently using on this blog. And it has also many amazing features like:
+That is what I am currently using on this blog. And it has also many amazing
+features like:
 
 - [line number toggle, highlighting of specific lines](https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/#line-numbers)
   - ` ```js {numberLines}`
@@ -64,15 +70,18 @@ That is what I am currently using on this blog. And it has also many amazing fea
   [change when specific media queries](https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/#reacting-to-other-media-queries)
   or parent selectors are matched (e.g. high contrast mode)
 - [highlighting inline code with an inline code marker](https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/#inline-code-highlighting)
-  and then using that code marker by writing something like <code>&grave;js»const answer = 42&grave;</code>
-  to get highlighted inline code like `js»const answer = 42`.
+  and then using that code marker by writing something like
+  <code>&grave;js»const answer = 42&grave;</code> to get highlighted inline code
+  like `js»const answer = 42`.
 
 To do so you must go to `gatsby-config.js` and extends the configuration you use
-with `gatsbyRemarkVSCode.remarkPlugin` and pass it some options. `theme` is the most important option and it determines
-which theme will be used. It matches with the file name in the `themes` directory of the installed repository. To switch themes
-just use a different file name.
+with `gatsbyRemarkVSCode.remarkPlugin` and pass it some options. `theme` is the
+most important option and it determines which theme will be used. It matches
+with the file name in the `themes` directory of the installed repository. To
+switch themes just use a different file name.
 
-My current options for `gatsby-remark-vscode` in `gatsby-config.js` look like this:
+My current options for `gatsby-remark-vscode` in `gatsby-config.js` look like
+this:
 
 ```js
 // /gatsby-config.js
@@ -106,8 +115,9 @@ module.exports = {
 
 Syntax highlighting is then applied to the `pre` HTML tag.
 
-If you are using MDX just like me, you can even modify this `pre` tag with a custom component. For me it is `<Pre />` component
-with additional styling using `styled-components`.
+If you are using MDX just like me, you can even modify this `pre` tag with a
+custom component. For me it is `<Pre />` component with additional styling using
+`styled-components`.
 
 ```jsx
 // src/components/mdx/index.tsx
@@ -141,7 +151,8 @@ export default Pre;
 
 ## Display language attribute
 
-If you want to display a language of code in your code block, you can use the `data-language` attribute to do so.
+If you want to display a language of code in your code block, you can use the
+`data-language` attribute to do so.
 
 ```jsx
 // src/components/mdx/Pre.tsx
@@ -161,17 +172,20 @@ If you want to display a language of code in your code block, you can use the `d
 
 ## CSS-in-JS support
 
-Amongst all of this goodness, the feature that I like best is that you can use any VSCode extension that makes changes to
-the syntax highlighting. To have nice CSS-in-JS syntax highlighting in VSCode, I use an extension called
+Amongst all of this goodness, the feature that I like best is that you can use
+any VSCode extension that makes changes to the syntax highlighting. To have nice
+CSS-in-JS syntax highlighting in VSCode, I use an extension called
 [vscode-styled-components][vscode-styled-components].
 
-To set this up you must add that extension to the Gatsby project and then configure gatsby-remark-vscode to
-use it. You have to install it directly from GitHub because it's not published as an NPM package.
+To set this up you must add that extension to the Gatsby project and then
+configure gatsby-remark-vscode to use it. You have to install it directly from
+GitHub because it's not published as an NPM package.
 
 ## Conclusion
 
-If you run a developer blog like me, it is a good idea to use syntax highlighting in your code blocks.
-Use libraries that are designed for this use case and make sure that you use them in the right way.
+If you run a developer blog like me, it is a good idea to use syntax
+highlighting in your code blocks. Use libraries that are designed for this use
+case and make sure that you use them in the right way.
 
 ## References
 
@@ -186,4 +200,5 @@ Use libraries that are designed for this use case and make sure that you use the
 [branch-blog]: https://blog.andrewbran.ch/
 [vscode]: https://code.visualstudio.com/
 [gatsby-remark-vscode]: https://www.npmjs.com/package/gatsby-remark-vscode
-[vscode-styled-components]: https://github.com/styled-components/vscode-styled-components
+[vscode-styled-components]:
+  https://github.com/styled-components/vscode-styled-components

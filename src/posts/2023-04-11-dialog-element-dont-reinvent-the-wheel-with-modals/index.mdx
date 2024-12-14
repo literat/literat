@@ -12,16 +12,17 @@ tags: ['dialog', 'modal', 'element', 'html', 'popups']
 image: jackson-sophat-html-unsplash.jpg
 ---
 
-Every UI library [names components](https://component.gallery/components/modal/) a little differently.
-As for anatomy and implementation, components are often similar to each other (although each may be [suitable for different purposes](https://orbit.kiwi/components/overlay/modal/#when-to-use)).
-However, we encounter one variant of such a component almost everywhere.
-And that is the Modal.
-Sometimes it is called Dialog or Popup.
-In various mutations, it also appears as Drawer or Offcanvas (dialog that slides from the side).
-But they all have one thing in common.
-They appear above the current interface and prioritize a specific action or information for the user.
-And in all cases, their implementation is quite complex.
-Let's take a look at how to simplify and improve such implementation using the native element `html»<dialog>`.
+Every UI library [names components](https://component.gallery/components/modal/)
+a little differently. As for anatomy and implementation, components are often
+similar to each other (although each may be
+[suitable for different purposes](https://orbit.kiwi/components/overlay/modal/#when-to-use)).
+However, we encounter one variant of such a component almost everywhere. And
+that is the Modal. Sometimes it is called Dialog or Popup. In various mutations,
+it also appears as Drawer or Offcanvas (dialog that slides from the side). But
+they all have one thing in common. They appear above the current interface and
+prioritize a specific action or information for the user. And in all cases,
+their implementation is quite complex. Let's take a look at how to simplify and
+improve such implementation using the native element `html»<dialog>`.
 
 ## Meet the dialog element
 
@@ -29,22 +30,31 @@ Let's take a look at how to simplify and improve such implementation using the n
 
 ![Anatomy of Modal component - [https://uxmovement.com/content/anatomy-of-an-optimally-designed-modal/](https://uxmovement.com/content/anatomy-of-an-optimally-designed-modal/)](./modal-anatomy.png)
 
-Some of us have surely struggled with creating and styling modals. It's always the same:
+Some of us have surely struggled with creating and styling modals. It's always
+the same:
 
 - build the dialog and its content,
 - create an overlay with a darkened backdrop,
 - create an API for opening and closing the entire modal,
-- then solve closing when pressing the Escape key, clicking outside the `html»<dialog>` (on the backdrop), and other edge cases (such as [preventing scrolling](https://github.com/react-ui-org/react-ui/pull/432#discussion_r1052472103) on the page).
+- then solve closing when pressing the Escape key, clicking outside the
+  `html»<dialog>` (on the backdrop), and other edge cases (such as
+  [preventing scrolling](https://github.com/react-ui-org/react-ui/pull/432#discussion_r1052472103)
+  on the page).
 
-So many things that repeat themselves, and yet we have the dialog element that serves all of this on a silver platter.
-And at the same time, it solves accessibility.
+So many things that repeat themselves, and yet we have the dialog element that
+serves all of this on a silver platter. And at the same time, it solves
+accessibility.
 
-The first glimpse of the dialog element was shown to us by Tomáš Pustelník in his lecture at WebExpo - [HTML can do that](https://www.youtube.com/watch?v=rM1emdWTr5Q). Let's recap.
+The first glimpse of the dialog element was shown to us by Tomáš Pustelník in
+his lecture at WebExpo -
+[HTML can do that](https://www.youtube.com/watch?v=rM1emdWTr5Q). Let's recap.
 
-The dialog element itself is a relatively simple element.
-It doesn't have any additional properties except for the "open" attribute, which determines whether the dialog is initially open or not.
-However, be aware that a dialog opened via the "open" attribute is not modal and there is no method to reopen it.
-Controlling it through JavaScript is the preferred method, but more on that later.
+The dialog element itself is a relatively simple element. It doesn't have any
+additional properties except for the "open" attribute, which determines whether
+the dialog is initially open or not. However, be aware that a dialog opened via
+the "open" attribute is not modal and there is no method to reopen it.
+Controlling it through JavaScript is the preferred method, but more on that
+later.
 
 ```html
 <dialog open>
@@ -59,8 +69,11 @@ Controlling it through JavaScript is the preferred method, but more on that late
 
 ![Non-modal dailog from Modalz - [https://modalzmodalzmodalz.com/](https://modalzmodalzmodalz.com/)](./nonmodal-dialog-2.png)
 
-It becomes interesting only when combined with the `html»<form>` element, if it has the attribute `method="dialog"` or if the submit button has `formmethod="dialog"`.
-In such a case, the form state is saved, the dialog is closed, and the return value `dialog.returnValue` is set to the value of the button.
+It becomes interesting only when combined with the `html»<form>` element, if it
+has the attribute `method="dialog"` or if the submit button has
+`formmethod="dialog"`. In such a case, the form state is saved, the dialog is
+closed, and the return value `dialog.returnValue` is set to the value of the
+button.
 
 ```html
 <main>
@@ -74,8 +87,10 @@ In such a case, the form state is saved, the dialog is closed, and the return va
 </main>
 ```
 
-However, that's not all. The dialog element also adds a new pseudo-element, `css»::backdrop`, which allows easy styling of the backdrop that appears behind the dialog.
-For example, to achieve a darkening effect on the inaccessible content.
+However, that's not all. The dialog element also adds a new pseudo-element,
+`css»::backdrop`, which allows easy styling of the backdrop that appears behind
+the dialog. For example, to achieve a darkening effect on the inaccessible
+content.
 
 ```jsx
 .Modal::backdrop {
@@ -87,27 +102,32 @@ For example, to achieve a darkening effect on the inaccessible content.
 
 ## Close me and open me again, with JavaScript of course
 
-And now for the controls, because not everything works automatically and a bit of JavaScript is always needed.
-However, even here, `html»<dialog>` saves us some typing and offers us several options for interacting with it.
+And now for the controls, because not everything works automatically and a bit
+of JavaScript is always needed. However, even here, `html»<dialog>` saves us
+some typing and offers us several options for interacting with it.
 
 ### Methods
 
 `.show()`
 
-I will start with a method that may initially give the impression of an inconsistent API.
-The show() method does not display the dialog as the developer would expect, in Modal state.
-This method opens the Dialog in so-called non-modal state, where interaction with content outside the dialog is still allowed.
-It's similar to the open attribute that I described at the beginning.
+I will start with a method that may initially give the impression of an
+inconsistent API. The show() method does not display the dialog as the developer
+would expect, in Modal state. This method opens the Dialog in so-called
+non-modal state, where interaction with content outside the dialog is still
+allowed. It's similar to the open attribute that I described at the beginning.
 
 `.showModal()`
 
-This is the real method you want to use to open the dialog.
-The dialog opens as we all know, over all other dialogs, to the top layer.
-The `::backdrop` pseudo-element is activated and interaction with content outside the dialog is blocked.
+This is the real method you want to use to open the dialog. The dialog opens as
+we all know, over all other dialogs, to the top layer. The `::backdrop`
+pseudo-element is activated and interaction with content outside the dialog is
+blocked.
 
 `.close()`
 
-Closing `html»<dialog>` is already easy, there is only one method for that, which also accepts a return value as an argument that we want to get into `dialog.returnValue`.
+Closing `html»<dialog>` is already easy, there is only one method for that,
+which also accepts a return value as an argument that we want to get into
+`dialog.returnValue`.
 
 ### Events
 
@@ -119,7 +139,9 @@ The `html»<dialog>` element also triggers two events.
 
 `cancel`
 
-→ The cancel event is triggered when the dialog is canceled, for example by pressing the Escape key. This automatically closes the dialog and eliminates the need for further implementation.
+→ The cancel event is triggered when the dialog is canceled, for example by
+pressing the Escape key. This automatically closes the dialog and eliminates the
+need for further implementation.
 
 ```jsx
 <script>
@@ -152,9 +174,11 @@ The `html»<dialog>` element also triggers two events.
 </script>
 ```
 
-Then all you have to do is handle closing when clicking on the backdrop and you're done.
-But even here the solution is simple, because clicking on the backdrop passes `event.target` as the dialog element.
-Therefore, it is enough to compare whether the click was on the content or on the dialog element itself and close it accordingly.
+Then all you have to do is handle closing when clicking on the backdrop and
+you're done. But even here the solution is simple, because clicking on the
+backdrop passes `event.target` as the dialog element. Therefore, it is enough to
+compare whether the click was on the content or on the dialog element itself and
+close it accordingly.
 
 ![Content + Backdrop](./modal-content.png)
 
@@ -164,7 +188,8 @@ Therefore, it is enough to compare whether the click was on the content or on th
 
 The implementation in React has been significantly simplified.
 
-Let's start with the Modal component itself using the dialog element and a reference to it.
+Let's start with the Modal component itself using the dialog element and a
+reference to it.
 
 ```jsx
 function Modal({ children }) {
@@ -175,7 +200,8 @@ function Modal({ children }) {
 
 ```
 
-Next, we need to control the open or closed state using the methods described above.
+Next, we need to control the open or closed state using the methods described
+above.
 
 ```jsx
 function Modal({ children, open }) {
@@ -195,7 +221,8 @@ function Modal({ children, open }) {
 }
 ```
 
-Then it's just a matter of handling what should happen when someone presses Escape and the cancel event is triggered.
+Then it's just a matter of handling what should happen when someone presses
+Escape and the cancel event is triggered.
 
 ```jsx
 function Modal({ children, open, onRequestClose }) {
@@ -229,7 +256,8 @@ function Modal({ children, open, onRequestClose }) {
 }
 ```
 
-And as a cherry on top, we can also add the focus returning to the element that opened the modal, as recommended by WAI-ARIA.
+And as a cherry on top, we can also add the focus returning to the element that
+opened the modal, as recommended by WAI-ARIA.
 
 ```jsx
 function Modal({ children, open, onRequestClose }) {
@@ -251,35 +279,49 @@ function Modal({ children, open, onRequestClose }) {
 }
 ```
 
-Or you can break down the entire implementation into hooks and the Dialog component itself, and then assemble it like LEGO, as we did in the [Spirit Design System](https://github.com/lmc-eu/spirit-design-system/tree/main/packages/web-react/src/components/Dialog).
+Or you can break down the entire implementation into hooks and the Dialog
+component itself, and then assemble it like LEGO, as we did in the
+[Spirit Design System](https://github.com/lmc-eu/spirit-design-system/tree/main/packages/web-react/src/components/Dialog).
 
 ## What to take away from this
 
 ### Advantages
 
 - Minimal JavaScript is needed.
-- Accessibility is almost solved [except for a few problems with autofocus](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html).
+- Accessibility is almost solved
+  [except for a few problems with autofocus](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html).
 - There is a `::backdrop` pseudo-element that can be easily styled.
-- The form attribute `method="dialog"` exposes form values and buttons when used in a dialog.
+- The form attribute `method="dialog"` exposes form values and buttons when used
+  in a dialog.
 - Pressing the `Escape` key automatically closes the dialog.
 
 ### Disadvantages
 
-- More advanced functionality requires more JavaScript, but not that much more ;-)
-- Clicking on the backdrop does not close the dialog automatically, so a little bit of JavaScript is needed.
-- Some minor accessibility issues, see [autofocus](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html).
+- More advanced functionality requires more JavaScript, but not that much more
+  ;-)
+- Clicking on the backdrop does not close the dialog automatically, so a little
+  bit of JavaScript is needed.
+- Some minor accessibility issues, see
+  [autofocus](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html).
 
 ### Accessibility
 
-As shown in the following table, the dialog element can already be used in the vast majority of browsers, and work is underway on [solutions to some of the remaining issues](https://github.com/whatwg/html/commit/a9f103c9f7bd09ef712990194638c75db1f50e3c).
+As shown in the following table, the dialog element can already be used in the
+vast majority of browsers, and work is underway on
+[solutions to some of the remaining issues](https://github.com/whatwg/html/commit/a9f103c9f7bd09ef712990194638c75db1f50e3c).
 
 ![Support of the `<dialog>` element in the browsers | [https://caniuse.com/?search=dialog](https://caniuse.com/?search=dialog)](./dialog-caniuse.png)
 
-Therefore, if your website does not require any special features such as support for very old browsers or if you do not have extremely limited resources or time, I recommend migrating to the dialog element.
-There will always be cases where `role="dialog"` is preferred over the `html»<dialog>` element, but there will be fewer and fewer of them.
+Therefore, if your website does not require any special features such as support
+for very old browsers or if you do not have extremely limited resources or time,
+I recommend migrating to the dialog element. There will always be cases where
+`role="dialog"` is preferred over the `html»<dialog>` element, but there will be
+fewer and fewer of them.
 
-However, if you do not want to add additional dependencies that would solve any Dialog-related issues, even if they are very small, use the `html»<dialog>` element.
-After all, you don't want to reinvent the wheel, or rather the Dialog :-)
+However, if you do not want to add additional dependencies that would solve any
+Dialog-related issues, even if they are very small, use the `html»<dialog>`
+element. After all, you don't want to reinvent the wheel, or rather the Dialog
+:-)
 
 ## References
 
@@ -299,4 +341,5 @@ After all, you don't want to reinvent the wheel, or rather the Dialog :-)
 - [Dialog](https://open-ui.org/components/dialog.research)
 - [Modal](https://component.gallery/components/modal/)
 - [Modalz Modalz Modalz](https://modalzmodalzmodalz.com/)
-- 📷 [Jakson Sophat](https://unsplash.com/@jacksonsophat) - [html](https://unsplash.com/photos/wUbNvDTsOIc)
+- 📷 [Jakson Sophat](https://unsplash.com/@jacksonsophat) -
+  [html](https://unsplash.com/photos/wUbNvDTsOIc)
