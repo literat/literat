@@ -6361,6 +6361,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@taplo/core@npm:^0.1.0":
+  version: 0.1.1
+  resolution: "@taplo/core@npm:0.1.1"
+  checksum: 10/e4d5dd2a80c6bead07692d1b0e8f506b91b3474768aca7373d4dff94ad82f3d78e5401f46ca194343c63f474a69fc32cbb272570d506a995eab2214f88e66866
+  languageName: node
+  linkType: hard
+
+"@taplo/lib@npm:^0.4.0-alpha.2":
+  version: 0.4.0-alpha.2
+  resolution: "@taplo/lib@npm:0.4.0-alpha.2"
+  dependencies:
+    "@taplo/core": "npm:^0.1.0"
+  checksum: 10/926a31b2310f07172362f91f366617f9f94784f7fa1227c62e0753a034d885798bfcbd3cf73984148e42b6eda7c34fae235649f2cd71a84226caf17f1c35a73c
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:10.4.0":
   version: 10.4.0
   resolution: "@testing-library/dom@npm:10.4.0"
@@ -19512,6 +19528,7 @@ __metadata:
     normalize.css: "npm:8.0.1"
     npm-run-all2: "npm:7.0.2"
     prettier: "npm:3.4.2"
+    prettier-plugin-toml: "npm:^2.0.1"
     puppeteer: "npm:^10.1.0"
     puppeteer-core: "npm:^10.1.0"
     react: "npm:18.3.1"
@@ -24574,6 +24591,17 @@ __metadata:
   dependencies:
     fast-diff: "npm:^1.1.2"
   checksum: 10/00ce8011cf6430158d27f9c92cfea0a7699405633f7f1d4a45f07e21bf78e99895911cbcdc3853db3a824201a7c745bd49bfea8abd5fb9883e765a90f74f8392
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-toml@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "prettier-plugin-toml@npm:2.0.1"
+  dependencies:
+    "@taplo/lib": "npm:^0.4.0-alpha.2"
+  peerDependencies:
+    prettier: ^3.0.3
+  checksum: 10/cf6a6c4f386390d74924eaacff86d3ef97369749b986fe3b5229466e896ada9f6da4a4fef44059062ffebf6f9a25530d563cba73da2ba2aac0eee27b4fc8c279
   languageName: node
   linkType: hard
 
