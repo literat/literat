@@ -5,6 +5,7 @@ export default {
   plugins: [
     ...config.plugins,
     'remark-frontmatter',
+    'remark-mdx',
 
     // Values should increment by one from the first item
     // @see: https://github.com/remarkjs/remark-lint/tree/main/packages/remark-lint-ordered-list-marker-value
