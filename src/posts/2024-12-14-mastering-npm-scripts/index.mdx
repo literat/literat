@@ -38,13 +38,13 @@ the help itself, and no longer information about the available scripts.
 ![npm all commands list](./npm-all-commands.png 'All available npm commands')
 
 Fortunately, the developers of package managers have thought about this a bit,
-so I can list the available npm scripts with npm/yarn/pnpm run. But also with
+so I can list the available npm scripts with `npm/yarn/pnpm run`. But also with
 the full content of the script. I don't usually want to look at the scripts
 themselves, a dev: run local development comment would be more useful.
 
 ![npm available scripts](./npm-available-scripts.jpg 'Available npm scripts')
 
-I wish I had a way to describe the scripts better...
+I wish I had a way to describe the scripts better…
 I once wrote [an article on how to use Makefile comments to create self-documenting help][makefile-project-orchestration]
 about available scripts. It works quite simply, each script has a comment that
 can be processed and output as a help in the console.
@@ -86,13 +86,13 @@ this is supposed to be the script that tests the whole package.
 
 ![npm init with npm test script as default](./npm-init.png 'Output of `npm init` with only available script called `test`')
 
-> From my experience, the npm test (or yarn test) is what everyone expects to be present
+> From my experience, the `npm test` (or `yarn test`) is what everyone expects to be present
 > in every (or almost every) package. As a developer, I switch from one package
 > to another on a daily basis and this is precisely what I appreciate to be the
-> same everywhere. It's far more convenient to know I can rely on the npm test
-> (or yarn test) in all projects then having to remember different testing tasks
+> same everywhere. It's far more convenient to know I can rely on the `npm test`
+> (or `yarn test`) in all projects then having to remember different testing tasks
 > names across different projects. It's a part of the standard set of tasks: the
-> built-in install (or ci), then build, test, and start.
+> built-in `install` (or `ci`), then `build`, `test`, and `start`.
 >
 > [LMC's Cookie Consent Manager Review Comment][lmc-cookie-consent-manager-review]
 
@@ -229,8 +229,8 @@ Series:
 "lint": "lint:scripts; lint:css; lint:html"
 ```
 
-This solution works pretty cool, but it's one bigger problem. When using &,
-a subprocess is created, which in effect causes the original npm process to be
+This solution works pretty cool, but it's one bigger problem. When using `&`,
+a subprocess is created, which in effect causes the original `npm` process to be
 unable to tell if the subprocess ran fine or not. And this can be a problem,
 especially in the case of long-running scripts.
 
@@ -245,9 +245,9 @@ especially in the case of long-running scripts.
 "lint": "lint:scripts && lint:css && lint:html"
 ```
 
-However, there is a second option to solve this problem. And that is to use a package called npm-run-all
+However, there is a second option to solve this problem. And that is to use a package called `npm-run-all`
 
-> Use the npm-run-all2 package, because the author of the original package
+> Use the `npm-run-all2` package, because the author of the original package
 > no longer maintains the project, so a fork was created to maintain this very useful package.
 
 This package thus comes with two scripts, `run-s` for serial processing and `run-p`
@@ -281,7 +281,7 @@ Series:
 "lint": "npm-run-all --serial lint:scripts lint:css lint:html"
 ```
 
-Another great advantage of npm-run-all is that it can use the wildcard `*` as
+Another great advantage of `npm-run-all` is that it can use the wildcard `*` as
 a wildcard to replace a group of expressions. Thanks to this and also to defining
 namespaces with `:`, we can simplify the whole entry for a group of commands to:
 
@@ -310,10 +310,10 @@ A good example would be `start` and `prestart`, or the script `serve` and its ho
 for example [Yarn completely removed support][yarn-lifecycle-scripts]
 for `pre` and `post` hooks for most scripts.
 
-> In particular, we intentionally don't support arbitrary pre and post hooks for
-> user-defined scripts (such as prestart). This behavior caused scripts to be implicit
+> In particular, we intentionally don't support arbitrary `pre` and `post` hooks for
+> user-defined scripts (such as `prestart`). This behavior caused scripts to be implicit
 > rather than explicit, obfuscating the execution flow. It also sometimes led to
-> surprising behaviors, like yarn serve also running yarn preserve.
+> surprising behaviors, like `yarn serve` also running `yarn preserve`.
 
 In that respect, this move seems quite reasonable to me. I came across it while
 migrating to Yarn Modern, but I'll talk about that another time.
