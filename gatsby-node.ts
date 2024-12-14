@@ -136,7 +136,7 @@ export const onCreateNode = ({ node, actions }) => {
   if (node.internal.type === `Mdx`) {
     // create post path
     const { title, date } = node.frontmatter;
-    const slug = slugify(title, { lower: true });
+    const slug = slugify(title, { lower: true, strict: true, remove: /:/ });
     const dateRegex = /\d{4}-\d{2}-\d{2}/;
     let postPath = `/${slug}`;
     // If post directory includes date => blog post
