@@ -33,7 +33,9 @@ const Layout = ({ title, pageContext, children }: LayoutProps) =>
         <Header />
         <Menu />
         <MDXProvider components={mdxComponents}>
-          <ContentStyles className={pageContext.layoutClasses}>{children}</ContentStyles>
+          <ContentStyles className={pageContext.layoutClasses}>
+            {children}
+          </ContentStyles>
         </MDXProvider>
       </ContainerStyles>
       <Footer />

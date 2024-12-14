@@ -18,7 +18,8 @@ const TagStyles = styled.div`
   border-left: 2px solid var(--blue);
   --translate: -0.5rem;
   --rotate: 2deg;
-  transform: translateX(var(--translate)) translateY(var(--translate)) skew(-10deg);
+  transform: translateX(var(--translate)) translateY(var(--translate))
+    skew(-10deg);
   ${({ as }) => as === 'span' && `visibility: hidden;`};
 
   &:hover {

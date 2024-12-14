@@ -20,4 +20,6 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Run Commitlint
-        run: npx commitlint --color --verbose --from $(git merge-base origin/main HEAD)
+        run:
+          npx commitlint --color --verbose --from $(git merge-base origin/main
+          HEAD)
