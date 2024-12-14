@@ -17,7 +17,9 @@ interface TitleAndDescriptionProps {
   data: Data;
 }
 
-const TitleAndDescription = ({ data }: TitleAndDescriptionProps): JSX.Element => {
+const TitleAndDescription = ({
+  data,
+}: TitleAndDescriptionProps): JSX.Element => {
   const { title, description } = data.site.siteMetadata;
 
   return (

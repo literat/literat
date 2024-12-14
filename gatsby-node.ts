@@ -29,7 +29,9 @@ const getContentNavFromNode = (node) => {
 
 const createTagPages = (createPage, posts) => {
   const allTagsIndexTemplate = path.resolve('src/templates/allTagsIndex.tsx');
-  const singleTagsIndexTemplate = path.resolve('src/templates/singleTagIndex.tsx');
+  const singleTagsIndexTemplate = path.resolve(
+    'src/templates/singleTagIndex.tsx',
+  );
 
   const postsByTag = {};
 
@@ -161,7 +163,10 @@ export const onCreateNode = ({ node, actions }) => {
   }
 };
 
-export const onCreatePage = async ({ page, actions /* loadNodeContent */ /* , ...rest */ }) => {
+export const onCreatePage = async ({
+  page,
+  actions /* loadNodeContent */ /* , ...rest */,
+}) => {
   const { createPage } = actions;
 
   if (page.path.match(/thumbnail/)) {

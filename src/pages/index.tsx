@@ -4,7 +4,10 @@ import H from '../components/mdx/Headings';
 
 const HomePage = () => (
   <div>
-    <Helmet htmlAttributes={{ lang: 'en' }} title="Literat - Fullstack Developer & Whitewater Kayaker & Scout" />
+    <Helmet
+      htmlAttributes={{ lang: 'en' }}
+      title="Literat - Fullstack Developer & Whitewater Kayaker & Scout"
+    />
     <div
       style={{
         display: 'flex',

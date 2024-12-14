@@ -14,7 +14,9 @@ function MetaTags({ post }) {
     thumbnail: image?.publicURL,
   };
   const thumbnailQuery = new URLSearchParams(
-    Object.fromEntries(Object.entries(thumbnailData).filter(([key, val]) => val !== undefined)),
+    Object.fromEntries(
+      Object.entries(thumbnailData).filter(([key, val]) => val !== undefined),
+    ),
   ).toString();
 
   const ogImage = `${baseURL}/.netlify/functions/social-image?${thumbnailQuery}`;
@@ -38,7 +40,12 @@ function MetaTags({ post }) {
       <meta property="og:title" content={title} />
       <meta property="og:url" content={url} />
       <meta property="og:description" content={excerpt} />
-      {date ? <meta property="article:published_time" content={new Date(date.toString()).toISOString()} /> : null}
+      {date ? (
+        <meta
+          property="article:published_time"
+          content={new Date(date.toString()).toISOString()}
+        />
+      ) : null}
       <meta property="article:author" content="Literat" />
       <meta property="og:site_name" content="Literat" />
       <meta property="og:image" content={ogImage} />

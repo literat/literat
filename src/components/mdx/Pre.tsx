@@ -7,10 +7,16 @@ const Pre = styled.pre`
   margin-left: calc(-1 * ((80vw - 100%) / 2));
   padding: calc(1 * (1.68 * (18px + 0.2vw) + 0.2vw)) 0;
   font-size: 0.85em;
-  font-family: 'Fira Code', Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'Fira Code', Menlo, Consolas, Monaco, 'Andale Mono',
+    'Ubuntu Mono', monospace;
 
   @media only screen and (min-width: 600px) {
-    clip-path: polygon(0 calc(0% + 15px), 100% 0, 100% calc(100% - 15px), 0% 100%);
+    clip-path: polygon(
+      0 calc(0% + 15px),
+      100% 0,
+      100% calc(100% - 15px),
+      0% 100%
+    );
   }
 
   :after {

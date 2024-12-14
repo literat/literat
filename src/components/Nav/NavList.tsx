@@ -5,7 +5,10 @@ interface NavListProps {
   children: ReactNode;
 }
 
-export const NavList = forwardRef(function NavList({ children }: NavListProps, ref: Ref<HTMLUListElement>) {
+export const NavList = forwardRef(function NavList(
+  { children }: NavListProps,
+  ref: Ref<HTMLUListElement>,
+) {
   return (
     <ul ref={ref} className={styles.NavList}>
       {children}

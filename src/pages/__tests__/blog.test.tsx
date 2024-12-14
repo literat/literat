@@ -62,6 +62,8 @@ describe('Blog Index', () => {
     const { edges } = mockData.allMdx;
     const post1 = 'first-slug-link';
 
-    expect(getByTestId(post1)).toHaveTextContent(edges[0].node.frontmatter.title);
+    expect(getByTestId(post1)).toHaveTextContent(
+      edges[0].node.frontmatter.title,
+    );
   });
 });
