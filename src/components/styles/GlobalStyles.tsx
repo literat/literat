@@ -126,6 +126,38 @@ const GlobalStyles = createGlobalStyle`
     padding-left: 1.2em;
     padding-right: 1.2em;
   }
+
+  blockquote {
+    border-left: 2px solid var(--blue);
+    padding: 1rem 2rem;
+    margin: 3rem 0;
+    background: var(--imGoingToFaint);
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    p a, li a {
+      &:before {
+        background: none;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  figure {
+    margin: 0;
+
+    figcaption {
+      color: var(--grey);
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      font-size: 1.7rem;
+    }
+  }
 `;
 
 export default GlobalStyles;
