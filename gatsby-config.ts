@@ -56,6 +56,8 @@ const config: GatsbyConfig = {
               maxWidth: 1500,
               linkImagesToOriginal: false,
               withWebp: true,
+              showCaptions: ['title'],
+              markdownCaptions: true,
             },
           },
         ],
