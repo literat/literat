@@ -57,4 +57,8 @@ module.exports = {
   // The test environment that will be used for testing.
   // https://jestjs.io/docs/configuration#testenvironment-string
   testEnvironment: 'jsdom',
+
+  // An array of regexp pattern strings that are matched against all module paths before those paths are to be considered 'visible' to the module loader.
+  // https://jestjs.io/docs/configuration#modulepathignorepatterns-arraystring
+  modulePathIgnorePatterns: ['<rootDir>/.netlify'],
 };
