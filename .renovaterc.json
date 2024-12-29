@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base", "group:allNonMajor", "schedule:weekly"],
+  "extends": ["config:recommended", "group:allNonMajor", "schedule:weekly"],
   "ignorePresets": [":prHourlyLimit2"],
   "enabledManagers": ["npm", "github-actions", "nvm"],
   "branchPrefix": "dependencies/",
@@ -9,32 +9,32 @@
     {
       "groupName": "netlify functions dependencies",
       "groupSlug": "netlify-functions-deps",
-      "matchPackagePatterns": ["^puppeteer", "chrome-aws-lambda"],
-      "enabled": false
+      "enabled": false,
+      "matchPackageNames": ["/^puppeteer/", "/chrome-aws-lambda/"]
     },
     {
       "groupName": "gatsby monorepo non-major",
       "groupSlug": "gatsby-monorepo-minor-patch",
-      "matchPackagePatterns": ["^gatsby"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["/^gatsby/"]
     },
     {
       "groupName": "eslint plugins and configs non-major",
       "groupSlug": "eslint-plugins-configs-minor-patch",
-      "matchPackagePatterns": ["^eslint"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["/^eslint/"]
     },
     {
       "groupName": "babel monorepo non-major",
       "groupSlug": "babel-monorepo-minor-patch",
-      "matchPackagePatterns": ["^@babel"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["/^@babel/"]
     },
     {
       "groupName": "types",
       "groupSlug": "types-minor-patch",
-      "matchPackagePatterns": ["^types"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["/^types/"]
     }
   ]
 }
