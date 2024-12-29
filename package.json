@@ -20,7 +20,7 @@
     "netlify": "netlify",
     "test": "npm-run-all --serial lint format test:unit lint:commit",
     "test:unit": "yarn test:unit:local",
-    "test:unit:jest": "jest --config config/jest/config.js",
+    "test:unit:jest": "jest",
     "test:unit:ci": "yarn test:unit:coverage --runInBand",
     "test:unit:local": "yarn test:unit:coverage --maxWorkers=3",
     "test:unit:watch": "yarn test:unit:jest --watch",
@@ -131,7 +131,8 @@
     "remark-cli": "12.0.1",
     "remark-frontmatter": "5.0.0",
     "remark-mdx": "3.1.0",
-    "textlint": "14.4.0"
+    "textlint": "14.4.0",
+    "ts-node": "10.9.2"
   },
   "packageManager": "yarn@4.6.0"
 }
