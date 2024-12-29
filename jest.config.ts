@@ -1,7 +1,9 @@
-module.exports = {
+import type { Config } from 'jest';
+
+const config: Config = {
   // The root directory that Jest should scan for tests and modules within.
   // https://jestjs.io/docs/configuration#rootdir-string
-  rootDir: '../../',
+  rootDir: './',
 
   // A map from regular expressions to paths to transformers
   // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
@@ -62,3 +64,5 @@ module.exports = {
   // https://jestjs.io/docs/configuration#modulepathignorepatterns-arraystring
   modulePathIgnorePatterns: ['<rootDir>/.netlify'],
 };
+
+export default config;
