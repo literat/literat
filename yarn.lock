@@ -6332,13 +6332,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sparticuz/chromium@npm:131.0.1":
-  version: 131.0.1
-  resolution: "@sparticuz/chromium@npm:131.0.1"
+"@sparticuz/chromium@npm:132.0.0":
+  version: 132.0.0
+  resolution: "@sparticuz/chromium@npm:132.0.0"
   dependencies:
     follow-redirects: "npm:^1.15.9"
-    tar-fs: "npm:^3.0.6"
-  checksum: 10/0ec2ecc4daded47c938698f9c13abdc01216b723ecbff186518e383c0ab966c9a934e24e568306b343d4ab124891f57d6c1521d00d34b8bd65f2ad4bd6d718bd
+    tar-fs: "npm:^3.0.8"
+  checksum: 10/582cb8ef487ef6ef933c34d7a7110d37fb1c57d7763d71a645f9d706b7e2c55b223d880d171801b139837e9ce150fdaafae7bd639d94af15a71c42af5e595247
   languageName: node
   linkType: hard
 
@@ -9409,10 +9409,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bare-fs@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "bare-fs@npm:4.0.1"
+  dependencies:
+    bare-events: "npm:^2.0.0"
+    bare-path: "npm:^3.0.0"
+    bare-stream: "npm:^2.0.0"
+  checksum: 10/70951cf7d7522f0b6780bdfaf7969226db85370fa107b1eee71c58272573463388b40203595a8826cd55ca34e6359ca4b1ee91fd5d0b8ea64ab0d1f9979de262
+  languageName: node
+  linkType: hard
+
 "bare-os@npm:^2.1.0":
   version: 2.4.4
   resolution: "bare-os@npm:2.4.4"
   checksum: 10/85d4cbc26d7a3d8c9af2c3d3ca216d86304baf089825087581a8c07b2b8864cbec1c9bc14e791c74767ed2f504611a278e5fc6f0577b3b041bbf072fd82958e7
+  languageName: node
+  linkType: hard
+
+"bare-os@npm:^3.0.1":
+  version: 3.4.0
+  resolution: "bare-os@npm:3.4.0"
+  checksum: 10/bc74ee2ca764835fbf0bf3fd864e6f9330724e44be3a1a56060e8820a5f259a392011b5a169a52dec459fce4b18b22bc15380f8bc1640f316b0cc8faaa0405d4
   languageName: node
   linkType: hard
 
@@ -9422,6 +9440,15 @@ __metadata:
   dependencies:
     bare-os: "npm:^2.1.0"
   checksum: 10/1576c53e487947d218e6471c7f3d0f8e799a6809ad0c2a98e78c2fda1fa8ade01f3532b954e50e8a5609d874347dbca1023bfade73d0b76f3221b371ed715fcb
+  languageName: node
+  linkType: hard
+
+"bare-path@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "bare-path@npm:3.0.0"
+  dependencies:
+    bare-os: "npm:^3.0.1"
+  checksum: 10/712d90e9cd8c3263cc11b0e0d386d1531a452706d7840c081ee586b34b00d72544e65df7a40013d47c1b177277495225deeede65cb2984db88a979cb65aaa2ff
   languageName: node
   linkType: hard
 
@@ -19544,7 +19571,7 @@ __metadata:
     "@lmc-eu/textlint-rule-preset-lmc": "npm:2.0.1"
     "@mdx-js/react": "npm:3.1.0"
     "@netlify/functions": "npm:3.0.0"
-    "@sparticuz/chromium": "npm:131.0.1"
+    "@sparticuz/chromium": "npm:132.0.0"
     "@testing-library/dom": "npm:10.4.0"
     "@testing-library/jest-dom": "npm:6.6.3"
     "@testing-library/react": "npm:16.1.0"
@@ -28739,7 +28766,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar-fs@npm:^3.0.4, tar-fs@npm:^3.0.6":
+"tar-fs@npm:^3.0.4":
   version: 3.0.6
   resolution: "tar-fs@npm:3.0.6"
   dependencies:
@@ -28753,6 +28780,23 @@ __metadata:
     bare-path:
       optional: true
   checksum: 10/277f9ba707928ed7396f582b7f9648617f7683a84ac7a97d66404b0811c9c9e55136a6b88e3ba72515c2761b50aebfd428598d2770ea6ba95fda3e06e75380c7
+  languageName: node
+  linkType: hard
+
+"tar-fs@npm:^3.0.8":
+  version: 3.0.8
+  resolution: "tar-fs@npm:3.0.8"
+  dependencies:
+    bare-fs: "npm:^4.0.1"
+    bare-path: "npm:^3.0.0"
+    pump: "npm:^3.0.0"
+    tar-stream: "npm:^3.1.5"
+  dependenciesMeta:
+    bare-fs:
+      optional: true
+    bare-path:
+      optional: true
+  checksum: 10/fdcd1c66dc5e2cad5544ffe7eab9a470b419290b22300c344688df51bf06127963da07a1e3ae23cae80851cd9f60149e80b38e56485dd7a14aea701241ac2f81
   languageName: node
   linkType: hard
 
