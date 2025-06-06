@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@mdx-js/react": "3.1.0",
-    "@netlify/functions": "3.1.5",
+    "@netlify/functions": "4.1.4",
     "@sparticuz/chromium": "131.0.1",
     "babel-plugin-styled-components": "2.1.4",
     "clsx": "2.1.1",
