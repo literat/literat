@@ -20061,7 +20061,7 @@ __metadata:
     jest-environment-jsdom: "npm:29.7.0"
     netlify-cli: "npm:17.38.1"
     normalize.css: "npm:8.0.1"
-    npm-run-all2: "npm:7.0.2"
+    npm-run-all2: "npm:8.0.4"
     prettier: "npm:3.5.3"
     prettier-plugin-toml: "npm:2.0.4"
     puppeteer: "npm:^10.1.0"
@@ -23394,14 +23394,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-all2@npm:7.0.2":
-  version: 7.0.2
-  resolution: "npm-run-all2@npm:7.0.2"
+"npm-run-all2@npm:8.0.4":
+  version: 8.0.4
+  resolution: "npm-run-all2@npm:8.0.4"
   dependencies:
     ansi-styles: "npm:^6.2.1"
     cross-spawn: "npm:^7.0.6"
     memorystream: "npm:^0.3.1"
-    minimatch: "npm:^9.0.0"
+    picomatch: "npm:^4.0.2"
     pidtree: "npm:^0.6.0"
     read-package-json-fast: "npm:^4.0.0"
     shell-quote: "npm:^1.7.3"
@@ -23411,7 +23411,7 @@ __metadata:
     npm-run-all2: bin/npm-run-all/index.js
     run-p: bin/run-p/index.js
     run-s: bin/run-s/index.js
-  checksum: 10/46d3f7a9117d6af2463285a02909ecc92bde31fc5cd9d8a7c4cc66157e639481eed13d5553dda62b9def6df36b8a5c748393ea65233aea97ee0e615033595266
+  checksum: 10/6e485f0d71fdfcf5bd872e5bbb8440ea5816ebeed88e6e39ff6e758d76adefa516b3101ed7ddc8de117d61b499f176417c87b0c595394e15733738834ad6ef0a
   languageName: node
   linkType: hard
 
