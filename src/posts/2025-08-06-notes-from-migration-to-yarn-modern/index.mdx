@@ -1,0 +1,153 @@
+---
+title: Notes from migration to Yarn Modern
+excerpt: ''
+date: '2025-08-06'
+category:
+  - development
+tags: ['yarn', 'modern', 'migration', 'classic']
+---
+
+I have started migration to the Yarn Modern (Berry) in the time when the version
+3.0 was released. Until then I was using on my projects the Yarn v1, now called
+as Yarn Classic. I that time I was not satisfied with the stability and
+behaviour of the Yarn Berry, so I was waiting for more stable versions.
+
+These notes were taken during the migration of many projects using Yarn. Current
+released version is v4. So from the v3 up I will be refering to these versions
+as Yarn Modern (or Berry).
+
+## Benefits of newer Yarn
+
+I have been using Yarn for a quite a long time and i do not want to discuss the
+reasons why I prefer this package manager over other ones on the market. The
+Internet is full of comparisions.
+
+However, benefits of upgrading is a different story.
+
+The Yarn itself take an approach of testing new things from the beginning and
+keep pushing forward (that is why we have lock files, workspaces, etc.). Since
+the Yarn v2 (Berry) it begun experimenting with other features, such as
+Plug'n'Play (PnP), Zero-Installs, and more. But they were not stable enough.
+
+So the main benefit of upgrading is the regain stability of the package manager.
+
+Secondly, the Yarn now supports all three approaches of the package management:
+
+- `node_modules` - the classic way, which install packages into the
+  `node_modules` directory
+- `pnp`; Plug'n'Play - the new way, which does not use `node_modules` at all,
+  but instead uses a single file to resolve dependencies
+- 'pnpm' - the new way, which uses a content-addressable cache, introduced by
+  the `pnpm` package manager
+
+So from now on, you can choose the best way for your project to manage
+dependencies in your file system.
+
+Using these approaches you can even achieve Zero-Installs, which means that you
+do not need to run `yarn install` at all (it is still needed when removing or
+adding packages).
+
+The last but not least benefit is [Yarn's extensibility][yarn-extensibility],
+which is now build in. You can easily extend the Yarn with your own plugins and
+features which are not implemented yet.
+
+## Migration process
+
+Before beginning with the migration, there are two requirements:
+
+- the Node.js version must be 18 or higher; this is pretty clear
+- the Corepack must be enabled; what the hell is Corepack?
+
+### Corepack
+
+The Corepack is a new tool, shipped with the Node.js version from 14.19.0 up to
+(but not including) 25.0.0.
+
+> There has been a recent change not to include the Corepack in the Node.js
+> distribution since it is a tool and not the Node.js API. In the same manner
+> should not be shipped also the `napm` package manager, but it is still heavily
+> integrated :shrug:.
+
+This tool allows developers to manage different package managers in the one
+place. And even link it with your project.
+
+Using `corepack enable` command you can activate the Corepack on you system.
+After this, the `package.json` file will be modified with the record containing
+your current package manager.
+
+```json
+// package.json
+{
+  "packageManager": "yarn@3.2.3+sha224.953c8233f7a92884eee2de69a1b92d1f2ec1655e66d08071ba9a02fa"
+}
+```
+
+From now on, you can easily switch between different package managers using
+`corepack install` and `corepack use` commands.
+
+When developing a project with `packageManager` defined, the Corepack will
+automatically use the specified package manager.
+
+### Yarn changes in the package
+
+### CI modifications
+
+```yaml
+# .github/actions/setup-node/action.yaml
+name: 'setup node'
+description: 'Setup Node'
+runs:
+  using: 'composite'
+  steps:
+    - name: Enable Corepack
+      shell: bash
+      run: corepack enable
+
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'yarn'
+        cache-dependency-path: yarn.lock
+```
+
+```yaml
+name: Test
+
+on:
+  push:
+
+jobs:
+  ci:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
+      # ...
+```
+
+## References
+
+[spirit-yarn-modern-migration]:
+  https://github.com/lmc-eu/spirit-design-system/pull/1029/files
+[cqt-yarn-modern-migration]:
+  https://github.com/lmc-eu/code-quality-tools/pull/205/files
+[yarn-3-0-release-notes]: https://yarnpkg.com/blog/release/3.0
+[yarn-3-1-release-notes]: https://yarnpkg.com/blog/release/3.1
+[yarn-3-2-release-notes]: https://yarnpkg.com/blog/release/3.2
+[yarn-installation]: https://yarnpkg.com/getting-started/install
+[yarn-extensibility]: https://yarnpkg.com/features/extensibility
+[yarn-benefits]: https://yarnpkg.com/migration/overview
+[yarn-step-by-step]: https://yarnpkg.com/migration/guide
+[yarn-pnp]: https://yarnpkg.com/migration/pnp
+[yarn-corepack]: https://yarnpkg.com/corepack
+[yarn-qa]: https://yarnpkg.com/getting-started/qa
+[yarn-recipes]: https://yarnpkg.com/getting-started/recipes
+[corepack-docs]: https://github.com/nodejs/corepack#readme
+[enable-corepack]: https://github.com/actions/setup-node/issues/480
+
+https://socket.dev/blog/node-js-tsc-votes-to-stop-distributing-corepack
+https://github.com/nodejs/TSC/pull/1697#issuecomment-2737093616
+https://socket.dev/blog/node-community-debates-enabling-corepack-unbundling-npm
