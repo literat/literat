@@ -1,0 +1,112 @@
+---
+title: The adventure road to ESLint v9
+excerpt: ''
+date: '2025-08-15'
+category:
+  - development
+tags:
+  [
+    'eslint',
+    'eslint',
+    'v9',
+    'migration',
+    'javascript',
+    'configuration',
+    'linting',
+    'esm',
+    'ecmascript',
+  ]
+---
+
+Every codebase should be readable. And when the codebase  grows bigger and bigger, what was at the beginning recommendation, becomes a necessity.
+One of the tools that helps us to keep our code clean and readable is ESLint. After a years of maintaining complex codebases, the ESLint and code linting as general,
+becomes a natural part of frontend developer's workflow.
+
+With the new release of ESLint v9 and with the introduction of flat configuration system, it comes the time to upgrade.
+
+In this post I would like to share my experience with the migration and go through the steps that I have taken to make the migration as smooth as possible.
+
+> Note: If you are starting with the fresh project, I suggest checking out the official [ESLint Quick Start Guide][eslint-quick-start].
+
+Ok, let's dive into the good, bad and annoying parts of the migration process to ESLint v9.
+
+## News in ESLint v9
+
+TODO: some intro about ESLint and the struggle
+
+TODO: What is new in ESLint v9 and why to migrate
+
+Flat configuration
+
+add some info about why everyone is moving to *.config.js
+
+  1:1  error  Expected an assignment or function call and instead saw an expression  no-unused-expressions
+Eslint with flat cannot lint JSON, the approach has changed, use eslint plugin jsonc
+
+TODO: starting with migration
+
+- eslint v8 supports flat config, so do the compatibility migration first
+- use migration tool
+- fix plugins and configs
+- ignore files
+- fix errors
+
+import { defineConfig, globalIgnores } from 'eslint/config'; // not in Eslint v8
+
+Multiple extends in underlying configs are not being resolved correctly
+
+use `--debug` parameter
+
+use ESLINT_USE_FLAT_CONFIG=false for partial migration
+
+TODO: bump to the Eslint v9
+- go plugin by plugin
+
+
+- eslint-plugin-import
+  https://github.com/import-js/eslint-plugin-import/blob/main/README.md
+
+- example of eslint config for react
+  https://github.com/strvcom/code-quality-tools/blob/49919760771b09182fecc4c05fa24333aed267ad/packages/eslint-config-react/readme.md
+
+- support flat config by eslint-config-airbnb-typescript
+  https://github.com/iamturns/eslint-config-airbnb-typescript/issues/331
+
+- eslint config airbnb base
+  https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/README.md
+
+- eslint configuration files
+  https://eslint.org/docs/latest/use/configure/configuration-files#configuration-objects
+
+- example of base eslint config
+  https://github.com/strvcom/code-quality-tools/blob/master/packages/eslint-config-base/index.mjs#L7
+
+
+- How I Collected Bumps During the Migration to ESLint 9
+  https://adequatica.medium.com/how-i-collected-bumps-during-the-migration-to-eslint-9-973ec54fe254
+
+Some notes
+
+- the order of adding other objects matters
+  - it is just JS object so the last attribute wins/overrides the previous ones
+
+- beware of Node API like `__dirname` use import.url instead
+- FlatCompat should be used only for legacy configs
+- base dir is not necessary to set
+- defineConfig only adds another layer of abstraction, it is not necessary -
+  typings, IMHO
+- extends attribute is not supported
+
+## References
+
+- [The Great ESLint v9 Migration Adventure: A Developer's Survival Guide][migration-to-eslint-v9]
+
+## Read more
+
+- [Introducing ESLint Config Inspector][eslint-config-inspector] - Visual tool to analyze and understand your ESLint configurations.
+- https://medium.com/@onix_react/whats-new-in-eslint-9-0-f38e044010dd
+
+[migration-to-eslint-v9]: https://web.archive.org/web/20250807003921/https://www.neoxs.me/blog/migration-to-eslint-v9
+{/* https://www.neoxs.me/blog/migration-to-eslint-v9#key-configuration-elements- */}
+[eslint-config-inspector]: https://eslint.org/blog/2024/04/eslint-config-inspector/
+[eslint-quick-start]: https://eslint.org/docs/latest/use/getting-started#quick-start
