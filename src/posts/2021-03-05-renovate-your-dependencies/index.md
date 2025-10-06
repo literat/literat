@@ -137,7 +137,7 @@ And what about vulnerability alerting?
 We created a Jenkins job with a simple `npm audit` and we are sending the result
 to our Slack channel. 🎉
 
-## Resources
+## References
 
 - [Noise reduction in Renovate Docs][renovate-noise-reduction]
 - [Vulnerability alerting by Renovate (GitHub only
