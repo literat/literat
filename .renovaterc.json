@@ -1,10 +1,12 @@
 {
-  "extends": ["config:recommended", "group:allNonMajor", "schedule:weekly"],
-  "ignorePresets": [":prHourlyLimit2"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>literat/renovate-config",
+    "local>literat/renovate-config:scheduleEveryTwoWeeksNonOfficeHours",
+    ":dependencyDashboard"
+  ],
   "enabledManagers": ["npm", "github-actions", "nvm"],
-  "branchPrefix": "dependencies/",
   "commitMessagePrefix": "chore(deps): ",
-  "rangeStrategy": "pin",
   "packageRules": [
     {
       "groupName": "netlify functions dependencies",
