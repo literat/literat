@@ -70,7 +70,7 @@ exports.onCreateNode = ({ node, actions }) => {
 
 After all these changes you will need to re-run the `gatsby develop` command.
 
-## Resources
+## References
 
 - [GatsbyJs: Official tutorial - part 7][gatsbyjs-tutorial-7]
 - [Surinder Bhomra: Include date in blog post slug][include-date-in-blog-post]
