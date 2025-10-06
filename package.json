@@ -87,7 +87,7 @@
     "@babel/preset-typescript": "7.27.1",
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
-    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/eslintrc": "3.3.1",
     "@lmc-eu/prettier-config": "2.0.1",
     "@lmc-eu/textlint-rule-preset-lmc": "2.0.2",
     "@testing-library/dom": "10.4.1",
