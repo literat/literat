@@ -1,11 +1,10 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { pathJoin } from '../utils/pathJoin';
 import { getBaseUrl } from '../utils/getBaseUrl';
 
 const baseURL = getBaseUrl();
 
-function MetaTags({ post }) {
+function PostMetaTags({ post }) {
   const { title, description, image, excerpt, date, tags } = post.frontmatter;
   const url = pathJoin(baseURL, post.fields.path);
   const thumbnailData = {
@@ -22,7 +21,7 @@ function MetaTags({ post }) {
   const ogImage = `${baseURL}/.netlify/functions/social-image?${thumbnailQuery}`;
 
   return (
-    <Helmet>
+    <>
       <link rel="canonical" href={url} />
       <meta name="generator" content="Literat on Gatsby!" />
       <meta name="author" content="Literat" />
@@ -52,9 +51,9 @@ function MetaTags({ post }) {
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:locale" content="en_US" />
-      <title>{title} - Literat</title>
-    </Helmet>
+      <title id="meta-title">{title} - Literat</title>
+    </>
   );
 }
 
-export default MetaTags;
+export default PostMetaTags;
