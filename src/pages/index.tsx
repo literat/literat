@@ -1,13 +1,15 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import H from '../components/mdx/Headings';
+import SiteMetaTags from '../components/SiteMetaTags';
+
+const Head = () => {
+  return (
+    <SiteMetaTags title="Literat - Fullstack Developer & Whitewater Kayaker & Scout" />
+  );
+};
 
 const HomePage = () => (
   <div>
-    <Helmet
-      htmlAttributes={{ lang: 'en' }}
-      title="Literat - Fullstack Developer & Whitewater Kayaker & Scout"
-    />
     <div
       style={{
         display: 'flex',
@@ -23,3 +25,4 @@ const HomePage = () => (
 );
 
 export default HomePage;
+export { Head };

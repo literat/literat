@@ -1,6 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import H from '../components/mdx/Headings';
+import SiteMetaTags from '../components/SiteMetaTags';
+
+const Head = () => <SiteMetaTags title="Contact Me - Literat" />;
 
 const LinkedInProfileLink = () => (
   <a
@@ -14,9 +16,6 @@ const LinkedInProfileLink = () => (
 
 const ContactPage = () => (
   <>
-    <Helmet>
-      <title>Contact Me - Literat</title>
-    </Helmet>
     <H>Contact</H>
     <p>
       Hello! I get lots of email, so please scan this page before firing one
@@ -70,3 +69,4 @@ const ContactPage = () => (
 );
 
 export default ContactPage;
+export { Head };
