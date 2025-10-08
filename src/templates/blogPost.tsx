@@ -5,9 +5,8 @@ import { EditDialog } from '../components/Content/EditDialog';
 import HeroImage from '../components/Content/HeroImage';
 import { Nav as ContentNav } from '../components/Content/Nav';
 import PostMeta from '../components/Content/PostMeta';
-import MetaTags from '../components/PostMetaTags';
-import H from '../components/mdx/Headings';
 import PostMetaTags from '../components/PostMetaTags';
+import H from '../components/mdx/Headings';
 
 const query = graphql`
   query ($pathSlug: String!) {
