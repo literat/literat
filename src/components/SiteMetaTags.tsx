@@ -12,7 +12,7 @@ function SiteMetaTags({ children, title }: SiteMetaTagsProps) {
       {/**
        * The `id` attributes help with deduplication of tags in the head.
        *
-       * @see { @link https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/#deduplication }
+       * @see {@link https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/#deduplication}
        */}
       <title id="meta-title">{title}</title>
       <link
