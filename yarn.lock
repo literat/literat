@@ -6936,13 +6936,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sparticuz/chromium@npm:138.0.2":
-  version: 138.0.2
-  resolution: "@sparticuz/chromium@npm:138.0.2"
+"@sparticuz/chromium@npm:141.0.0":
+  version: 141.0.0
+  resolution: "@sparticuz/chromium@npm:141.0.0"
   dependencies:
-    follow-redirects: "npm:^1.15.9"
-    tar-fs: "npm:^3.1.0"
-  checksum: 10/8251acf57a213fd9654cd58425fe71a2e264e6d5c1075b0167bd5b779e894eb0538a1fee65cc0f51d3213b2d119cd09e178a9041b4f61cb9b5d248bf633a792d
+    follow-redirects: "npm:^1.15.11"
+    tar-fs: "npm:^3.1.1"
+  checksum: 10/af4024df583708d207e5b627b61b807845225779d0ec2d60c68b0fd884f4daf4e5ce9630dd6578cc611069c0549cdba637ac39664639b0a8b4a191872242bc07
   languageName: node
   linkType: hard
 
@@ -16261,13 +16261,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.15.6, follow-redirects@npm:^1.15.9":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.15.6":
   version: 1.15.9
   resolution: "follow-redirects@npm:1.15.9"
   peerDependenciesMeta:
     debug:
       optional: true
   checksum: 10/e3ab42d1097e90d28b913903841e6779eb969b62a64706a3eb983e894a5db000fbd89296f45f08885a0e54cd558ef62e81be1165da9be25a6c44920da10f424c
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.15.11":
+  version: 1.15.11
+  resolution: "follow-redirects@npm:1.15.11"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 10/07372fd74b98c78cf4d417d68d41fdaa0be4dcacafffb9e67b1e3cf090bc4771515e65020651528faab238f10f9b9c0d9707d6c1574a6c0387c5de1042cde9ba
   languageName: node
   linkType: hard
 
@@ -21172,7 +21182,7 @@ __metadata:
     "@lmc-eu/textlint-rule-preset-lmc": "npm:2.0.2"
     "@mdx-js/react": "npm:3.1.1"
     "@netlify/functions": "npm:5.0.0"
-    "@sparticuz/chromium": "npm:138.0.2"
+    "@sparticuz/chromium": "npm:141.0.0"
     "@testing-library/dom": "npm:10.4.1"
     "@testing-library/jest-dom": "npm:6.9.1"
     "@testing-library/react": "npm:16.3.0"
@@ -30816,7 +30826,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar-fs@npm:^3.1.0":
+"tar-fs@npm:^3.1.1":
   version: 3.1.1
   resolution: "tar-fs@npm:3.1.1"
   dependencies:
