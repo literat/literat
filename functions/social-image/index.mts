@@ -1,13 +1,24 @@
+/**
+ * Docs on the Netlify Functions
+ * @see {@link https://docs.netlify.com/build/functions/get-started/?data-tab=TypeScript}
+ */
+
+import type { Context, Config } from '@netlify/functions';
 // Switch to this, re: https://answers.netlify.com/t/netlify-function-with-puppeteer-breaks-if-i-make-any-changes/76924/8
-const chrome = require('@sparticuz/chromium');
-const puppeteer = require('puppeteer-core');
-const wait = require('waait');
+import chrome from '@sparticuz/chromium';
+import puppeteer from 'puppeteer-core';
+import wait from 'waait';
+
+export const config: Config = {
+  // Configuring the function to only run on GET requests.
+  method: 'GET',
+};
 
 const cached = new Map();
 
 const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
-async function getOptions(isDev) {
+async function getOptions(isDev: boolean) {
   if (isDev) {
     return {
       product: 'chrome',
@@ -24,7 +35,7 @@ async function getOptions(isDev) {
   };
 }
 
-async function getScreenshot(url, isDev) {
+async function getScreenshot(url: string, isDev: boolean) {
   // first check if this value has been cached
   const cachedImage = cached.get(url);
   if (cachedImage) {
@@ -44,10 +55,8 @@ async function getScreenshot(url, isDev) {
   return base64Image;
 }
 
-// Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
-exports.handler = async (event, context) => {
-  const qs = new URLSearchParams(event.queryStringParameters);
-  const thumbnailUrl = `${process.env.URL || `http://localhost:8888`}/thumbnail?${qs.toString()}`;
+export default async (request: Request, context: Context) => {
+  const thumbnailUrl = `${process.env.URL || `http://localhost:8888`}/thumbnail?${context.url.searchParams.toString()}`;
   console.log('Thumbnail url:', thumbnailUrl);
 
   const photoBuffer = await getScreenshot(
@@ -57,12 +66,10 @@ exports.handler = async (event, context) => {
     process.env.URL.includes('http://localhost'),
   );
 
-  return {
-    statusCode: 200,
+  return new Response(photoBuffer, {
+    status: 200,
     headers: {
       'content-type': 'image/png',
     },
-    body: photoBuffer,
-    isBase64Encoded: true,
-  };
+  });
 };
