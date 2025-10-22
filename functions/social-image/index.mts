@@ -56,14 +56,16 @@ async function getScreenshot(url: string, isDev: boolean) {
 }
 
 export default async (request: Request, context: Context) => {
-  const thumbnailUrl = `${process.env.URL || `http://localhost:8888`}/thumbnail?${context.url.searchParams.toString()}`;
+  const thumbnailUrl = `${process.env.URL || `http://localhost:8000`}/thumbnail?${context.url.searchParams.toString()}`;
   console.log('Thumbnail url:', thumbnailUrl);
 
   const photoBuffer = await getScreenshot(
     thumbnailUrl,
-    // Here we need to pass a boolean to say if we are on the server. Netlify has a bug where process.env.NETLIFY is undefined in functions so I'm using one of the only vars I can find
+    // Here we need to pass a boolean to say if we are on the server.
+    // Netlify has a bug where process.env.NETLIFY is undefined in functions
+    // so I'm using one of the only vars I can find
     // !process.env.NETLIFY
-    process.env.URL.includes('http://localhost'),
+    process.env.URL?.includes('http://localhost') ?? false,
   );
 
   return new Response(photoBuffer, {
