@@ -68,7 +68,7 @@ export default async (request: Request, context: Context) => {
     process.env.URL?.includes('http://localhost') ?? false,
   );
 
-  return new Response(photoBuffer, {
+  return new Response(Buffer.from(photoBuffer, 'base64'), {
     status: 200,
     headers: {
       'content-type': 'image/png',
