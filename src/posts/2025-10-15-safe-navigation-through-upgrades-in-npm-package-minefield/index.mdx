@@ -17,7 +17,7 @@ installing and upgrading packages from npm registry.
 My package manager of choice is Yarn, so most of the examples will be using
 Yarn, however similar approaches are also applicable to npm or pnpm as well.
 
-## Use Automated Dependency Management
+## Avoid blind dependency upgrades
 
 As a first line of defense I have started using automated tooling for managing
 dependencies a long time ago. The tools like Dependabot or Renovate can help you
@@ -30,7 +30,23 @@ more about my experience with this tool in my previous post [Renovate your
 dependencies: Automated dependency management for modern
 applications][renovate-your-dependencies].
 
+Some developers automatically upgrade all dependencies to the latest versions as
+part of continuous integration processes or local development practices, aiming
+to ensure forward compatibility or stay at "bleeding edge". Blind dependency
+upgrades can pull in malicious packages from compromised accounts, introduce
+functional bugs, or expose applications to supply chain attacks
+
+Blindly upgrading all dependencies to their latest versions can expose your
+application to security vulnerabilities, dependency confusion attacks, and
+malicious packages released from compromised accounts.
+
 ### How to implement?
+
+Use controlled dependency manangement:
+
+```sh
+yarn dlx npm-check-updates --interactive
+```
 
 For DependaBot you can introduce a configuration file `.github/dependabot.yml`
 in your repository:
@@ -60,6 +76,7 @@ repository:
 ```
 
 👉 Read more in [Renovate documentation][renovate-docs]
+👉 Use [Snyk Automated Dependency Update PRs][snyk-prs]
 
 ## Disable Postinstall Scripts
 
@@ -498,8 +515,8 @@ https://github.blog/changelog/2025-07-31-npm-trusted-publishing-with-oidc-is-gen
 👉 Read more about trusted publishing on npmjs.com
 https://docs.npmjs.com/trusted-publishers
 
-For monorepo developers the trusted publishing is supported in `lerna` [from
-version 9.0.0][lerna-trusted-publishing].
+For monorepo developers the [trusted publishing][lerna-oidc-publishing] is
+supported in `lerna` [from version 9.0.0][lerna-trusted-publishing].
 
 ## Reduce package dependency tree
 
@@ -517,7 +534,7 @@ reimplement every functionality from scratch instead of using a well maintained
 library.
 
 The key is to find balance and be intentional about dependency choices. Design
-packages with minitmal or zero dependencies when possible, by leveraging modern
+packages with minimal or zero dependencies when possible, by leveraging modern
 JavaScript features and built-in APIs or using of standard library capabilities
 instead of external packages.
 
@@ -543,6 +560,45 @@ const isEmpty = (obj) => Object.keys(obj).length === 0;
 Modern JavaScript provides many built-in capabilities that previously required
 external libraries. Consider the maintenance burden, security implications, and
 bundle size impact before adding any dependency.
+
+## Work in isolated environments
+
+Running npm packages directly on your host development machine exposes your
+entire system to potential malware, allowing malicious packages to access
+sensitive files, spawning agentic coding CLIs, agent environment variables, and
+system resources.
+
+By leveraging containerization technologies and approaches like Docker or dev
+containers, you can create isolated, sandboxed environments that limit the
+potential impact of supply chain attacks. When malicious npm packages execute
+during installation or runtime, they are confined to the container environment
+rather than having access to your entire host system where you may have running
+other projects, sensitive files, or personal data.
+
+### How to implement?
+
+Use Docker to create isolated development environments:
+
+```Dockerfile
+FROM node:20
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --immutable
+COPY . .
+CMD ["yarn", "start"]
+```
+
+Use Dev Containers for Visual Studio Code:
+
+```json
+// .devcontainer/devcontainer.json
+{
+  "name": "Node.js Dev Container",
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:20",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "yarn install --immutable"
+}
+```
 
 ## References
 
@@ -573,3 +629,6 @@ bundle size impact before adding any dependency.
 [provenance-publishing]: https://docs.npmjs.com/generating-provenance-statements
 [lerna-trusted-publishing]:
   https://github.com/lerna/lerna/issues/4219#issuecomment-3319632280
+[lerna-oidc-publishing]:
+  https://lerna.js.org/docs/recipes/oidc-trusted-publishing
+[snyk-prs]: https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/upgrade-dependencies-with-automatic-prs-upgrade-prs/upgrade-open-source-dependencies-with-automatic-prs
