@@ -1,0 +1,883 @@
+---
+title: Safe navigation through upgrades in npm package minefield
+excerpt:
+  'Learn essential security practices to protect your projects from npm supply
+  chain attacks. Discover how to safely manage dependencies, prevent malicious
+  code execution, and strengthen your development workflow with proven
+  strategies used by security-conscious teams.'
+date: '2025-12-01'
+category:
+  - development
+tags: ['npm', 'packages', 'security', 'attacks', 'risks', 'supply-chain']
+image: 'shantanu-kumar-closed-gate-unsplash.jpg'
+---
+
+{/* lint disable no-duplicate-headings */}
+
+During the last few weeks, the JavaScript ecosystem, especially the part using
+npm packages, was hit hard by a series of supply-chain attacks. In this post, I
+would like to share some of the tips and best practices that can help you
+strengthen the security and safety of your packages and libraries while
+installing and upgrading packages from the npm registry.
+
+My package manager of choice is Yarn, so most of the examples will be using
+Yarn; however, similar approaches are also applicable to npm or pnpm.
+
+## General Security Best Practices
+
+### Avoid blind dependency upgrades
+
+As a first line of defense, I have started using automated tooling for managing
+dependencies a long time ago. The tools like DependaBot or Renovate can help you
+keep your dependencies up to date and also alert you about potential security
+vulnerabilities in your dependencies.
+
+My weapon of choice in this case is Renovate. Primarily, because it is highly
+configurable, and thus it can be adjusted to your specific needs. You can read
+more about my experience with this tool in my previous post [Renovate your
+dependencies: Automated dependency management for modern
+applications][renovate-your-dependencies].
+
+Some developers automatically upgrade all dependencies to the latest versions as
+part of continuous integration processes or local development practices, aiming
+to ensure forward compatibility or stay at "bleeding edge". Blind dependency
+upgrades can pull in malicious packages from compromised accounts, introduce
+functional bugs, or expose applications to supply chain attacks.
+
+#### How to implement?
+
+Use controlled dependency management tools to review and approve updates
+interactively:
+
+```sh
+yarn dlx npm-check-updates --interactive
+```
+
+For DependaBot, you can introduce a configuration file `.github/dependabot.yml`
+in your repository:
+
+```yaml
+# .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: 'deps'
+```
+
+👉 Read more in [DependaBot documentation][dependabot-docs]
+
+For Renovate, you can introduce a configuration file `.renovaterc.json` in your
+repository:
+
+```json
+{
+  "extends": ["config:base"],
+  "schedule": ["before 5am on monday"]
+}
+```
+
+👉 Read more in [Renovate documentation][renovate-docs]
+
+👉 Use [Snyk Automated Dependency Update PRs][snyk-prs]
+
+### Disable Postinstall Scripts
+
+The most recent attacks, known as "Shai-hulud" and "Nx" have leveraged the
+`postinstall` scripts to execute malicious code on the developer's machine
+during package installation. They all tried to exfiltrate sensitive data,
+trigger a worm-like propagation, and perform other malicious activities.
+
+By disabling post-install scripts, you can mitigate the risk of such attacks by
+preventing the execution of potentially harmful code during the installation
+process.
+
+#### How to implement?
+
+Disable postinstall scripts globally for each project using [Yarn's
+configuration option][yarn-config-enable-scripts] `enableScripts`:
+
+```sh
+yarn config set enableScripts false
+```
+
+Or you can disable them using the configuration option in `.yarnrc.yml` file:
+
+```yaml
+# .yarnrc.yml
+
+# Do not run postinstall scripts from 3rd party packages
+# @see: https://pnpm.io/supply-chain-security
+# @see: https://yarnpkg.com/configuration/yarnrc#enableScripts
+enableScripts: false
+```
+
+#### Enable only scripts you need
+
+Some of the install scripts are there for a reason. If you need to run them, do
+it in an auditable way and avoid npm trusting the package name in package.json
+too much.
+
+Yarn does not provide fine-grained control over which packages can run scripts
+and which cannot.
+
+But you can selectively enable scripts for specific packages by using
+`dependenciesMeta` in combination with the `built` option in your `package.json`
+file:
+
+```json
+{
+  "dependenciesMeta": {
+    "some-package": {
+      "built": true
+    },
+    "another-package": {
+      "built": false
+    }
+  }
+}
+```
+
+Note: This feature is vaguely documented in [Yarn config
+documentation][yarn-config-enable-scripts]:
+
+> Note that you also have the ability to disable scripts on a per-package basis
+> using `dependenciesMeta`, or to re-enable a specific script by combining
+> `enableScripts` and `dependenciesMeta`.
+
+Better documentation about `dependenciesMeta` and `built` option can be found in
+[Yarn Manifest configuration documentation][yarn-dependenciesmeta-built].
+
+Or you can use 3rd party tool [allow-scripts][lavamoat-allow-scripts] to create
+an allowlist of specific positions in your dependency graph where scripts are
+allowed.
+
+Note: For additional details and other package managers, refer to [Awesome npm
+Security: Disable Post-install Scripts][disable-postinstall-scripts]
+
+### Install with Cooldown Period
+
+Some newly released packages may contain malicious code. Attackers always expect
+there will be some delay before the attack is discovered by the community and
+reported. Sometimes this is a matter of hours, sometimes days, until the package
+is unpublished or patched.
+
+Attackers build on the npm versioning and publishing model, which prefers and
+resolves to the latest semver ranges by default. So they try to deploy the new
+or most recent version of the package with the malicious code.
+
+To mitigate this risk, you can introduce a "cooldown" period before installing
+or upgrading any package to its latest version. This way, you reduce the chance
+of installing compromised packages. During the delay, the packages can still be
+quickly discovered by the community and removed from the registry.
+
+#### How to implement?
+
+Configure your package manager or automated dependency management tools to delay
+installations of recently published packages, allowing time for the community to
+discover and report potential security issues or functional problems.
+
+Use Yarn's `npmMinimalAgeGate` configuration option to set a cooldown period (in
+minutes) for newly published packages. For example, setting it to 10080 minutes
+(7 days) will prevent the installation of packages that were published less than
+7 days ago.
+
+```yaml
+# .yarnrc.yml
+
+# Reduce the likelihood of installing compromised packages
+# @see: https://yarnpkg.com/configuration/yarnrc#npmMinimalAgeGate
+npmMinimalAgeGate: '7d'
+```
+
+Be aware that when setting this option, Yarn will not inform you clearly about
+blocking the installation of the new package because of the age gate. Instead,
+the installation will silently fail in a manner that the package and version you
+want to install are not found.
+
+```sh
+➤ YN0000: · Yarn 4.10.3
+➤ YN0000: ┌ Resolution step
+➤ YN0082: │ vite@npm:6.4.1: No candidates found
+➤ YN0000: └ Completed in 0s 327ms
+➤ YN0000: · Failed with errors in 0s 337ms
+```
+
+If you think about this in depth, it, however, makes sense since we are setting
+some additional resolution constraints. So in that way, Yarn did not find any
+package that matched the set criteria. Even if the package exists in the
+registry, the version is simply not old enough to pass through the age gate.
+
+You can also use Yarn's `npmPreapprovedPackages` configuration option to exclude
+specific packages from the gate check, allowing you to install them regardless
+of their age.
+
+```yaml
+# .yarnrc.yml
+
+# List of packages that are pre-approved to bypass the minimal age gate
+# @see: https://yarnpkg.com/configuration/yarnrc#npmPreapprovedPackages
+npmPreapprovedPackages: ['@alma-oss/*']
+```
+
+##### DependaBot automated dependency upgrades with a cooldown period
+
+DependaBot has a [`cooldown`][dependabot-cooldown] configuration option, for
+setting the number of days before a specific version of a dependency will be
+updated:
+
+```yaml
+# .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
+      include:
+        - 'axios'
+        - 'prettier'
+        - 'eslint*'
+        - 'next'
+      exclude:
+        - 'webpack'
+```
+
+> Defines a **cooldown** period for dependency updates, allowing updates to be
+> delayed for a configurable number of days.
+
+👉 Read more in [DependaBot documentation][dependabot-pr-cooldown]
+
+##### Renovate automated dependency upgrades with minimumReleaseAge
+
+Renovate bot has a [`minimumReleaseAge`][renovate-minimumreleaseage] config
+option, for setting the minimum age of each package version before a pull
+request will be created for it:
+
+```json
+{
+  "extends": ["config:base"],
+  // Security and Stability: Wait at least 7 days before updating any new version
+  // Delay the supply chain attack impact by waiting
+  // @see: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
+  "minimumReleaseAge": "7 days"
+}
+```
+
+> Time required before a new release is considered stable.
+
+Renovate will not create pull requests for package versions until they pass the
+minimum release age.
+
+![Blocked version upgrades](./renovate-pending-status-checks.jpg)
+
+If you force the Renovate bot to create a pull request for a version that has
+not yet met the minimum release age, the pull request will be still marked as
+pending with a GitHub Actions status check:
+
+![Pending status check](./renovate-pending-stability-days.jpg)
+
+### Use immutable installations
+
+Using just the `yarn` or `yarn install` command without any additional flags in
+production can lead to inconsistent installations when lockfiles and
+`package.json` are out of sync, potentially introducing unintended package
+versions and security vulnerabilities that resolve during installation time.
+
+Package managers like npm and Yarn compensate for inconsistencies between
+`package.json` and lockfiles by installing different versions than those
+recorded in the lockfile. This behavior can be hazardous for build and
+production environments, as they could pull in unintended package versions,
+rendering the entire benefit of lockfile determinism futile. Developers should
+also favor deterministic package resolution and methods in their local
+workflows.
+
+#### How to implement?
+
+To ensure consistent and secure installations, always use the `--immutable` flag
+with Yarn:
+
+```sh
+yarn install --immutable
+```
+
+or use `--frozen-lockfile` if you are using Yarn Classic (v1):
+
+```sh
+yarn install --frozen-lockfile
+```
+
+Additionally, to prevent local Yarn installs from unintentionally adjusting the
+`yarn.lock`, you can use `enableImmutableInstalls` option in your `.yarnrc.yml`
+file:
+
+```yaml
+# Define whether to allow adding/removing entries from the lockfile or not.
+# @see: https://yarnpkg.com/configuration/yarnrc#enableImmutableInstalls
+enableImmutableInstalls: true
+```
+
+Furthermore, in cases where the Yarn cache already exists (e.g., crons on the
+server), then you can disable any modification of the cache during the
+installation:
+
+```sh
+yarn install --immutable --immutable-cache
+```
+
+### Prevent lockfile injection
+
+JavaScript package managers allow users to install packages from unconventional
+sources such as GitHub Gists or directly from source code repositories.
+Attackers can exploit this feature by updating the lockfile to specify a new
+source location (in the `resolved` key) that they control, and set the SHA512
+integrity value accordingly to avoid detection.
+
+The security threat occurs when malicious actors gain the ability to contribute
+source code changes via mechanisms such as pull requests.
+
+You can use a tool like `lockfile-lint` to validate that your lockfiles adhere
+to security policies.
+
+#### How to implement?
+
+Use `lockfile-lint` to validate that your lockfiles only reference trusted
+package sources:
+
+```sh
+yarn add -D lockfile-lint
+```
+
+Validate `yarn.lock` with multiple allowed sources:
+
+```sh
+yarn dlx lockfile-lint --path yarn.lock --type yarn --allowed-hosts npm yarn --validate-https
+```
+
+or use file-based configuration:
+
+```js
+const config = {
+  allowedHosts: ['npm', 'yarn'],
+  path: 'yarn.lock',
+  type: 'yarn',
+  validateHttps: true,
+  validatePackageNames: true,
+};
+
+module.exports = config;
+```
+
+#### CI/CD Integration
+
+Integrate lockfile-lint into your development workflow, such as the following
+`lint:lockfile` script in `package.json` that runs before every install:
+
+```json
+{
+  "scripts": {
+    "lint:lockfile": "lockfile-lint",
+    "preinstall": "yarn lint:lockfile"
+  }
+}
+```
+
+in combination with the configuration object in `lockfile-lint.config.ts` file:
+
+```typescript
+export default {
+  'allowed-hosts': ['npm', 'yarn'],
+  path: 'yarn.lock',
+};
+```
+
+### Version pinning
+
+You should consider pinning your dependencies to exact versions instead of using
+SemVer ranges when you do not understand them fully.
+
+Historically, projects use SemVer ranges in their package.json. For instance, if
+you run `npm install foobar`, you will see an entry like `"foobar": "^1.1.0"`
+added to your `package.json`. Verbosely, this means "any foobar version greater
+than or equal to 1.1.0 but less than 2". The project will automatically use
+`1.1.1` if it's released, or `1.2.0`, or `1.2.1`, etc - meaning you will get not
+only patch updates but also feature (minor) releases too.
+
+Another alternative is ranges like `"foobar": "~1.1.0"` which means "any foobar
+version greater than or equal to `1.1.0` but less than `1.2`". This narrows the
+range to only patch updates to the `1.1` range.
+
+If you are not fully aware of the implications of using SemVer ranges, you may
+consider pinning them.
+
+If instead, you "pin" your dependencies rather than use ranges, it means you use
+exact entries like `"foobar": "1.1.0"` which means "use only foobar version
+1.1.0 and no other".
+
+#### Why Use Ranges?
+
+For projects of any type, the main reason to use ranges is so that you can
+"automatically" get updated releases - which may even include security fixes. By
+"automatically", we mean that any time you run npm install, you will get the
+very latest version matching your SemVer - assuming you're not using a lock
+file, that is.
+
+#### Why Pin Dependencies?
+
+You mainly pin versions for certainty and visibility. When you have a pinned
+version of each dependency in your `package.json`, you know exactly which
+version of each dependency is installed at any time. This is beneficial when
+upgrading versions as well as when rolling back in case of problems.
+
+#### Pinning Dependencies and Lock Files
+
+Since both `yarn` and `npm@5` both support lock files, it's a common question to
+ask, "Why should I pin dependencies if I'm already using a lock file?". It's a
+good question!
+
+Lock files are a great companion to SemVer ranges or pinning dependencies,
+because these files lock (pin) deeper into your dependency tree than you see in
+`package.json`.
+
+If a lock file gets out of sync with its package.json, it can no longer be
+guaranteed to lock anything, and the package.json will be the source of truth
+for installs.
+
+The lock file has only delayed the inevitable problem, and provides much less
+visibility than `package.json`, because it's not designed to be human-readable
+and is quite dense.
+
+#### How to implement?
+
+1. Any apps (web or Node.js) that aren't require()'d by other packages should
+   pin all types of dependencies for greatest reliability/predictability
+2. Browser or dual browser/node.js libraries that are consumed/`required()`'d by
+   others should keep using SemVer ranges for `dependencies` but can use pinned
+   dependencies for `devDependencies`
+3. Node.js-only libraries can consider pinning all dependencies, because
+   application size/duplicate dependencies are not as much of a concern in
+   Node.js compared to the browser. Of course, don't do that if your library is
+   a micro one, likely to be consumed in disk-sensitive environments
+4. Use a lock file
+
+### Package Auditing and Scanning
+
+You should never install npm packages blindly without properly auditing their
+package health and security signals.
+
+How do you know if an npm package is safe to install? Maybe it was just
+published yesterday? Maybe you have an accidental typo in the package name and
+land on a similarly named malicious package? And so on.
+
+Installing a new ad-hoc npm package can expose your system to supply chain
+attacks, malware, and other security risks. Many attacks have compromised
+trusted and popular npm packages, exploited typosquatting, or introduced
+malicious code in pre-/post-install scripts that execute during the installation
+process.
+
+#### How to implement?
+
+Both npm and Yarn provide built-in auditing capabilities through the `npm audit`
+command to scan for known vulnerabilities in your dependencies.
+
+Audit your dependencies using npm:
+
+```sh
+npm audit
+```
+
+Or using Yarn:
+
+```sh
+yarn npm audit
+```
+
+However, both commands validate already installed packages. To audit packages
+before installation, you can use other third-party tools like [npq][npq] or
+[sfw][sfw].
+
+While `sfw` (Socket Firewall) focuses on creating a secure sandbox environment
+to safely install and audit npm packages, `npq` (Node Package Quality) provides
+a proactive security control that audits npm packages before installation,
+providing comprehensive security checks, package health signals, and interactive
+warnings for potentially dangerous or high-risk packages.
+
+You can install both packages globally:
+
+```bash
+npm install -g npq
+
+# or
+
+npm install -g sfw
+```
+
+and then use them to audit packages before installation:
+
+```bash
+npq install express
+
+# or
+
+sfw yarn add express
+```
+
+## Package Maintainer Security Best Practices
+
+Package maintainers are prime targets for supply chain attacks. Recent incidents
+have shown how compromised maintainer accounts can inject malicious code into
+widely used packages. Implementing these security measures helps protect your
+packages, your users, and your reputation.
+
+### Enable 2FA for npm accounts
+
+npm accounts without two-factor authentication are vulnerable to credential
+theft and account takeover attacks, potentially allowing malicious actors to
+publish compromised versions of your packages. Two-factor authentication
+provides essential protection against such attacks by requiring additional
+verification beyond just username and password.
+
+#### How to implement?
+
+Enable two-factor authentication on all npm accounts, especially for package
+maintainers, to prevent unauthorized access and malicious package publications.
+
+Enable 2FA for authentication and publishing:
+
+```sh
+npm profile enable-2fa auth-and-writes
+```
+
+For login and profile changes only:
+
+```sh
+npm profile enable-2fa auth-only
+```
+
+### Publish with provenance attestation
+
+Provenance statements provide cryptographic proof of where and how your packages
+were built, establishing a verifiable link between your source code and
+published packages. This transparency helps users verify package authenticity
+and detect tampering.
+
+#### How to implement?
+
+Enable provenance attestation when publishing packages from CI/CD:
+
+GitHub Actions:
+
+```yaml
+permissions:
+  id-token: write
+steps:
+  - run: npm publish --provenance
+  # or alternatively using Yarn
+  - run: yarn npm publish --provenance
+```
+
+Use Yarn's `npmPublishProvenance` configuration option in your `.yarnrc.yml`
+file:
+
+```yaml
+# Enable provenance publishing for npm packages
+# @see: https://yarnpkg.com/configuration/yarnrc#npmPublishProvenance
+npmPublishProvenance: true
+```
+
+For monorepos using `lerna`, the provenance publishing is supported from version
+v6.6.2 using:
+
+- `NPM_CONFIG_PROVENANCE=true` environment variable
+- `provenance=true` in `.npmrc`
+- `publishConfig` in `package.json`
+
+```json
+{
+  "publishConfig": {
+    "provenance": true
+  }
+}
+```
+
+👉 Read more about [provenance publishing][provenance-publishing]
+
+### Publish using trusted publishers
+
+Long-lived npm tokens can be compromised, accidentally exposed in logs, or
+provide persistent unauthorized access if stolen, posing significant security
+risks to your packages.
+
+Trusted publishing eliminates the need for long-lived npm tokens by using OpenID
+Connect (OIDC) authentication from your CI/CD environment. This approach uses
+short-lived, cryptographically signed tokens that are specific to your workflow
+and cannot be extracted or reused. This npm package release method is tightly
+scoped to only allow publishing from your trusted CI environment (GitHub Actions
+or GitLab) and your specifically authorized workflow files.
+
+#### How to implement?
+
+Configure trusted publishing on npmjs.com for your package and update your
+CI/CD:
+
+GitHub Actions:
+
+```yaml
+permissions:
+  id-token: write
+steps:
+  - run: yarn publish
+```
+
+Trusted publishing supports GitHub Actions and GitLab CI/CD, and automatically
+generates provenance attestations that comply with OpenSSF standards.
+
+👉 [Trusted publishing is generally available][github-trusted-publishing] on
+GitHub
+
+👉 [Read more about trusted publishing][npm-trusted-publishing] on npmjs.com
+
+For monorepo developers, the [trusted publishing][lerna-oidc-publishing] is
+supported in `lerna` [from version 9.0.0][lerna-trusted-publishing].
+
+### Reduce package dependency tree
+
+Each dependency in your package increases the attack surface and potential for
+supply chain vulnerabilities, as users inherit all transitive dependencies when
+installing your package.
+
+Minimizing dependencies reduces security risks, improves performance, and
+decreases the likelihood of supply chain attacks. Fewer dependencies mean fewer
+potential points of failure and reduced exposure to malicious packages in the
+dependency tree.
+
+However, this does not mean you should avoid using dependencies altogether or
+reimplement every functionality from scratch instead of using a well-maintained
+library.
+
+The key is to find balance and be intentional about dependency choices. Design
+packages with minimal or zero dependencies when possible, by leveraging modern
+JavaScript features and built-in APIs, or using standard library capabilities
+instead of external packages.
+
+Sometimes it is better to implement and maintain small utility code in your own
+codebase, even if you know there are lots of existing libraries that can do the
+same.
+
+#### How to implement?
+
+Replace common dependencies with native JavaScript:
+
+```js
+// Instead of lodash
+const unique = [...new Set(array)];
+
+// Instead of axios for simple requests
+const response = await fetch(url);
+
+// Instead of utility libraries
+const isEmpty = (obj) => Object.keys(obj).length === 0;
+```
+
+Modern JavaScript provides many built-in capabilities that previously required
+external libraries. Consider the maintenance burden, security implications, and
+bundle size impact before adding any dependency.
+
+## Local Development Security Best Practices
+
+When a malicious package executes on your development machine, it has access to
+everything you do: SSH keys, environment variables, git credentials, and files
+from other projects. The following practices create isolation boundaries that
+contain potential compromises and protect your broader development ecosystem.
+
+### Work in isolated environments
+
+Running npm packages directly on your host development machine exposes your
+entire system to potential malware, allowing malicious packages to access
+sensitive files, spawn agentic coding CLIs, access environment variables, and
+compromise system resources.
+
+By leveraging containerization technologies and approaches like Docker or dev
+containers, you can create isolated, sandboxed environments that limit the
+potential impact of supply chain attacks. When malicious npm packages execute
+during installation or runtime, they are confined to the container environment
+rather than having access to your entire host system, where you may have running
+other projects, sensitive files, or personal data.
+
+#### How to implement?
+
+Use Docker to create isolated development environments:
+
+```Dockerfile
+FROM node:20
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --immutable
+COPY . .
+CMD ["yarn", "start"]
+```
+
+Use Dev Containers for Visual Studio Code:
+
+```json
+// .devcontainer/devcontainer.json
+{
+  "name": "Node.js Dev Container",
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:20",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "yarn install --immutable"
+}
+```
+
+## Conclusion
+
+The recent npm supply chain attacks demonstrated that security must be a core
+part of JavaScript development. Many of these attacks could have been prevented
+with proper security practices.
+
+Start with the most impactful measures first:
+
+1. Disable postinstall scripts to prevent immediate code execution
+2. Introduce a cooldown period for new package versions
+3. Use immutable installs in CI/CD to prevent lockfile injection
+4. Enable 2FA on your npm account if you are a package maintainer
+
+No single practice provides complete protection, but combining multiple
+strategies significantly reduces your attack surface. Stay informed, audit
+regularly, and question suspicious packages.
+
+## References
+
+- [Awesome npm Security Best Practices][npm-security-best-practices]
+- [Should you Pin your JavaScript dependencies?][renovate-dependency-pinning]
+- 📷 [Shantanu Kumar][photographer-shantanu-kumar] - [Wooden Door in Black and
+  White][wooden-door]
+
+## Further Reading
+
+- [npm Ignore Scripts: Security Best Practices][npm-ignore-scripts]
+
+### 2025 Supply Chain Attack Timeline
+
+#### 2025-07-19 ESLint Prettier Supply Chain Attack
+
+- [BleepingComputer: npm Linter Packages Hijacked via
+  Phishing][eslint-prettier-supply-chain-attack]
+- [SafeDep: 30M Downloads Package Compromised][safedep-eslint-prettier-hack]
+- [GitHub Issue #339: eslint-config-prettier
+  Compromise][github-issue-prettier-compromise]
+- [The Hacker News: Malware in 6 npm Packages][hackernews-6-npm-packages]
+- [Socket: npm Phishing Campaign Targets Prettier
+  Tooling][socket-prettier-phishing]
+- [GitHub Advisory GHSA-f29h-pxvx-f335][github-advisory-prettier]
+- [Twitter Thread by Charlie Eriksen][twitter-charlie-eriksen]
+- [Twitter Analysis by MalwareUtkonos][twitter-malware-utkonos]
+
+#### 2025-08-27 Nx Supply Chain Attack
+
+- [Nx Supply Chain Attack][nx-supply-chain-attack]
+- [Nx Packages Compromised][nx-packages-compromised]
+- [Nx Postmortem][nx-postmortem]
+
+#### 2025-09-20 CrowdStrike Shai-hulud Supply Chain Attack
+
+- [Socket: Attack Targets CrowdStrike NPM Packages][socket-crowdstrike-attack]
+- [Unit 42: Shai-Hulud Worm Compromises npm Ecosystem][unit42-shai-hulud-worm]
+- [OX Security: 180+ NPM Packages Hit in Supply Chain
+  Attack][ox-security-180-packages]
+- [The Hacker News: Self-Replicating Worm Steals
+  Credentials][hackernews-180-npm-worm]
+- [SafeDep: Attack Exposes Private Repos and AWS
+  Credentials][safedep-npm-repos-exposed]
+- [YouTube: npm Supply Chain Attack Analysis][youtube-npm-attack-analysis]
+- [YouTube: npm Supply Chain Attack Deep Dive][youtube-npm-attack-deepdive]
+
+#### 2025-11-24 Shai-hulud 2.0 Supply Chain Attack
+
+- [HelixGuard: 1K+ NPM Packages and 27K+ GitHub Repos
+  Infected][helixguard-shai-hulud-returns]
+- [Wiz Security: 25K+ Repos Exposing Secrets][wiz-shai-hulud-2]
+
+{/* lint enable no-duplicate-headings */}
+
+[npm-security-best-practices]:
+  https://github.com/lirantal/npm-security-best-practices
+[renovate-your-dependencies]:
+  https://literat.dev/blog/2021-03-05/renovate-your-dependencies/
+[npm-ignore-scripts]:
+  https://www.nodejs-security.com/blog/npm-ignore-scripts-best-practices-as-security-mitigation-for-malicious-packages
+[yarn-config-enable-scripts]:
+  https://yarnpkg.com/configuration/yarnrc#enableScripts
+[lavamoat-allow-scripts]: https://www.npmjs.com/package/@lavamoat/allow-scripts
+[disable-postinstall-scripts]:
+  https://github.com/lirantal/npm-security-best-practices?tab=readme-ov-file#1-disable-post-install-scripts
+[dependabot-docs]: https://docs.github.com/en/code-security/dependabot
+[renovate-docs]: https://docs.renovatebot.com/getting-started/use-cases/
+[dependabot-pr-cooldown]:
+  https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/optimizing-pr-creation-version-updates#setting-up-a-cooldown-period-for-dependency-updates
+[dependabot-cooldown]:
+  https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference#cooldown-
+[renovate-minimumreleaseage]:
+  https://docs.renovatebot.com/configuration-options/#minimumreleaseage
+[sfw]: https://socket.dev/blog/introducing-socket-firewall
+[npq]: https://github.com/lirantal/npq
+[provenance-publishing]: https://docs.npmjs.com/generating-provenance-statements
+[lerna-trusted-publishing]:
+  https://github.com/lerna/lerna/issues/4219#issuecomment-3319632280
+[lerna-oidc-publishing]:
+  https://lerna.js.org/docs/recipes/oidc-trusted-publishing
+[snyk-prs]:
+  https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/upgrade-dependencies-with-automatic-prs-upgrade-prs/upgrade-open-source-dependencies-with-automatic-prs
+[renovate-dependency-pinning]: https://docs.renovatebot.com/dependency-pinning/
+[photographer-shantanu-kumar]: https://unsplash.com/@theshantanukr
+[wooden-door]:
+  https://unsplash.com/photos/a-black-and-white-photo-of-a-wooden-door-cPyO9MgPOH8
+[npm-trusted-publishing]: https://docs.npmjs.com/trusted-publishers
+[github-trusted-publishing]:
+  https://github.blog/changelog/2025-07-31-npm-trusted-publishing-with-oidc-is-generally-available/
+[eslint-prettier-supply-chain-attack]:
+  https://www.bleepingcomputer.com/news/security/popular-npm-linter-packages-hijacked-via-phishing-to-drop-malware/
+[safedep-eslint-prettier-hack]:
+  https://safedep.io/eslint-config-prettier-major-npm-supply-chain-hack/
+[github-issue-prettier-compromise]:
+  https://github.com/prettier/eslint-config-prettier/issues/339#issuecomment-3090304490
+[hackernews-6-npm-packages]:
+  https://thehackernews.com/2025/07/malware-injected-into-6-npm-packages.html?m=1
+[socket-prettier-phishing]:
+  https://socket.dev/blog/npm-phishing-campaign-leads-to-prettier-tooling-packages-compromise
+[github-advisory-prettier]: https://github.com/advisories/GHSA-f29h-pxvx-f335
+[twitter-charlie-eriksen]:
+  https://x.com/CharlieEriksen/status/1946520774740689388?t=jQmXWhinE4SW1wETbJXKvg&s=19
+[twitter-malware-utkonos]:
+  https://x.com/MalwareUtkonos/status/1946670712623665323?t=ih1JGvj5zDR5xeeMfXASrg&s=19
+[nx-supply-chain-attack]:
+  https://snyk.io/blog/weaponizing-ai-coding-agents-for-malware-in-the-nx-malicious-package/
+[nx-packages-compromised]: https://socket.dev/blog/nx-packages-compromised
+[nx-postmortem]: https://nx.dev/blog/s1ngularity-postmortem
+[unit42-shai-hulud-worm]:
+  https://unit42.paloaltonetworks.com/npm-supply-chain-attack/
+[ox-security-180-packages]:
+  https://www.ox.security/blog/npm-2-0-hack-40-npm-packages-hit-in-major-supply-chain-attack/
+[hackernews-180-npm-worm]:
+  https://thehackernews.com/2025/09/40-npm-packages-compromised-in-supply.html
+[safedep-npm-repos-exposed]:
+  https://safedep.io/npm-supply-chain-attack-targeting-maintainers/
+[socket-crowdstrike-attack]:
+  https://socket.dev/blog/ongoing-supply-chain-attack-targets-crowdstrike-npm-packages
+[youtube-npm-attack-analysis]: https://www.youtube.com/watch?v=QVqIx-Y8s-s
+[youtube-npm-attack-deepdive]: https://www.youtube.com/watch?v=69F9IuBWb-E
+[helixguard-shai-hulud-returns]:
+  https://helixguard.ai/blog/malicious-sha1hulud-2025-11-24
+[wiz-shai-hulud-2]:
+  https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack
+[yarn-dependenciesmeta-built]:
+  https://yarnpkg.com/configuration/manifest?utm_source=chatgpt.com#dependenciesMeta
