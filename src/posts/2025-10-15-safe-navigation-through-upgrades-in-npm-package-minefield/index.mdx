@@ -17,6 +17,8 @@ installing and upgrading packages from npm registry.
 My package manager of choice is Yarn, so most of the examples will be using
 Yarn, however similar approaches are also applicable to npm or pnpm as well.
 
+## General Security Best Practices
+
 ## Avoid blind dependency upgrades
 
 As a first line of defense I have started using automated tooling for managing
@@ -409,6 +411,8 @@ npq install express
 sfw yarn add express
 ```
 
+## Package Maintainer Security Best Practices
+
 ## Enable 2FA for npm accounts
 
 npm accounts without two-factor authentication are vulnerable to credential
@@ -561,6 +565,8 @@ Modern JavaScript provides many built-in capabilities that previously required
 external libraries. Consider the maintenance burden, security implications, and
 bundle size impact before adding any dependency.
 
+## Local Development Security Best Practices
+
 ## Work in isolated environments
 
 Running npm packages directly on your host development machine exposes your
@@ -588,7 +594,7 @@ COPY . .
 CMD ["yarn", "start"]
 ```
 
-Use Dev Containers for Visual Studio Code[^1]:
+Use Dev Containers for Visual Studio Code:
 
 ```json
 // .devcontainer/devcontainer.json
@@ -600,18 +606,13 @@ Use Dev Containers for Visual Studio Code[^1]:
 }
 ```
 
-> [!NOTE]
-> Using isolated environments not only enhances security by containing potential
-
-> [!TIP]
-> Using isolated environments not only enhances security by containing potential
-
 ## References
 
 - [Awesome npm Security Best Practices][npm-security-best-practices]
--
 
-[^1]: My reference
+## Further Reading
+
+- [NPM Ignore Scripts Best Practices as Security Mitigation for Malicious Packages][npm-ignore-scripts]
 
 [npm-security-best-practices]:
   https://github.com/lirantal/npm-security-best-practices
@@ -640,3 +641,5 @@ Use Dev Containers for Visual Studio Code[^1]:
 [lerna-oidc-publishing]:
   https://lerna.js.org/docs/recipes/oidc-trusted-publishing
 [snyk-prs]: https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/upgrade-dependencies-with-automatic-prs-upgrade-prs/upgrade-open-source-dependencies-with-automatic-prs
+[npm-ignore-scripts]: https://www.nodejs-security.com/blog/npm-ignore-scripts-best-practices-as-security-mitigation-for-malicious-packages
+[renovate-version-pinning]: https://docs.renovatebot.com/dependency-pinning/
