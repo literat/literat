@@ -33,13 +33,15 @@
     "lint:markdown": "remark ./ --quiet",
     "lint:text": "textlint ./",
     "lint:text:fix": "yarn lint:text --fix",
+    "lint:lockfile": "yarn dlx lockfile-lint",
     "format": "yarn format:check",
     "format:check": "prettier --check ./",
     "format:fix": "prettier --write ./",
     "types": "tsc -p ./tsconfig.json",
     "post": "node ./scripts/createPost.mjs",
-    "postinstall": "husky",
-    "postinstall:scripts": "yarn allow-scripts"
+    "postinstall:lockfile": "yarn lint:lockfile",
+    "postinstall:scripts": "yarn allow-scripts",
+    "postinstall:hooks": "husky"
   },
   "dependencies": {
     "@mdx-js/react": "3.1.1",
