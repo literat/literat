@@ -33,11 +33,13 @@
     "lint:markdown": "remark ./ --quiet",
     "lint:text": "textlint ./",
     "lint:text:fix": "yarn lint:text --fix",
+    "lint:lockfile": "yarn dlx lockfile-lint",
     "format": "yarn format:check",
     "format:check": "prettier --check ./",
     "format:fix": "prettier --write ./",
     "types": "tsc -p ./tsconfig.json",
     "post": "node ./scripts/createPost.mjs",
+    "preinstall": "yarn lint:lockfile",
     "postinstall": "husky"
   },
   "dependencies": {
