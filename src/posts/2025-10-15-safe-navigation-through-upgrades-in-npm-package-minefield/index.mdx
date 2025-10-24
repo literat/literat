@@ -394,9 +394,155 @@ sfw yarn add express
 
 ## Enable 2FA for npm accounts
 
-## Publish with provenance attestation or use OIDC
+npm accounts without two-factor authentication are vulnerable to credential
+theft and account takeover attacks, potentially allowing malicious actors to
+publish compromised versions of your packages. Two-factor authentication
+provides essential protection against such attacks by requiring additional
+verification beyond just username and password.
+
+### How to implement?
+
+Enable two-factor authentication on all npm accounts, especially for package
+maintainers, to prevent unauthorized access and malicious package publications.
+
+Enable 2FA for authentication and publishing:
+
+```sh
+npm profile enable-2fa auth-and-writes
+```
+
+For login and profile changes only:
+
+```sh
+npm profile enable-2fa auth-only
+```
+
+## Publish with provenance attestation
+
+Provenance statements provide cryptographic proof of where and how your packages
+were built, establishing a verifiable link between your source code and
+published packages. This transparency helps users verify package authenticity
+and detect tampering.
+
+### How to implement?
+
+Publish with provenance in GitHub Actions:
+
+```yaml
+permissions:
+  id-token: write
+steps:
+  - run: npm publish --provenance
+  # or alternatively using Yarn
+  - run: yarn npm publish --provenance
+```
+
+Use Yarn's `npmPublishProvenance` configuration option in your `.yarnrc.yml`
+file:
+
+```yaml
+# Enable provenance publishing for npm packages
+# @see: https://yarnpkg.com/configuration/yarnrc#npmPublishProvenance
+npmPublishProvenance: true
+```
+
+For monorepos using `lerna` the provenance publishing is supported from version
+v6.6.2 using:
+
+- `NPM_CONFIG_PROVENANCE=true` environment variable
+- `provenance=true` in `.npmrc`
+- `publishConfig` in `package.json`
+
+```json
+{
+  "publishConfig": {
+    "provenance": true
+  }
+}
+```
+
+👉 Read more about [provenance publishing][provenance-publishing]
+
+## Publish using trusted publishers
+
+Long-lived npm tokens can be compromised, accidentally exposed in logs, or
+provide persistent unauthorized access if stolen, posing significant security
+risks to your packages.
+
+Trusted publishing eliminates the need for long-lived npm tokens by using OpenID
+Connect (OIDC) authentication from your CI/CD environment. This approach uses
+short-lived, cryptographically-signed tokens that are specific to your workflow
+and cannot be extracted or reused. This npm package release method is tightly
+scoped to only allow publishing from your trusted CI environment (GitHub Actions
+or GitLab) and your specifically authorized workflow files.
+
+### How to implement?
+
+Configure trusted publishing on npmjs.com for your package and update your
+CI/CD:
+
+GitHub Actions:
+
+```yaml
+permissions:
+  id-token: write
+steps:
+  - run: yarn publish
+```
+
+Trusted publishing supports GitHub Actions and GitLab CI/CD, and automatically
+generates provenance attestations which complies with OpenSSF standards.
+
+👉 Trusted publishing is generally available on GitHub
+https://github.blog/changelog/2025-07-31-npm-trusted-publishing-with-oidc-is-generally-available/
+👉 Read more about trusted publishing on npmjs.com
+https://docs.npmjs.com/trusted-publishers
+
+For monorepo developers the trusted publishing is supported in `lerna` [from
+version 9.0.0][lerna-trusted-publishing].
 
 ## Reduce package dependency tree
+
+Each dependency in your package increases the attack surface and potential for
+supply chain vulnerabilities, as users inherit all transitive dependencies when
+installing your package.
+
+Minimizing dependencies reduces security risks, improves performance, and
+decreases the likelihood of supply chain attacks. Fewer dependencies mean fewer
+potential points of failure and reduced exposure to malicious packages in the
+dependency tree.
+
+However this does not mean you should avoid using dependencies altogether or
+reimplement every functionality from scratch instead of using a well maintained
+library.
+
+The key is to find balance and be intentional about dependency choices. Design
+packages with minitmal or zero dependencies when possible, by leveraging modern
+JavaScript features and built-in APIs or using of standard library capabilities
+instead of external packages.
+
+Sometime is better to implement and maintain small utility code in your own
+codebase even if you know there are lots of existing libraries that can do the
+same.
+
+### How to implement?
+
+Replace common dependencies with native JavaScript:
+
+```js
+// Instead of lodash
+const unique = [...new Set(array)];
+
+// Instead of axios for simple requests
+const response = await fetch(url);
+
+// Instead of utility libraries
+const isEmpty = (obj) => Object.keys(obj).length === 0;
+```
+
+Modern JavaScript provides many built-in capabilities that previously required
+external libraries. Consider the maintenance burden, security implications, and
+bundle size impact before adding any dependency.
 
 ## References
 
@@ -424,3 +570,6 @@ sfw yarn add express
   https://docs.renovatebot.com/configuration-options/#minimumreleaseage
 [sfw]: https://socket.dev/blog/introducing-socket-firewall
 [npq]: https://github.com/lirantal/npq
+[provenance-publishing]: https://docs.npmjs.com/generating-provenance-statements
+[lerna-trusted-publishing]:
+  https://github.com/lerna/lerna/issues/4219#issuecomment-3319632280
