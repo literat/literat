@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: 📦 Build App
+    name: 🏗️ Build App
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     env:

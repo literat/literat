@@ -69,10 +69,6 @@ jobs:
         if: ${{ steps.should-rebuild.outputs.rebuild == 'true' }}
         uses: ./.github/actions/deps-install
 
-      - name: Run Postinstall Scripts
-        if: ${{ steps.should-rebuild.outputs.rebuild == 'true' }}
-        run: yarn postinstall:scripts
-
       - name: Save Cache
         if: ${{ steps.should-rebuild.outputs.rebuild == 'true' }}
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
