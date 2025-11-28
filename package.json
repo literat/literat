@@ -107,7 +107,7 @@
     "babel-jest": "30.2.0",
     "babel-preset-gatsby": "3.15.0",
     "chalk": "5.6.2",
-    "core-js": "3.45.1",
+    "core-js": "3.47.0",
     "eslint": "9.37.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "18.0.0",
