@@ -6,6 +6,12 @@ on:
     - cron: '0 23 * * *'
   # allow manual trigger
   workflow_dispatch:
+    inputs:
+      purge_cache:
+        description: 'Purge all caches before running'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   cache-management:
@@ -26,6 +32,14 @@ jobs:
       - name: Setup Node
         uses: ./.github/actions/setup-node
 
+      - name: Purge Yarn Caches
+        if: ${{ inputs.purge_cache }}
+        uses: ./.github/actions/purge-cache
+        with:
+          runner_os: ${{ runner.os }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Generate cache key
         id: cache-key
         run: |
@@ -35,45 +49,50 @@ jobs:
 
       - name: Check Cache
         id: cache-check
+        if: ${{ !inputs.purge_cache }}
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ${{ env.CACHE_PATH }}
           key: ${{ steps.cache-key.outputs.key }}
           lookup-only: true
 
+      - name: Determine if rebuild needed
+        id: should-rebuild
+        run: |
+          if [[ "${{ inputs.purge_cache }}" == "true" || "${{ steps.cache-check.outputs.cache-hit }}" != "true" ]]; then
+            echo "rebuild=true" >> $GITHUB_OUTPUT
+          else
+            echo "rebuild=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Install Dependencies
-        if: steps.cache-check.outputs.cache-hit != 'true'
+        if: ${{ steps.should-rebuild.outputs.rebuild == 'true' }}
         uses: ./.github/actions/deps-install
 
+      - name: Run Postinstall Scripts
+        if: ${{ steps.should-rebuild.outputs.rebuild == 'true' }}
+        run: yarn postinstall:scripts
+
       - name: Save Cache
-        if: steps.cache-check.outputs.cache-hit != 'true'
+        if: ${{ steps.should-rebuild.outputs.rebuild == 'true' }}
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ${{ env.CACHE_PATH }}
           key: ${{ steps.cache-key.outputs.key }}
 
-      - name: Purge Cache
-        if: steps.cache-check.outputs.cache-hit != 'true'
+      - name: Purge Yarn Caches
+        if:
+          ${{ !inputs.purge_cache && steps.should-rebuild.outputs.rebuild ==
+          'true' }}
+        uses: ./.github/actions/purge-cache
+        with:
+          runner_os: ${{ runner.os }}
+          exclude_key: ${{ steps.cache-key.outputs.key }}
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          # Get all caches matching the pattern
-          CACHES=$(gh cache list --json id,key --jq '.[] | select(.key | startswith("${{ runner.os }}-Yarn-")) | select(.key != "${{ steps.cache-key.outputs.key }}") | .id')
-
-          # Delete old caches
-          if [ -n "$CACHES" ]; then
-            echo "Deleting old caches..."
-            echo "$CACHES" | while read -r cache_id; do
-              echo "Deleting cache ID: $cache_id"
-              gh cache delete "$cache_id" || true
-            done
-            echo "Old caches deleted successfully"
-          else
-            echo "No old caches to delete"
-          fi
 
       - name: Unchanged Cache
-        if: steps.cache-check.outputs.cache-hit == 'true'
+        if: ${{ steps.should-rebuild.outputs.rebuild == 'false' }}
         run: |
           echo "✅ Cache is up to date. Hash: ${{ steps.cache-key.outputs.hash }}"
           echo "No action needed."
