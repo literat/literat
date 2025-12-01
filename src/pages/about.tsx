@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import Img from '../components/Img';
 import OutLink from '../components/OutLink';
 import H from '../components/mdx/Headings';
+import SiteMetaTags from '../components/SiteMetaTags';
 
 const useOldMe = () => {
   const birth = 583588801000;
@@ -15,6 +15,23 @@ const useOldMe = () => {
     ageAsYears: Math.floor(age / 1000 / 60 / 60 / 24 / 365),
   };
 };
+
+const query = graphql`
+  query {
+    whitewater: file(relativePath: { eq: "whitewater.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(width: 900)
+      }
+    }
+    family: file(relativePath: { eq: "family.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(width: 1200)
+      }
+    }
+  }
+`;
+
+const Head = () => <SiteMetaTags title="About Me - Literat" />;
 
 interface AboutPageProps {
   data: {
@@ -28,9 +45,6 @@ const AboutPage = ({ data }: AboutPageProps) => {
 
   return (
     <>
-      <Helmet>
-        <title>About Me - Literat</title>
-      </Helmet>
       <H>About me</H>
       <p>Hello, I'm Tomas Litera, shortly Literat.</p>
       <H as="h3">In a nutshell...</H>
@@ -96,18 +110,4 @@ const AboutPage = ({ data }: AboutPageProps) => {
 };
 
 export default AboutPage;
-
-export const query = graphql`
-  query {
-    whitewater: file(relativePath: { eq: "whitewater.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(width: 900)
-      }
-    }
-    family: file(relativePath: { eq: "family.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(width: 1200)
-      }
-    }
-  }
-`;
+export { Head, query };
