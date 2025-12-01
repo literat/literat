@@ -20,8 +20,5 @@ jobs:
       - name: Setup Node and Install Dependencies
         uses: ./.github/actions/setup-install
 
-      - name: Run Allowed Postinstall Scripts
-        run: yarn postinstall:scripts
-
       - name: Build
         run: yarn build
