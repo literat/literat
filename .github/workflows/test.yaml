@@ -1,28 +1,9 @@
-name: 🔍 Code Quality Checks
+name: 🧪 Tests
 
 on:
-  push:
-  schedule:
-    - cron: '0 9 * * *' # every day at 9:00
+  workflow_call:
 
 jobs:
-  lint:
-    name: 📐 Lint
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    env:
-      HUSKY: 0
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-
-      - name: Setup Node and Install Dependencies
-        uses: ./.github/actions/setup-install
-
-      - name: Lint
-        run: yarn lint:scripts
-
   unit-tests:
     name: 🧪 Unit Tests
     runs-on: ubuntu-24.04
@@ -43,40 +24,5 @@ jobs:
       - name: Publish Code Coverage
         uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           path-to-lcov: ./.coverage/lcov.info
-
-  format:
-    name: 💅 Code Format
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    env:
-      HUSKY: 0
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-
-      - name: Setup Node and Install Dependencies
-        uses: ./.github/actions/setup-install
-
-      - name: Check Code-Style Format
-        run: yarn format
-
-  types:
-    name: 📘 Types
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    env:
-      HUSKY: 0
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-
-      - name: Setup Node and Install Dependencies
-        uses: ./.github/actions/setup-install
-
-      - name: Types Check
-        run: yarn types
-        continue-on-error: true

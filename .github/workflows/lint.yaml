@@ -1,0 +1,57 @@
+name: 🔍 Code Quality Checks
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    name: 📐 Lint
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      HUSKY: 0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-install
+
+      - name: Lint
+        run: yarn lint:scripts
+
+  format:
+    name: 💅 Code Format
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      HUSKY: 0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-install
+
+      - name: Check Code-Style Format
+        run: yarn format:check
+
+  types:
+    name: 📘 Types
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      HUSKY: 0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-install
+
+      - name: Types Check
+        run: yarn types
+        continue-on-error: true
