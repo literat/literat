@@ -1,0 +1,32 @@
+name: 🔍 Pre-Integration Checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 9 * * *' # every day at 9:00
+
+jobs:
+  git-checks:
+    name: 🚦 Git Checks
+    uses: ./.github/workflows/git.yaml
+
+  ready-to-merge:
+    name: 🚢 Ready to merge
+    runs-on: ubuntu-24.04
+    needs: [
+      git-checks
+    ]
+    if: always()
+    steps:
+      - name: Evaluate results of dependency jobs
+        if:
+          ${{ contains(needs.*.result, 'failure') || contains(needs.*.result,
+          'cancelled') || contains(needs.*.result, 'skipped') }}
+        run: echo "Mandatory PR checks failed!" && exit 1
+
+      - name: Checks passed successfully
+        if: ${{ success() }}
+        run: echo "All automatic PR checks passed successfully!"
