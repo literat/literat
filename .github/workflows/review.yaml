@@ -1,7 +1,8 @@
 name: 📄 Post Reviews
 
 on:
-  push:
+  workflow_call:
+
 jobs:
   markdown-lint:
     name: 📝 Markdown Lint
