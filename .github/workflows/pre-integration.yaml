@@ -21,14 +21,18 @@ jobs:
     name: 📄 Post Reviews
     uses: ./.github/workflows/review.yaml
 
+  lint:
+    name: 🔍 Code Quality Checks
+    uses: ./.github/workflows/lint.yaml
+
+  test:
+    name: 🧪 Tests
+    uses: ./.github/workflows/test.yaml
+
   ready-to-merge:
     name: 🚢 Ready to merge
     runs-on: ubuntu-24.04
-    needs: [
-      git-checks,
-      build-checks,
-      post-reviews
-    ]
+    needs: [git-checks, build-checks, post-reviews, lint, test]
     if: always()
     steps:
       - name: Evaluate results of dependency jobs
