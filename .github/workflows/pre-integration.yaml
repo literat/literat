@@ -13,11 +13,16 @@ jobs:
     name: 🚦 Git Checks
     uses: ./.github/workflows/git.yaml
 
+  build-checks:
+    name: 🏗️ Build Checks
+    uses: ./.github/workflows/build.yaml
+
   ready-to-merge:
     name: 🚢 Ready to merge
     runs-on: ubuntu-24.04
     needs: [
-      git-checks
+      git-checks,
+      build-checks
     ]
     if: always()
     steps:

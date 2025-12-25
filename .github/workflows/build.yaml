@@ -1,9 +1,7 @@
 name: 🔍 Build Checks
 
 on:
-  push:
-  schedule:
-    - cron: '0 9 * * *' # every day at 9:00
+  workflow_call:
 
 jobs:
   build:
