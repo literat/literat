@@ -10,6 +10,7 @@ jobs:
     timeout-minutes: 10
     env:
       HUSKY: 0
+      TURBO_TELEMETRY_DISABLED: 1
 
     steps:
       - name: Checkout
@@ -19,7 +20,7 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Check File Format
-        run: yarn lint:markdown
+        run: yarn turbo run lint:markdown
 
   text-lint:
     name: ✍️ Text Lint
@@ -27,6 +28,7 @@ jobs:
     timeout-minutes: 10
     env:
       HUSKY: 0
+      TURBO_TELEMETRY_DISABLED: 1
 
     steps:
       - name: Checkout
@@ -36,4 +38,4 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Check File Format
-        run: yarn lint:text
+        run: yarn turbo run lint:text
