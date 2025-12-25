@@ -10,6 +10,7 @@ jobs:
     timeout-minutes: 10
     env:
       HUSKY: 0
+      TURBO_TELEMETRY_DISABLED: 1
 
     steps:
       - name: Checkout
@@ -19,7 +20,7 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Unit Tests
-        run: yarn test:unit:ci
+        run: yarn turbo run test:unit:ci
 
       - name: Publish Code Coverage
         uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6

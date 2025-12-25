@@ -10,6 +10,7 @@ jobs:
     timeout-minutes: 10
     env:
       HUSKY: 0
+      TURBO_TELEMETRY_DISABLED: 1
 
     steps:
       - name: Checkout
@@ -19,4 +20,4 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Build
-        run: yarn build
+        run: yarn turbo run build

@@ -10,6 +10,7 @@ jobs:
     timeout-minutes: 10
     env:
       HUSKY: 0
+      TURBO_TELEMETRY_DISABLED: 1
 
     steps:
       - name: Checkout
@@ -19,7 +20,7 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Lint
-        run: yarn lint:scripts
+        run: yarn turbo run lint:scripts
 
   format:
     name: 💅 Code Format
@@ -27,6 +28,7 @@ jobs:
     timeout-minutes: 10
     env:
       HUSKY: 0
+      TURBO_TELEMETRY_DISABLED: 1
 
     steps:
       - name: Checkout
@@ -36,7 +38,7 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Check Code-Style Format
-        run: yarn format:check
+        run: yarn turbo run format
 
   types:
     name: 📘 Types
@@ -44,6 +46,7 @@ jobs:
     timeout-minutes: 10
     env:
       HUSKY: 0
+      TURBO_TELEMETRY_DISABLED: 1
 
     steps:
       - name: Checkout
@@ -53,5 +56,5 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Types Check
-        run: yarn types
+        run: yarn turbo run types
         continue-on-error: true
