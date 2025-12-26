@@ -1,0 +1,65 @@
+name: 💾 Cache Tasks
+
+on:
+  workflow_call:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  merge-and-save:
+    name: 🔄 Merge and Save Task Cache
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CACHE_PATH: ./.turbo/cache
+
+    steps:
+      - name: Download Task Cache Artifacts
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
+        with:
+          pattern: task-cache-*
+          path: ${{ env.CACHE_PATH }}
+          merge-multiple: true
+        continue-on-error: true
+
+      - name: Show Cache Stats
+        run: |
+          echo "📦 Merged Task Cache Contents:"
+          if [ -d "${{ env.CACHE_PATH }}" ]; then
+            ls -lh ${{ env.CACHE_PATH }} | tail -20
+            echo ""
+            echo "📊 Cache Statistics:"
+            echo "Total files: $(find ${{ env.CACHE_PATH }} -type f | wc -l)"
+            echo "Total size: $(du -sh ${{ env.CACHE_PATH }})"
+          else
+            echo "⚠️ No cache directory found"
+          fi
+
+      - name: Purge Old Task Caches
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "🗑️ Purging old Task caches..."
+
+          FILTER=".[] | select(.key | startswith(\"${{ runner.os }}-Task-main\")) | .id"
+          CACHES=$(gh cache list --json id,key --jq "$FILTER")
+
+          if [ -n "$CACHES" ]; then
+            echo "Found caches to delete:"
+            echo "$CACHES" | while read -r cache_id; do
+              echo "Deleting cache ID: $cache_id"
+              gh cache delete "$cache_id" || true
+            done
+            echo "✅ Old caches purged successfully"
+          else
+            echo "No old caches found to delete"
+          fi
+
+      - name: Save Merged Cache
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ env.CACHE_PATH }}
+          key: ${{ runner.os }}-Task-main

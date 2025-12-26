@@ -2,6 +2,12 @@ name: 🧪 Tests
 
 on:
   workflow_call:
+    inputs:
+      cache-task:
+        description: 'Upload task cache as artifact'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   unit-tests:
@@ -27,3 +33,9 @@ jobs:
         with:
           github-token: ${{ github.token }}
           path-to-lcov: ./.coverage/lcov.info
+
+      - name: Upload Task Cache
+        uses: ./.github/actions/upload-task-cache
+        with:
+          artifact-name: task-cache-test
+          upload: ${{ inputs.cache-task }}

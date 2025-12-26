@@ -2,6 +2,12 @@ name: 🔍 Code Quality Checks
 
 on:
   workflow_call:
+    inputs:
+      cache-task:
+        description: 'Upload task cache as artifact'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   lint:
@@ -22,6 +28,12 @@ jobs:
       - name: Lint
         run: yarn turbo run lint:scripts
 
+      - name: Upload Task Cache
+        uses: ./.github/actions/upload-task-cache
+        with:
+          artifact-name: task-cache-lint-scripts
+          upload: ${{ inputs.cache-task }}
+
   format:
     name: 💅 Code Format
     runs-on: ubuntu-24.04
@@ -39,6 +51,12 @@ jobs:
 
       - name: Check Code-Style Format
         run: yarn turbo run format
+
+      - name: Upload Task Cache
+        uses: ./.github/actions/upload-task-cache
+        with:
+          artifact-name: task-cache-lint-format
+          upload: ${{ inputs.cache-task }}
 
   types:
     name: 📘 Types
@@ -58,3 +76,9 @@ jobs:
       - name: Types Check
         run: yarn turbo run types
         continue-on-error: true
+
+      - name: Upload Task Cache
+        uses: ./.github/actions/upload-task-cache
+        with:
+          artifact-name: task-cache-lint-types
+          upload: ${{ inputs.cache-task }}

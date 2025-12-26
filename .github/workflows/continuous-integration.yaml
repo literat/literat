@@ -32,6 +32,8 @@ jobs:
   build-checks:
     name: 🏗️ Build Checks
     uses: ./.github/workflows/build.yaml
+    with:
+      cache-task: ${{ github.event_name != 'pull_request' }}
 
   post-reviews:
     name: 📄 Post Reviews
@@ -40,10 +42,14 @@ jobs:
   code-quality-checks:
     name: 🔍 Code Quality Checks
     uses: ./.github/workflows/lint.yaml
+    with:
+      cache-task: ${{ github.event_name != 'pull_request' }}
 
   tests:
     name: 🧪 Tests
     uses: ./.github/workflows/test.yaml
+    with:
+      cache-task: ${{ github.event_name != 'pull_request' }}
 
   code-quality-gate:
     name: 📊 Code Quality Gate
@@ -53,6 +59,15 @@ jobs:
     with:
       needs-context: ${{ toJSON(needs) }}
       gate-name: '📊 Code Quality Gate'
+
+  cache-tasks:
+    name: 💾 Cache Tasks
+    needs: [build-checks, code-quality-checks, tests]
+    if: always() && github.event_name != 'pull_request'
+    permissions:
+      actions: write
+      contents: read
+    uses: ./.github/workflows/cache-tasks.yaml
 
   ready-to-integrate:
     name: 🚢 Ready to Integrate
