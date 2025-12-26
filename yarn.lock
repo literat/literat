@@ -5959,12 +5959,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@netlify/functions@npm:5.1.0":
-  version: 5.1.0
-  resolution: "@netlify/functions@npm:5.1.0"
+"@netlify/functions@npm:5.1.1":
+  version: 5.1.1
+  resolution: "@netlify/functions@npm:5.1.1"
   dependencies:
-    "@netlify/types": "npm:2.2.0"
-  checksum: 10/db657d43c79321b75116a4d39e1ff9f93bced625f15bfddb691f08fb4aadfead1f7b8174ea5c03951c7faacb067d69e603b4a9e1d529d80f039a158c724b22c8
+    "@netlify/types": "npm:2.3.0"
+  checksum: 10/5e7fd746d22618284fa16672f11cbbe5efad20ddff1f3de876c67b802ebe76df6e31acc9e108208155df727075e8078cf9d8714ed00b1dbda80f4edba53507de
   languageName: node
   linkType: hard
 
@@ -6220,10 +6220,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@netlify/types@npm:2.2.0":
-  version: 2.2.0
-  resolution: "@netlify/types@npm:2.2.0"
-  checksum: 10/f2e665a13d063a877f6ca0775c14d05cadaef4bdf3029b34f86185713daa95c1e67d5dfe4839f300ba8e2b6d3856d9d50642ddf5eacd22e39aa6f6dbf4d6d573
+"@netlify/types@npm:2.3.0":
+  version: 2.3.0
+  resolution: "@netlify/types@npm:2.3.0"
+  checksum: 10/5e30d56822544526dd8b11ae3b0b458c98cd7d7e3226d390a2597f2297fb6d3e206adbdda6e8c8e4f7c52e957da30a61d40b4bb1ef4075b95b4d6143f8772ecd
   languageName: node
   linkType: hard
 
@@ -21379,7 +21379,7 @@ __metadata:
     "@lmc-eu/prettier-config": "npm:2.0.1"
     "@lmc-eu/textlint-rule-preset-lmc": "npm:2.0.2"
     "@mdx-js/react": "npm:3.1.1"
-    "@netlify/functions": "npm:5.1.0"
+    "@netlify/functions": "npm:5.1.1"
     "@sparticuz/chromium": "npm:141.0.0"
     "@testing-library/dom": "npm:10.4.1"
     "@testing-library/jest-dom": "npm:6.9.1"
