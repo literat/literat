@@ -1,0 +1,22 @@
+name: 'Upload Task Cache'
+description: 'Upload .turbo/cache directory as artifact for later merging'
+inputs:
+  artifact-name:
+    description: 'Name of the artifact to upload'
+    required: true
+  upload:
+    description: 'Whether to upload the cache'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Upload Task Cache
+      if: inputs.upload == 'true'
+      uses: actions/upload-artifact@84480863f228bb9747b473957fcc9e309aa96097 # v4
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: ./.turbo/cache
+        retention-days: 1
+        if-no-files-found: ignore

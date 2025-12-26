@@ -6,13 +6,19 @@ runs:
     - name: Setup Node
       uses: ./.github/actions/setup-node
 
-    - name: Restore Cache
+    - name: Restore Yarn Cache
       uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
       with:
         path: ./.yarn/cache
         key: ${{ runner.os }}-Yarn-main
         restore-keys: |
           ${{ runner.os }}-Yarn-main-
+
+    - name: Restore Task Cache
+      uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+      with:
+        path: ./.turbo/cache
+        key: ${{ runner.os }}-Task-main
 
     - name: Install dependencies
       uses: ./.github/actions/deps-install

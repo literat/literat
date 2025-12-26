@@ -2,6 +2,12 @@ name: 🔍 Build Checks
 
 on:
   workflow_call:
+    inputs:
+      cache-task:
+        description: 'Upload task cache as artifact'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -21,3 +27,9 @@ jobs:
 
       - name: Build
         run: yarn turbo run build
+
+      - name: Upload Task Cache
+        uses: ./.github/actions/upload-task-cache
+        with:
+          artifact-name: task-cache-build
+          upload: ${{ inputs.cache-task }}
