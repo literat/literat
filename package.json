@@ -135,7 +135,6 @@
     "remark-frontmatter": "catalog:lint",
     "remark-mdx": "catalog:lint",
     "textlint": "catalog:lint",
-    "ts-node": "10.9.2",
     "turbo": "^2.7.2"
   },
   "dependenciesMeta": {

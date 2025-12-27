@@ -21457,7 +21457,6 @@ __metadata:
     slugify: "catalog:backend"
     styled-components: "npm:6.1.19"
     textlint: "catalog:lint"
-    ts-node: "npm:10.9.2"
     turbo: "npm:^2.7.2"
     typescript: "npm:5.9.3"
     vscode-styled-components: ./vendor_modules/vscode-styled-components
@@ -31673,7 +31672,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:10.9.2, ts-node@npm:^10.9.1":
+"ts-node@npm:^10.9.1":
   version: 10.9.2
   resolution: "ts-node@npm:10.9.2"
   dependencies:
