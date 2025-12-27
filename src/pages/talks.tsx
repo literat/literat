@@ -1,13 +1,13 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import SiteMetaTags from '../components/SiteMetaTags';
+
+const Head = () => <SiteMetaTags title="Speaking &amp; Training - Literat" />;
 
 const TalksPage = () => (
   <>
-    <Helmet>
-      <title>Speaking &amp; Training - Literat</title>
-    </Helmet>
     <div>Speaking and training</div>
   </>
 );
 
 export default TalksPage;
+export { Head };
