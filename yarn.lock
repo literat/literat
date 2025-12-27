@@ -21382,8 +21382,8 @@ __metadata:
     "@lmc-eu/prettier-config": "catalog:lint"
     "@lmc-eu/textlint-rule-preset-lmc": "catalog:lint"
     "@mdx-js/react": "npm:3.1.1"
-    "@netlify/functions": "npm:5.1.1"
-    "@sparticuz/chromium": "npm:141.0.0"
+    "@netlify/functions": "catalog:backend"
+    "@sparticuz/chromium": "catalog:backend"
     "@testing-library/dom": "catalog:test"
     "@testing-library/jest-dom": "catalog:test"
     "@testing-library/react": "catalog:test"
@@ -21461,7 +21461,7 @@ __metadata:
     turbo: "npm:^2.7.2"
     typescript: "npm:5.9.3"
     vscode-styled-components: ./vendor_modules/vscode-styled-components
-    waait: "npm:1.0.5"
+    waait: "catalog:backend"
   dependenciesMeta:
     sharp:
       built: true
