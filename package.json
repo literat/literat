@@ -46,7 +46,6 @@
     "@mdx-js/react": "3.1.1",
     "@netlify/functions": "catalog:backend",
     "@sparticuz/chromium": "catalog:backend",
-    "babel-plugin-styled-components": "2.1.4",
     "clsx": "2.1.1",
     "gatsby": "5.15.0",
     "gatsby-plugin-alias-imports": "1.0.5",
@@ -76,7 +75,6 @@
     "sass": "1.93.2",
     "slugify": "catalog:backend",
     "styled-components": "6.1.19",
-    "typescript": "5.9.3",
     "vscode-styled-components": "./vendor_modules/vscode-styled-components",
     "waait": "catalog:backend"
   },
@@ -104,6 +102,7 @@
     "@typescript-eslint/eslint-plugin": "catalog:lint",
     "@typescript-eslint/parser": "catalog:lint",
     "babel-jest": "catalog:test",
+    "babel-plugin-styled-components": "2.1.4",
     "babel-preset-gatsby": "catalog:test",
     "chalk": "catalog:backend",
     "core-js": "3.47.0",
@@ -126,7 +125,7 @@
     "is-ci": "catalog:script",
     "jest": "catalog:test",
     "jest-environment-jsdom": "catalog:test",
-    "netlify-cli": "23.9.1",
+    "netlify-cli": "catalog:script",
     "npm-run-all2": "catalog:script",
     "prettier": "catalog:lint",
     "prettier-plugin-toml": "catalog:lint",
@@ -135,7 +134,8 @@
     "remark-frontmatter": "catalog:lint",
     "remark-mdx": "catalog:lint",
     "textlint": "catalog:lint",
-    "turbo": "^2.7.2"
+    "turbo": "catalog:script",
+    "typescript": "5.9.3"
   },
   "dependenciesMeta": {
     "sharp": {

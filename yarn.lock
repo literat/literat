@@ -21437,7 +21437,7 @@ __metadata:
     is-ci: "catalog:script"
     jest: "catalog:test"
     jest-environment-jsdom: "catalog:test"
-    netlify-cli: "npm:23.9.1"
+    netlify-cli: "catalog:script"
     normalize.css: "npm:8.0.1"
     npm-run-all2: "catalog:script"
     prettier: "catalog:lint"
@@ -21457,7 +21457,7 @@ __metadata:
     slugify: "catalog:backend"
     styled-components: "npm:6.1.19"
     textlint: "catalog:lint"
-    turbo: "npm:^2.7.2"
+    turbo: "catalog:script"
     typescript: "npm:5.9.3"
     vscode-styled-components: ./vendor_modules/vscode-styled-components
     waait: "catalog:backend"
