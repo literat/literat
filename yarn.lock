@@ -5960,12 +5960,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@netlify/functions@npm:5.1.1":
-  version: 5.1.1
-  resolution: "@netlify/functions@npm:5.1.1"
+"@netlify/functions@npm:5.1.2":
+  version: 5.1.2
+  resolution: "@netlify/functions@npm:5.1.2"
   dependencies:
     "@netlify/types": "npm:2.3.0"
-  checksum: 10/5e7fd746d22618284fa16672f11cbbe5efad20ddff1f3de876c67b802ebe76df6e31acc9e108208155df727075e8078cf9d8714ed00b1dbda80f4edba53507de
+  checksum: 10/0594a853270c4cd4ddbb3b8ea4a0db83cabcd25eeb8fa194250a393e18a4cf4bf87afb08d502892164b979cb3c1adf3f5ce95d4e0ddf635680eb3f47ed822ead
   languageName: node
   linkType: hard
 
