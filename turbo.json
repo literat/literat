@@ -12,7 +12,8 @@
       "dependsOn": []
     },
     "test:unit:ci": {
-      "dependsOn": []
+      "dependsOn": [],
+      "outputs": [".coverage/**"]
     },
     "lint:scripts": {
       "dependsOn": []
