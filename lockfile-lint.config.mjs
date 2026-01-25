@@ -5,4 +5,4 @@ const config = {
   validatePackageNames: true,
 };
 
-module.exports = config;
+export default config;

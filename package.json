@@ -33,7 +33,7 @@
     "lint:markdown": "remark ./ --quiet",
     "lint:text": "textlint ./",
     "lint:text:fix": "yarn lint:text --fix",
-    "lint:lockfile": "yarn dlx lockfile-lint",
+    "lint:lockfile": "yarn dlx lockfile-lint@5.0.0",
     "format": "yarn format:check",
     "format:check": "prettier --check ./",
     "format:fix": "prettier --write ./",
