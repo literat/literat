@@ -7,7 +7,7 @@ runs:
       uses: ./.github/actions/setup-node
 
     - name: Restore Yarn Cache
-      uses: actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb # v5
+      uses: actions/cache/restore@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5
       with:
         path: ./.yarn/cache
         key: ${{ runner.os }}-Yarn-main
@@ -15,7 +15,7 @@ runs:
           ${{ runner.os }}-Yarn-main-
 
     - name: Restore Task Cache
-      uses: actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb # v5
+      uses: actions/cache/restore@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5
       with:
         path: ./.turbo/cache
         key: ${{ runner.os }}-Task-main
