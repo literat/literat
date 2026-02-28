@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import PageMetaTags from '../components/PageMetaTags';
 
 interface AllTagsTemplateProps {
   pageContext: {
@@ -26,3 +27,5 @@ const AllTagsTemplate = ({ pageContext }: AllTagsTemplateProps) => {
 };
 
 export default AllTagsTemplate;
+
+export const Head = () => <PageMetaTags title="Tags - Literat" />;

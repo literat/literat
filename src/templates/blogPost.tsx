@@ -73,12 +73,6 @@ interface PostTemplateProps {
   };
 }
 
-const Head = ({ data }: PostTemplateProps) => {
-  const { mdx: post } = data;
-
-  return <PostMetaTags post={post} />;
-};
-
 function PostTemplate({
   data,
   scope,
@@ -108,4 +102,10 @@ function PostTemplate({
 }
 
 export default PostTemplate;
-export { query, Head };
+export { query };
+
+export const Head = ({ data }: PostTemplateProps) => {
+  const { mdx: post } = data;
+
+  return <PostMetaTags post={post} />;
+};

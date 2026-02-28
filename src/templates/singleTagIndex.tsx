@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import PageMetaTags from '../components/PageMetaTags';
 
 type Frontmatter = {
   title: string;
@@ -41,3 +42,7 @@ const SingleTagsTemplate = ({ pageContext }: SingleTagsTemplateProps) => {
 };
 
 export default SingleTagsTemplate;
+
+export const Head = ({ pageContext }: SingleTagsTemplateProps) => (
+  <PageMetaTags title={`${pageContext.tagName} - Literat`} />
+);
