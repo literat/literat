@@ -6,9 +6,9 @@ import Footer from './Footer';
 import Header from './Header';
 import Menu from './Menu';
 import mdxComponents from './mdx';
-import ContainerStyles from './styles/ContainerStyles';
 import ContentStyles from './styles/ContentStyles';
 import GlobalStyles from './styles/GlobalStyles';
+import { MainContainer, LayoutContainer } from './Container';
 
 interface LayoutProps {
   children: ReactNode | string;
@@ -25,16 +25,18 @@ const Layout = ({ pageContext, children }: LayoutProps) =>
     <>
       <GlobalStyles />
       <Fonts />
-      <ContainerStyles>
-        <Header />
-        <Menu />
-        <MDXProvider components={mdxComponents}>
-          <ContentStyles className={pageContext?.layoutClasses}>
-            {children}
-          </ContentStyles>
-        </MDXProvider>
-      </ContainerStyles>
-      <Footer />
+      <LayoutContainer>
+        <MainContainer>
+          <Header />
+          <Menu />
+          <MDXProvider components={mdxComponents}>
+            <ContentStyles className={pageContext?.layoutClasses}>
+              {children}
+            </ContentStyles>
+          </MDXProvider>
+        </MainContainer>
+        <Footer />
+      </LayoutContainer>
     </>
   );
 
