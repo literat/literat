@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import H from '../components/mdx/Headings';
+import PageMetaTags from '../components/PageMetaTags';
 
 const NotFoundPage = () => (
   <>
-    <Helmet>
-      <title>Here is not what are you looking for - Literat</title>
-    </Helmet>
     <H>Damn, eh!</H>
     <p>404.</p>
     <p>
@@ -18,3 +15,7 @@ const NotFoundPage = () => (
 );
 
 export default NotFoundPage;
+
+export const Head = () => (
+  <PageMetaTags title="Here is not what are you looking for - Literat" />
+);

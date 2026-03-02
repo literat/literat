@@ -1,13 +1,14 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import PageMetaTags from '../components/PageMetaTags';
 
 const TalksPage = () => (
   <>
-    <Helmet>
-      <title>Speaking &amp; Training - Literat</title>
-    </Helmet>
     <div>Speaking and training</div>
   </>
 );
 
 export default TalksPage;
+
+export const Head = () => (
+  <PageMetaTags title="Speaking &amp; Training - Literat" />
+);
