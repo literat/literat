@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-const ContainerStyles = styled.div`
+.MainContainer {
   --size: 40px;
   @media (max-width: 800px) {
     --size: 20px;
@@ -11,6 +9,7 @@ const ContainerStyles = styled.div`
   border: var(--borderSize) solid var(--light);
   border-color: var(--light);
   position: relative;
+  flex: 1;
 
   &:after {
     box-sizing: content-box;
@@ -39,6 +38,4 @@ const ContainerStyles = styled.div`
     border: var(--size) solid transparent;
     background-size: 250px;
   }
-`;
-
-export default ContainerStyles;
+}
