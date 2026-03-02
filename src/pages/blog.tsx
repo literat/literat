@@ -1,6 +1,25 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import PageMetaTags from '../components/PageMetaTags';
+
+const query = graphql`
+  query BLOG_POSTS {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
+      edges {
+        node {
+          fields {
+            path
+            slug
+          }
+          frontmatter {
+            title
+            date
+          }
+        }
+      }
+    }
+  }
+`;
 
 type Edge = {
   node: {
@@ -27,9 +46,6 @@ const Blog = ({ data }: BlogProps) => {
 
   return (
     <div>
-      <Helmet>
-        <title>Blog - Literat</title>
-      </Helmet>
       <div
         style={{
           display: 'flex',
@@ -59,23 +75,7 @@ const Blog = ({ data }: BlogProps) => {
   );
 };
 
-export const query = graphql`
-  query BLOG_POSTS {
-    allMdx(sort: { frontmatter: { date: DESC } }) {
-      edges {
-        node {
-          fields {
-            path
-            slug
-          }
-          frontmatter {
-            title
-            date
-          }
-        }
-      }
-    }
-  }
-`;
-
 export default Blog;
+export { query };
+
+export const Head = () => <PageMetaTags title="Blog - Literat" />;
