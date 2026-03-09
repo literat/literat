@@ -124,6 +124,7 @@
     "is-ci": "catalog:script",
     "jest": "catalog:test",
     "jest-environment-jsdom": "catalog:test",
+    "lint-staged": "^16.3.1",
     "netlify-cli": "catalog:script",
     "npm-run-all2": "catalog:script",
     "prettier": "catalog:lint",
