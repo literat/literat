@@ -2,8 +2,12 @@
 .vscode
 .coverage
 .yarn
+.husky
+.prettierignore
+.gitignore
 package.json
 package-lock.json
+yarn.lock
 public
 node_modules
 vendor_modules
