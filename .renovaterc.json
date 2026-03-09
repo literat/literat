@@ -37,6 +37,17 @@
       "groupSlug": "types-minor-patch",
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": ["/^types/"]
+    },
+    {
+      "groupName": "react monorepo",
+      "groupSlug": "react-monorepo-minor-patch",
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ]
     }
   ]
 }
