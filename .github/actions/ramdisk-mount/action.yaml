@@ -1,0 +1,21 @@
+name: 'mount ramdisk'
+description: 'Mount ramdisk'
+runs:
+  using: 'composite'
+  steps:
+    - name: Mount workspace on ramdisk
+      shell: bash
+      run: |
+        # Use 50% of total RAM for the tmpfs (only consumed as needed, not reserved upfront)
+        TOTAL_RAM_KB=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+        TMPFS_SIZE_KB=$((TOTAL_RAM_KB * 50 / 100))
+        TMPFS_SIZE_MB=$((TMPFS_SIZE_KB / 1024))
+
+        echo "Total RAM: $((TOTAL_RAM_KB / 1024)) MB, tmpfs limit: ${TMPFS_SIZE_MB} MB"
+        echo "Mounting tmpfs over $GITHUB_WORKSPACE"
+
+        sudo mount -t tmpfs -o size=${TMPFS_SIZE_MB}M tmpfs "$GITHUB_WORKSPACE"
+        sudo chown "$(id -u):$(id -g)" "$GITHUB_WORKSPACE"
+
+        echo "Workspace is now on tmpfs:"
+        df -h "$GITHUB_WORKSPACE"
