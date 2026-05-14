@@ -765,6 +765,8 @@ regularly, and question suspicious packages.
 ## Further Reading
 
 - [npm Ignore Scripts: Security Best Practices][npm-ignore-scripts]
+- [Minimum Release Age: Simplest Supply Chain
+  Defense][simplest-supply-chain-defense]
 
 ### 2025 Supply Chain Attack Timeline
 
@@ -806,6 +808,23 @@ regularly, and question suspicious packages.
 - [HelixGuard: 1K+ NPM Packages and 27K+ GitHub Repos
   Infected][helixguard-shai-hulud-returns]
 - [Wiz Security: 25K+ Repos Exposing Secrets][wiz-shai-hulud-2]
+
+#### 2026-05-11 TanStack npm Supply Chain Compromise
+
+- [TanStack Postmoretem][tanstack-postmortem]
+- [Socket: TanStack Compromise][socket-tanstack-compromise]
+- [StepSecurity: Mini Shai-Hulud is Back][tanstack-shai-hulud-back]
+
+## Changelog
+
+I have been updating this post with new best practices and references as the
+attacks evolve.
+
+- 2026-05-14: Added TanStack supply chain attack references to multiple posts
+  and TanStack postmortem. With the introduction of `min-release-age` for npm,
+  all major package managers now support this simplest feature for supply chain
+  attack mitigation. The reference to the deep dive article about Cool down
+  periods was added as well.
 
 {/* lint enable no-duplicate-headings */}
 
@@ -881,3 +900,11 @@ regularly, and question suspicious packages.
   https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack
 [yarn-dependenciesmeta-built]:
   https://yarnpkg.com/configuration/manifest?utm_source=chatgpt.com#dependenciesMeta
+[tanstack-postmortem]:
+  https://tanstack.com/blog/npm-supply-chain-compromise-postmortem
+[tanstack-mini-shai-hulud]:
+  https://socket.dev/blog/tanstack-npm-packages-compromised-mini-shai-hulud-supply-chain-attack
+[tanstack-shai-hulud-back]:
+  https://www.stepsecurity.io/blog/mini-shai-hulud-is-back-a-self-spreading-supply-chain-attack-hits-the-npm-ecosystem
+[simplest-supply-chain-defense]:
+  https://daniakash.com/posts/simplest-supply-chain-defense/
