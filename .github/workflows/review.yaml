@@ -13,6 +13,9 @@ jobs:
       TURBO_TELEMETRY_DISABLED: 1
 
     steps:
+      - name: Mount Ramdisk
+        uses: ./.github/actions/ramdisk-mount
+
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
@@ -21,6 +24,9 @@ jobs:
 
       - name: Check File Format
         run: yarn turbo run lint:markdown
+
+      - name: Ramdisk Usage Summary
+        uses: ./.github/actions/ramdisk-usage
 
   text-lint:
     name: ✍️ Text Lint
@@ -31,6 +37,9 @@ jobs:
       TURBO_TELEMETRY_DISABLED: 1
 
     steps:
+      - name: Mount Ramdisk
+        uses: ./.github/actions/ramdisk-mount
+
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
@@ -39,3 +48,6 @@ jobs:
 
       - name: Check File Format
         run: yarn turbo run lint:text
+
+      - name: Ramdisk Usage Summary
+        uses: ./.github/actions/ramdisk-usage

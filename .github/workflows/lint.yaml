@@ -19,6 +19,9 @@ jobs:
       TURBO_TELEMETRY_DISABLED: 1
 
     steps:
+      - name: Mount Ramdisk
+        uses: ./.github/actions/ramdisk-mount
+
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
@@ -34,6 +37,9 @@ jobs:
           artifact-name: task-cache-lint-scripts
           upload: ${{ inputs.cache-task }}
 
+      - name: Ramdisk Usage Summary
+        uses: ./.github/actions/ramdisk-usage
+
   format:
     name: 💅 Code Format
     runs-on: ubuntu-24.04
@@ -43,6 +49,9 @@ jobs:
       TURBO_TELEMETRY_DISABLED: 1
 
     steps:
+      - name: Mount Ramdisk
+        uses: ./.github/actions/ramdisk-mount
+
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
@@ -58,6 +67,9 @@ jobs:
           artifact-name: task-cache-lint-format
           upload: ${{ inputs.cache-task }}
 
+      - name: Ramdisk Usage Summary
+        uses: ./.github/actions/ramdisk-usage
+
   types:
     name: 📘 Types
     runs-on: ubuntu-24.04
@@ -67,6 +79,9 @@ jobs:
       TURBO_TELEMETRY_DISABLED: 1
 
     steps:
+      - name: Mount Ramdisk
+        uses: ./.github/actions/ramdisk-mount
+
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
@@ -82,3 +97,6 @@ jobs:
         with:
           artifact-name: task-cache-lint-types
           upload: ${{ inputs.cache-task }}
+
+      - name: Ramdisk Usage Summary
+        uses: ./.github/actions/ramdisk-usage
