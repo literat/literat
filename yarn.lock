@@ -6111,12 +6111,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@netlify/functions@npm:5.1.2":
-  version: 5.1.2
-  resolution: "@netlify/functions@npm:5.1.2"
+"@netlify/functions@npm:5.2.0":
+  version: 5.2.0
+  resolution: "@netlify/functions@npm:5.2.0"
   dependencies:
-    "@netlify/types": "npm:2.3.0"
-  checksum: 10/0594a853270c4cd4ddbb3b8ea4a0db83cabcd25eeb8fa194250a393e18a4cf4bf87afb08d502892164b979cb3c1adf3f5ce95d4e0ddf635680eb3f47ed822ead
+    "@netlify/types": "npm:2.6.0"
+  checksum: 10/ab0b0c5a72942420cffaf211ed9926f180d9132b957568346817246e8f07c99053a3193cef88312e2deb4e220fbec542d3ad34f438190719e839d05cacf8e87f
   languageName: node
   linkType: hard
 
@@ -6372,10 +6372,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@netlify/types@npm:2.3.0":
-  version: 2.3.0
-  resolution: "@netlify/types@npm:2.3.0"
-  checksum: 10/5e30d56822544526dd8b11ae3b0b458c98cd7d7e3226d390a2597f2297fb6d3e206adbdda6e8c8e4f7c52e957da30a61d40b4bb1ef4075b95b4d6143f8772ecd
+"@netlify/types@npm:2.6.0":
+  version: 2.6.0
+  resolution: "@netlify/types@npm:2.6.0"
+  checksum: 10/b31d97eeb59e56e295d6b655d11b6d90be5874afef93d26e97b99c0047fc0669db241dbd728cc24b2810b9b801c3b8c68a6fe4e058d499ebdb038f4b20b4f14f
   languageName: node
   linkType: hard
 
