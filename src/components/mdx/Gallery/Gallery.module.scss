@@ -1,0 +1,87 @@
+.Gallery {
+  margin-top: calc(2 * (1.68 * (10px + 0.2vw) + 0.2vw));
+  margin-bottom: calc(2 * (1.68 * (10px + 0.2vw) + 0.2vw));
+  margin-left: calc(
+    50% - 50vw + var(--borderSize, 20px) + var(--scrollbar-width, 0px) / 2
+  );
+  margin-right: calc(
+    50% - 50vw + var(--borderSize, 20px) + var(--scrollbar-width, 0px) / 2
+  );
+  padding: calc(1 * (1.68 * (18px + 0.2vw) + 0.2vw)) 2.4rem;
+  background: #002b36;
+
+  @media only screen and (min-width: 600px) {
+    clip-path: polygon(
+      0 calc(0% + 15px),
+      100% 0,
+      100% calc(100% - 15px),
+      0% 100%
+    );
+  }
+}
+
+.GalleryMobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  figcaption {
+    display: none;
+  }
+
+  :global(.gatsby-resp-image-wrapper) {
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  @media only screen and (min-width: 600px) {
+    display: none;
+  }
+}
+
+.GalleryGrid {
+  display: none;
+
+  @media only screen and (min-width: 600px) {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+}
+
+.GalleryColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  figcaption {
+    display: none;
+  }
+
+  :global(.gatsby-resp-image-wrapper) {
+    max-width: none !important;
+    margin: 0 !important;
+  }
+}
+
+// Distribute the height gap evenly across all images in shorter columns (desktop only)
+@media only screen and (min-width: 600px) {
+  .GalleryColumnShort > * {
+    flex: 1;
+
+    :global(.gatsby-resp-image-wrapper) {
+      height: 100% !important;
+    }
+
+    :global(.gatsby-resp-image-background-image) {
+      padding-bottom: 0 !important;
+      height: 100% !important;
+    }
+
+    :global(.gatsby-resp-image-image) {
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+}
