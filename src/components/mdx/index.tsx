@@ -1,5 +1,6 @@
 import React from 'react';
 import Code from './Code';
+import { Gallery } from './Gallery';
 import H from './Headings';
 import Pre from './Pre';
 import T from './Tags';
@@ -19,6 +20,7 @@ export default {
   // p: props => <Text {...props} />,
   code: (props) => <Code {...props} />,
   pre: (props) => <Pre {...props} />,
+  Gallery: (props) => <Gallery {...props} />,
   // table: Table,
   // blockquote: Blockquote,
   // TODO add `a`
