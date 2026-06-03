@@ -2,7 +2,7 @@ import { MDXProvider } from '@mdx-js/react';
 import 'normalize.css';
 import React, { ReactNode } from 'react';
 import Fonts from './Fonts';
-import Footer from './Footer';
+import { Footer } from './Footer';
 import Header from './Header';
 import Menu from './Menu';
 import mdxComponents from './mdx';
