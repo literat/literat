@@ -1,0 +1,10 @@
+name: 'ramdisk usage'
+description: 'Usage of ramdisk'
+runs:
+  using: 'composite'
+  steps:
+    - name: Ramdisk usage summary
+      shell: bash
+      run: |
+        echo "Workspace on tmpfs usage summary:"
+        df -h "$GITHUB_WORKSPACE"
