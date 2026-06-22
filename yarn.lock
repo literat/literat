@@ -8300,13 +8300,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/inquirer@npm:9.0.9":
-  version: 9.0.9
-  resolution: "@types/inquirer@npm:9.0.9"
+"@types/inquirer@npm:9.0.10":
+  version: 9.0.10
+  resolution: "@types/inquirer@npm:9.0.10"
   dependencies:
     "@types/through": "npm:*"
     rxjs: "npm:^7.2.0"
-  checksum: 10/015ee6fa65d1d79c070c889906be3eceedd77aa08a4aea3d17b188c9d169b459994244525f054b60de0e28fe9c492df75527a7b63da16e06fcc09e54039ac652
+  checksum: 10/2fd61509eb32bf9eef4b9a3e0fc8929d30ce8d2bdbbceb8a4e65c11831187fefcdd08641ec7f2228feac2ec75b1460deb5f4f91ad66c99b614b239edd8e4da3e
   languageName: node
   linkType: hard
 
